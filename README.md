@@ -1,0 +1,2 @@
+# baljorp
+Szoftver projekt laboratórium
