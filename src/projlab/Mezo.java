@@ -12,18 +12,18 @@ public class Mezo {
 	private Jatek jatek;
 	private List<Targy> belefagyott_targyak = new ArrayList<Targy>();
 	private Epitmeny epitmeny;
-	private List<Szereplo> jatekosok = new ArrayList<Szereplo>();
+	protected List<Szereplo> jatekosok = new ArrayList<Szereplo>();
 	
 	public void jatekosFogadas(Szereplo sz) {
 		Main.tabs++;
-		Main.print("jatekosFogadas()");
+		Main.log(this, "jatekosFogadas(" + Main.nameOf(sz) +")");
 		jatekosok.add(sz);
 		sz.setMezo(this);
 		Main.tabs--;
 	}
 	public void jatekosKuldes(Szereplo sz, Mezo cel) {
 		Main.tabs++;
-		Main.print("jatekosKuldes()");
+		Main.log(this, "jatekosKuldes("+ Main.nameOf(sz) +", "+ Main.nameOf(cel) +")");
 		cel.jatekosFogadas(sz);
 		Main.tabs--;
 	}
@@ -40,10 +40,13 @@ public class Mezo {
 	}
 	public Mezo getSzomszed(int irany) {
 		Main.tabs++;
-		Main.print("getSzomszed()");
+		Main.log(this, "getSzomszed(" + irany + ") : " + Main.nameOf(szomszedos_mezok.get(irany)));
 		Main.tabs--;
 		return szomszedos_mezok.get(irany);
 	}
+	
+	/* Ez a metódus csak a skeletonhoz van, hogy anélkül hozzá tudjunk adni szereplõt
+	 * a mezõhöz az inicializáláskor, hogy a konzolra logolnánk a jatekosFogadas() metódussal. */
 	public void AddJatekos(Szereplo sz) {
 		jatekosok.add(sz);
 		sz.setMezo(this);

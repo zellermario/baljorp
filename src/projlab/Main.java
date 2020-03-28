@@ -1,13 +1,18 @@
 package projlab;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 import java.util.List;
+import java.util.Map;
 
 public class Main {
 	
 	public static int tabs = -1;
-	public static void print(String s) { System.out.println("\t".repeat(tabs) + "--> " + s); }
+	public static void print(String s) { System.out.println("\t".repeat(tabs) + s); }
+	public static void log(Object obj, String method) { System.out.println("\t".repeat(tabs) + "--> " + names.get(obj) + "." + method); }
+	public static Map<Object, String> names = new HashMap<Object, String>();
+	public static String nameOf(Object o) { return names.get(o); }
 	
 	interface UseCase {
 		public String getName();
@@ -17,20 +22,28 @@ public class Main {
 	static class StabilJegtablaraLepes implements UseCase {
 		public String getName() { return "Eszkimó a szomszédos stabil jégtáblára lép."; }
 		public void run() {
-			Eszkimo e = new Eszkimo("eszkimo1");
-			Stabil_Jegtabla sj1 = new Stabil_Jegtabla();
-			Stabil_Jegtabla sj2 = new Stabil_Jegtabla();
+			Eszkimo e = new Eszkimo(); names.put(e, "Eszkimó");
+			Stabil_Jegtabla sj1 = new Stabil_Jegtabla(); names.put(sj1, "JelenlegiJégtábla");
+			Stabil_Jegtabla sj2 = new Stabil_Jegtabla(); names.put(sj2, "CélJégtábla");
 			sj1.setSzomszed(1, sj2);
 			sj2.setSzomszed(2, sj1);
 			sj1.AddJatekos(e);
 			e.lepes(1);
+			names.clear();
 		}
 	}
 
 	static class InstabilJegtablaraLepes implements UseCase {
-		public String getName() { return "Eszkimó a szomszédos instabil jégtáblára lép és jégtábla átfordul."; }
+		public String getName() { return "Eszkimó a szomszédos instabil jégtáblára lép."; }
 		public void run() {
-			
+			Eszkimo e = new Eszkimo(); names.put(e, "Eszkimó");
+			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "JelenlegiJégtábla");
+			Instabil_Jegtabla isj = new Instabil_Jegtabla(); names.put(isj, "CélJégtábla");
+			sj.setSzomszed(1, isj);
+			isj.setSzomszed(2, sj);
+			sj.AddJatekos(e);
+			e.lepes(1);
+			names.clear();
 		}
 	}
 	
@@ -44,7 +57,7 @@ public class Main {
 		}
 	}
 	
-	private static Scanner scanner = new Scanner(System.in);
+	public static Scanner scanner = new Scanner(System.in);
 
 	public static void main(String args[]) {
 		
