@@ -8,6 +8,7 @@ import java.util.Map;
 
 public class Main {
 	
+	public static Scanner scanner;
 	public static int tabs = -1;
 	public static void print(String s) { System.out.println("\t".repeat(tabs) + s); }
 	public static void log(Object obj, String method) { System.out.println("\t".repeat(tabs) + "--> " + names.get(obj) + "." + method); }
@@ -48,6 +49,87 @@ public class Main {
 	
 	// Add further Use-Cases here
 	
+	static class UtolsoRaketaalkatreszKiasas implements UseCase {
+		public String getName() { return "Eszkimó kiássa az utolsó rakétaalkatrészt és nyernek."; }
+		public void run() {
+			Eszkimo e = new Eszkimo(); names.put(e, "Eszkimó");
+			Raketaalkatresz ra = new Raketaalkatresz(); names.put(ra, "UtolsóRakétaAlkatrész");
+			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "TárgyatTartalmazóJégtábla");
+			sj.setBelefagyott(ra);
+			Jatek jatek = new Jatek(); names.put(jatek, "Játék");
+			ra.setJatek(jatek);
+			sj.AddJatekos(e);
+			sj.targyAtad(e);
+			names.clear();
+		}
+		
+		static class HoviharIgluban implements UseCase {
+			public String getName() { return "Eszkimót elkapja a hóvihar egy igluban"; }
+			public void run() {
+				Eszkimo e = new Eszkimo(); names.put(e, "Eszkimó");
+				Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "IglusJégtábla");
+				Jatek jatek = new Jatek(); names.put(jatek, "Játék");
+				sj.AddJatekos(e);
+				sj.igluEpit();
+				sj.hovihar();
+				
+				names.clear();
+			}
+		}
+			static class HoviharUresepuletben implements UseCase {
+				public String getName() { return "Eszkimót elkapja a hóvihar egy üres épületben"; }
+				public void run() {
+					Eszkimo e = new Eszkimo(); names.put(e, "Eszkimó");
+					Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "IglusJégtábla");
+					Jatek jatek = new Jatek(); names.put(jatek, "Játék");
+					sj.AddJatekos(e);
+					sj.hovihar();
+					names.clear();
+				}
+				
+				static class EszkimoLapatol implements UseCase {
+					public String getName() { return "Eszkimó havat takarít."; }
+					public void run() {
+						Eszkimo e = new Eszkimo(); names.put(e, "Eszkimó");
+						Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "StabilJégtábla");
+						sj.setHoreteg(5);
+						e.setMezo(sj);
+						e.hoTakaritas(1);
+						names.clear();
+					}
+				}
+				
+				static class SarkkutatoLukon implements UseCase {
+					public String getName() { return "Sarkkutató a képességét használja egy lukon."; }
+					public void run() {
+						Sarkkutato s = new Sarkkutato(); names.put(s, "Sarkkutató");
+						Luk l = new Luk(); names.put(l, "Luk");
+
+						s.kepessegHasznal(l);
+						names.clear();
+					}
+				}
+				static class SarkkutatoInstabilJegtablan implements UseCase {
+					public String getName() { return "Sarkkutató a képességét használja egy instabil jégtáblán."; }
+					public void run() {
+						Sarkkutato s = new Sarkkutato(); names.put(s, "Sarkkutató");
+						Instabil_Jegtabla isj = new Instabil_Jegtabla(); names.put(isj, "Instabil Jégtábla");
+				
+						s.kepessegHasznal(isj);
+						names.clear();
+					}
+				}
+				static class SarkkutatoStabilJegtablan implements UseCase {
+					public String getName() { return "Sarkkutató a képességét használja egy stabil jégtáblán."; }
+					public void run() {
+						Sarkkutato s = new Sarkkutato(); names.put(s, "Sarkkutató");
+						Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "Stabil Jégtábla");
+						s.kepessegHasznal(sj);
+						names.clear();
+					}
+				}
+
+		
 	static class Kilepes implements UseCase {
 		public String getName() { return "Kilépés."; }
 		public void run() {
@@ -64,6 +146,13 @@ public class Main {
 		
 		useCases.add(new StabilJegtablaraLepes());
 		useCases.add(new InstabilJegtablaraLepes());
+		useCases.add(new SarkkutatoStabilJegtablan());
+		useCases.add(new SarkkutatoInstabilJegtablan());
+		useCases.add(new SarkkutatoLukon());
+		useCases.add(new EszkimoLapatol());
+		useCases.add(new HoviharUresepuletben());
+		useCases.add(new HoviharIgluban());
+		useCases.add(new UtolsoRaketaalkatreszKiasas());
 		useCases.add(new Kilepes());
 		
 		while(true) {
@@ -79,3 +168,6 @@ public class Main {
 		
 	}
 }
+	}
+}
+
