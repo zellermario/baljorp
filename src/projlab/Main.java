@@ -46,6 +46,47 @@ public class Main {
 		}
 	}
 	
+	static class EszkimoLukbanMeghal implements UseCase{
+		public String getName() {
+			return "Eszkimó lukban van és meghal";
+		}
+		public void run() {
+			//szereplõ osztályok inicializálása
+			Eszkimo e = new Eszkimo(); names.put(e,  "Eszkimó");
+			Luk l= new Luk(); names.put(l, "Luk");
+			Jatek jatek = new Jatek(); names.put(jatek, "jatek");
+			
+			//kapcsolatok beállítása
+			l.AddJatekos(e);
+			e.setJatek(jatek);
+			
+			//Szekvencia indítása
+			e.kor();
+		}
+		
+	}
+	
+	static class EszkimoLukbaLep implements UseCase{
+		public String getName() {
+			return "Eszkimó a szomszédos lukba lép";
+		}
+		public void run() {
+			//szereplõ osztályok inicializálása
+			Eszkimo e = new Eszkimo(); names.put(e,  "Eszkimó");
+			Luk l= new Luk(); names.put(l, "Luk");
+			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "Stabil_Jegtabla");
+			
+			//kapcsolatok beállítása
+			sj.AddJatekos(e);
+			l.setSzomszed(1, sj);
+			sj.setSzomszed(2, l);
+			
+			//Szekvencia indítása
+			e.lepes(2);
+		}
+		
+	}
+	
 	// Add further Use-Cases here
 	
 	static class Kilepes implements UseCase {
@@ -62,9 +103,14 @@ public class Main {
 		
 		List<UseCase> useCases = new ArrayList<UseCase>();
 		
+		//Use-case-ek hozzáadása
 		useCases.add(new StabilJegtablaraLepes());
 		useCases.add(new InstabilJegtablaraLepes());
+		useCases.add(new EszkimoLukbanMeghal());
+		useCases.add(new EszkimoLukbaLep());
+		
 		useCases.add(new Kilepes());
+		
 		
 		while(true) {
 			System.out.println("Válasszon use-case-t!\n");

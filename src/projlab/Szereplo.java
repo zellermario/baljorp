@@ -7,6 +7,9 @@ public class Szereplo {
 	private Targy sajat_targyak[];
 	private Jatek jatek;
 	
+	public void setJatek(Jatek jatek) {
+		this.jatek = jatek;
+	}
 	public void lepes(int irany) {
 		Main.tabs++;
 		Main.log(this, "lepes(" + irany + ")");
@@ -23,9 +26,17 @@ public class Szereplo {
 	public void halal() {
 		Main.tabs++;
 		Main.log(this, "halal()");
+		jatek.vereseg();
 		Main.tabs--;
 	}
-	public void kor() {}
+	public void kor() {
+		Main.tabs++;
+		Main.log(this, "kor()");
+		kurrensmezo.megvizsgal();
+		
+		this.halal();
+		Main.tabs--;
+	}
 	public void setMezo(Mezo m) {
 		kurrensmezo = m;
 	}
