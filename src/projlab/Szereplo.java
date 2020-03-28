@@ -6,12 +6,10 @@ public class Szereplo {
 	private Mezo kurrensmezo;
 	private Targy sajat_targyak[];
 	private Jatek jatek;
-	private String nev;
 	
-	public Szereplo(String nev) { this.nev = nev; }
 	public void lepes(int irany) {
 		Main.tabs++;
-		Main.print("Szereplo.lepes()");
+		Main.log(this, "lepes(" + irany + ")");
 		Mezo cel = kurrensmezo.getSzomszed(irany);
 		kurrensmezo.jatekosKuldes(this, cel);
 		Main.tabs--;
@@ -24,7 +22,7 @@ public class Szereplo {
 	public void hoTakaritas(int i) {}
 	public void halal() {
 		Main.tabs++;
-		Main.print("Szereplo.halal()");
+		Main.log(this, "halal()");
 		Main.tabs--;
 	}
 	public void kor() {}

@@ -5,14 +5,14 @@ public class Instabil_Jegtabla extends Mezo {
 	
 	public void atfordul() {
 		Main.tabs++;
-		Main.print("Instabil_Jegtabla.atfordul()");
+		Main.log(this, "atfordul()");
 		this.jatekosok.forEach((sz) -> sz.halal()); 
 		Main.tabs--;
 	}
 	public int megvizsgal() {return 1;}
 	public void jatekosFogadas(Szereplo sz) {
 		Main.tabs++;
-		Main.print("Instabil_Jegtabla.jatekosFogadas()");
+		Main.log(this, "jatekosFogadas("+ Main.nameOf(sz) +")");
 		jatekosok.add(sz);
 		sz.setMezo(this);
 		while(true) {

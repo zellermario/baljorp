@@ -16,14 +16,14 @@ public class Mezo {
 	
 	public void jatekosFogadas(Szereplo sz) {
 		Main.tabs++;
-		Main.print("Mezo.jatekosFogadas()");
+		Main.log(this, "jatekosFogadas(" + Main.nameOf(sz) +")");
 		jatekosok.add(sz);
 		sz.setMezo(this);
 		Main.tabs--;
 	}
 	public void jatekosKuldes(Szereplo sz, Mezo cel) {
 		Main.tabs++;
-		Main.print("Mezo.jatekosKuldes()");
+		Main.log(this, "jatekosKuldes("+ Main.nameOf(sz) +", "+ Main.nameOf(cel) +")");
 		cel.jatekosFogadas(sz);
 		Main.tabs--;
 	}
@@ -40,7 +40,7 @@ public class Mezo {
 	}
 	public Mezo getSzomszed(int irany) {
 		Main.tabs++;
-		Main.print("Mezo.getSzomszed()");
+		Main.log(this, "getSzomszed(" + irany + ") : " + Main.nameOf(szomszedos_mezok.get(irany)));
 		Main.tabs--;
 		return szomszedos_mezok.get(irany);
 	}
