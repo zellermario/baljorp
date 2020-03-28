@@ -87,6 +87,27 @@ public class Main {
 		
 	}
 	
+	static class EszkimoLukbolLepne implements UseCase{
+		public String getName() {
+			return "Eszkimó megpróbál lukból kilépni";
+		}
+		public void run() {
+			//szereplõ osztályok inicializálása
+			Eszkimo e = new Eszkimo(); names.put(e,  "Eszkimó");
+			Luk l= new Luk(); names.put(l, "Luk");
+			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "Stabil_Jegtabla");
+			
+			//kapcsolatok beállítása
+			l.AddJatekos(e);
+			l.setSzomszed(1, sj);
+			sj.setSzomszed(2, l);
+			
+			//Szekvencia indítása
+			e.lepes(1);
+		}
+		
+	}
+	
 	// Add further Use-Cases here
 	
 	static class Kilepes implements UseCase {
@@ -104,10 +125,11 @@ public class Main {
 		List<UseCase> useCases = new ArrayList<UseCase>();
 		
 		//Use-case-ek hozzáadása
-		useCases.add(new StabilJegtablaraLepes());
-		useCases.add(new InstabilJegtablaraLepes());
-		useCases.add(new EszkimoLukbanMeghal());
-		useCases.add(new EszkimoLukbaLep());
+		/*1*/useCases.add(new StabilJegtablaraLepes());
+		/*2*/ useCases.add(new InstabilJegtablaraLepes());
+		/*4*/useCases.add(new EszkimoLukbanMeghal());
+		/*5*/useCases.add(new EszkimoLukbaLep());
+		/*6*/useCases.add(new EszkimoLukbolLepne());
 		
 		useCases.add(new Kilepes());
 		
