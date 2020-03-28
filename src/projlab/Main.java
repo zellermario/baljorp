@@ -28,7 +28,7 @@ public class Main {
 	}
 
 	static class InstabilJegtablaraLepes implements UseCase {
-		public String getName() { return "Eszkimó a szomszédos instabil jégtáblára lép és jégtábla átfordul."; }
+		public String getName() { return "Eszkimó a szomszédos instabil jégtáblára lép."; }
 		public void run() {
 			Eszkimo e = new Eszkimo("eszkimo1");
 			Stabil_Jegtabla sj = new Stabil_Jegtabla();

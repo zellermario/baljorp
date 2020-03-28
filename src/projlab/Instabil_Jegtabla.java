@@ -1,17 +1,20 @@
 package projlab;
 
-public class Instabil_Jegtabla extends Mezo{
+public class Instabil_Jegtabla extends Mezo {
 	private int teherbiras;
 	
 	public void atfordul() {
 		Main.tabs++;
-		Main.print("atfordul()");
+		Main.print("Instabil_Jegtabla.atfordul()");
+		this.jatekosok.forEach((sz) -> sz.halal()); 
 		Main.tabs--;
 	}
 	public int megvizsgal() {return 1;}
 	public void jatekosFogadas(Szereplo sz) {
 		Main.tabs++;
-		Main.print("jatekosFogadas()");
+		Main.print("Instabil_Jegtabla.jatekosFogadas()");
+		jatekosok.add(sz);
+		sz.setMezo(this);
 		while(true) {
 			Main.print("Átfordul a jégtábla a játékos fogadásakor? (i/n)");
 			String ans = Main.scanner.next();
