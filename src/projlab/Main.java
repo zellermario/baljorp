@@ -30,7 +30,13 @@ public class Main {
 	static class InstabilJegtablaraLepes implements UseCase {
 		public String getName() { return "Eszkimó a szomszédos instabil jégtáblára lép és jégtábla átfordul."; }
 		public void run() {
-			
+			Eszkimo e = new Eszkimo("eszkimo1");
+			Stabil_Jegtabla sj = new Stabil_Jegtabla();
+			Instabil_Jegtabla isj = new Instabil_Jegtabla();
+			sj.setSzomszed(1, isj);
+			isj.setSzomszed(2, sj);
+			sj.AddJatekos(e);
+			e.lepes(1);
 		}
 	}
 	
@@ -44,7 +50,7 @@ public class Main {
 		}
 	}
 	
-	private static Scanner scanner = new Scanner(System.in);
+	public static Scanner scanner = new Scanner(System.in);
 
 	public static void main(String args[]) {
 		

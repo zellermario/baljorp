@@ -44,6 +44,10 @@ public class Mezo {
 		Main.tabs--;
 		return szomszedos_mezok.get(irany);
 	}
+	
+	/** Ez a metódus csak a skeletonhoz van, hogy anélkül hozzá tudjunk adni szereplõt
+	*   a mezõhöz az inicializáláskor, hogy a konzolra logolnánk a jatekosFogadas() metódussal.
+	*/
 	public void AddJatekos(Szereplo sz) {
 		jatekosok.add(sz);
 		sz.setMezo(this);
