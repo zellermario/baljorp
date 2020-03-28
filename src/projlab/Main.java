@@ -43,6 +43,7 @@ public class Main {
 			isj.setSzomszed(2, sj);
 			sj.AddJatekos(e);
 			e.lepes(1);
+			names.clear();
 		}
 	}
 	
@@ -62,6 +63,7 @@ public class Main {
 			
 			//Szekvencia indítása
 			e.kor();
+			names.clear();
 		}
 		
 	}
@@ -83,6 +85,7 @@ public class Main {
 			
 			//Szekvencia indítása
 			e.lepes(2);
+			names.clear();
 		}
 		
 	}
@@ -104,8 +107,70 @@ public class Main {
 			
 			//Szekvencia indítása
 			e.lepes(1);
+			names.clear();
 		}
+	}
+	
+	static class EszkimoEtel implements UseCase{
+		public String getName() {
+			return "Eszkimó kiás egy ételt és azt el is fogyasztja";
+		}
+		public void run() {
+			//szereplõ osztályok inicializálása
+			Eszkimo e = new Eszkimo(); names.put(e,  "Eszkimó");
+			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "Stabil_Jegtabla");
+			Etel etel = new Etel(); names.put(etel, "Étel");
+			
+			//kapcsolatok beállítása
+			sj.AddJatekos(e);
+			sj.addTargy(etel);
 		
+			//Szekvencia indítása
+			e.targyKiasas();
+			names.clear();
+		}
+	}
+	
+	static class EszkimoLapat implements UseCase{
+		public String getName() {
+			return "Eszkimó a lapátot használja";
+		}
+		public void run() {
+			//szereplõ osztályok inicializálása
+			Eszkimo e = new Eszkimo(); names.put(e,  "Eszkimó");
+			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "Stabil_Jegtabla");
+			Lapat l = new Lapat(); names.put(l, "Lapat");
+			//kapcsolatok beállítása
+			sj.AddJatekos(e);
+			sj.addTargy(l);
+			
+			//Szekvencia indítása
+			l.hasznal(e);
+			names.clear();
+		}
+	}
+	
+	static class EszkimoKotel implements UseCase{
+		public String getName() {
+			return "Eszkimó a kötelet használja";
+		}
+		public void run() {
+			//szereplõ osztályok inicializálása
+			Eszkimo e = new Eszkimo(); names.put(e,  "Eszkimó");
+			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "sj");
+			Kotel k = new Kotel(); names.put(k, "k");
+			Luk l= new Luk(); names.put(l, "Luk");
+			Sarkkutato sz = new Sarkkutato(); names.put(sz, "sz");
+			//kapcsolatok beállítása
+			sj.AddJatekos(e);
+			l.AddJatekos(sz);
+			l.setSzomszed(1, sj);
+			sj.setSzomszed(2, l);
+			
+			//Szekvencia indítása
+			k.hasznal(e);
+			names.clear();
+		}
 	}
 	
 	// Add further Use-Cases here
@@ -130,6 +195,9 @@ public class Main {
 		/*4*/useCases.add(new EszkimoLukbanMeghal());
 		/*5*/useCases.add(new EszkimoLukbaLep());
 		/*6*/useCases.add(new EszkimoLukbolLepne());
+		/*7*/ // osszeszed(eszkimo) vagy külön hívja meg?
+		/*8*/useCases.add(new EszkimoLapat());
+		/*9*/useCases.add(new EszkimoKotel());
 		
 		useCases.add(new Kilepes());
 		

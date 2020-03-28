@@ -21,8 +21,19 @@ public class Szereplo {
 	public void eves() {}
 	public void kepessegHasznalat(Mezo cel) {}
 	public void targyHasznalat(int id) {}
-	public void targyKiasas() {}
-	public void hoTakaritas(int i) {}
+	public void targyKiasas() {
+		Main.tabs++;
+		Main.log(this, "targyKiasas()");
+		kurrensmezo.targyAtad(this);
+		Main.tabs--;
+	}
+	
+	public void hoTakaritas(int i) {
+		Main.tabs++;
+		Main.log(this, "hoTakaritas(" + i +")");
+		kurrensmezo.hoTakarit(2);
+		Main.tabs--;
+	}
 	public void halal() {
 		Main.tabs++;
 		Main.log(this, "halal()");
@@ -39,5 +50,11 @@ public class Szereplo {
 	}
 	public void setMezo(Mezo m) {
 		kurrensmezo = m;
+	}
+	public Mezo getKurrensmezo() {
+		Main.tabs++;
+		Main.log(this, "getKurrensmezo()");
+		Main.tabs--;
+		return kurrensmezo;
 	}
 }
