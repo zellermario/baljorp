@@ -20,11 +20,11 @@ public class Main {
 	}
 
 	static class StabilJegtablaraLepes implements UseCase {
-		public String getName() { return "Eszkimï¿½ a szomszï¿½dos stabil jï¿½gtï¿½blï¿½ra lï¿½p."; }
+		public String getName() { return "Eszkimó a szomszédos stabil jégtáblára lép"; }
 		public void run() {
-			Eszkimo e = new Eszkimo(); names.put(e, "Eszkimï¿½");
-			Stabil_Jegtabla sj1 = new Stabil_Jegtabla(); names.put(sj1, "JelenlegiJï¿½gtï¿½bla");
-			Stabil_Jegtabla sj2 = new Stabil_Jegtabla(); names.put(sj2, "Cï¿½lJï¿½gtï¿½bla");
+			Eszkimo e = new Eszkimo(); names.put(e, "Eszkimó");
+			Stabil_Jegtabla sj1 = new Stabil_Jegtabla(); names.put(sj1, "JelenlegiJégtábla");
+			Stabil_Jegtabla sj2 = new Stabil_Jegtabla(); names.put(sj2, "CélJégtábla");
 			sj1.setSzomszed(1, sj2);
 			sj2.setSzomszed(2, sj1);
 			sj1.AddJatekos(e);
@@ -34,11 +34,11 @@ public class Main {
 	}
 
 	static class InstabilJegtablaraLepes implements UseCase {
-		public String getName() { return "Eszkimï¿½ a szomszï¿½dos instabil jï¿½gtï¿½blï¿½ra lï¿½p."; }
+		public String getName() { return "Eszkimó a szomszédos instabil jégtáblára lép."; }
 		public void run() {
-			Eszkimo e = new Eszkimo(); names.put(e, "Eszkimï¿½");
-			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "JelenlegiJï¿½gtï¿½bla");
-			Instabil_Jegtabla isj = new Instabil_Jegtabla(); names.put(isj, "Cï¿½lJï¿½gtï¿½bla");
+			Eszkimo e = new Eszkimo(); names.put(e, "Eszkimó");
+			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "JelenlegiJégtábla");
+			Instabil_Jegtabla isj = new Instabil_Jegtabla(); names.put(isj, "CélJégtábla");
 			sj.setSzomszed(1, isj);
 			isj.setSzomszed(2, sj);
 			sj.AddJatekos(e);
@@ -50,7 +50,7 @@ public class Main {
 	// Add further Use-Cases here
 
 	static class Kilepes implements UseCase {
-		public String getName() { return "Kilï¿½pï¿½s."; }
+		public String getName() { return "Kilépés."; }
 		public void run() {
 			scanner.close();
 			System.exit(0);
@@ -68,7 +68,7 @@ public class Main {
 		useCases.add(new Kilepes());
 
 		while(true) {
-			System.out.println("Vï¿½lasszon use-case-t!\n");
+			System.out.println("Válasszon use-case-t!\n");
 			for (int i = 0; i < useCases.size(); i++) {
 				System.out.println((i + 1) + " " + useCases.get(i).getName());
 			}
