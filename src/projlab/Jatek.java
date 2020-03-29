@@ -27,21 +27,11 @@ public class Jatek {
 		Main.tabs--;
 	}
 	
-	/**Ha ezt a függvényt meghívjuk akkor a visszatérési értékébõl kiderül hogy a játékoksok gyõztek e már vagy sem.*/
-	public boolean gyozelem() {
+	/**Ha ezt a függvényt meghívjuk akkor a játék gyõzelemmel zárul */
+	private void gyozelem() {
 		Main.tabs++;
-		Main.log(this, "gyozelem() : true");
-		while(true) {
-			Main.print("Ezzel egy  (i/n)");
-			String ans = Main.scanner.next();
-			if (ans.equals("i")) {
-				break;
-			} else if (ans.equals("n")) {
-				break;
-			}
-		}
+		Main.log(this, "gyozelem()");
 		Main.tabs--;
-		return true;
 	}
 	
 	/**Játék elindításáért felelõs függvény.*/
@@ -54,7 +44,16 @@ public class Jatek {
 	public void raketaOsszeszed() {
 		Main.tabs++;
 		Main.log(this, "raketaOsszeszed()");
-		this.gyozelem();
+		while(true) {
+			Main.print("Ezzel együtt már megvan az összes rakétalkatrész? (i/n)");
+			String ans = Main.scanner.next();
+			if (ans.equals("i")) {
+				this.gyozelem();
+				break;
+			} else if (ans.equals("n")) {
+				break;
+			}
+		}
 		Main.tabs--;
 	}
 	

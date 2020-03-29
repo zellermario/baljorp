@@ -121,7 +121,7 @@ public class Main {
 			//szereplÅ‘ osztályok inicializálása
 			Eszkimo e = new Eszkimo(); names.put(e,  "Eszkimó");
 			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "Stabil_Jegtabla");
-			Etel etel = new Etel(); names.put(etel, "Ã‰tel");
+			Etel etel = new Etel(); names.put(etel, "Étel");
 			
 			//kapcsolatok beállítása
 			sj.AddJatekos(e);
@@ -152,10 +152,10 @@ public class Main {
 	}
       
 	static class BuvarruhaHasznalat implements UseCase {
-		public String getName() { return "Eszkimó a bÃºvárruhát használja."; }
+		public String getName() { return "Eszkimó a búvárruhát használja."; }
 		public void run() {
 			Eszkimo esz = new Eszkimo(); names.put(esz, "Eszkimó");
-			Buvarruha br = new Buvarruha(); names.put(br, "BÃºvárruha");
+			Buvarruha br = new Buvarruha(); names.put(br, "Búvárruha");
 			Luk luk = new Luk(); names.put(luk, "JelenlegiLuk");
 			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "CélJégtábla");
 			luk.setSzomszed(1, sj);
@@ -324,10 +324,10 @@ public class Main {
 		useCases.add(new EszkimoLukbolLepne());
 		useCases.add(new EszkimoHavatLapatol());
 		useCases.add(new EszkimoKotel());
+		useCases.add(new EszkimoEtel());
 		useCases.add(new EszkimoLapatotHasznal());
 		useCases.add(new HoviharUresepuletben());
 		useCases.add(new HoviharIgluban());
-		useCases.add(new UtolsoRaketaalkatreszKiasas());
 		useCases.add(new Kilepes());
 
 		while(true) {

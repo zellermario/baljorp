@@ -21,10 +21,10 @@ public class Mezo {
 	/**A mezõn lévõ játékosok.*/
 	protected List<Szereplo> jatekosok = new ArrayList<Szereplo>();
 	
-  //todo: itt konstruktorban jÃ¶jjÃ¶n lÃ©tre az Ã¼resÃ©pÃ¼let, vagy a tagvÃ¡ltozÃ³nÃ¡l?
+  //todo: itt konstruktorban jöjjön létre az Üresépélet, vagy a tagváltozónál?
 	Mezo() {
 		epitmeny = new Uresepulet();
-		Main.names.put(epitmeny, "ÃœresÃ‰pÃ¼let");
+		Main.names.put(epitmeny, "ÃœresÃ‰pélet");
 		epitmeny.setMezo(this);
 	}
 	/**Ez a függvény a paraméterként adott játékost a mezõre helyezi.*/
@@ -97,8 +97,8 @@ public class Mezo {
 		return szomszedos_mezok.get(irany);
 	}
 	
-	/* Ez a metÃ³dus csak a skeletonhoz van, hogy anÃ©lkÃ¼l hozzÃ¡ tudjunk adni szereplÃµt
-	 * a mezÃµhÃ¶z az inicializÃ¡lÃ¡skor, hogy a konzolra logolnÃ¡nk a jatekosFogadas() metÃ³dussal. */
+	/* Ez a metódus csak a skeletonhoz van, hogy anélkél hozzá tudjunk adni szereplõt
+	 * a mezõhöz az inicializáláskor, hogy a konzolra logolnánk a jatekosFogadas() metódussal. */
 	public void AddJatekos(Szereplo sz) {
 		jatekosok.add(sz);
 		sz.setMezo(this);
