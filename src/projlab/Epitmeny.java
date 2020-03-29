@@ -1,8 +1,11 @@
 package projlab;
 
 public class Epitmeny {
-	private Mezo mezok[];
-	
+	protected Mezo mezo;
+	public void setMezo(Mezo m) {
+		mezo = m;
+	}
+
 	public void hatas() 
 	{
 		

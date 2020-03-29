@@ -14,12 +14,21 @@ public class Szereplo {
 		kurrensmezo.jatekosKuldes(this, cel);
 		Main.tabs--;
 	}
-	public void hovihar() {}
+	public void hovihar() {
+		Main.tabs++;
+		Main.log(this, "hovihar()");
+		Main.tabs--;
+	}
 	public void eves() {}
 	public void kepessegHasznalat(Mezo cel) {}
 	public void targyHasznalat(int id) {}
 	public void targyKiasas() {}
-	public void hoTakaritas(int i) {}
+	public void hoTakaritas(int i) {
+		Main.tabs++;
+		Main.log(this, "hoTakaritas(" + i + ")");
+		kurrensmezo.hoTakarit(i);
+		Main.tabs--;
+	}
 	public void halal() {
 		Main.tabs++;
 		Main.log(this, "halal()");
