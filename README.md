@@ -8,13 +8,15 @@ Csapattagok:
   <li><a href="https://github.com/kristofcsaszar">@kristofcsaszar</a></li>
   <li><a href="https://github.com/zellermario">@zellermario</a></li>
 </ul>
-   
-## How to collaborate
-<ol>
-  <li>Clone the repository to your computer.</li>
-  <li>Create a new branch with a descriptive name (e.g. ice-class) when working on a new feature. Never work directly on the main branch.</li>
-  <li>Make the necessary changes, and commit at milestones.</li>
-  <li>Push the branch to GitHub. Get review from others.</li>
-  <li>Upon agreeement, merge the new branch to the main branch. After successful merging, the branch may as well be removed.</li>
-  <li>Don't forget to fetch from GitHub when you want your workspace updated to the most recent state of the repo.</li> 
-</ol>
+
+## A projekt fordítása és futtatása
+Ha rendelkezésre áll git:
+```
+$ git clone https://github.com/zellermario/baljorp.git
+```
+Egyébként manuálisan letöltendőek a fájlok, majd:
+```
+$ cd baljorp-master
+$ javac -encoding utf8 src/projlab/*.java
+$ java -classpath src projlab.Main
+```
