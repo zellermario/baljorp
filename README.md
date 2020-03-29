@@ -10,13 +10,14 @@ Csapattagok:
 </ul>
 
 ## A projekt fordítása és futtatása
-Ha rendelkezésre áll git:
+Ha rendelkezésre áll git, akkor a forrásfájlok a következő paranccsal tölthetőek le:
 ```
-$ git clone https://github.com/zellermario/baljorp.git
+git clone https://github.com/zellermario/baljorp.git
 ```
-Egyébként manuálisan letöltendőek a fájlok, majd:
+Ha nincs git, a forrásfájlok manuálisan letöltendők.</br>
+Ha a fájlok rendelkezésre állnak, lépjünk be a `baljorp-master` mappába, majd fordítsuk és futtassuk az alkalmazást:
 ```
-$ cd baljorp-master
-$ javac -encoding utf8 src/projlab/*.java
-$ java -classpath src projlab.Main
+cd baljorp-master
+javac -encoding utf8 src/projlab/*.java
+java -classpath src projlab.Main
 ```
