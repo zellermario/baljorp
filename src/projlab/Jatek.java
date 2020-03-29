@@ -12,13 +12,27 @@ public class Jatek {
 	
 	public Jatek() {}
 	public void ujJatek() {}
+  
 	public void vereseg() {
 		Main.tabs++;
 		Main.log(this, "vereseg()");
 		Main.tabs--;
 	}
-	public boolean gyozelem() {return true;}
+  
+	public boolean gyozelem() {
+		Main.tabs++;
+		Main.log(this, "gyozelem() : true");
+    // todo: kérdést feltenni annak eldöntéséhez, hogy most győzelem van-e
+		Main.tabs--;
+		return true;
+	}
+  
 	public void startJatek(int Jatekosszam) {}
 	public void hovihar() {}
-	public void raketaOsszeszed() {}
+	public void raketaOsszeszed() {
+		Main.tabs++;
+		Main.log(this, "raketaOsszeszed()");
+		this.gyozelem();
+		Main.tabs--;
+	}
 }

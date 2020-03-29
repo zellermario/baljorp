@@ -10,9 +10,16 @@ public class Mezo {
 	private int id;
 	private Map<Integer, Mezo> szomszedos_mezok = new HashMap<Integer, Mezo>();
 	private Jatek jatek;
-	private List<Targy> belefagyott_targyak = new ArrayList<Targy>();
-	private Epitmeny epitmeny;
+	private Targy belefagyott_targy;
+	private Epitmeny epitmeny = new Uresepulet();
 	protected List<Szereplo> jatekosok = new ArrayList<Szereplo>();
+	
+  //todo: itt konstruktorban jöjjön létre az üresépület, vagy a tagváltozónál?
+	Mezo() {
+		epitmeny = new Uresepulet();
+		Main.names.put(epitmeny, "ÜresÉpület");
+		epitmeny.setMezo(this);
+	}
 	
 	public void jatekosFogadas(Szereplo sz) {
 		Main.tabs++;
@@ -27,22 +34,62 @@ public class Mezo {
 		cel.jatekosFogadas(sz);
 		Main.tabs--;
 	}
+  
 	public void kotellelKuld(Mezo cel) {}
-	public void targyAtad(Szereplo sz) {
-		Main.tabs++;
-		Main.log(this, "targyAtad("+ Main.nameOf(sz) + ")");
-		Main.tabs--;
-	}
+  
 	public void hovihar() {}
 	public void hoTakarit(int i) {
 		Main.tabs++;
 		Main.log(this, "hoTakarit(" + i +")");
 		Main.tabs--;
 	}
+
+	public void targyAtad(Szereplo sz) {
+		Main.tabs++;
+		Main.log(this, "targyAtad(" + Main.nameOf(sz) + ")");
+		belefagyott_targy.osszeszed();
+		Main.tabs--;
+	}
+	
+	public void hovihar() {
+		Main.tabs++;
+		Main.log(this, "hovihar()");
+		epitmeny.hatas();
+		Main.tabs--;
+	}
+	public void hoTakarit(int i) {
+		Main.tabs++;
+		Main.log(this, "hoTakarit("+i+")");
+		horeteg-=i;
+		Main.tabs--;
+	}
+  
 	public int megvizsgal() {return 1;}
+	
 	public boolean ellenoriz() {return true;}
-	public void igluEpit() {}
-	public void tovabbad() {}
+
+	public void igluEpit() {
+		Main.tabs++;
+		Main.log(this, "igluEpit");
+		this.epitmeny = new Iglu();
+		Main.tabs--;
+	}
+  
+	/*todo: ezt asszem ki lehet majd törölni, ez is kétszer van*/
+	//public void igluEpit() {
+	//	epitmeny = new Iglu();
+	//	Main.names.put(epitmeny, "Iglu");
+	//}
+  
+	public void tovabbad() {
+		Main.tabs++;
+		Main.log(this, "tovabbad()");
+		for(Szereplo sz : jatekosok) {
+			sz.hovihar();	
+		}
+		Main.tabs--;
+	}
+
 	public void setSzomszed(int irany, Mezo szomszed) {
 		szomszedos_mezok.put(irany, szomszed);
 	}
@@ -58,12 +105,21 @@ public class Mezo {
 		return szomszedos_mezok.get(irany);
 	}
 	
-	/* Ez a met�dus csak a skeletonhoz van, hogy an�lk�l hozz� tudjunk adni szerepl�t
-	 * a mez�h�z az inicializ�l�skor, hogy a konzolra logoln�nk a jatekosFogadas() met�dussal. */
+	/* Ez a metódus csak a skeletonhoz van, hogy anélkül hozzá tudjunk adni szereplõt
+	 * a mezõhöz az inicializáláskor, hogy a konzolra logolnánk a jatekosFogadas() metódussal. */
 	public void AddJatekos(Szereplo sz) {
 		jatekosok.add(sz);
 		sz.setMezo(this);
 	}
-	
-	
+
+	public Targy getTargy() {
+		return belefagyott_targy;
+	}
+	public void setTargy(Targy t) {
+		this.belefagyott_targy = t;
+	}
+	public void setHoreteg(int i) {
+		horeteg = i;
+	}
+  
 }
