@@ -8,10 +8,15 @@ import java.util.Map;
 
 public class Main {
 
+	/** A függvényhívási mélységet (a tabulátorok számát) tárolja */
 	public static int tabs = -1;
+	/** Megfelelõ tabulátorokkal kiírja az üzenetet a kimenetre */
 	public static void print(String s) { System.out.println("\t".repeat(tabs) + s); }
+	/** Megfelelõ tabulátorokkal kiírja a megadott objektum nevét, és a meghívott metódus részleteit a kimenetre */
 	public static void log(Object obj, String method) { System.out.println("\t".repeat(tabs) + "--> " + names.get(obj) + "." + method); }
+	/** A használt objektumok neveit tárolja*/
 	public static Map<Object, String> names = new HashMap<Object, String>();
+	/** Visszaadja egy objektum eltárolt nevét */
 	public static String nameOf(Object o) { return names.get(o); }
 	public static Scanner scanner = new Scanner(System.in);
 
@@ -19,16 +24,23 @@ public class Main {
 		public String getName();
 		public void run();
 	}
-
+	
+	// Itt következnek a Use-Case-ek leíró osztályok
+	
 	static class StabilJegtablaraLepes implements UseCase {
 		public String getName() { return "Eszkimó a szomszédos stabil jégtáblára lép"; }
 		public void run() {
+			// Szereplõ osztályok inicializálása
 			Eszkimo e = new Eszkimo(); names.put(e, "Eszkimó");
 			Stabil_Jegtabla sj1 = new Stabil_Jegtabla(); names.put(sj1, "JelenlegiJégtábla");
 			Stabil_Jegtabla sj2 = new Stabil_Jegtabla(); names.put(sj2, "CélJégtábla");
+			
+			// Kapcsolatok beállítása
 			sj1.setSzomszed(1, sj2);
 			sj2.setSzomszed(2, sj1);
 			sj1.AddJatekos(e);
+			
+			// Szekvencia indítása
 			e.lepes(1);
 			names.clear();
 		}
@@ -37,14 +49,19 @@ public class Main {
 	static class InstabilJegtablaraLepes implements UseCase {
 		public String getName() { return "Eszkimó a szomszédos instabil jégtáblára lép."; }
 		public void run() {
+			// Szereplõ osztályok inicializálása
 			Jatek jatek = new Jatek(); names.put(jatek, "jatek");
 			Eszkimo e = new Eszkimo(); names.put(e, "Eszkimó");
 			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "JelenlegiJégtábla");
 			Instabil_Jegtabla isj = new Instabil_Jegtabla(); names.put(isj, "CélJégtábla");
+			
+			// Kapcsolatok beállítása
 			e.setJatek(jatek);
 			sj.setSzomszed(1, isj);
 			isj.setSzomszed(2, sj);
 			sj.AddJatekos(e);
+			
+			// Szekvencia indítása
 			e.lepes(1);
 			names.clear();
 		}
@@ -55,16 +72,16 @@ public class Main {
 			return "Eszkimó lukban van és meghal";
 		}
 		public void run() {
-			//szereplÅ‘ osztályok inicializálása
+			// Szereplõ osztályok inicializálása
 			Eszkimo e = new Eszkimo(); names.put(e,  "Eszkimó");
 			Luk l= new Luk(); names.put(l, "Luk");
 			Jatek jatek = new Jatek(); names.put(jatek, "jatek");
 			
-			//kapcsolatok beállítása
+			// Kapcsolatok beállítása
 			l.AddJatekos(e);
 			e.setJatek(jatek);
 			
-			//Szekvencia indítása
+			// Szekvencia indítása
 			e.kor();
 			names.clear();
 		}
@@ -75,17 +92,17 @@ public class Main {
 			return "Eszkimó a szomszédos lukba lép";
 		}
 		public void run() {
-			//szereplÅ‘ osztályok inicializálása
+			// Szereplõ osztályok inicializálása
 			Eszkimo e = new Eszkimo(); names.put(e,  "Eszkimó");
 			Luk l= new Luk(); names.put(l, "Luk");
 			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "Stabil_Jegtabla");
 			
-			//kapcsolatok beállítása
+			// Kapcsolatok beállítása
 			sj.AddJatekos(e);
 			l.setSzomszed(1, sj);
 			sj.setSzomszed(2, l);
 			
-			//Szekvencia indítása
+			// Szekvencia indítása
 			e.lepes(2);
 			names.clear();
 		}
@@ -97,17 +114,17 @@ public class Main {
 			return "Eszkimó megpróbál lukból kilépni";
 		}
 		public void run() {
-			//szereplÅ‘ osztályok inicializálása
+			// Szereplõ osztályok inicializálása
 			Eszkimo e = new Eszkimo(); names.put(e,  "Eszkimó");
 			Luk l= new Luk(); names.put(l, "Luk");
 			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "Stabil_Jegtabla");
 			
-			//kapcsolatok beállítása
+			// Kapcsolatok beállítása
 			l.AddJatekos(e);
 			l.setSzomszed(1, sj);
 			sj.setSzomszed(2, l);
 			
-			//Szekvencia indítása
+			// Szekvencia indítása
 			e.lepes(1);
 			names.clear();
 		}
@@ -118,16 +135,16 @@ public class Main {
 			return "Eszkimó kiás egy ételt és azt el is fogyasztja";
 		}
 		public void run() {
-			//szereplÅ‘ osztályok inicializálása
+			// Szereplõ osztályok inicializálása
 			Eszkimo e = new Eszkimo(); names.put(e,  "Eszkimó");
 			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "Stabil_Jegtabla");
 			Etel etel = new Etel(); names.put(etel, "Étel");
 			
-			//kapcsolatok beállítása
+			// Kapcsolatok beállítása
 			sj.AddJatekos(e);
 			sj.setTargy(etel);
 		
-			//Szekvencia indítása
+			// Szekvencia indítása
 			e.targyKiasas();
 			names.clear();
 		}
@@ -138,30 +155,37 @@ public class Main {
 			return "Eszkimó a lapátot használja";
 		}
 		public void run() {
-			//szereplÅ‘ osztályok inicializálása
+			// Szereplõ osztályok inicializálása
 			Eszkimo e = new Eszkimo(); names.put(e,  "Eszkimó");
 			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "Stabil_Jegtabla");
 			Lapat l = new Lapat(); names.put(l, "Lapat");
-			//kapcsolatok beállítása
+			
+			// Kapcsolatok beállítása
 			sj.AddJatekos(e);
 			sj.setTargy(l);
 			
-			//Szekvencia indátása
-			l.hasznal(e); 
+			// Szekvencia indátása
+			l.hasznal(e);
+			names.clear();
 		}
 	}
       
 	static class BuvarruhaHasznalat implements UseCase {
 		public String getName() { return "Eszkimó a búvárruhát használja."; }
 		public void run() {
+			// Szereplõ osztályok inicializálása
 			Eszkimo esz = new Eszkimo(); names.put(esz, "Eszkimó");
 			Buvarruha br = new Buvarruha(); names.put(br, "Búvárruha");
 			Luk luk = new Luk(); names.put(luk, "JelenlegiLuk");
 			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "CélJégtábla");
+			
+			// Kapcsolatok beállítása
 			luk.setSzomszed(1, sj);
 			sj.setSzomszed(2, luk);
 			esz.addTargy(br);
 			luk.AddJatekos(esz);
+			
+			// Szekvencia indítása
 			br.hasznal(esz, 1);
 			names.clear();
 		}
@@ -170,13 +194,18 @@ public class Main {
 	static class RaketaKiasas implements UseCase {
 		public String getName() { return "Eszkimó kiás egy rakétalkatrészt."; }
 		public void run() {
+			// Szereplõ osztályok inicializálása
 			Jatek j = new Jatek(); names.put(j, "Játék");
 			Eszkimo esz = new Eszkimo(); names.put(esz, "Eszkimó");
 			Raketaalkatresz ra = new Raketaalkatresz(); names.put(ra, "Rakétalkatrész");
 			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "Jégtábla");
+			
+			// Kapcsolatok beállítása
 			ra.setJatek(j);
 			sj.setTargy(ra);
 			sj.AddJatekos(esz);
+			
+			// Szekvencia indítása
 			esz.targyKiasas();
 			names.clear();
 		}
@@ -185,9 +214,14 @@ public class Main {
 	static class EszkimoKepesseg implements UseCase {
 		public String getName() { return "Eszkimó képességet használ."; }
 		public void run() {
+			// Szereplõ osztályok inicializálása
 			Eszkimo esz = new Eszkimo(); names.put(esz, "Eszkimó");
 			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "Jégtábla");
+			
+			// Kapcsolatok beállítása
 			sj.AddJatekos(esz);
+			
+			// Szekvencia indítása
 			esz.kepessegHasznal(sj);
 			names.clear();
 		}
@@ -196,13 +230,18 @@ public class Main {
 	static class UtolsoRaketaalkatreszKiasas implements UseCase {
 		public String getName() { return "Eszkimó kiássa az utolsó rakétaalkatrészt és nyernek."; }
 		public void run() {
+			// Szereplõ osztályok inicializálása
 			Eszkimo e = new Eszkimo(); names.put(e, "Eszkimó");
 			Raketaalkatresz ra = new Raketaalkatresz(); names.put(ra, "UtolsóRakétaAlkatrész");
 			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "TárgyatTartalmazóJégtábla");
-			sj.setTargy(ra);
 			Jatek jatek = new Jatek(); names.put(jatek, "Játék");
+			
+			// Kapcsolatok beállítása
+			sj.setTargy(ra);
 			ra.setJatek(jatek);
 			sj.AddJatekos(e);
+			
+			// Szekvencia indítása
 			sj.targyAtad(e);
 			names.clear();
 		}
@@ -211,10 +250,15 @@ public class Main {
 	static class HoviharIgluban implements UseCase {
 		public String getName() { return "Eszkimót elkapja a hóvihar egy igluban"; }
 		public void run() {
+			// Szereplõ osztályok inicializálása
 			Eszkimo e = new Eszkimo(); names.put(e, "Eszkimó");
 			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "IglusJégtábla");
 			Jatek jatek = new Jatek(); names.put(jatek, "Játék");
+			
+			// Kapcsolatok beállítása
 			sj.AddJatekos(e);
+			
+			// Szekvencia indítása
 			sj.igluEpit();
 			sj.hovihar();
 			names.clear();
@@ -226,30 +270,37 @@ public class Main {
 			return "Eszkimó a kötelet használja";
 		}
 		public void run() {
-			//szereplÅ‘ osztályok inicializálása
+			// Szereplõ osztályok inicializálása
 			Eszkimo e = new Eszkimo(); names.put(e,  "Eszkimó");
 			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "sj");
 			Kotel k = new Kotel(); names.put(k, "k");
 			Luk l= new Luk(); names.put(l, "Luk");
 			Sarkkutato sz = new Sarkkutato(); names.put(sz, "sz");
-			//kapcsolatok beállítása
+			
+			// Kapcsolatok beállítása
 			sj.AddJatekos(e);
 			l.AddJatekos(sz);
 			l.setSzomszed(1, sj);
 			sj.setSzomszed(2, l);
 			
-			//Szekvencia indítása
+			// Szekvencia indítása
 			k.hasznal(e);
+			names.clear();
     }
   }
       
 	static class HoviharUresepuletben implements UseCase {
 		public String getName() { return "Eszkimót elkapja a hóvihar egy üres épületben"; }
 		public void run() {
+			// Szereplõ osztályok inicializálása
 			Eszkimo e = new Eszkimo(); names.put(e, "Eszkimó");
 			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "IglusJégtábla");
 			Jatek jatek = new Jatek(); names.put(jatek, "Játék");
+			
+			// Kapcsolatok beállítása
 			sj.AddJatekos(e);
+			
+			// Szekvencia indítása
 			sj.hovihar();
 			names.clear();
 		}
@@ -258,10 +309,15 @@ public class Main {
 	static class EszkimoHavatLapatol implements UseCase {
 		public String getName() { return "Eszkimó havat takarít."; }
 		public void run() {
+			// Szereplõ osztályok inicializálása
 			Eszkimo e = new Eszkimo(); names.put(e, "Eszkimó");
 			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "StabilJégtábla");
+			
+			// Kapcsolatok beállítása
 			sj.setHoreteg(5);
 			e.setMezo(sj);
+			
+			// Szekvencia indítása
 			e.hoTakaritas(1);
 			names.clear();
 		}
@@ -270,9 +326,11 @@ public class Main {
 	static class SarkkutatoLukon implements UseCase {
 		public String getName() { return "Sarkkutató a képességét használja egy lukon."; }
 		public void run() {
+			// Szereplõ osztályok inicializálása
 			Sarkkutato s = new Sarkkutato(); names.put(s, "Sarkkutató");
 			Luk l = new Luk(); names.put(l, "Luk");
-
+			
+			// Szekvencia indítása
 			s.kepessegHasznal(l);
 			names.clear();
 		}
@@ -281,9 +339,11 @@ public class Main {
 	static class SarkkutatoInstabilJegtablan implements UseCase {
 		public String getName() { return "Sarkkutató a képességét használja egy instabil jégtáblán."; }
 		public void run() {
+			// Szereplõ osztályok inicializálása
 			Sarkkutato s = new Sarkkutato(); names.put(s, "Sarkkutató");
 			Instabil_Jegtabla isj = new Instabil_Jegtabla(); names.put(isj, "Instabil Jégtábla");
 	
+			// Szekvencia indítása
 			s.kepessegHasznal(isj);
 			names.clear();
 		}
@@ -292,8 +352,11 @@ public class Main {
 	static class SarkkutatoStabilJegtablan implements UseCase {
 		public String getName() { return "Sarkkutató a képességét használja egy stabil jégtáblán."; }
 		public void run() {
+			// Szereplõ osztályok inicializálása
 			Sarkkutato s = new Sarkkutato(); names.put(s, "Sarkkutató");
 			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "Stabil Jégtábla");
+			
+			// Szekvencia indítása
 			s.kepessegHasznal(sj);
 			names.clear();
 		}
