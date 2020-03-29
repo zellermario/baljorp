@@ -1,6 +1,7 @@
 package projlab;
 
 public class Kotel extends Targy {
+	/**Ez a függvény a kötél használatát valósítja meg. */
 	public void hasznal(Szereplo sz) {
 		Main.tabs++;
 		Main.log(this, "hasznal(" + Main.nameOf(sz) +")");

@@ -8,6 +8,7 @@ public class Iglu extends Epitmeny{
 		Main.print("<<create>> Iglu");
 		Main.tabs--;
 	}
+	/**Ez a függvény az iglu hatásást valósítja meg a benne jévõ játékosokra hóvihar alatt.*/
 	public void hatas() {
 		Main.tabs++;
 		Main.log(this, "hatas()");
