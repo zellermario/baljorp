@@ -13,6 +13,7 @@ public class Main {
 	public static void log(Object obj, String method) { System.out.println("\t".repeat(tabs) + "--> " + names.get(obj) + "." + method); }
 	public static Map<Object, String> names = new HashMap<Object, String>();
 	public static String nameOf(Object o) { return names.get(o); }
+	public static Scanner scanner = new Scanner(System.in);
 
 	interface UseCase {
 		public String getName();
@@ -102,72 +103,77 @@ public class Main {
 			sj.targyAtad(e);
 			names.clear();
 		}
+	}
 		
-		static class HoviharIgluban implements UseCase {
-			public String getName() { return "Eszkimót elkapja a hóvihar egy igluban"; }
-			public void run() {
-				Eszkimo e = new Eszkimo(); names.put(e, "Eszkimó");
-				Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "IglusJégtábla");
-				Jatek jatek = new Jatek(); names.put(jatek, "Játék");
-				sj.AddJatekos(e);
-				sj.igluEpit();
-				sj.hovihar();
-				
-				names.clear();
-			}
+	static class HoviharIgluban implements UseCase {
+		public String getName() { return "Eszkimót elkapja a hóvihar egy igluban"; }
+		public void run() {
+			Eszkimo e = new Eszkimo(); names.put(e, "Eszkimó");
+			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "IglusJégtábla");
+			Jatek jatek = new Jatek(); names.put(jatek, "Játék");
+			sj.AddJatekos(e);
+			sj.igluEpit();
+			sj.hovihar();
+			
+			names.clear();
 		}
-			static class HoviharUresepuletben implements UseCase {
-				public String getName() { return "Eszkimót elkapja a hóvihar egy üres épületben"; }
-				public void run() {
-					Eszkimo e = new Eszkimo(); names.put(e, "Eszkimó");
-					Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "IglusJégtábla");
-					Jatek jatek = new Jatek(); names.put(jatek, "Játék");
-					sj.AddJatekos(e);
-					sj.hovihar();
-					names.clear();
-				}
+	}
+	
+	static class HoviharUresepuletben implements UseCase {
+		public String getName() { return "Eszkimót elkapja a hóvihar egy üres épületben"; }
+		public void run() {
+			Eszkimo e = new Eszkimo(); names.put(e, "Eszkimó");
+			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "IglusJégtábla");
+			Jatek jatek = new Jatek(); names.put(jatek, "Játék");
+			sj.AddJatekos(e);
+			sj.hovihar();
+			names.clear();
+		}
+	}
 				
-				static class EszkimoLapatol implements UseCase {
-					public String getName() { return "Eszkimó havat takarít."; }
-					public void run() {
-						Eszkimo e = new Eszkimo(); names.put(e, "Eszkimó");
-						Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "StabilJégtábla");
-						sj.setHoreteg(5);
-						e.setMezo(sj);
-						e.hoTakaritas(1);
-						names.clear();
-					}
-				}
+	static class EszkimoLapatol implements UseCase {
+		public String getName() { return "Eszkimó havat takarít."; }
+		public void run() {
+			Eszkimo e = new Eszkimo(); names.put(e, "Eszkimó");
+			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "StabilJégtábla");
+			sj.setHoreteg(5);
+			e.setMezo(sj);
+			e.hoTakaritas(1);
+			names.clear();
+		}
+	}
 				
-				static class SarkkutatoLukon implements UseCase {
-					public String getName() { return "Sarkkutató a képességét használja egy lukon."; }
-					public void run() {
-						Sarkkutato s = new Sarkkutato(); names.put(s, "Sarkkutató");
-						Luk l = new Luk(); names.put(l, "Luk");
+	static class SarkkutatoLukon implements UseCase {
+		public String getName() { return "Sarkkutató a képességét használja egy lukon."; }
+		public void run() {
+			Sarkkutato s = new Sarkkutato(); names.put(s, "Sarkkutató");
+			Luk l = new Luk(); names.put(l, "Luk");
 
-						s.kepessegHasznal(l);
-						names.clear();
-					}
-				}
-				static class SarkkutatoInstabilJegtablan implements UseCase {
-					public String getName() { return "Sarkkutató a képességét használja egy instabil jégtáblán."; }
-					public void run() {
-						Sarkkutato s = new Sarkkutato(); names.put(s, "Sarkkutató");
-						Instabil_Jegtabla isj = new Instabil_Jegtabla(); names.put(isj, "Instabil Jégtábla");
+			s.kepessegHasznal(l);
+			names.clear();
+		}
+	}
+	
+	static class SarkkutatoInstabilJegtablan implements UseCase {
+		public String getName() { return "Sarkkutató a képességét használja egy instabil jégtáblán."; }
+		public void run() {
+			Sarkkutato s = new Sarkkutato(); names.put(s, "Sarkkutató");
+			Instabil_Jegtabla isj = new Instabil_Jegtabla(); names.put(isj, "Instabil Jégtábla");
+	
+			s.kepessegHasznal(isj);
+			names.clear();
+		}
+	}
 				
-						s.kepessegHasznal(isj);
-						names.clear();
-					}
-				}
-				static class SarkkutatoStabilJegtablan implements UseCase {
-					public String getName() { return "Sarkkutató a képességét használja egy stabil jégtáblán."; }
-					public void run() {
-						Sarkkutato s = new Sarkkutato(); names.put(s, "Sarkkutató");
-						Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "Stabil Jégtábla");
-						s.kepessegHasznal(sj);
-						names.clear();
-					}
-				}
+	static class SarkkutatoStabilJegtablan implements UseCase {
+		public String getName() { return "Sarkkutató a képességét használja egy stabil jégtáblán."; }
+		public void run() {
+			Sarkkutato s = new Sarkkutato(); names.put(s, "Sarkkutató");
+			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "Stabil Jégtábla");
+			s.kepessegHasznal(sj);
+			names.clear();
+		}
+	}
 
 	static class Kilepes implements UseCase {
 		public String getName() { return "Kilépés."; }
@@ -176,8 +182,6 @@ public class Main {
 			System.exit(0);
 		}
 	}
-
-	public static Scanner scanner = new Scanner(System.in);
 
 	public static void main(String args[]) {
 
@@ -209,4 +213,5 @@ public class Main {
 		}
 
 	}
+	
 }
