@@ -12,7 +12,13 @@ public class Jatek {
 	
 	public Jatek() {}
 	public void ujJatek() {}
-	public void vereseg() {}
+  
+	public void vereseg() {
+		Main.tabs++;
+		Main.log(this, "vereseg()");
+		Main.tabs--;
+	}
+  
 	public boolean gyozelem() {
 		Main.tabs++;
 		Main.log(this, "gyozelem() : true");
@@ -20,6 +26,7 @@ public class Jatek {
 		Main.tabs--;
 		return true;
 	}
+  
 	public void startJatek(int Jatekosszam) {}
 	public void hovihar() {}
 	public void raketaOsszeszed() {

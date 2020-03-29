@@ -48,6 +48,107 @@ public class Main {
 		}
 	}
 	
+	static class EszkimoLukbanMeghal implements UseCase{
+		public String getName() {
+			return "Eszkimó lukban van és meghal";
+		}
+		public void run() {
+			//szereplő osztályok inicializálása
+			Eszkimo e = new Eszkimo(); names.put(e,  "Eszkimó");
+			Luk l= new Luk(); names.put(l, "Luk");
+			Jatek jatek = new Jatek(); names.put(jatek, "jatek");
+			
+			//kapcsolatok beállítása
+			l.AddJatekos(e);
+			e.setJatek(jatek);
+			
+			//Szekvencia indítása
+			e.kor();
+			names.clear();
+		}
+		
+	}
+	
+	static class EszkimoLukbaLep implements UseCase{
+		public String getName() {
+			return "Eszkimó a szomszédos lukba lép";
+		}
+		public void run() {
+			//szereplő osztályok inicializálása
+			Eszkimo e = new Eszkimo(); names.put(e,  "Eszkimó");
+			Luk l= new Luk(); names.put(l, "Luk");
+			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "Stabil_Jegtabla");
+			
+			//kapcsolatok beállítása
+			sj.AddJatekos(e);
+			l.setSzomszed(1, sj);
+			sj.setSzomszed(2, l);
+			
+			//Szekvencia indítása
+			e.lepes(2);
+			names.clear();
+		}
+		
+	}
+	
+	static class EszkimoLukbolLepne implements UseCase{
+		public String getName() {
+			return "Eszkimó megpróbál lukból kilépni";
+		}
+		public void run() {
+			//szereplő osztályok inicializálása
+			Eszkimo e = new Eszkimo(); names.put(e,  "Eszkimó");
+			Luk l= new Luk(); names.put(l, "Luk");
+			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "Stabil_Jegtabla");
+			
+			//kapcsolatok beállítása
+			l.AddJatekos(e);
+			l.setSzomszed(1, sj);
+			sj.setSzomszed(2, l);
+			
+			//Szekvencia indítása
+			e.lepes(1);
+			names.clear();
+		}
+	}
+	
+	static class EszkimoEtel implements UseCase{
+		public String getName() {
+			return "Eszkimó kiás egy ételt és azt el is fogyasztja";
+		}
+		public void run() {
+			//szereplő osztályok inicializálása
+			Eszkimo e = new Eszkimo(); names.put(e,  "Eszkimó");
+			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "Stabil_Jegtabla");
+			Etel etel = new Etel(); names.put(etel, "Étel");
+			
+			//kapcsolatok beállítása
+			sj.AddJatekos(e);
+			sj.addTargy(etel);
+		
+			//Szekvencia indítása
+			e.targyKiasas();
+			names.clear();
+		}
+	}
+	
+  /* Asszem ez kétszer is megvan már */
+	//static class EszkimoLapat implements UseCase{
+	//	public String getName() {
+	//		return "Eszkimó a lapátot használja";
+	//	}
+	//	public void run() {
+	//		//szereplő osztályok inicializálása
+	//		Eszkimo e = new Eszkimo(); names.put(e,  "Eszkimó");
+	//		Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "Stabil_Jegtabla");
+	//		Lapat l = new Lapat(); names.put(l, "Lapat");
+	//		//kapcsolatok beállítása
+	//		sj.AddJatekos(e);
+	//		sj.addTargy(l);
+	//		
+	//		//Szekvencia indátása
+	//		l.hasznal(e); }}
+      
 	static class BuvarruhaHasznalat implements UseCase {
 		public String getName() { return "Eszkimó a búvárruhát használja."; }
 		public void run() {
@@ -114,11 +215,32 @@ public class Main {
 			sj.AddJatekos(e);
 			sj.igluEpit();
 			sj.hovihar();
-			
 			names.clear();
 		}
 	}
 	
+	static class EszkimoKotel implements UseCase{
+		public String getName() {
+			return "Eszkimó a kötelet használja";
+		}
+		public void run() {
+			//szereplő osztályok inicializálása
+			Eszkimo e = new Eszkimo(); names.put(e,  "Eszkimó");
+			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "sj");
+			Kotel k = new Kotel(); names.put(k, "k");
+			Luk l= new Luk(); names.put(l, "Luk");
+			Sarkkutato sz = new Sarkkutato(); names.put(sz, "sz");
+			//kapcsolatok beállítása
+			sj.AddJatekos(e);
+			l.AddJatekos(sz);
+			l.setSzomszed(1, sj);
+			sj.setSzomszed(2, l);
+			
+			//Szekvencia indítása
+			k.hasznal(e);
+    }
+  }
+      
 	static class HoviharUresepuletben implements UseCase {
 		public String getName() { return "Eszkimót elkapja a hóvihar egy üres épületben"; }
 		public void run() {
@@ -195,7 +317,11 @@ public class Main {
 		useCases.add(new SarkkutatoStabilJegtablan());
 		useCases.add(new SarkkutatoInstabilJegtablan());
 		useCases.add(new SarkkutatoLukon());
+    useCases.add(new EszkimoLukbanMeghal());
+		useCases.add(new EszkimoLukbaLep());
+		useCases.add(new EszkimoLukbolLepne());
 		useCases.add(new EszkimoLapatol());
+    useCases.add(new EszkimoKotel());
 		useCases.add(new HoviharUresepuletben());
 		useCases.add(new HoviharIgluban());
 		useCases.add(new UtolsoRaketaalkatreszKiasas());
