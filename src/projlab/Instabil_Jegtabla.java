@@ -8,6 +8,7 @@ public class Instabil_Jegtabla extends Mezo {
 	public void atfordul() {
 		Main.tabs++;
 		Main.log(this, "atfordul()");
+		//minden játékost megöl, aki rajta áll
 		this.jatekosok.forEach((sz) -> sz.halal()); 
 		Main.tabs--;
 	}
@@ -23,6 +24,7 @@ public class Instabil_Jegtabla extends Mezo {
 		jatekosok.add(sz);
 		sz.setMezo(this);
 		while(true) {
+			// a felhasználó dönthet a kimenetelrõl
 			Main.print("Átfordul a jégtábla a játékos fogadásakor? (i/n)");
 			String ans = Main.scanner.next();
 			if (ans.equals("i")) {

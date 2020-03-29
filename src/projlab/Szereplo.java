@@ -2,8 +2,8 @@ package projlab;
 
 import java.util.ArrayList;
 import java.util.List;
-
-public class Szereplo {
+//a szereplõtípusok viselkedését meghatározó absztrakt õsosztály
+public abstract class Szereplo {
 	/**A játékos hátra lévõ munkamennyisége.*/
 	private int munkamennyiseg;
 	/**A játékos testhõje.*/
@@ -22,6 +22,7 @@ public class Szereplo {
 	public void lepes(int irany) {
 		Main.tabs++;
 		Main.log(this, "lepes(" + irany + ")");
+		//lekérdezi a célmezõt és elküldi
 		Mezo cel = kurrensmezo.getSzomszed(irany);
 		kurrensmezo.jatekosKuldes(this, cel);
 		Main.tabs--;
@@ -33,7 +34,11 @@ public class Szereplo {
 		Main.tabs--;
 	}
 	/**Ez a függvény az étel elfogyasztásának hatásást valósítja meg.*/
-	public void eves() {}
+	public void eves() {
+		Main.tabs++;
+		Main.log(this, "eves()");
+		Main.tabs--;
+	}
 	/**A különbözõ szereplõk képességeit valósítja meg-*/
 	public void kepessegHasznal(Mezo cel) {}
 	/**Egy felvett tárgy használatát valósítja meg.*/
@@ -67,7 +72,7 @@ public class Szereplo {
 		this.halal();
 		Main.tabs--;
 	}
-    
+    //standard getterek és setterek
 	public void setMezo(Mezo m) {
 		kurrensmezo = m;
 	}

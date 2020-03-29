@@ -20,8 +20,11 @@ public class Main {
 	public static String nameOf(Object o) { return names.get(o); }
 	public static Scanner scanner = new Scanner(System.in);
 
+	//a usecaseket leíró osztályok által implementált közös interface
+	//lehetõvé teszi, hogy egy tárolóban helyezzük el õket
 	interface UseCase {
 		public String getName();
+		//ezzel a függvénnyel indítjuk el a teszteket
 		public void run();
 	}
 	
@@ -42,6 +45,7 @@ public class Main {
 			
 			// Szekvencia indítása
 			e.lepes(1);
+			//Hashmap törlése, hogy ne intreferáljon az esetleges következõ use-casevel
 			names.clear();
 		}
 	}
@@ -63,6 +67,7 @@ public class Main {
 			
 			// Szekvencia indítása
 			e.lepes(1);
+			//Hashmap törlése, hogy ne intreferáljon az esetleges következõ use-casevel
 			names.clear();
 		}
 	}
@@ -83,6 +88,7 @@ public class Main {
 			
 			// Szekvencia indítása
 			e.kor();
+			//Hashmap törlése, hogy ne intreferáljon az esetleges következõ use-casevel
 			names.clear();
 		}
 	}
@@ -104,6 +110,7 @@ public class Main {
 			
 			// Szekvencia indítása
 			e.lepes(2);
+			//Hashmap törlése, hogy ne intreferáljon az esetleges következõ use-casevel
 			names.clear();
 		}
 		
@@ -126,6 +133,7 @@ public class Main {
 			
 			// Szekvencia indítása
 			e.lepes(1);
+			//Hashmap törlése, hogy ne intreferáljon az esetleges következõ use-casevel
 			names.clear();
 		}
 	}
@@ -146,6 +154,7 @@ public class Main {
 		
 			// Szekvencia indítása
 			e.targyKiasas();
+			//Hashmap törlése, hogy ne intreferáljon az esetleges következõ use-casevel
 			names.clear();
 		}
 	}
@@ -166,6 +175,7 @@ public class Main {
 			
 			// Szekvencia indátása
 			l.hasznal(e);
+			//Hashmap törlése, hogy ne intreferáljon az esetleges következõ use-casevel
 			names.clear();
 		}
 	}
@@ -187,6 +197,7 @@ public class Main {
 			
 			// Szekvencia indítása
 			br.hasznal(esz, 1);
+			//Hashmap törlése, hogy ne intreferáljon az esetleges következõ use-casevel
 			names.clear();
 		}
 	}
@@ -207,6 +218,7 @@ public class Main {
 			
 			// Szekvencia indítása
 			esz.targyKiasas();
+			//Hashmap törlése, hogy ne intreferáljon az esetleges következõ use-casevel
 			names.clear();
 		}
 	}
@@ -223,6 +235,7 @@ public class Main {
 			
 			// Szekvencia indítása
 			esz.kepessegHasznal(sj);
+			//Hashmap törlése, hogy ne intreferáljon az esetleges következõ use-casevel
 			names.clear();
 		}
 	}
@@ -243,6 +256,7 @@ public class Main {
 			
 			// Szekvencia indítása
 			sj.targyAtad(e);
+			//Hashmap törlése, hogy ne intreferáljon az esetleges következõ use-casevel
 			names.clear();
 		}
 	}
@@ -261,6 +275,7 @@ public class Main {
 			// Szekvencia indítása
 			sj.igluEpit();
 			sj.hovihar();
+			//Hashmap törlése, hogy ne intreferáljon az esetleges következõ use-casevel
 			names.clear();
 		}
 	}
@@ -285,6 +300,7 @@ public class Main {
 			
 			// Szekvencia indítása
 			k.hasznal(e);
+			//Hashmap törlése, hogy ne intreferáljon az esetleges következõ use-casevel
 			names.clear();
     }
   }
@@ -302,6 +318,7 @@ public class Main {
 			
 			// Szekvencia indítása
 			sj.hovihar();
+			//Hashmap törlése, hogy ne intreferáljon az esetleges következõ use-casevel
 			names.clear();
 		}
 	}
@@ -319,6 +336,7 @@ public class Main {
 			
 			// Szekvencia indítása
 			e.hoTakaritas(1);
+			//Hashmap törlése, hogy ne intreferáljon az esetleges következõ use-casevel
 			names.clear();
 		}
 	}
@@ -332,6 +350,7 @@ public class Main {
 			
 			// Szekvencia indítása
 			s.kepessegHasznal(l);
+			//Hashmap törlése, hogy ne intreferáljon az esetleges következõ use-casevel
 			names.clear();
 		}
 	}
@@ -345,6 +364,7 @@ public class Main {
 	
 			// Szekvencia indítása
 			s.kepessegHasznal(isj);
+			//Hashmap törlése, hogy ne intreferáljon az esetleges következõ use-casevel
 			names.clear();
 		}
 	}
@@ -358,10 +378,11 @@ public class Main {
 			
 			// Szekvencia indítása
 			s.kepessegHasznal(sj);
+			//Hashmap törlése, hogy ne intreferáljon az esetleges következõ use-casevel
 			names.clear();
 		}
 	}
-
+//plusz menüpont a program bezárására
 	static class Kilepes implements UseCase {
 		public String getName() { return "Kilépés."; }
 		public void run() {
@@ -371,7 +392,7 @@ public class Main {
 	}
 
 	public static void main(String args[]) {
-
+		//közös tároló létrehozása, majd annak feltöltése
 		List<UseCase> useCases = new ArrayList<UseCase>();
 
 		useCases.add(new StabilJegtablaraLepes());
@@ -392,12 +413,13 @@ public class Main {
 		useCases.add(new HoviharUresepuletben());
 		useCases.add(new HoviharIgluban());
 		useCases.add(new Kilepes());
-
+		//menü kiírása
 		while(true) {
 			System.out.println("Válasszon use-case-t!\n");
 			for (int i = 0; i < useCases.size(); i++) {
 				System.out.println((i + 1) + " " + useCases.get(i).getName());
 			}
+			//a választott use-case indítása
 			int selected = scanner.nextInt();
 			System.out.println("\n" + useCases.get(selected - 1).getName() + "\n" + "-".repeat(50));
 			useCases.get(selected - 1).run();

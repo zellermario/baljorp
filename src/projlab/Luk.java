@@ -23,6 +23,7 @@ public class Luk extends Mezo{
 	public void jatekosKuldes(Szereplo sz, Mezo cel) {
 		Main.tabs++;
 		Main.log(this, "jatekosKuldes("+ Main.nameOf(sz) +", "+ Main.nameOf(cel) +")");
+		//a függvény nem küldi tovább a játékost, hiszen lukban van
 		Main.tabs--;
 	}
 }

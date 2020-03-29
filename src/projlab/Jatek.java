@@ -45,6 +45,7 @@ public class Jatek {
 		Main.tabs++;
 		Main.log(this, "raketaOsszeszed()");
 		while(true) {
+			// a felhasználó dönthet a kimenetelrõl
 			Main.print("Ezzel együtt már megvan az összes rakétalkatrész? (i/n)");
 			String ans = Main.scanner.next();
 			if (ans.equals("i")) {

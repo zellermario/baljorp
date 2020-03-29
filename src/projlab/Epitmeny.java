@@ -1,6 +1,6 @@
 package projlab;
-
-public class Epitmeny {
+//az építménytípusok viselkedését meghatározó absztrakt õsosztály
+public abstract class  Epitmeny {
 	/**Melyik mezõn van az építmény*/
 	protected Mezo mezo;
 	public void setMezo(Mezo m) {

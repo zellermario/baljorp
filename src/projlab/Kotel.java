@@ -7,6 +7,7 @@ public class Kotel extends Targy {
 		Main.log(this, "hasznal(" + Main.nameOf(sz) +")");
 		Mezo kurrens = sz.getKurrensMezo();
 		Mezo szomszed = kurrens.getSzomszed(2);
+		//átrakja a lukban állót a megfelelõ mezõre
 		szomszed.kotellelKuld(kurrens);
 		Main.tabs--;
 	}

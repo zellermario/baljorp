@@ -6,6 +6,7 @@ public class Buvarruha extends Targy {
 		Main.tabs++;
 		Main.log(this, "hasznal(" + Main.nameOf(sz) + ", " + irany + ")");
 		Mezo m = sz.getKurrensMezo();
+		//ugyanúgy léptet, mintha nem lukban állnánk
 		sz.lepes(irany);
 		Main.tabs--;
 	}
