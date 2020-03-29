@@ -19,7 +19,7 @@ public class Instabil_Jegtabla extends Mezo {
 		Main.log(this, "jatekosFogadas("+ Main.nameOf(sz) +")");
 		jatekosok.add(sz);
 		sz.setMezo(this);
-		/*while(true) {
+		while(true) {
 			Main.print("Átfordul a jégtábla a játékos fogadásakor? (i/n)");
 			String ans = Main.scanner.next();
 			if (ans.equals("i")) {
@@ -28,8 +28,7 @@ public class Instabil_Jegtabla extends Mezo {
 			} else if (ans.equals("n")) {
 				break;
 			}
-		}*/
-		atfordul();
+		}
 		Main.tabs--;
 	}
 }

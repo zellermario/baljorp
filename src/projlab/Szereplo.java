@@ -56,12 +56,9 @@ public class Szereplo {
 		Main.tabs++;
 		Main.log(this, "kor()");
 		kurrensmezo.megvizsgal();
-		
 		this.halal();
 		Main.tabs--;
 	}
-  
-  public void kor() {}
     
 	public void setMezo(Mezo m) {
 		kurrensmezo = m;

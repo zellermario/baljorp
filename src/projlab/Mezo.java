@@ -28,6 +28,7 @@ public class Mezo {
 		sz.setMezo(this);
 		Main.tabs--;
 	}
+	
 	public void jatekosKuldes(Szereplo sz, Mezo cel) {
 		Main.tabs++;
 		Main.log(this, "jatekosKuldes("+ Main.nameOf(sz) +", "+ Main.nameOf(cel) +")");
@@ -37,7 +38,6 @@ public class Mezo {
   
 	public void kotellelKuld(Mezo cel) {}
   
-	public void hovihar() {}
 	public void hoTakarit(int i) {
 		Main.tabs++;
 		Main.log(this, "hoTakarit(" + i +")");
@@ -57,12 +57,6 @@ public class Mezo {
 		epitmeny.hatas();
 		Main.tabs--;
 	}
-	public void hoTakarit(int i) {
-		Main.tabs++;
-		Main.log(this, "hoTakarit("+i+")");
-		horeteg-=i;
-		Main.tabs--;
-	}
   
 	public int megvizsgal() {return 1;}
 	
@@ -75,12 +69,6 @@ public class Mezo {
 		Main.tabs--;
 	}
   
-	/*todo: ezt asszem ki lehet majd törölni, ez is kétszer van*/
-	//public void igluEpit() {
-	//	epitmeny = new Iglu();
-	//	Main.names.put(epitmeny, "Iglu");
-	//}
-  
 	public void tovabbad() {
 		Main.tabs++;
 		Main.log(this, "tovabbad()");
@@ -92,10 +80,6 @@ public class Mezo {
 
 	public void setSzomszed(int irany, Mezo szomszed) {
 		szomszedos_mezok.put(irany, szomszed);
-	}
-	
-	public void addTargy(Targy t) {
-		belefagyott_targyak.add(t);
 	}
 	
 	public Mezo getSzomszed(int irany) {
@@ -115,9 +99,11 @@ public class Mezo {
 	public Targy getTargy() {
 		return belefagyott_targy;
 	}
+	
 	public void setTargy(Targy t) {
 		this.belefagyott_targy = t;
 	}
+	
 	public void setHoreteg(int i) {
 		horeteg = i;
 	}

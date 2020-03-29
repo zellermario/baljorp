@@ -37,9 +37,11 @@ public class Main {
 	static class InstabilJegtablaraLepes implements UseCase {
 		public String getName() { return "Eszkimó a szomszédos instabil jégtáblára lép."; }
 		public void run() {
+			Jatek jatek = new Jatek(); names.put(jatek, "jatek");
 			Eszkimo e = new Eszkimo(); names.put(e, "Eszkimó");
 			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "JelenlegiJégtábla");
 			Instabil_Jegtabla isj = new Instabil_Jegtabla(); names.put(isj, "CélJégtábla");
+			e.setJatek(jatek);
 			sj.setSzomszed(1, isj);
 			isj.setSzomszed(2, sj);
 			sj.AddJatekos(e);
@@ -124,7 +126,7 @@ public class Main {
 			
 			//kapcsolatok beállítása
 			sj.AddJatekos(e);
-			sj.addTargy(etel);
+			sj.setTargy(etel);
 		
 			//Szekvencia indítása
 			e.targyKiasas();
@@ -317,11 +319,11 @@ public class Main {
 		useCases.add(new SarkkutatoStabilJegtablan());
 		useCases.add(new SarkkutatoInstabilJegtablan());
 		useCases.add(new SarkkutatoLukon());
-    useCases.add(new EszkimoLukbanMeghal());
+		useCases.add(new EszkimoLukbanMeghal());
 		useCases.add(new EszkimoLukbaLep());
 		useCases.add(new EszkimoLukbolLepne());
 		useCases.add(new EszkimoLapatol());
-    useCases.add(new EszkimoKotel());
+		useCases.add(new EszkimoKotel());
 		useCases.add(new HoviharUresepuletben());
 		useCases.add(new HoviharIgluban());
 		useCases.add(new UtolsoRaketaalkatreszKiasas());
