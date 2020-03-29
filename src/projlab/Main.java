@@ -68,7 +68,6 @@ public class Main {
 			e.kor();
 			names.clear();
 		}
-		
 	}
 	
 	static class EszkimoLukbaLep implements UseCase{
@@ -134,22 +133,23 @@ public class Main {
 		}
 	}
 	
-  /* Asszem ez kétszer is megvan már */
-	//static class EszkimoLapat implements UseCase{
-	//	public String getName() {
-	//		return "Eszkimó a lapátot használja";
-	//	}
-	//	public void run() {
-	//		//szereplő osztályok inicializálása
-	//		Eszkimo e = new Eszkimo(); names.put(e,  "Eszkimó");
-	//		Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "Stabil_Jegtabla");
-	//		Lapat l = new Lapat(); names.put(l, "Lapat");
-	//		//kapcsolatok beállítása
-	//		sj.AddJatekos(e);
-	//		sj.addTargy(l);
-	//		
-	//		//Szekvencia indátása
-	//		l.hasznal(e); }}
+	static class EszkimoLapatotHasznal implements UseCase{
+		public String getName() {
+			return "Eszkimó a lapátot használja";
+		}
+		public void run() {
+			//szereplő osztályok inicializálása
+			Eszkimo e = new Eszkimo(); names.put(e,  "Eszkimó");
+			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "Stabil_Jegtabla");
+			Lapat l = new Lapat(); names.put(l, "Lapat");
+			//kapcsolatok beállítása
+			sj.AddJatekos(e);
+			sj.setTargy(l);
+			
+			//Szekvencia indátása
+			l.hasznal(e); 
+		}
+	}
       
 	static class BuvarruhaHasznalat implements UseCase {
 		public String getName() { return "Eszkimó a búvárruhát használja."; }
@@ -255,7 +255,7 @@ public class Main {
 		}
 	}
 				
-	static class EszkimoLapatol implements UseCase {
+	static class EszkimoHavatLapatol implements UseCase {
 		public String getName() { return "Eszkimó havat takarít."; }
 		public void run() {
 			Eszkimo e = new Eszkimo(); names.put(e, "Eszkimó");
@@ -322,8 +322,9 @@ public class Main {
 		useCases.add(new EszkimoLukbanMeghal());
 		useCases.add(new EszkimoLukbaLep());
 		useCases.add(new EszkimoLukbolLepne());
-		useCases.add(new EszkimoLapatol());
+		useCases.add(new EszkimoHavatLapatol());
 		useCases.add(new EszkimoKotel());
+		useCases.add(new EszkimoLapatotHasznal());
 		useCases.add(new HoviharUresepuletben());
 		useCases.add(new HoviharIgluban());
 		useCases.add(new UtolsoRaketaalkatreszKiasas());
