@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Mezo {
+public abstract class Mezo {
 	/**Mezõn lévõ hórétegek száma.*/
 	private int horeteg;
 	/**Mezõ azonosítója.*/
@@ -55,7 +55,7 @@ public class Mezo {
 	public void targyAtad(Szereplo sz) {
 		Main.tabs++;
 		Main.log(this, "targyAtad(" + Main.nameOf(sz) + ")");
-		belefagyott_targy.osszeszed();
+		belefagyott_targy.osszeszed(sz);
 		Main.tabs--;
 	}
 	/**Ez a függvény a hóvihar hatását valósítja meg a mezõn.*/

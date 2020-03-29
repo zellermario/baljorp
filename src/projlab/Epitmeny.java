@@ -1,6 +1,6 @@
 package projlab;
 
-public class Epitmeny {
+public abstract class  Epitmeny {
 	/**Melyik mezõn van az építmény*/
 	protected Mezo mezo;
 	public void setMezo(Mezo m) {
