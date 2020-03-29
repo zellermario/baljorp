@@ -20,7 +20,7 @@ public class Instabil_Jegtabla extends Mezo {
 		jatekosok.add(sz);
 		sz.setMezo(this);
 		/*while(true) {
-			Main.print("¡tfordul a jÈgt·bla a j·tÈkos fogad·sakor? (i/n)");
+			Main.print("√Åtfordul a j√©gt√°bla a j√°t√©kos fogad√°sakor? (i/n)");
 			String ans = Main.scanner.next();
 			if (ans.equals("i")) {
 				atfordul();
