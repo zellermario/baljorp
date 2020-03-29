@@ -17,23 +17,33 @@ public class Szereplo {
 		kurrensmezo.jatekosKuldes(this, cel);
 		Main.tabs--;
 	}
-	public void hovihar() {}
+	public void hovihar() {
+		Main.tabs++;
+		Main.log(this, "hovihar()");
+		Main.tabs--;
+	}
 	public void eves() {}
 	public void kepessegHasznal(Mezo cel) {}
 	public void targyHasznalat(int id) {}
+
 	public void targyKiasas() {
 		Main.tabs++;
 		Main.log(this, "targyKiasas()");
 		kurrensmezo.targyAtad(this);
 		Main.tabs--;
 	}
-	public void hoTakaritas(int i) {}
-	public void halal() {
+	public void hoTakaritas(int i) {
+		Main.tabs++;
+		Main.log(this, "hoTakaritas(" + i + ")");
+		kurrensmezo.hoTakarit(i);
+		Main.tabs--;
+	}
+  public void halal() {
 		Main.tabs++;
 		Main.log(this, "halal()");
 		Main.tabs--;
 	}
-	public void kor() {}
+  public void kor() {}
 	public void setMezo(Mezo m) {
 		kurrensmezo = m;
 	}
