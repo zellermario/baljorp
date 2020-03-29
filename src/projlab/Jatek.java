@@ -16,6 +16,7 @@ public class Jatek {
 	public boolean gyozelem() {
 		Main.tabs++;
 		Main.log(this, "gyozelem() : true");
+    // todo: kérdést feltenni annak eldöntéséhez, hogy most győzelem van-e
 		Main.tabs--;
 		return true;
 	}

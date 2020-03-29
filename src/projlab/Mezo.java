@@ -11,12 +11,13 @@ public class Mezo {
 	private Map<Integer, Mezo> szomszedos_mezok = new HashMap<Integer, Mezo>();
 	private Jatek jatek;
 	private Targy belefagyott_targy;
-	private Epitmeny epitmeny;
+	private Epitmeny epitmeny = new Uresepulet();
 	protected List<Szereplo> jatekosok = new ArrayList<Szereplo>();
 	
+  //todo: itt konstruktorban j√∂jj√∂n l√©tre az √ºres√©p√ºlet, vagy a tagv√°ltoz√≥n√°l?
 	Mezo() {
 		epitmeny = new Uresepulet();
-		Main.names.put(epitmeny, "‹res…p¸let");
+		Main.names.put(epitmeny, "√úres√âp√ºlet");
 		epitmeny.setMezo(this);
 	}
 	
@@ -33,8 +34,8 @@ public class Mezo {
 		cel.jatekosFogadas(sz);
 		Main.tabs--;
 	}
-	public void kotellelK¸ld(Mezo cel) {}
-	
+	public void kotellelK√ºld(Mezo cel) {}
+
 	public void targyAtad(Szereplo sz) {
 		Main.tabs++;
 		Main.log(this, "targyAtad(" + Main.nameOf(sz) + ")");
@@ -54,14 +55,24 @@ public class Mezo {
 		horeteg-=i;
 		Main.tabs--;
 	}
+  
 	public int megvizsgal() {return 1;}
 	
 	public boolean ellenoriz() {return true;}
-	
+
 	public void igluEpit() {
-		epitmeny = new Iglu();
-		Main.names.put(epitmeny, "Iglu");
+		Main.tabs++;
+		Main.log(this, "igluEpit");
+		this.epitmeny = new Iglu();
+		Main.tabs--;
 	}
+  
+	/*todo: ezt asszem ki lehet majd t√∂r√∂lni*/
+	//public void igluEpit() {
+	//	epitmeny = new Iglu();
+	//	Main.names.put(epitmeny, "Iglu");
+	//}
+  
 	public void tovabbad() {
 		Main.tabs++;
 		Main.log(this, "tovabbad()");
@@ -70,6 +81,7 @@ public class Mezo {
 		}
 		Main.tabs--;
 	}
+
 	public void setSzomszed(int irany, Mezo szomszed) {
 		szomszedos_mezok.put(irany, szomszed);
 	}
@@ -80,14 +92,18 @@ public class Mezo {
 		return szomszedos_mezok.get(irany);
 	}
 	
-	/* Ez a metÛdus csak a skeletonhoz van, hogy anÈlk¸l hozz· tudjunk adni szereplıt
-	 * a mezıhˆz az inicializ·l·skor, hogy a konzolra logoln·nk a jatekosFogadas() metÛdussal. */
+	/* Ez a met√≥dus csak a skeletonhoz van, hogy an√©lk√ºl hozz√° tudjunk adni szerepl√µt
+	 * a mez√µh√∂z az inicializ√°l√°skor, hogy a konzolra logoln√°nk a jatekosFogadas() met√≥dussal. */
 	public void AddJatekos(Szereplo sz) {
 		jatekosok.add(sz);
 		sz.setMezo(this);
 	}
-	public void setBelefagyott(Targy t) {
-		belefagyott_targy = t;
+
+	public Targy getTargy() {
+		return belefagyott_targy;
+	}
+	public void setTargy(Targy t) {
+		this.belefagyott_targy = t;
 	}
 	public void setHoreteg(int i) {
 		horeteg = i;

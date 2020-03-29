@@ -7,25 +7,24 @@ import java.util.List;
 import java.util.Map;
 
 public class Main {
-	
-	public static Scanner scanner;
+
 	public static int tabs = -1;
 	public static void print(String s) { System.out.println("\t".repeat(tabs) + s); }
 	public static void log(Object obj, String method) { System.out.println("\t".repeat(tabs) + "--> " + names.get(obj) + "." + method); }
 	public static Map<Object, String> names = new HashMap<Object, String>();
 	public static String nameOf(Object o) { return names.get(o); }
-	
+
 	interface UseCase {
 		public String getName();
 		public void run();
 	}
 
 	static class StabilJegtablaraLepes implements UseCase {
-		public String getName() { return "Eszkimó a szomszédos stabil jégtáblára lép."; }
+		public String getName() { return "EszkimÃ³ a szomszÃ©dos stabil jÃ©gtÃ¡blÃ¡ra lÃ©p"; }
 		public void run() {
-			Eszkimo e = new Eszkimo(); names.put(e, "Eszkimó");
-			Stabil_Jegtabla sj1 = new Stabil_Jegtabla(); names.put(sj1, "JelenlegiJégtábla");
-			Stabil_Jegtabla sj2 = new Stabil_Jegtabla(); names.put(sj2, "CélJégtábla");
+			Eszkimo e = new Eszkimo(); names.put(e, "EszkimÃ³");
+			Stabil_Jegtabla sj1 = new Stabil_Jegtabla(); names.put(sj1, "JelenlegiJÃ©gtÃ¡bla");
+			Stabil_Jegtabla sj2 = new Stabil_Jegtabla(); names.put(sj2, "CÃ©lJÃ©gtÃ¡bla");
 			sj1.setSzomszed(1, sj2);
 			sj2.setSzomszed(2, sj1);
 			sj1.AddJatekos(e);
@@ -35,28 +34,69 @@ public class Main {
 	}
 
 	static class InstabilJegtablaraLepes implements UseCase {
-		public String getName() { return "Eszkimó a szomszédos instabil jégtáblára lép."; }
+		public String getName() { return "EszkimÃ³ a szomszÃ©dos instabil jÃ©gtÃ¡blÃ¡ra lÃ©p."; }
 		public void run() {
-			Eszkimo e = new Eszkimo(); names.put(e, "Eszkimó");
-			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "JelenlegiJégtábla");
-			Instabil_Jegtabla isj = new Instabil_Jegtabla(); names.put(isj, "CélJégtábla");
+			Eszkimo e = new Eszkimo(); names.put(e, "EszkimÃ³");
+			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "JelenlegiJÃ©gtÃ¡bla");
+			Instabil_Jegtabla isj = new Instabil_Jegtabla(); names.put(isj, "CÃ©lJÃ©gtÃ¡bla");
 			sj.setSzomszed(1, isj);
 			isj.setSzomszed(2, sj);
 			sj.AddJatekos(e);
 			e.lepes(1);
+			names.clear();
 		}
 	}
 	
-	// Add further Use-Cases here
-	
-	static class UtolsoRaketaalkatreszKiasas implements UseCase {
-		public String getName() { return "Eszkimó kiássa az utolsó rakétaalkatrészt és nyernek."; }
+	static class BuvarruhaHasznalat implements UseCase {
+		public String getName() { return "EszkimÃ³ a bÃºvÃ¡rruhÃ¡t hasznÃ¡lja."; }
 		public void run() {
-			Eszkimo e = new Eszkimo(); names.put(e, "Eszkimó");
-			Raketaalkatresz ra = new Raketaalkatresz(); names.put(ra, "UtolsóRakétaAlkatrész");
-			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "TárgyatTartalmazóJégtábla");
-			sj.setBelefagyott(ra);
-			Jatek jatek = new Jatek(); names.put(jatek, "Játék");
+			Eszkimo esz = new Eszkimo(); names.put(esz, "EszkimÃ³");
+			Buvarruha br = new Buvarruha(); names.put(br, "BÃºvÃ¡rruha");
+			Luk luk = new Luk(); names.put(luk, "JelenlegiLuk");
+			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "CÃ©lJÃ©gtÃ¡bla");
+			luk.setSzomszed(1, sj);
+			sj.setSzomszed(2, luk);
+			esz.addTargy(br);
+			luk.AddJatekos(esz);
+			br.hasznal(esz, 1);
+			names.clear();
+		}
+	}
+	
+	static class RaketaKiasas implements UseCase {
+		public String getName() { return "EszkimÃ³ kiÃ¡s egy rakÃ©talkatrÃ©szt."; }
+		public void run() {
+			Jatek j = new Jatek(); names.put(j, "JÃ¡tÃ©k");
+			Eszkimo esz = new Eszkimo(); names.put(esz, "EszkimÃ³");
+			Raketaalkatresz ra = new Raketaalkatresz(); names.put(ra, "RakÃ©talkatrÃ©sz");
+			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "JÃ©gtÃ¡bla");
+			ra.setJatek(j);
+			sj.setTargy(ra);
+			sj.AddJatekos(esz);
+			esz.targyKiasas();
+			names.clear();
+		}
+	}
+	
+	static class EszkimoKepesseg implements UseCase {
+		public String getName() { return "EszkimÃ³ kÃ©pessÃ©get hasznÃ¡l."; }
+		public void run() {
+			Eszkimo esz = new Eszkimo(); names.put(esz, "EszkimÃ³");
+			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "JÃ©gtÃ¡bla");
+			sj.AddJatekos(esz);
+			esz.kepessegHasznal(sj);
+			names.clear();
+		}
+	}
+
+	static class UtolsoRaketaalkatreszKiasas implements UseCase {
+		public String getName() { return "EszkimÃ³ kiÃ¡ssa az utolsÃ³ rakÃ©taalkatrÃ©szt Ã©s nyernek."; }
+		public void run() {
+			Eszkimo e = new Eszkimo(); names.put(e, "EszkimÃ³");
+			Raketaalkatresz ra = new Raketaalkatresz(); names.put(ra, "UtolsÃ³RakÃ©taAlkatrÃ©sz");
+			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "TÃ¡rgyatTartalmazÃ³JÃ©gtÃ¡bla");
+			sj.setTargy(ra);
+			Jatek jatek = new Jatek(); names.put(jatek, "JÃ¡tÃ©k");
 			ra.setJatek(jatek);
 			sj.AddJatekos(e);
 			sj.targyAtad(e);
@@ -64,11 +104,11 @@ public class Main {
 		}
 		
 		static class HoviharIgluban implements UseCase {
-			public String getName() { return "Eszkimót elkapja a hóvihar egy igluban"; }
+			public String getName() { return "EszkimÃ³t elkapja a hÃ³vihar egy igluban"; }
 			public void run() {
-				Eszkimo e = new Eszkimo(); names.put(e, "Eszkimó");
-				Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "IglusJégtábla");
-				Jatek jatek = new Jatek(); names.put(jatek, "Játék");
+				Eszkimo e = new Eszkimo(); names.put(e, "EszkimÃ³");
+				Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "IglusJÃ©gtÃ¡bla");
+				Jatek jatek = new Jatek(); names.put(jatek, "JÃ¡tÃ©k");
 				sj.AddJatekos(e);
 				sj.igluEpit();
 				sj.hovihar();
@@ -77,21 +117,21 @@ public class Main {
 			}
 		}
 			static class HoviharUresepuletben implements UseCase {
-				public String getName() { return "Eszkimót elkapja a hóvihar egy üres épületben"; }
+				public String getName() { return "EszkimÃ³t elkapja a hÃ³vihar egy Ã¼res Ã©pÃ¼letben"; }
 				public void run() {
-					Eszkimo e = new Eszkimo(); names.put(e, "Eszkimó");
-					Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "IglusJégtábla");
-					Jatek jatek = new Jatek(); names.put(jatek, "Játék");
+					Eszkimo e = new Eszkimo(); names.put(e, "EszkimÃ³");
+					Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "IglusJÃ©gtÃ¡bla");
+					Jatek jatek = new Jatek(); names.put(jatek, "JÃ¡tÃ©k");
 					sj.AddJatekos(e);
 					sj.hovihar();
 					names.clear();
 				}
 				
 				static class EszkimoLapatol implements UseCase {
-					public String getName() { return "Eszkimó havat takarít."; }
+					public String getName() { return "EszkimÃ³ havat takarÃ­t."; }
 					public void run() {
-						Eszkimo e = new Eszkimo(); names.put(e, "Eszkimó");
-						Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "StabilJégtábla");
+						Eszkimo e = new Eszkimo(); names.put(e, "EszkimÃ³");
+						Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "StabilJÃ©gtÃ¡bla");
 						sj.setHoreteg(5);
 						e.setMezo(sj);
 						e.hoTakaritas(1);
@@ -100,9 +140,9 @@ public class Main {
 				}
 				
 				static class SarkkutatoLukon implements UseCase {
-					public String getName() { return "Sarkkutató a képességét használja egy lukon."; }
+					public String getName() { return "SarkkutatÃ³ a kÃ©pessÃ©gÃ©t hasznÃ¡lja egy lukon."; }
 					public void run() {
-						Sarkkutato s = new Sarkkutato(); names.put(s, "Sarkkutató");
+						Sarkkutato s = new Sarkkutato(); names.put(s, "SarkkutatÃ³");
 						Luk l = new Luk(); names.put(l, "Luk");
 
 						s.kepessegHasznal(l);
@@ -110,42 +150,44 @@ public class Main {
 					}
 				}
 				static class SarkkutatoInstabilJegtablan implements UseCase {
-					public String getName() { return "Sarkkutató a képességét használja egy instabil jégtáblán."; }
+					public String getName() { return "SarkkutatÃ³ a kÃ©pessÃ©gÃ©t hasznÃ¡lja egy instabil jÃ©gtÃ¡blÃ¡n."; }
 					public void run() {
-						Sarkkutato s = new Sarkkutato(); names.put(s, "Sarkkutató");
-						Instabil_Jegtabla isj = new Instabil_Jegtabla(); names.put(isj, "Instabil Jégtábla");
+						Sarkkutato s = new Sarkkutato(); names.put(s, "SarkkutatÃ³");
+						Instabil_Jegtabla isj = new Instabil_Jegtabla(); names.put(isj, "Instabil JÃ©gtÃ¡bla");
 				
 						s.kepessegHasznal(isj);
 						names.clear();
 					}
 				}
 				static class SarkkutatoStabilJegtablan implements UseCase {
-					public String getName() { return "Sarkkutató a képességét használja egy stabil jégtáblán."; }
+					public String getName() { return "SarkkutatÃ³ a kÃ©pessÃ©gÃ©t hasznÃ¡lja egy stabil jÃ©gtÃ¡blÃ¡n."; }
 					public void run() {
-						Sarkkutato s = new Sarkkutato(); names.put(s, "Sarkkutató");
-						Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "Stabil Jégtábla");
+						Sarkkutato s = new Sarkkutato(); names.put(s, "SarkkutatÃ³");
+						Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "Stabil JÃ©gtÃ¡bla");
 						s.kepessegHasznal(sj);
 						names.clear();
 					}
 				}
 
-		
 	static class Kilepes implements UseCase {
-		public String getName() { return "Kilépés."; }
+		public String getName() { return "KilÃ©pÃ©s."; }
 		public void run() {
 			scanner.close();
 			System.exit(0);
 		}
 	}
-	
+
 	public static Scanner scanner = new Scanner(System.in);
 
 	public static void main(String args[]) {
-		
+
 		List<UseCase> useCases = new ArrayList<UseCase>();
-		
+
 		useCases.add(new StabilJegtablaraLepes());
 		useCases.add(new InstabilJegtablaraLepes());
+		useCases.add(new BuvarruhaHasznalat());
+		useCases.add(new RaketaKiasas());
+		useCases.add(new EszkimoKepesseg());
 		useCases.add(new SarkkutatoStabilJegtablan());
 		useCases.add(new SarkkutatoInstabilJegtablan());
 		useCases.add(new SarkkutatoLukon());
@@ -154,9 +196,9 @@ public class Main {
 		useCases.add(new HoviharIgluban());
 		useCases.add(new UtolsoRaketaalkatreszKiasas());
 		useCases.add(new Kilepes());
-		
+
 		while(true) {
-			System.out.println("Válasszon use-case-t!\n");
+			System.out.println("VÃ¡lasszon use-case-t!\n");
 			for (int i = 0; i < useCases.size(); i++) {
 				System.out.println((i + 1) + " " + useCases.get(i).getName());
 			}
@@ -165,9 +207,6 @@ public class Main {
 			useCases.get(selected - 1).run();
 			System.out.println("-".repeat(50));
 		}
-		
-	}
-}
-	}
-}
 
+	}
+}

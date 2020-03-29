@@ -8,8 +8,10 @@ public class Raketaalkatresz extends Targy {
 		Main.log(this, "osszeszed()");
 		jatek.raketaOsszeszed();
 		Main.tabs--;
-		}
-	public void setJatek(Jatek j) {
-		jatek  = j;
 	}
+  
+	public void setJatek(Jatek jatek) {
+		this.jatek = jatek;
+	}
+  
 }
