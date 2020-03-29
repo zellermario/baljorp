@@ -18,6 +18,6 @@ Ha nincs git, a forrásfájlok manuálisan letöltendők.</br>
 Ha a fájlok rendelkezésre állnak, lépjünk be a `baljorp-master` mappába, majd fordítsuk és futtassuk az alkalmazást:
 ```
 cd baljorp-master
-javac -encoding utf8 src/projlab/*.java
+javac src/projlab/*.java
 java -classpath src projlab.Main
 ```
