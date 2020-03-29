@@ -2,7 +2,7 @@ package projlab;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//a szereplõtípusok viselkedését meghatározó absztrakt õsosztály
 public abstract class Szereplo {
 	/**A játékos hátra lévõ munkamennyisége.*/
 	private int munkamennyiseg;
@@ -22,6 +22,7 @@ public abstract class Szereplo {
 	public void lepes(int irany) {
 		Main.tabs++;
 		Main.log(this, "lepes(" + irany + ")");
+		//lekérdezi a célmezõt és elküldi
 		Mezo cel = kurrensmezo.getSzomszed(irany);
 		kurrensmezo.jatekosKuldes(this, cel);
 		Main.tabs--;
@@ -71,7 +72,7 @@ public abstract class Szereplo {
 		this.halal();
 		Main.tabs--;
 	}
-    
+    //standard getterek és setterek
 	public void setMezo(Mezo m) {
 		kurrensmezo = m;
 	}

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+//a mezõtípusok viselkedését meghatározó absztrakt õsosztály
 public abstract class Mezo {
 	/**Mezõn lévõ hórétegek száma.*/
 	private int horeteg;
@@ -21,7 +21,7 @@ public abstract class Mezo {
 	/**A mezõn lévõ játékosok.*/
 	protected List<Szereplo> jatekosok = new ArrayList<Szereplo>();
 	
-  //todo: itt konstruktorban jöjjön létre az Üresépélet, vagy a tagváltozónál?
+   //alapértelmezetten minden épület üres, ezt jelzi az Üresépület is
 	Mezo() {
 		epitmeny = new Uresepulet();
 		Main.names.put(epitmeny, "ÃœresÃ‰pélet");
@@ -31,6 +31,7 @@ public abstract class Mezo {
 	public void jatekosFogadas(Szereplo sz) {
 		Main.tabs++;
 		Main.log(this, "jatekosFogadas(" + Main.nameOf(sz) +")");
+		//felveszi a Mezõ a játékost magába és átállítja annak megfelleõ attribútumait
 		jatekosok.add(sz);
 		sz.setMezo(this);
 		Main.tabs--;
@@ -62,6 +63,7 @@ public abstract class Mezo {
 	public void hovihar() {
 		Main.tabs++;
 		Main.log(this, "hovihar()");
+		//kifejti az építmény a hatását (ha iglu, semmissé teszi a hóvihart)
 		epitmeny.hatas();
 		Main.tabs--;
 	}
@@ -73,23 +75,26 @@ public abstract class Mezo {
 	public void igluEpit() {
 		Main.tabs++;
 		Main.log(this, "igluEpit");
+		//lecseréljük a standard Üresépületet
 		this.epitmeny = new Iglu();
 		Main.tabs--;
 	}
 	/**Ez a függvény hívja meg a mezõn álló játékosok megfelelõ metódusait, ha elkapja õket a hóvihar.*/
+	//az Üresépület hívja, hisz ez a hatása
 	public void tovabbad() {
 		Main.tabs++;
 		Main.log(this, "tovabbad()");
+		//a hóvihar hatását kifejtjük a mezõn álló összes játékosra
 		for(Szereplo sz : jatekosok) {
 			sz.hovihar();	
 		}
 		Main.tabs--;
 	}
-
+	//összerendeli a szomszédos mezõket az irányokkal
 	public void setSzomszed(int irany, Mezo szomszed) {
 		szomszedos_mezok.put(irany, szomszed);
 	}
-	
+	//visszaadja az irányhoz tartozó mezõt
 	public Mezo getSzomszed(int irany) {
 		Main.tabs++;
 		Main.log(this, "getSzomszed(" + irany + ") : " + Main.nameOf(szomszedos_mezok.get(irany)));
@@ -103,7 +108,7 @@ public abstract class Mezo {
 		jatekosok.add(sz);
 		sz.setMezo(this);
 	}
-
+	//standard getterek és setterek
 	public Targy getTargy() {
 		return belefagyott_targy;
 	}

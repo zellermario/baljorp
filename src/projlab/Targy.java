@@ -1,5 +1,5 @@
 package projlab;
-
+//tárgytípusok viselkedését meghatározó absztrakt õsosztály
 public abstract class Targy {
 	/**A tárgy azonosítója.*/
 	private int id;
