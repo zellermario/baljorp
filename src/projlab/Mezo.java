@@ -10,8 +10,8 @@ public class Mezo {
 	private int id;
 	private Map<Integer, Mezo> szomszedos_mezok = new HashMap<Integer, Mezo>();
 	private Jatek jatek;
-	private List<Targy> belefagyott_targyak = new ArrayList<Targy>();
-	private Epitmeny epitmeny;
+	private Targy belefagyott_targy;
+	private Epitmeny epitmeny = new Uresepulet();
 	protected List<Szereplo> jatekosok = new ArrayList<Szereplo>();
 	
 	public void jatekosFogadas(Szereplo sz) {
@@ -28,12 +28,22 @@ public class Mezo {
 		Main.tabs--;
 	}
 	public void kotellelKüld(Mezo cel) {}
-	public void targyAtad(Szereplo sz) {}
+	public void targyAtad(Szereplo sz) {
+		Main.tabs++;
+		Main.log(this, "targyAtad(" + Main.nameOf(sz) + ")");
+		belefagyott_targy.osszeszed();
+		Main.tabs--;
+	}
 	public void hovihar() {}
 	public void hoTakarit() {}
 	public int megvizsgal() {return 1;}
 	public boolean ellenoriz() {return true;}
-	public void igluEpit() {}
+	public void igluEpit() {
+		Main.tabs++;
+		Main.log(this, "igluEpit");
+		this.epitmeny = new Iglu();
+		Main.tabs--;
+	}
 	public void tovabbad() {}
 	public void setSzomszed(int irany, Mezo szomszed) {
 		szomszedos_mezok.put(irany, szomszed);
@@ -51,4 +61,11 @@ public class Mezo {
 		jatekosok.add(sz);
 		sz.setMezo(this);
 	}
+	public Targy getTargy() {
+		return belefagyott_targy;
+	}
+	public void setTargy(Targy belefagyott_targy) {
+		this.belefagyott_targy = belefagyott_targy;
+	}
+
 }

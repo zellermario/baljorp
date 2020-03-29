@@ -16,5 +16,9 @@ public class Jatek {
 	public boolean gyozelem() {return true;}
 	public void startJatek(int Jatekosszam) {}
 	public void hovihar() {}
-	public void raketaOsszeszed() {}
+	public void raketaOsszeszed() {
+		Main.tabs++;
+		Main.log(this, "raketaOsszeszed()");
+		Main.tabs--;
+	}
 }

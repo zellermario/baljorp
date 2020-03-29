@@ -1,10 +1,13 @@
 package projlab;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Szereplo {
 	private int munkamennyiseg;
 	private int testho;
 	private Mezo kurrensmezo;
-	private Targy sajat_targyak[];
+	private List<Targy> sajat_targyak = new ArrayList<Targy>();
 	private Jatek jatek;
 	
 	public void lepes(int irany) {
@@ -16,9 +19,14 @@ public class Szereplo {
 	}
 	public void hovihar() {}
 	public void eves() {}
-	public void kepessegHasznalat(Mezo cel) {}
+	public void kepessegHasznal(Mezo cel) {}
 	public void targyHasznalat(int id) {}
-	public void targyKiasas() {}
+	public void targyKiasas() {
+		Main.tabs++;
+		Main.log(this, "targyKiasas()");
+		kurrensmezo.targyAtad(this);
+		Main.tabs--;
+	}
 	public void hoTakaritas(int i) {}
 	public void halal() {
 		Main.tabs++;
@@ -28,5 +36,14 @@ public class Szereplo {
 	public void kor() {}
 	public void setMezo(Mezo m) {
 		kurrensmezo = m;
+	}
+	public void addTargy(Targy t) {
+		sajat_targyak.add(t);
+	}
+	public Mezo getKurrensMezo() {
+		Main.tabs++;
+		Main.log(this, "getKurrensMezo() : " + Main.nameOf(kurrensmezo));
+		Main.tabs--;
+		return kurrensmezo;
 	}
 }
