@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Jatek {
+	
 	/**Eddig hány alkatrészt gyûjöttünk össze a gyõzedelmet jeletõ alkatrészekbõl.*/
-	private int osszeszedett_alkatreszek;
+	private int osszeszedett_alkatreszek = 0;
 	/**A játékosok száma*/
 	private int jatekosszam;
 	/**Amelyik játékos éppen tevékenykedhet.*/
@@ -30,14 +31,25 @@ public class Jatek {
 	public boolean gyozelem() {
 		Main.tabs++;
 		Main.log(this, "gyozelem() : true");
-    // todo: kÃ©rdÃ©st feltenni annak eldÃ¶ntÃ©sÃ©hez, hogy most gyÅ‘zelem van-e
+		while(true) {
+			Main.print("Ezzel egy  (i/n)");
+			String ans = Main.scanner.next();
+			if (ans.equals("i")) {
+				break;
+			} else if (ans.equals("n")) {
+				break;
+			}
+		}
 		Main.tabs--;
 		return true;
 	}
+	
 	/**Játék elindításáért felelõs függvény.*/
 	public void startJatek(int Jatekosszam) {}
+	
 	/**Ez a függvény hóvihart hoz létre a pálya egy részén.*/
 	public void hovihar() {}
+	
 	/**Ezzel a függvénnyel tudjuk jelezni hogy felvettünk egy újabb alkatrészt.*/
 	public void raketaOsszeszed() {
 		Main.tabs++;
@@ -45,4 +57,5 @@ public class Jatek {
 		this.gyozelem();
 		Main.tabs--;
 	}
+	
 }

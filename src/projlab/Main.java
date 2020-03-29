@@ -21,11 +21,11 @@ public class Main {
 	}
 
 	static class StabilJegtablaraLepes implements UseCase {
-		public String getName() { return "EszkimÃ³ a szomszÃ©dos stabil jÃ©gtÃ¡blÃ¡ra lÃ©p"; }
+		public String getName() { return "Eszkimó a szomszédos stabil jégtáblára lép"; }
 		public void run() {
-			Eszkimo e = new Eszkimo(); names.put(e, "EszkimÃ³");
-			Stabil_Jegtabla sj1 = new Stabil_Jegtabla(); names.put(sj1, "JelenlegiJÃ©gtÃ¡bla");
-			Stabil_Jegtabla sj2 = new Stabil_Jegtabla(); names.put(sj2, "CÃ©lJÃ©gtÃ¡bla");
+			Eszkimo e = new Eszkimo(); names.put(e, "Eszkimó");
+			Stabil_Jegtabla sj1 = new Stabil_Jegtabla(); names.put(sj1, "JelenlegiJégtábla");
+			Stabil_Jegtabla sj2 = new Stabil_Jegtabla(); names.put(sj2, "CélJégtábla");
 			sj1.setSzomszed(1, sj2);
 			sj2.setSzomszed(2, sj1);
 			sj1.AddJatekos(e);
@@ -35,12 +35,12 @@ public class Main {
 	}
 
 	static class InstabilJegtablaraLepes implements UseCase {
-		public String getName() { return "EszkimÃ³ a szomszÃ©dos instabil jÃ©gtÃ¡blÃ¡ra lÃ©p."; }
+		public String getName() { return "Eszkimó a szomszédos instabil jégtáblára lép."; }
 		public void run() {
 			Jatek jatek = new Jatek(); names.put(jatek, "jatek");
-			Eszkimo e = new Eszkimo(); names.put(e, "EszkimÃ³");
-			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "JelenlegiJÃ©gtÃ¡bla");
-			Instabil_Jegtabla isj = new Instabil_Jegtabla(); names.put(isj, "CÃ©lJÃ©gtÃ¡bla");
+			Eszkimo e = new Eszkimo(); names.put(e, "Eszkimó");
+			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "JelenlegiJégtábla");
+			Instabil_Jegtabla isj = new Instabil_Jegtabla(); names.put(isj, "CélJégtábla");
 			e.setJatek(jatek);
 			sj.setSzomszed(1, isj);
 			isj.setSzomszed(2, sj);
@@ -52,19 +52,19 @@ public class Main {
 	
 	static class EszkimoLukbanMeghal implements UseCase{
 		public String getName() {
-			return "EszkimÃ³ lukban van Ã©s meghal";
+			return "Eszkimó lukban van és meghal";
 		}
 		public void run() {
-			//szereplÅ‘ osztÃ¡lyok inicializÃ¡lÃ¡sa
-			Eszkimo e = new Eszkimo(); names.put(e,  "EszkimÃ³");
+			//szereplÅ‘ osztályok inicializálása
+			Eszkimo e = new Eszkimo(); names.put(e,  "Eszkimó");
 			Luk l= new Luk(); names.put(l, "Luk");
 			Jatek jatek = new Jatek(); names.put(jatek, "jatek");
 			
-			//kapcsolatok beÃ¡llÃ­tÃ¡sa
+			//kapcsolatok beállítása
 			l.AddJatekos(e);
 			e.setJatek(jatek);
 			
-			//Szekvencia indÃ­tÃ¡sa
+			//Szekvencia indítása
 			e.kor();
 			names.clear();
 		}
@@ -72,20 +72,20 @@ public class Main {
 	
 	static class EszkimoLukbaLep implements UseCase{
 		public String getName() {
-			return "EszkimÃ³ a szomszÃ©dos lukba lÃ©p";
+			return "Eszkimó a szomszédos lukba lép";
 		}
 		public void run() {
-			//szereplÅ‘ osztÃ¡lyok inicializÃ¡lÃ¡sa
-			Eszkimo e = new Eszkimo(); names.put(e,  "EszkimÃ³");
+			//szereplÅ‘ osztályok inicializálása
+			Eszkimo e = new Eszkimo(); names.put(e,  "Eszkimó");
 			Luk l= new Luk(); names.put(l, "Luk");
 			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "Stabil_Jegtabla");
 			
-			//kapcsolatok beÃ¡llÃ­tÃ¡sa
+			//kapcsolatok beállítása
 			sj.AddJatekos(e);
 			l.setSzomszed(1, sj);
 			sj.setSzomszed(2, l);
 			
-			//Szekvencia indÃ­tÃ¡sa
+			//Szekvencia indítása
 			e.lepes(2);
 			names.clear();
 		}
@@ -94,20 +94,20 @@ public class Main {
 	
 	static class EszkimoLukbolLepne implements UseCase{
 		public String getName() {
-			return "EszkimÃ³ megprÃ³bÃ¡l lukbÃ³l kilÃ©pni";
+			return "Eszkimó megpróbál lukból kilépni";
 		}
 		public void run() {
-			//szereplÅ‘ osztÃ¡lyok inicializÃ¡lÃ¡sa
-			Eszkimo e = new Eszkimo(); names.put(e,  "EszkimÃ³");
+			//szereplÅ‘ osztályok inicializálása
+			Eszkimo e = new Eszkimo(); names.put(e,  "Eszkimó");
 			Luk l= new Luk(); names.put(l, "Luk");
 			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "Stabil_Jegtabla");
 			
-			//kapcsolatok beÃ¡llÃ­tÃ¡sa
+			//kapcsolatok beállítása
 			l.AddJatekos(e);
 			l.setSzomszed(1, sj);
 			sj.setSzomszed(2, l);
 			
-			//Szekvencia indÃ­tÃ¡sa
+			//Szekvencia indítása
 			e.lepes(1);
 			names.clear();
 		}
@@ -115,19 +115,19 @@ public class Main {
 	
 	static class EszkimoEtel implements UseCase{
 		public String getName() {
-			return "EszkimÃ³ kiÃ¡s egy Ã©telt Ã©s azt el is fogyasztja";
+			return "Eszkimó kiás egy ételt és azt el is fogyasztja";
 		}
 		public void run() {
-			//szereplÅ‘ osztÃ¡lyok inicializÃ¡lÃ¡sa
-			Eszkimo e = new Eszkimo(); names.put(e,  "EszkimÃ³");
+			//szereplÅ‘ osztályok inicializálása
+			Eszkimo e = new Eszkimo(); names.put(e,  "Eszkimó");
 			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "Stabil_Jegtabla");
 			Etel etel = new Etel(); names.put(etel, "Ã‰tel");
 			
-			//kapcsolatok beÃ¡llÃ­tÃ¡sa
+			//kapcsolatok beállítása
 			sj.AddJatekos(e);
 			sj.setTargy(etel);
 		
-			//Szekvencia indÃ­tÃ¡sa
+			//Szekvencia indítása
 			e.targyKiasas();
 			names.clear();
 		}
@@ -135,29 +135,29 @@ public class Main {
 	
 	static class EszkimoLapatotHasznal implements UseCase{
 		public String getName() {
-			return "EszkimÃ³ a lapÃ¡tot hasznÃ¡lja";
+			return "Eszkimó a lapátot használja";
 		}
 		public void run() {
-			//szereplÅ‘ osztÃ¡lyok inicializÃ¡lÃ¡sa
-			Eszkimo e = new Eszkimo(); names.put(e,  "EszkimÃ³");
+			//szereplÅ‘ osztályok inicializálása
+			Eszkimo e = new Eszkimo(); names.put(e,  "Eszkimó");
 			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "Stabil_Jegtabla");
 			Lapat l = new Lapat(); names.put(l, "Lapat");
-			//kapcsolatok beÃ¡llÃ­tÃ¡sa
+			//kapcsolatok beállítása
 			sj.AddJatekos(e);
 			sj.setTargy(l);
 			
-			//Szekvencia indÃ¡tÃ¡sa
+			//Szekvencia indátása
 			l.hasznal(e); 
 		}
 	}
       
 	static class BuvarruhaHasznalat implements UseCase {
-		public String getName() { return "EszkimÃ³ a bÃºvÃ¡rruhÃ¡t hasznÃ¡lja."; }
+		public String getName() { return "Eszkimó a bÃºvárruhát használja."; }
 		public void run() {
-			Eszkimo esz = new Eszkimo(); names.put(esz, "EszkimÃ³");
-			Buvarruha br = new Buvarruha(); names.put(br, "BÃºvÃ¡rruha");
+			Eszkimo esz = new Eszkimo(); names.put(esz, "Eszkimó");
+			Buvarruha br = new Buvarruha(); names.put(br, "BÃºvárruha");
 			Luk luk = new Luk(); names.put(luk, "JelenlegiLuk");
-			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "CÃ©lJÃ©gtÃ¡bla");
+			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "CélJégtábla");
 			luk.setSzomszed(1, sj);
 			sj.setSzomszed(2, luk);
 			esz.addTargy(br);
@@ -168,12 +168,12 @@ public class Main {
 	}
 	
 	static class RaketaKiasas implements UseCase {
-		public String getName() { return "EszkimÃ³ kiÃ¡s egy rakÃ©talkatrÃ©szt."; }
+		public String getName() { return "Eszkimó kiás egy rakétalkatrészt."; }
 		public void run() {
-			Jatek j = new Jatek(); names.put(j, "JÃ¡tÃ©k");
-			Eszkimo esz = new Eszkimo(); names.put(esz, "EszkimÃ³");
-			Raketaalkatresz ra = new Raketaalkatresz(); names.put(ra, "RakÃ©talkatrÃ©sz");
-			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "JÃ©gtÃ¡bla");
+			Jatek j = new Jatek(); names.put(j, "Játék");
+			Eszkimo esz = new Eszkimo(); names.put(esz, "Eszkimó");
+			Raketaalkatresz ra = new Raketaalkatresz(); names.put(ra, "Rakétalkatrész");
+			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "Jégtábla");
 			ra.setJatek(j);
 			sj.setTargy(ra);
 			sj.AddJatekos(esz);
@@ -183,10 +183,10 @@ public class Main {
 	}
 	
 	static class EszkimoKepesseg implements UseCase {
-		public String getName() { return "EszkimÃ³ kÃ©pessÃ©get hasznÃ¡l."; }
+		public String getName() { return "Eszkimó képességet használ."; }
 		public void run() {
-			Eszkimo esz = new Eszkimo(); names.put(esz, "EszkimÃ³");
-			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "JÃ©gtÃ¡bla");
+			Eszkimo esz = new Eszkimo(); names.put(esz, "Eszkimó");
+			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "Jégtábla");
 			sj.AddJatekos(esz);
 			esz.kepessegHasznal(sj);
 			names.clear();
@@ -194,13 +194,13 @@ public class Main {
 	}
 
 	static class UtolsoRaketaalkatreszKiasas implements UseCase {
-		public String getName() { return "EszkimÃ³ kiÃ¡ssa az utolsÃ³ rakÃ©taalkatrÃ©szt Ã©s nyernek."; }
+		public String getName() { return "Eszkimó kiássa az utolsó rakétaalkatrészt és nyernek."; }
 		public void run() {
-			Eszkimo e = new Eszkimo(); names.put(e, "EszkimÃ³");
-			Raketaalkatresz ra = new Raketaalkatresz(); names.put(ra, "UtolsÃ³RakÃ©taAlkatrÃ©sz");
-			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "TÃ¡rgyatTartalmazÃ³JÃ©gtÃ¡bla");
+			Eszkimo e = new Eszkimo(); names.put(e, "Eszkimó");
+			Raketaalkatresz ra = new Raketaalkatresz(); names.put(ra, "UtolsóRakétaAlkatrész");
+			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "TárgyatTartalmazóJégtábla");
 			sj.setTargy(ra);
-			Jatek jatek = new Jatek(); names.put(jatek, "JÃ¡tÃ©k");
+			Jatek jatek = new Jatek(); names.put(jatek, "Játék");
 			ra.setJatek(jatek);
 			sj.AddJatekos(e);
 			sj.targyAtad(e);
@@ -209,11 +209,11 @@ public class Main {
 	}
 		
 	static class HoviharIgluban implements UseCase {
-		public String getName() { return "EszkimÃ³t elkapja a hÃ³vihar egy igluban"; }
+		public String getName() { return "Eszkimót elkapja a hóvihar egy igluban"; }
 		public void run() {
-			Eszkimo e = new Eszkimo(); names.put(e, "EszkimÃ³");
-			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "IglusJÃ©gtÃ¡bla");
-			Jatek jatek = new Jatek(); names.put(jatek, "JÃ¡tÃ©k");
+			Eszkimo e = new Eszkimo(); names.put(e, "Eszkimó");
+			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "IglusJégtábla");
+			Jatek jatek = new Jatek(); names.put(jatek, "Játék");
 			sj.AddJatekos(e);
 			sj.igluEpit();
 			sj.hovihar();
@@ -223,32 +223,32 @@ public class Main {
 	
 	static class EszkimoKotel implements UseCase{
 		public String getName() {
-			return "EszkimÃ³ a kÃ¶telet hasznÃ¡lja";
+			return "Eszkimó a kötelet használja";
 		}
 		public void run() {
-			//szereplÅ‘ osztÃ¡lyok inicializÃ¡lÃ¡sa
-			Eszkimo e = new Eszkimo(); names.put(e,  "EszkimÃ³");
+			//szereplÅ‘ osztályok inicializálása
+			Eszkimo e = new Eszkimo(); names.put(e,  "Eszkimó");
 			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "sj");
 			Kotel k = new Kotel(); names.put(k, "k");
 			Luk l= new Luk(); names.put(l, "Luk");
 			Sarkkutato sz = new Sarkkutato(); names.put(sz, "sz");
-			//kapcsolatok beÃ¡llÃ­tÃ¡sa
+			//kapcsolatok beállítása
 			sj.AddJatekos(e);
 			l.AddJatekos(sz);
 			l.setSzomszed(1, sj);
 			sj.setSzomszed(2, l);
 			
-			//Szekvencia indÃ­tÃ¡sa
+			//Szekvencia indítása
 			k.hasznal(e);
     }
   }
       
 	static class HoviharUresepuletben implements UseCase {
-		public String getName() { return "EszkimÃ³t elkapja a hÃ³vihar egy Ã¼res Ã©pÃ¼letben"; }
+		public String getName() { return "Eszkimót elkapja a hóvihar egy üres épületben"; }
 		public void run() {
-			Eszkimo e = new Eszkimo(); names.put(e, "EszkimÃ³");
-			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "IglusJÃ©gtÃ¡bla");
-			Jatek jatek = new Jatek(); names.put(jatek, "JÃ¡tÃ©k");
+			Eszkimo e = new Eszkimo(); names.put(e, "Eszkimó");
+			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "IglusJégtábla");
+			Jatek jatek = new Jatek(); names.put(jatek, "Játék");
 			sj.AddJatekos(e);
 			sj.hovihar();
 			names.clear();
@@ -256,10 +256,10 @@ public class Main {
 	}
 				
 	static class EszkimoHavatLapatol implements UseCase {
-		public String getName() { return "EszkimÃ³ havat takarÃ­t."; }
+		public String getName() { return "Eszkimó havat takarít."; }
 		public void run() {
-			Eszkimo e = new Eszkimo(); names.put(e, "EszkimÃ³");
-			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "StabilJÃ©gtÃ¡bla");
+			Eszkimo e = new Eszkimo(); names.put(e, "Eszkimó");
+			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "StabilJégtábla");
 			sj.setHoreteg(5);
 			e.setMezo(sj);
 			e.hoTakaritas(1);
@@ -268,9 +268,9 @@ public class Main {
 	}
 				
 	static class SarkkutatoLukon implements UseCase {
-		public String getName() { return "SarkkutatÃ³ a kÃ©pessÃ©gÃ©t hasznÃ¡lja egy lukon."; }
+		public String getName() { return "Sarkkutató a képességét használja egy lukon."; }
 		public void run() {
-			Sarkkutato s = new Sarkkutato(); names.put(s, "SarkkutatÃ³");
+			Sarkkutato s = new Sarkkutato(); names.put(s, "Sarkkutató");
 			Luk l = new Luk(); names.put(l, "Luk");
 
 			s.kepessegHasznal(l);
@@ -279,10 +279,10 @@ public class Main {
 	}
 	
 	static class SarkkutatoInstabilJegtablan implements UseCase {
-		public String getName() { return "SarkkutatÃ³ a kÃ©pessÃ©gÃ©t hasznÃ¡lja egy instabil jÃ©gtÃ¡blÃ¡n."; }
+		public String getName() { return "Sarkkutató a képességét használja egy instabil jégtáblán."; }
 		public void run() {
-			Sarkkutato s = new Sarkkutato(); names.put(s, "SarkkutatÃ³");
-			Instabil_Jegtabla isj = new Instabil_Jegtabla(); names.put(isj, "Instabil JÃ©gtÃ¡bla");
+			Sarkkutato s = new Sarkkutato(); names.put(s, "Sarkkutató");
+			Instabil_Jegtabla isj = new Instabil_Jegtabla(); names.put(isj, "Instabil Jégtábla");
 	
 			s.kepessegHasznal(isj);
 			names.clear();
@@ -290,17 +290,17 @@ public class Main {
 	}
 				
 	static class SarkkutatoStabilJegtablan implements UseCase {
-		public String getName() { return "SarkkutatÃ³ a kÃ©pessÃ©gÃ©t hasznÃ¡lja egy stabil jÃ©gtÃ¡blÃ¡n."; }
+		public String getName() { return "Sarkkutató a képességét használja egy stabil jégtáblán."; }
 		public void run() {
-			Sarkkutato s = new Sarkkutato(); names.put(s, "SarkkutatÃ³");
-			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "Stabil JÃ©gtÃ¡bla");
+			Sarkkutato s = new Sarkkutato(); names.put(s, "Sarkkutató");
+			Stabil_Jegtabla sj = new Stabil_Jegtabla(); names.put(sj, "Stabil Jégtábla");
 			s.kepessegHasznal(sj);
 			names.clear();
 		}
 	}
 
 	static class Kilepes implements UseCase {
-		public String getName() { return "KilÃ©pÃ©s."; }
+		public String getName() { return "Kilépés."; }
 		public void run() {
 			scanner.close();
 			System.exit(0);
@@ -331,7 +331,7 @@ public class Main {
 		useCases.add(new Kilepes());
 
 		while(true) {
-			System.out.println("VÃ¡lasszon use-case-t!\n");
+			System.out.println("Válasszon use-case-t!\n");
 			for (int i = 0; i < useCases.size(); i++) {
 				System.out.println((i + 1) + " " + useCases.get(i).getName());
 			}
