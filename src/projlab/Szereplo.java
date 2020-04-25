@@ -2,90 +2,94 @@ package projlab;
 
 import java.util.ArrayList;
 import java.util.List;
-//a szereplõtípusok viselkedését meghatározó absztrakt õsosztály
-public abstract class Szereplo {
-	/**A játékos hátra lévõ munkamennyisége.*/
+
+public class Szereplo {
+	/**A jatekos hatra levo munkamennyisege.*/
 	private int munkamennyiseg;
-	/**A játékos testhõje.*/
+	
+	private int maxmunka;
+	
+	private int maxtestho;
+	
+	/**A jatekos testhoje.*/
 	private int testho;
-	/**A mezõ amin a játékos áll.*/
+	/**A mezo amin a jatekos all.*/
 	private Mezo kurrensmezo;
-	/**A játékosnál lévõ tárgyak.*/
+	/**A jatekosnal levo targyak.*/
 	private List<Targy> sajat_targyak = new ArrayList<Targy>();
-	/**A játék aminek a játékos a része.*/
+	/**A jatek aminek a jatekos a resze.*/
 	private Jatek jatek;
 	
-	public void setJatek(Jatek jatek) {
-		this.jatek = jatek;
+	public Szereplo(int maxm,  int maxh, Jatek j) {
+		jatek = j;
+		maxmunka = maxm;
+		munkamennyiseg = maxm;
+		maxtestho = maxh;
+		testho = maxh;
 	}
-	/**A játékos lépéseit megvalósító függvény.*/
+	
+	/**A jatekos lepeseit megvalosito fuggveny.*/
 	public void lepes(int irany) {
-		Main.tabs++;
-		Main.log(this, "lepes(" + irany + ")");
-		//lekérdezi a célmezõt és elküldi
 		Mezo cel = kurrensmezo.getSzomszed(irany);
 		kurrensmezo.jatekosKuldes(this, cel);
-		Main.tabs--;
 	}
-	/**Ez a függvény a hóvihar játékosra gyakorolt hatásást valósítja meg.*/
+	/**Ez a fuggveny a hovihar jatekosra gyakorolt hatasast valositja meg.*/
 	public void hovihar() {
-		Main.tabs++;
-		Main.log(this, "hovihar()");
-		Main.tabs--;
+		testho--;
+		if(testho == 0) halal();
 	}
-	/**Ez a függvény az étel elfogyasztásának hatásást valósítja meg.*/
+	/**Ez a fuggveny az etel elfogyasztasanak hatasast valositja meg.*/
 	public void eves() {
-		Main.tabs++;
-		Main.log(this, "eves()");
-		Main.tabs--;
+		if(testho < maxtestho) testho++;
 	}
-	/**A különbözõ szereplõk képességeit valósítja meg-*/
+	
+	/**A kulonbozo szereplok kepessegeit valositja meg-*/
 	public void kepessegHasznal(Mezo cel) {}
-	/**Egy felvett tárgy használatát valósítja meg.*/
-	public void targyHasznalat(int id) {}
-	/**Ezzel a függvénnyel tudunk tárgyakat kiásni a mezõkbõl.*/
+	
+	/**Egy felvett targy hasznalatat valositja meg.*/
+	public void targyHasznalat(int id) {
+		for(Targy t : sajat_targyak) {
+			if(t.getId() == id) t.hasznal(this);
+		}
+		munkamennyiseg--;
+	}
+	
+	/**Ezzel a fuggvennyel tudunk targyakat kiasni a mezokbol.*/
 	public void targyKiasas() {
-		Main.tabs++;
-		Main.log(this, "targyKiasas()");
 		kurrensmezo.targyAtad(this);
-		Main.tabs--;
+		munkamennyiseg--;
 	}
-	/**Ez a függvény valósítja meg a hóréteg eltávolítását az adott mezõrõl.*/
+	/**Ez a fuggveny valositja meg a horeteg eltavolitasat az adott mezorol.*/
 	public void hoTakaritas(int i) {
-		Main.tabs++;
-		Main.log(this, "hoTakaritas(" + i + ")");
 		kurrensmezo.hoTakarit(i);
-		Main.tabs--;
+		munkamennyiseg--;
 	}
-  /**Ezzel a függvénnyel tudjuk jelzi a játéknak ha a játékos meghal.*/
+  /**Ezzel a fuggvennyel tudjuk jelzi a jateknak ha a jatekos meghal.*/
   public void halal() {
-		Main.tabs++;
-		Main.log(this, "halal()");
 		jatek.vereseg();
-		Main.tabs--;
 	}
-  	/**Ez a függvény valósítja meg a körváltást.*/
+  	/**Ez a fuggveny valositja meg a korvaltast.*/
 	public void kor() {
-		Main.tabs++;
-		Main.log(this, "kor()");
-		kurrensmezo.megvizsgal();
-		this.halal();
-		Main.tabs--;
+		if(kurrensmezo.megvizsgal() == 0) halal();
 	}
-    //standard getterek és setterek
+    
+	public void passz() {
+		munkamennyiseg = 0;
+	}
+	
 	public void setMezo(Mezo m) {
 		kurrensmezo = m;
 	}
   
-	public void addTargy(Targy t) {
-		sajat_targyak.add(t);
-	}
-  
 	public Mezo getKurrensMezo() {
-		Main.tabs++;
-		Main.log(this, "getKurrensMezo() : " + Main.nameOf(kurrensmezo));
-		Main.tabs--;
 		return kurrensmezo;
 	}
-  
+	
+	public void AddTargy(Targy t) {
+		sajat_targyak.add(t);
+	}
+ //Uj resz
+	public void targyTorol(Targy t) {
+		sajat_targyak.remove(t);
+	}
 }

@@ -4,111 +4,106 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-//a mezõtípusok viselkedését meghatározó absztrakt õsosztály
+import java.util.Random;
+
 public abstract class Mezo {
-	/**Mezõn lévõ hórétegek száma.*/
+	/**Mezon levo horetegek szama.*/
 	private int horeteg;
-	/**Mezõ azonosítója.*/
+	/**Mezo azonositoja.*/
 	private int id;
-	/**Szomszédos mezõk.*/
+	/**Szomszedos mezok.*/
 	private Map<Integer, Mezo> szomszedos_mezok = new HashMap<Integer, Mezo>();
-	/**A játék aminek a rész a mezõ.*/
+	/**A jatek aminek a resz a mezo.*/
 	private Jatek jatek;
-	/**A mezõben lévõ tárgy.*/
+	/**A mezoben levo targy.*/
 	private Targy belefagyott_targy;
-	/**A mezõn lévõ épület.*/
-	private Epitmeny epitmeny = new Uresepulet();
-	/**A mezõn lévõ játékosok.*/
+	/**A mezon levo epulet.*/
+	private Epitmeny epitmeny;
+	/**A mezon levo jatekosok.*/
 	protected List<Szereplo> jatekosok = new ArrayList<Szereplo>();
 	
-   //alapértelmezetten minden épület üres, ezt jelzi az Üresépület is
-	Mezo() {
-		epitmeny = new Uresepulet();
-		Main.names.put(epitmeny, "ÃœresÃ‰pélet");
-		epitmeny.setMezo(this);
+  //todo: itt konstruktorban jÃ¶jjÃ¶n lÃ©tre az Ã¼resÃ©pÃ¼let, vagy a tagvÃ¡ltozÃ³nÃ¡l?
+	public Mezo(int _id, Jatek j) {
+		epitmeny = new Uresepulet(this);
+		jatek = j;
+		Random rand = new Random();
+		horeteg = rand.nextInt(3) + 1;
 	}
-	/**Ez a függvény a paraméterként adott játékost a mezõre helyezi.*/
+	
+	public Map<Integer, Mezo> getSzomszedos_mezok() {
+		return szomszedos_mezok;
+	}
+
+	/**Ez a fuggveny a parameterkent adott jatekost a mezore helyezi.*/
 	public void jatekosFogadas(Szereplo sz) {
-		Main.tabs++;
-		Main.log(this, "jatekosFogadas(" + Main.nameOf(sz) +")");
-		//felveszi a Mezõ a játékost magába és átállítja annak megfelleõ attribútumait
 		jatekosok.add(sz);
-		sz.setMezo(this);
-		Main.tabs--;
+		ellenoriz();
 	}
-	/**Ez a függvény a paraméterként adott játékost, a paraméterként adott mezõre küldi.*/
+	/**Ez a fuggveny a parameterkent adott jatekost, a parameterkent adott mezore kuldi.*/
 	public void jatekosKuldes(Szereplo sz, Mezo cel) {
-		Main.tabs++;
-		Main.log(this, "jatekosKuldes("+ Main.nameOf(sz) +", "+ Main.nameOf(cel) +")");
-		cel.jatekosFogadas(sz);
-		Main.tabs--;
+		 cel.jatekosFogadas(sz);
+		 jatekosok.remove(sz);
 	}
-	/**Ennek a függvénynek luk esetén van feladata.*/
-	public void kotellelKuld(Mezo cel) {}
 	
-	/**Ez a függvény a paraméterként átadott mennyiségû réteg havat takarít el a mezõrõl.*/
+	/**Ez a fuggveny a parameterkent atadott mennyisegu reteg havat takarit el a mezorol.*/
 	public void hoTakarit(int i) {
-		Main.tabs++;
-		Main.log(this, "hoTakarit(" + i +")");
-		Main.tabs--;
+		horeteg -= i;
+		if(horeteg < 0) horeteg = 0;
 	}
-	/**Ez a függvény a paraméterként átadott játékosnak adja a mezõben lévõ tárgyat.*/
+	/**Ez a fuggveny a parameterkent atadott jatekosnak adja a mezoben levo targyat.*/
 	public void targyAtad(Szereplo sz) {
-		Main.tabs++;
-		Main.log(this, "targyAtad(" + Main.nameOf(sz) + ")");
-		belefagyott_targy.osszeszed(sz);
-		Main.tabs--;
-	}
-	/**Ez a függvény a hóvihar hatását valósítja meg a mezõn.*/
-	public void hovihar() {
-		Main.tabs++;
-		Main.log(this, "hovihar()");
-		//kifejti az építmény a hatását (ha iglu, semmissé teszi a hóvihart)
-		epitmeny.hatas();
-		Main.tabs--;
-	}
-	/**A mezõ teherbíró képességével tér vissza.*/
-	public int megvizsgal() {return 1;}
-	
-	public boolean ellenoriz() {return true;}
-	/**Ezzel a függvénnyel tudunk iglut építeni a mezõre.*/
-	public void igluEpit() {
-		Main.tabs++;
-		Main.log(this, "igluEpit");
-		//lecseréljük a standard Üresépületet
-		this.epitmeny = new Iglu();
-		Main.tabs--;
-	}
-	/**Ez a függvény hívja meg a mezõn álló játékosok megfelelõ metódusait, ha elkapja õket a hóvihar.*/
-	//az Üresépület hívja, hisz ez a hatása
-	public void tovabbad() {
-		Main.tabs++;
-		Main.log(this, "tovabbad()");
-		//a hóvihar hatását kifejtjük a mezõn álló összes játékosra
-		for(Szereplo sz : jatekosok) {
-			sz.hovihar();	
+		if(horeteg == 0) {
+			sz.AddTargy(belefagyott_targy);;
+			belefagyott_targy.osszeszed(sz);
+			belefagyott_targy = null;
 		}
-		Main.tabs--;
 	}
-	//összerendeli a szomszédos mezõket az irányokkal
+	/**Ez a fuggveny a hovihar hatasat valositja meg a mezon.*/
+	public void hovihar() {
+		horeteg++;
+		epitmeny.hatas();
+	}
+	/**A mezo teherbiro kepessegevel ter vissza.*/
+	abstract int megvizsgal();
+	
+	public void ellenoriz() {
+		if(jatekosok.size() == jatek.jatekosszam()) jatek.gyozelem();
+	}
+	/**Ezzel a fuggvennyel tudunk iglut epiteni a mezore.*/
+	public void epit(Epitmeny e) {
+		epitmeny = e;
+	}
+	/**Ez a fuggveny hivja meg a mezon allo jatekosok megfelelo metodusait, ha elkapja oket a hovihar.*/
+	public void tovabbad() {
+		for(Szereplo i : jatekosok)
+			i.hovihar();
+	}
+
 	public void setSzomszed(int irany, Mezo szomszed) {
 		szomszedos_mezok.put(irany, szomszed);
 	}
-	//visszaadja az irányhoz tartozó mezõt
+	
 	public Mezo getSzomszed(int irany) {
-		Main.tabs++;
-		Main.log(this, "getSzomszed(" + irany + ") : " + Main.nameOf(szomszedos_mezok.get(irany)));
-		Main.tabs--;
 		return szomszedos_mezok.get(irany);
 	}
 	
-	/* Ez a metódus csak a skeletonhoz van, hogy anélkél hozzá tudjunk adni szereplõt
-	 * a mezõhöz az inicializáláskor, hogy a konzolra logolnánk a jatekosFogadas() metódussal. */
-	public void AddJatekos(Szereplo sz) {
-		jatekosok.add(sz);
-		sz.setMezo(this);
+	
+	public void medvetamad() {
+		epitmeny.medve();
 	}
-	//standard getterek és setterek
+	
+	void medvemegol() {
+		for(Szereplo i : jatekosok)
+			i.halal();
+	}
+	
+	void epuletRombol() {
+		epitmeny.rombol();
+		epit(new Uresepulet(this));
+	}
+	
+	public void atleptet(Szereplo sz, Mezo cel) {}
+
 	public Targy getTargy() {
 		return belefagyott_targy;
 	}
@@ -119,6 +114,20 @@ public abstract class Mezo {
 	
 	public void setHoreteg(int i) {
 		horeteg = i;
+	}
+//uj
+	public int rajta_levo_jatekosok() {return jatekosok.size();}
+	
+	public void halal() {
+		for(Szereplo i : jatekosok)
+			i.halal();
+	}
+	
+	public void kiment_mindenkit(Mezo cel) {
+		for(Szereplo sz : jatekosok) {
+			atleptet(sz,cel);
+			jatekosok.remove(sz);
+		}
 	}
   
 }

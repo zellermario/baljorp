@@ -1,19 +1,15 @@
 package projlab;
 
 public class Raketaalkatresz extends Targy {
-	/**Játék amihez az alkatrész tartozik.*/
+	/**Jatek amihez az alkatresz tartozik.*/
 	private Jatek jatek;
-	/**Ez a függvény az alkatrész felszedésénél jelez a játéknak hogy megvan az egyik alkartész.*/
+	
+	public Raketaalkatresz(int _id, Jatek j) {
+		super(_id);
+		jatek = j;
+	}
+	/**Ez a fuggveny az alkatresz felszedesenel jelez a jateknak hogy megvan az egyik alkartesz.*/
 	public void osszeszed(Szereplo sz) {
-		Main.tabs++;
-		Main.log(this, "osszeszed("+ Main.nameOf(sz)+ ")");
-		//jelzi a játéknak, hogy összeszedték
 		jatek.raketaOsszeszed();
-		Main.tabs--;
 	}
-	//beállítja a tagváltozót, hogy tudjon szólni neki
-	public void setJatek(Jatek jatek) {
-		this.jatek = jatek;
-	}
-  
 }

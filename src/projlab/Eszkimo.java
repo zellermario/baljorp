@@ -1,12 +1,13 @@
 package projlab;
 
 public class Eszkimo extends Szereplo{
-	/**Ez a függvény valósítja meg az eszkimó képességét*/
+	
+	public Eszkimo( Jatek j) {
+		super(4, 5, j);
+	}
+	/**Ez a fuggveny valositja meg az eszkimo kepesseget*/
 	public void kepessegHasznal(Mezo cel) {
-		Main.tabs++;
-		Main.log(this, "kepessegHasznal(" + Main.nameOf(cel) +")");
-		cel.igluEpit();
-		Main.tabs--;
+		cel.epit(new Iglu(this.getKurrensMezo()));
 	}
 }
 
