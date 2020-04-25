@@ -1,39 +1,27 @@
 package projlab;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Instabil_Jegtabla extends Mezo {
 	private int teherbiras = 2;
 	
-	/**Ez a függvény az adott jégtábla átfodulásást valósítja meg.*/ 
-	public void atfordul() {
-		Main.tabs++;
-		Main.log(this, "atfordul()");
-		//minden játékost megöl, aki rajta áll
-		this.jatekosok.forEach((sz) -> sz.halal()); 
-		Main.tabs--;
+	public Instabil_Jegtabla(int _id, Jatek j) {
+		super(_id, j);
+		Random rand = new Random();
+		teherbiras = rand.nextInt(j.jatekosszam()) + 1;
 	}
-	/**Ezt a függvényt visszaadja hogy az adott jégtáblán hány játékos fér el.*/
+	
+	/**Ez a fuggveny az adott jegtabla atfodulasat valositja meg.*/ 
+	public void atfordul() {
+		halal();
+	}
+	/**Ez a fuggveny visszaadja hogy az adott jegtablan hany jatekos fer el.*/
 	public int megvizsgal() {
-		Main.tabs++;
-		Main.log(this, "megvizsgal() : teherbiras");
-		return teherbiras;}
-	/**Ez a függvény a paraméterként átadott játékost a jégtáblára helyezi.*/
+		return teherbiras - rajta_levo_jatekosok();
+	}
+	/**Ez a fuggveny a parameterkent atadott jatekost a jegtablara helyezi.*/
 	public void jatekosFogadas(Szereplo sz) {
-		Main.tabs++;
-		Main.log(this, "jatekosFogadas("+ Main.nameOf(sz) +")");
-		jatekosok.add(sz);
-		sz.setMezo(this);
-		while(true) {
-			// a felhasználó dönthet a kimenetelrõl
-			Main.print("Átfordul a jégtábla a játékos fogadásakor? (i/n)");
-			String ans = Main.scanner.next();
-			if (ans.equals("i")) {
-				atfordul();
-				break;
-			} else if (ans.equals("n")) {
-				break;
-			}
-		}
-		Main.tabs--;
+		super.jatekosFogadas(sz);
+		if(teherbiras < rajta_levo_jatekosok()) halal();
 	}
 }

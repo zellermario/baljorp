@@ -4,58 +4,46 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Jatek {
-	
-	/**Eddig hány alkatrészt gyûjöttünk össze a gyõzedelmet jeletõ alkatrészekbõl.*/
-	private int osszeszedett_alkatreszek = 0;
-	/**A játékosok száma*/
+	/**Eddig hany alkatreszt gyujottunk ossze a gyozedelmet jeleto alkatreszekbol.*/
+	private int osszeszedett_alkatreszek;
+	/**A jatekosok szama*/
 	private int jatekosszam;
-	/**Amelyik játékos éppen tevékenykedhet.*/
+	/**Amelyik jatekos eppen tevekenykedhet.*/
 	private int aktualisJatekos = 0;
-	/**Játékosok tömbje.*/
+	/**Jatekosok tombje.*/
 	private List<Szereplo> szereplok = new ArrayList<Szereplo>();
-	/**A pályán lévõ mezõk tömbje.*/
+	/**A palyan levo mezok tombje.*/
 	private Mezo mezok[];
 	
 	public Jatek() {}
-	/**Ez a függvény a játék létrehozásáért felelõs.*/
+	/**Ez a fuggveny a jatek letrehozasaert felelos.*/
 	public void ujJatek() {}
 	
-	/**Ha ezt a függvényt meghívjuk a játék vereséggel véget ér.*/
+	/**Ha ezt a fuggvenyt meghivjuk a jatek vereseggel veget er.*/
 	public void vereseg() {
 		Main.tabs++;
 		Main.log(this, "vereseg()");
 		Main.tabs--;
 	}
 	
-	/**Ha ezt a függvényt meghívjuk akkor a játék gyõzelemmel zárul */
-	private void gyozelem() {
+	/**Ha ezt a fuggvenyt meghivjuk akkor a visszateresi ertekebol kiderul hogy a jatekoksok gyoztek e mar vagy sem.*/
+	public boolean gyozelem() {
 		Main.tabs++;
-		Main.log(this, "gyozelem()");
+		Main.log(this, "gyozelem() : true");
 		Main.tabs--;
+		return true;
 	}
-	
-	/**Játék elindításáért felelõs függvény.*/
+	/**Jatek elinditasaert felelos fuggveny.*/
 	public void startJatek(int Jatekosszam) {}
-	
-	/**Ez a függvény hóvihart hoz létre a pálya egy részén.*/
+	/**Ez a fuggveny hovihart hoz letre a palya egy reszen.*/
 	public void hovihar() {}
-	
-	/**Ezzel a függvénnyel tudjuk jelezni hogy felvettünk egy újabb alkatrészt.*/
+	/**Ezzel a fuggvennyel tudjuk jelezni hogy felvettunk egy ujabb alkatreszt.*/
 	public void raketaOsszeszed() {
 		Main.tabs++;
 		Main.log(this, "raketaOsszeszed()");
-		while(true) {
-			// a felhasználó dönthet a kimenetelrõl
-			Main.print("Ezzel együtt már megvan az összes rakétalkatrész? (i/n)");
-			String ans = Main.scanner.next();
-			if (ans.equals("i")) {
-				this.gyozelem();
-				break;
-			} else if (ans.equals("n")) {
-				break;
-			}
-		}
+		this.gyozelem();
 		Main.tabs--;
 	}
-	
+//uj
+	public int jatekosszam() {return szereplok.size();}
 }

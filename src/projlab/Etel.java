@@ -1,12 +1,13 @@
 package projlab;
 
 public class Etel extends Targy{
-	/**Ez a függvény az étel felszedésével járó változásokat valósítja meg.*/
+	
+	public Etel(int _id){
+		super(_id);
+	}
+	
+	/**Ez a fuggveny az etel felszedesevel jaro valtozasokat valositja meg.*/
 	public void osszeszed(Szereplo sz) {
-		Main.tabs++;
-		Main.log(this,"osszeszed(" + Main.nameOf(sz)+")");
-		//az étel a felvételekor egybõl elhasználódik, gyógyítja a szereplõt
 		sz.eves();
-		Main.tabs--;
 	}
 }

@@ -2,19 +2,12 @@ package projlab;
 
 public class Iglu extends Epitmeny{
 
-	public Iglu() {
-		Main.tabs++;
-		Main.print("<<destroy>> Uresepulet");
-		Main.print("<<create>> Iglu");
-		Main.tabs--;
+	public Iglu(Mezo m) {
+		super(m);
 	}
-	/**Ez a függvény az iglu hatásást valósítja meg a benne jévõ játékosokra hóvihar alatt.*/
-	public void hatas() {
-		//ha van iglu az adott mezõn, akkor a hóviharnak nincsen hatása
-		Main.tabs++;
-		Main.log(this, "hatas()");
-		Main.tabs--;
-		return;
-	}
+	/**Ez a fuggveny az iglu hatasast valositja meg a benne jevo jatekosokra hovihar alatt.*/
+	public void hatas() {}
+	
+	public void medve() {}
 
 }

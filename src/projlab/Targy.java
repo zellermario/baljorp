@@ -1,10 +1,16 @@
 package projlab;
-//tárgytípusok viselkedését meghatározó absztrakt õsosztály
-public abstract class Targy {
-	/**A tárgy azonosítója.*/
+
+public class Targy {
+	/**A targy azonositoja.*/
 	private int id;
-	/**Ez a függvény a tárgy használatát valósítja meg.*/
+	
+	public Targy(int _id) {
+		id = _id;
+	}
+	/**Ez a fuggveny a targy hasznalatat valositja meg.*/
 	public void hasznal(Szereplo sz) {}
-	/**Ez a függvény a tárgy felvételének hatásást valósítja meg.*/
+	/**Ez a fuggveny a targy felvetelenek hatasast valositja meg.*/
 	public void osszeszed(Szereplo sz) {}
+	
+	public int getId() {return id;}
 }
