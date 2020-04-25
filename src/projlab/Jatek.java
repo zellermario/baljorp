@@ -21,16 +21,12 @@ public class Jatek {
 	
 	/**Ha ezt a fuggvenyt meghivjuk a jatek vereseggel veget er.*/
 	public void vereseg() {
-		Main.tabs++;
-		Main.log(this, "vereseg()");
-		Main.tabs--;
+
 	}
 	
 	/**Ha ezt a fuggvenyt meghivjuk akkor a visszateresi ertekebol kiderul hogy a jatekoksok gyoztek e mar vagy sem.*/
 	public boolean gyozelem() {
-		Main.tabs++;
-		Main.log(this, "gyozelem() : true");
-		Main.tabs--;
+		
 		return true;
 	}
 	/**Jatek elinditasaert felelos fuggveny.*/
@@ -39,10 +35,7 @@ public class Jatek {
 	public void hovihar() {}
 	/**Ezzel a fuggvennyel tudjuk jelezni hogy felvettunk egy ujabb alkatreszt.*/
 	public void raketaOsszeszed() {
-		Main.tabs++;
-		Main.log(this, "raketaOsszeszed()");
-		this.gyozelem();
-		Main.tabs--;
+
 	}
 //uj
 	public int jatekosszam() {return szereplok.size();}

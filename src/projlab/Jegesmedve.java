@@ -14,7 +14,7 @@ public class Jegesmedve extends Szereplo {
 	}
 	
 	public void tamad() {
-		getKurrensMezo().medvetámad();
+		getKurrensMezo().medvetamad();
 	}
 	
 	public void hovihar() {}
