@@ -9,5 +9,9 @@ public class Iglu extends Epitmeny{
 	public void hatas() {}
 	
 	public void medve() {}
+	
+	public String toString() {
+		return "Iglu";
+	}
 
 }

@@ -2,8 +2,8 @@ package projlab;
 
 public class Jegesmedve extends Szereplo {
 	private boolean halott; 
-	public Jegesmedve(Jatek j) {
-		super(1, 1, j);
+	public Jegesmedve(Jatek j, Mezo kezdomezo) {
+		super(1, 1, j, kezdomezo);
 		halott = false;
 	}
 	
@@ -18,4 +18,8 @@ public class Jegesmedve extends Szereplo {
 	}
 	
 	public void hovihar() {}
+	
+	public String toString() {
+		return "Jegesmedve";
+	}
 }

@@ -2,8 +2,8 @@ package projlab;
 
 public class Luk extends Mezo{
 	
-	public Luk(int _id, Jatek j) {
-		super(_id, j);
+	public Luk(Jatek j) {
+		super(3, j);
 	}
 	
 	/**Ennek a fuggvenynek a visszateresi ertekebol tudhatjuk meg hogy ez luk.*/

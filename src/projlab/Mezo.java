@@ -1,18 +1,18 @@
 package projlab;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.TreeMap;
 
 public abstract class Mezo {
 	/**Mezon levo horetegek szama.*/
-	private int horeteg;
+	protected int horeteg;
 	/**Mezo azonositoja.*/
 	private int id;
 	/**Szomszedos mezok.*/
-	private Map<Integer, Mezo> szomszedos_mezok = new HashMap<Integer, Mezo>();
+	private Map<Integer, Mezo> szomszedos_mezok = new TreeMap<Integer, Mezo>();
 	/**A jatek aminek a resz a mezo.*/
 	private Jatek jatek;
 	/**A mezoben levo targy.*/
@@ -24,10 +24,11 @@ public abstract class Mezo {
 	
   //todo: itt konstruktorban jöjjön létre az üresépület, vagy a tagváltozónál?
 	public Mezo(int _id, Jatek j) {
+		id = _id;
 		epitmeny = new Uresepulet(this);
 		jatek = j;
-		Random rand = new Random();
-		horeteg = rand.nextInt(3) + 1;
+		//Random rand = new Random();
+		//horeteg = rand.nextInt(3) + 1;
 	}
 	
 	public Map<Integer, Mezo> getSzomszedos_mezok() {
@@ -128,6 +129,14 @@ public abstract class Mezo {
 			atleptet(sz,cel);
 			jatekosok.remove(sz);
 		}
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public int getHoreteg() {
+		return horeteg;
 	}
   
 }

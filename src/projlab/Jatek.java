@@ -21,7 +21,7 @@ public class Jatek {
 	
 	/**Ha ezt a fuggvenyt meghivjuk a jatek vereseggel veget er.*/
 	public void vereseg() {
-
+		
 	}
 	
 	/**Ha ezt a fuggvenyt meghivjuk akkor a visszateresi ertekebol kiderul hogy a jatekoksok gyoztek e mar vagy sem.*/
@@ -39,4 +39,11 @@ public class Jatek {
 	}
 //uj
 	public int jatekosszam() {return szereplok.size();}
+	public void addSzereplo(Szereplo szereplo) {
+		// TODO Auto-generated method stub
+	}
+	public void addJegesmedve(Jegesmedve maci) {
+		// TODO Auto-generated method stub
+		
+	}
 }

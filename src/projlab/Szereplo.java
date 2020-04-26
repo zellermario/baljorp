@@ -3,7 +3,7 @@ package projlab;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Szereplo {
+public abstract class Szereplo {
 	/**A jatekos hatra levo munkamennyisege.*/
 	private int munkamennyiseg;
 	
@@ -20,10 +20,11 @@ public class Szereplo {
 	/**A jatek aminek a jatekos a resze.*/
 	private Jatek jatek;
 	
-	public Szereplo(int maxm,  int maxh, Jatek j) {
+	public Szereplo(int maxm,  int maxh, Jatek j, Mezo kezdomezo) {
 		jatek = j;
 		maxmunka = maxm;
 		munkamennyiseg = maxm;
+		kurrensmezo = kezdomezo;
 		maxtestho = maxh;
 		testho = maxh;
 	}
@@ -92,4 +93,14 @@ public class Szereplo {
 	public void targyTorol(Targy t) {
 		sajat_targyak.remove(t);
 	}
+	public abstract String toString();
+
+	public int getTestho() {
+		return testho;
+	}
+	
+	public List<Targy> getTargyak() {
+		return sajat_targyak;
+	}
+	
 }
