@@ -1,0 +1,9 @@
+create SJ kezdes 0
+create SJ vegzes 0
+addNeighbor kezdes 1 vegzes
+addNeighbor vegzes 2 kezdes
+
+create Jegesmedve maci kezdes
+
+move maci 1
+pass maci

@@ -1,0 +1,6 @@
+create ST m 0
+
+create Sarkkutato s m
+
+useskill s m
+pass s

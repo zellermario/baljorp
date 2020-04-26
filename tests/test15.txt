@@ -1,0 +1,9 @@
+create SJ m1 0
+create L m2 0
+addNeighbor m1 1 m1
+addNeighbor m2 2 m1
+
+create Sarkkutato s m1
+
+useskill s m2
+pass s

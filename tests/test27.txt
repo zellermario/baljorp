@@ -1,0 +1,11 @@
+create SJ kezdes 0
+create SJ vegzes 0
+addNeighbor kezdes 1 vegzes
+addNeighbor vegzes 2 kezdes
+
+create Eszkimo e vegzes
+create Iglu i vegzes
+create jegesmedve m kezdes
+
+move m 1
+pass m

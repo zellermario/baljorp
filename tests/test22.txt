@@ -1,0 +1,6 @@
+create SJ m 0
+
+create Eszkimo e m
+create Sator tent player e
+
+snowstorm m

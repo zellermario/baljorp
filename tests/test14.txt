@@ -1,0 +1,6 @@
+create ISJ m 0 2
+
+create Sarkkutato s m
+
+useskill s m
+pass s 
