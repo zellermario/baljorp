@@ -1,0 +1,10 @@
+create SJ m 0
+
+create Eszkimo e1 m
+create Eszkimo e2 m
+create RaketaAlkatresz r1 player e2
+create RaketaAlkatresz r2 player e2
+create RaketaAlkatresz r3 field m
+
+digobject e1
+pass e1

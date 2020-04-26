@@ -1,0 +1,10 @@
+Fields:
+SJ kezdes (0) - objects: x
+	neighbours: [(1, vegzes)]
+SJ vegzes (0) - objects: x
+	neighbours: [(2, kezdes)]
+
+Buildings:
+
+Actors:
+> Medve maci on vegzes

@@ -1,0 +1,8 @@
+create SJ m 2
+
+create Eszkimo e m
+create Lapat l filed m
+
+digobject e
+useobject l e
+pass e
