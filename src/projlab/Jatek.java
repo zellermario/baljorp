@@ -40,8 +40,8 @@ public class Jatek {
 		szereplok.add(sz);
 	}
 	/**kulon hozzaadas a jegesmedveknek -  nyilvantartjuk, hogy mennyi van belole*/
-	public void addJegesmedve() {
-		szereplok.add(new Jegesmedve(this));
+	public void addJegesmedve(Jegesmedve j) {
+		szereplok.add(j);
 		jegesmedveszam++;
 	}
 	/**Mezok hozzaadasa a jatekhoz
@@ -107,13 +107,6 @@ public class Jatek {
 		osszeszedett_alkatreszek++;
 	}
 
-	public void addSzereplo(Szereplo szereplo) {
-		// TODO Auto-generated method stub
-	}
-	public void addJegesmedve(Jegesmedve maci) {
-		// TODO Auto-generated method stub
-		
-	}
 	/**ezzel a fuggvennyel tudjuk lekerdezni, hogy hany jatekos van*/
 	public int jatekosszam() {return szereplok.size()-jegesmedveszam;}
   

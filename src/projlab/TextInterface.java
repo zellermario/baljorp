@@ -105,11 +105,11 @@ public class TextInterface {
 			switch (args[0]) {
 				case "Buvarruha": targy = new Buvarruha(); break;
 				case "Kotel": targy = new Kotel(); break;
-				case "Etel": targy = new Etel(2); break; 
-				case "Lapat": targy = new Lapat(3); break; // TODO: ID-kkal mi legyen akkor?
-				case "TorekenyAso": targy = new TorekenyAso(4); break;
-				case "Sator": targy = new Sator(5); break;
-				case "RaketaAlkatresz": targy = new Raketaalkatresz(7, game); break;
+				case "Etel": targy = new Etel(); break; 
+				case "Lapat": targy = new Lapat(); break;
+				case "TorekenyAso": targy = new TorekenyAso(); break;
+				case "Sator": targy = new Sator(); break;
+				case "RaketaAlkatresz": targy = new Raketaalkatresz(game); break;
 			}
 			entities.put(args[1], targy);
 			if (entities.get(args[3]) == null) { System.out.println("Nincs ilyen nevu mezo vagy szereplo."); return; }
@@ -268,7 +268,7 @@ public class TextInterface {
 				else System.out.print("x\n");
 				System.out.print("\tneighbours: [");
 				int i = 0;
-				for (Entry<Integer, Mezo> neighbor : mezo.getSzomszedos_mezok().entrySet()) { // TODO: szomszedos_mezok legyen TreeMap
+				for (Entry<Integer, Mezo> neighbor : mezo.getSzomszedos_mezok().entrySet()) {
 					System.out.print("(" + neighbor.getKey() + ",");
 					entities.forEach((name, obj) -> System.out.print(obj.equals(neighbor.getValue()) ? name + ")" : ""));
 					i++;
