@@ -1,6 +1,14 @@
 package projlab;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.PrintStream;
+import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.function.Consumer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -11,6 +19,10 @@ import java.util.TreeMap;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 
 /** Szoveges interfesz a jatekhoz.
@@ -36,7 +48,7 @@ public class TextInterface {
 		this.game = jatek;
 		
 		// create SJ <name> <snowlayers>
-		patterns.put(Pattern.compile("create SJ ([a-zA-z]+[a-zA-z_0-9]*) ([0-9]+)"), args -> {
+		patterns.put(Pattern.compile("^create SJ ([a-zA-z]+[a-zA-z_0-9]*) ([0-9]+)$"), args -> {
 			int snowlayers = Integer.parseInt(args[1]);
 			Mezo mezo = new Stabil_Jegtabla(game, snowlayers);
 			entities.put(args[0], mezo);
@@ -44,7 +56,7 @@ public class TextInterface {
 		});
 		
 		// create ISJ <name> <snowlayers> <capacity>
-		patterns.put(Pattern.compile("create ISJ ([a-zA-z]+[a-zA-z_0-9]*) ([0-9]+) ([0-9]+)"), args -> {
+		patterns.put(Pattern.compile("^create ISJ ([a-zA-z]+[a-zA-z_0-9]*) ([0-9]+) ([0-9]+)$"), args -> {
 			int snowlayers = Integer.parseInt(args[1]);
 			int capacity = Integer.parseInt(args[2]);
 			Mezo mezo = new Instabil_Jegtabla(game, snowlayers, capacity);
@@ -53,14 +65,14 @@ public class TextInterface {
 		});
 
 		// create L <name>
-		patterns.put(Pattern.compile("create L ([a-zA-z]+[a-zA-z_0-9]*)"), args -> {
+		patterns.put(Pattern.compile("^create L ([a-zA-z]+[a-zA-z_0-9]*)$"), args -> {
 			Mezo mezo = new Luk(game);
 			entities.put(args[0], mezo);
 			fields.add(mezo);
 		});
 		
 		// addNeighbor <field1> <dir> <field2>
-		patterns.put(Pattern.compile("addNeighbor ([a-zA-z]+[a-zA-z_0-9]*) ([0-9]+) ([a-zA-z]+[a-zA-z_0-9]*)"), args -> {
+		patterns.put(Pattern.compile("^addNeighbor ([a-zA-z]+[a-zA-z_0-9]*) ([0-9]+) ([a-zA-z]+[a-zA-z_0-9]*)$"), args -> {
 			Mezo field1 = (Mezo)entities.get(args[0]);
 			Mezo field2 = (Mezo)entities.get(args[2]);
 			int irany = Integer.parseInt(args[1]);
@@ -69,7 +81,7 @@ public class TextInterface {
 		});
 		
 		// create <szereplo> <name> <field>
-		patterns.put(Pattern.compile("create (Eszkimo|Sarkkutato|Jegesmedve) ([a-zA-z]+[a-zA-z_0-9]*) ([a-zA-z_]+[a-zA-z_0-9]*)"), 
+		patterns.put(Pattern.compile("^create (Eszkimo|Sarkkutato|Jegesmedve) ([a-zA-z]+[a-zA-z_0-9]*) ([a-zA-z_]+[a-zA-z_0-9]*)$"), 
 		args -> {
 			Mezo mezo = (Mezo)entities.get(args[2]);
 			if (mezo == null) { System.out.println("Nincs ilyen nevu mezo."); return; }
@@ -84,7 +96,7 @@ public class TextInterface {
 		});
 		
 		// create <epitmeny> <name> <field>
-		patterns.put(Pattern.compile("create (Iglu|FelepitettSator) ([a-zA-z]+[a-zA-z_0-9]*) ([a-zA-z]+[a-zA-z_0-9]*)"), 
+		patterns.put(Pattern.compile("^create (Iglu|FelepitettSator) ([a-zA-z]+[a-zA-z_0-9]*) ([a-zA-z]+[a-zA-z_0-9]*)$"), 
 		args -> {
 			Mezo mezo = (Mezo)entities.get(args[2]);
 			if (mezo == null) { System.out.println("Nincs ilyen nevu mezo."); return; }
@@ -98,8 +110,8 @@ public class TextInterface {
 		
 		// create <targy> <object_name> player <player_name>
 		// create <targy> <object_name> field <field_name>
-		patterns.put(Pattern.compile("create (Buvarruha|Kotel|Etel|Lapat|TorekenyAso|Sator|RaketaAlkatresz) ([a-zA-z]+[a-zA-z_0-9]*)"
-								      + " (?:(player) ([a-zA-z]+[a-zA-z_0-9]*)|(field) ([a-zA-z]+[a-zA-z_0-9]*))"), 
+		patterns.put(Pattern.compile("^create (Buvarruha|Kotel|Etel|Lapat|TorekenyAso|Sator|RaketaAlkatresz) ([a-zA-z]+[a-zA-z_0-9]*)"
+								      + " (?:(player) ([a-zA-z]+[a-zA-z_0-9]*)|(field) ([a-zA-z]+[a-zA-z_0-9]*))$"), 
 		args -> {
 			Targy targy = null;
 			switch (args[0]) {
@@ -118,7 +130,7 @@ public class TextInterface {
 		});
 		
 		// useskill <player> <field>
-		patterns.put(Pattern.compile("useskill ([a-zA-z]+[a-zA-z_0-9]*) ([a-zA-z]+[a-zA-z_0-9]*)"), args -> {
+		patterns.put(Pattern.compile("^useskill ([a-zA-z]+[a-zA-z_0-9]*) ([a-zA-z]+[a-zA-z_0-9]*)$"), args -> {
 			Szereplo szereplo = (Szereplo)entities.get(args[0]);
 			Mezo mezo = (Mezo)entities.get(args[1]);
 			if (szereplo == null || mezo == null) { System.out.println("Nincs ilyen nevu mezo vagy szereplo."); return; }
@@ -126,7 +138,7 @@ public class TextInterface {
 		});
 		
 		// useobject <object> <player> [dir]
-		patterns.put(Pattern.compile("useobject ([a-zA-z]+[a-zA-z_0-9]*) ([a-zA-z]+[a-zA-z_0-9]*) ?([0-9]+)?"), args -> {
+		patterns.put(Pattern.compile("^useobject ([a-zA-z]+[a-zA-z_0-9]*) ([a-zA-z]+[a-zA-z_0-9]*) ?([0-9]+)?$"), args -> {
 			Targy targy = (Targy)entities.get(args[0]);
 			Szereplo szereplo = (Szereplo)entities.get(args[1]);
 			if (szereplo == null || targy == null) { System.out.println("Nincs ilyen nevu targy vagy szereplo."); return; }
@@ -142,7 +154,7 @@ public class TextInterface {
 		});
 		
 		// move <player> <dir>
-		patterns.put(Pattern.compile("move ([a-zA-z]+[a-zA-z_0-9]*) ([0-9]+)"), args -> {
+		patterns.put(Pattern.compile("^move ([a-zA-z]+[a-zA-z_0-9]*) ([0-9]+)$"), args -> {
 			Szereplo szereplo = (Szereplo)entities.get(args[0]);
 			if (szereplo == null) { System.out.println("Nincs ilyen nevu szereplo."); return; }
 			int irany;
@@ -157,41 +169,41 @@ public class TextInterface {
 		});
 		
 		// digobject <player>
-		patterns.put(Pattern.compile("digobject ([a-zA-z]+[a-zA-z_0-9]*)"), args -> {
+		patterns.put(Pattern.compile("^digobject ([a-zA-z]+[a-zA-z_0-9]*)$"), args -> {
 			Szereplo szereplo = (Szereplo)entities.get(args[0]);
 			if (szereplo == null) { System.out.println("Nincs ilyen nevu szereplo."); return; }
 			szereplo.targyKiasas();
 		});
 		
 		// cleansnow <player>
-		patterns.put(Pattern.compile("digobject ([a-zA-z]+[a-zA-z_0-9]*)"), args -> {
+		patterns.put(Pattern.compile("^digobject ([a-zA-z]+[a-zA-z_0-9]*)$"), args -> {
 			Szereplo szereplo = (Szereplo)entities.get(args[0]);
 			if (szereplo == null) { System.out.println("Nincs ilyen nevu szereplo."); return; }
 			szereplo.hoTakaritas(1);
 		});
 		
 		// pass <player>
-		patterns.put(Pattern.compile("pass"), args -> {
+		patterns.put(Pattern.compile("^pass$"), args -> {
 			Szereplo szereplo = (Szereplo)entities.get(args[0]);
 			if (szereplo == null) { System.out.println("Nincs ilyen nevu szereplo."); return; }
 			szereplo.passz();
 		});
 		
 		// snowstorm <field>
-		patterns.put(Pattern.compile("snowstorm ([a-zA-z]+[a-zA-z_0-9]*)"), args -> {
+		patterns.put(Pattern.compile("^snowstorm ([a-zA-z]+[a-zA-z_0-9]*)$"), args -> {
 			Mezo mezo = (Mezo)entities.get(args[0]);
 			if (mezo == null) { System.out.println("Nincs ilyen nevu mezo."); return; }
 			mezo.hovihar();
 		});
 		
 		// getStatus
-		patterns.put(Pattern.compile("getStatus"), args -> {
+		patterns.put(Pattern.compile("^getStatus$"), __ -> {
 			printGameStatus();
 		});
 		
 		// runscript <filename>
-		patterns.put(Pattern.compile("runscript ([\\w,\\s-\\.]+)"), args -> {
-			File file = new File(System.getProperty("user.dir") + "\\tests\\" + args[0] + ".txt");
+		patterns.put(Pattern.compile("^runscript ([\\w,\\s-\\.]+)$"), args -> {
+			File file = new File(System.getProperty("user.dir") + "\\tests\\" + args[0]);
 			Scanner scanner;
 			try {
 				scanner = new Scanner(file);
@@ -204,8 +216,37 @@ public class TextInterface {
 			scanner.close();
 		});
 		
+		// runalltests
+		patterns.put(Pattern.compile("^runalltests$"), __ -> {
+			File config = new File("./tests/tests.config");
+			Scanner configScanner;
+			try {
+				configScanner = new Scanner(config);
+			} catch (FileNotFoundException e) {
+				System.out.println("Helytelen fajlnev vagy nem nyithato meg."); return;
+			}
+			while(configScanner.hasNextLine()) {
+				startNewGame();
+				String[] tokens = configScanner.nextLine().split(" ");
+				executeCommand("runscript " + tokens[1]);
+				ByteArrayOutputStream testOutput = new ByteArrayOutputStream();
+				PrintStream ps = new PrintStream(testOutput, true);
+				PrintStream stdout = System.out;
+				System.setOut(ps);
+				executeCommand("getStatus");
+				System.setOut(stdout);
+				Path expectedPath = Paths.get(System.getProperty("user.dir") + "\\tests\\" + tokens[2]);
+				try {
+					checkTestCase(tokens[0], Files.readAllBytes(expectedPath), testOutput.toByteArray());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			configScanner.close();
+		});
+		
 		// help
-		patterns.put(Pattern.compile("help"), args -> {
+		patterns.put(Pattern.compile("^help$"), __ -> {
 			System.out.print("Az objektumok nevei kis- es nagybetuket es a _ karaktert tartalmazhatjak. Az elso karakter nem lehet szam.\n"
 					+ "Hasznalhato parancsok:\n"
 					+ "> create SJ <name:string> <snowlayers:int>\n"
@@ -222,13 +263,13 @@ public class TextInterface {
 					+ "> cleansnow <player:string>\n"
 					+ "> pass <player:string>\n"
 					+ "> snowstorm <field:string>\n"
-					+ "> runscript <filename:string>\n"
+					+ "> runscript <scriptname:string>\n"
 					+ "> getStatus\n"
 					+ "> help\n");
 		});
 		
 		// whitespace = NOOP
-		patterns.put(Pattern.compile("^\\s*$"), args -> {});
+		patterns.put(Pattern.compile("^\\s*$"), __ -> {});
 		
 	}
 	
@@ -254,7 +295,8 @@ public class TextInterface {
 	}
 	
 	/**
-	 * A jatek aktualis allapotat irja ki a standard kimenetre.
+	 * A jatek aktualis allapotat irja ki a standard kimenetre
+	 * a dokumentacioban megadott kimeneti nyelven.
 	 */
 	public void printGameStatus() {
 		System.out.println("Fields:");
@@ -317,5 +359,57 @@ public class TextInterface {
 				System.out.print("]\n");
 			}
 		}
+	}
+	/**
+	 * Resets the game, allowing for running new tests
+	 * in a blank environment.
+	 */
+	public void startNewGame() {
+		this.game = new Jatek();
+		entities.clear();
+		buildings.clear();
+		fields.clear();
+		actors.clear();
+	}
+	
+	/**
+	 * Verifies whether a given test case produced the expected result
+	 * and then prints the result to the standard output.
+	 * @param testname Name of the test case shown in the output message
+	 * @param expected The expected result text
+	 * @param actual The actual result text
+	 */
+	private void checkTestCase(String testname, byte[] expected, byte[] actual) {
+		ByteArrayInputStream expectedIS = new ByteArrayInputStream(expected);
+		ByteArrayInputStream actualIS = new ByteArrayInputStream(actual);
+		Scanner expectedS = new Scanner(expectedIS);
+		Scanner actualS = new Scanner(actualIS);
+		boolean matching = true;
+		while(expectedS.hasNextLine()) {
+			String actualLine = actualS.nextLine().strip();
+			String expectedLine = expectedS.nextLine().strip();
+			if (!actualLine.equals(expectedLine)) {
+				matching = false;
+				break;
+			}
+		}
+		while(actualS.hasNext()) {
+			if(!actualS.nextLine().equals("")) {
+				matching = false;
+				break;
+			}
+		}
+		if (matching) 
+			System.out.println("--> Test case " + testname + " - SUCCESS");
+		else {			
+			System.out.println("--> Test case " + testname + " - FAILED");
+			System.out.println("_____________ Expected: _____________");
+			System.out.println(new String(expected));
+			System.out.println("_____________ Actual: _______________");
+			System.out.println(new String(actual));
+			System.out.println("_____________________________________");
+		}
+		expectedS.close();
+		actualS.close();
 	}
 }
