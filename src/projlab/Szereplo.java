@@ -7,6 +7,9 @@ public class Szereplo {
 	/**A jatekos hatra levo munkamennyisege.*/
 	protected int munkamennyiseg;
 	
+	static int hanyadik = 0;
+	int sorszam;
+	
 	private int maxmunka;
 	
 	private int maxtestho;
@@ -18,7 +21,7 @@ public class Szereplo {
 	/**A jatekosnal levo targyak.*/
 	private List<Targy> sajat_targyak = new ArrayList<Targy>();
 	/**A jatek aminek a jatekos a resze.*/
-	private Jatek jatek;
+	protected Jatek jatek;
 	
 	public Szereplo(int maxm, int maxh, Jatek j) {
 		jatek = j;
@@ -26,14 +29,17 @@ public class Szereplo {
 		munkamennyiseg = maxm;
 		maxtestho = maxh;
 		testho = maxh;
+		sorszam = hanyadik;
+		hanyadik++;
 	}
 	
 	/**A jatekos lepeseit megvalosito fuggveny.*/
 	public void lepes(int irany) {
-		if(munkamennyiseg == 0) return;
+		if(sorszam != jatek.getAktualis() || munkamennyiseg == 0) return;
 		Mezo cel = kurrensmezo.getSzomszed(irany);
 		kurrensmezo.jatekosKuldes(this, cel);
 		munkamennyiseg--;
+		jatek.addToCounter(1);
 	}
 	/**Ez a fuggveny a hovihar jatekosra gyakorolt hatasast valositja meg.*/
 	public void hovihar() {
@@ -50,24 +56,27 @@ public class Szereplo {
 	
 	/**Egy felvett targy hasznalatat valositja meg.*/
 	public void targyHasznalat(int id) {
-		if(munkamennyiseg == 0) return;
+		if(sorszam != jatek.getAktualis() || munkamennyiseg == 0) return;
 		for(Targy t : sajat_targyak) {
 			if(t.getId() == id) t.hasznal(this);
 		}
 		munkamennyiseg--;
+		jatek.addToCounter(1);
 	}
 	
 	/**Ezzel a fuggvennyel tudunk targyakat kiasni a mezokbol.*/
 	public void targyKiasas() {
-		if(munkamennyiseg == 0) return;
+		if(sorszam != jatek.getAktualis() || munkamennyiseg == 0) return;
 		kurrensmezo.targyAtad(this);
 		munkamennyiseg--;
+		jatek.addToCounter(1);
 	}
 	/**Ez a fuggveny valositja meg a horeteg eltavolitasat az adott mezorol.*/
 	public void hoTakaritas(int i) {
-		if(munkamennyiseg == 0) return;
+		if(sorszam != jatek.getAktualis() || munkamennyiseg == 0) return;
 		kurrensmezo.hoTakarit(i);
 		munkamennyiseg--;
+		jatek.addToCounter(1);
 	}
   /**Ezzel a fuggvennyel tudjuk jelzi a jateknak ha a jatekos meghal.*/
   public void halal() {
@@ -80,7 +89,9 @@ public class Szereplo {
 	}
     
 	public void passz() {
+		jatek.addToCounter(munkamennyiseg);
 		munkamennyiseg = maxmunka;
+		
 	}
 	
 	public void setMezo(Mezo m) {

@@ -7,8 +7,10 @@ public class Eszkimo extends Szereplo{
 	}
 	/**Ez a fuggveny valositja meg az eszkimo kepesseget*/
 	public void kepessegHasznal(Mezo cel) {
+		if(sorszam != jatek.getAktualis() || munkamennyiseg == 0) return;
 		cel.epit(new Iglu(this.getKurrensMezo()));
 		munkamennyiseg--;
+		jatek.addToCounter(1);
 	}
 }
 

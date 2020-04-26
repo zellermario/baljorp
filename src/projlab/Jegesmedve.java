@@ -3,12 +3,18 @@ package projlab;
 public class Jegesmedve extends Szereplo {
 	private boolean halott; 
 	public Jegesmedve(Jatek j) {
-		super(1, 1, j);
+		super(4, 4, j);
 		halott = false;
 	}
 	
 	public void kor() {
-		if(getKurrensMezo().megvizsgal() == 0) halal();
+		if(!halott) {
+			if(getKurrensMezo().megvizsgal() == 0) halal();
+			
+		}
+		
+		
+		
 	}
 	
 	public void halal() {
