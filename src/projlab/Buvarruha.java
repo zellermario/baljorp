@@ -1,7 +1,7 @@
 package projlab;
 
 public class Buvarruha extends Targy {
-	
+	/**a konstruktor beallitja a megfelelo id-t az osben*/
 	public Buvarruha() {
 		super(0);
 	}

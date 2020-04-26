@@ -8,7 +8,10 @@ public class Sarkkutato extends Szereplo{
 	
 	/**Ez a fuggveny a sarkkutato kepesseget valositja meg.*/ 
 	public void kepessegHasznal(Mezo cel) {
+		if(sorszam != jatek.getAktualis() || munkamennyiseg == 0) return;
 		int teher = cel.megvizsgal();
+		munkamennyiseg--;
+		jatek.addToCounter(1);
 	}
 	
 	public String toString() {

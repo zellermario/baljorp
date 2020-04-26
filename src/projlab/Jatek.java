@@ -2,43 +2,111 @@ package projlab;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Jatek {
 	/**Eddig hany alkatreszt gyujottunk ossze a gyozedelmet jeleto alkatreszekbol.*/
-	private int osszeszedett_alkatreszek;
-	/**A jatekosok szama*/
-	private int jatekosszam;
+	private int osszeszedett_alkatreszek = 0;
+
 	/**Amelyik jatekos eppen tevekenykedhet.*/
 	private int aktualisJatekos = 0;
+	/**ez alkapjan dontjuk el, hogy vege-e a jateknak*/
+	private boolean jatekvege = false;
+	/**szamontartjuk, hogy hany jegesmedve van a jatekosok kozott - ez a gyozelmi feltetelek meghatarozasanal fontos*/
+	private int jegesmedveszam = 0;
 	/**Jatekosok tombje.*/
 	private List<Szereplo> szereplok = new ArrayList<Szereplo>();
-	/**A palyan levo mezok tombje.*/
-	private Mezo mezok[];
 	
-	public Jatek() {}
-	/**Ez a fuggveny a jatek letrehozasaert felelos.*/
+	/**A palyan levo mezok tombje.*/
+	private List<Mezo> mezok = new ArrayList<Mezo>();
+	
+	/**jatekosok altal hasznalt munka alapjan szamlal, a segitsegevel hatarozzuk meg, hogy ki kovetkezik*/
+	private int jatekosCounter = 0;
+	
+	
+	/**a koroket vezerlo fuggveny, a munkamennyisegek alapjan tudjuk ezt szamon tartani, ebben segit a passz fuggvenye a Szereplonek*/
+	public void addToCounter(int i) {
+		jatekosCounter = (i+jatekosCounter) % (4*szereplok.size());
+		aktualisJatekos = jatekosCounter / 4;
+		szereplok.get(aktualisJatekos).kor();
+	}
+	
+	/**visszaadja az epp soron kovetkezo jatekos sorszamat*/
+	public int getAktualis() {return aktualisJatekos;}
+	
+	
+	/**ennek a fuggvenynek a segitsegevel adhatunk hozza ujabb jatekosokat a jatekhoz*/
+	public void addSzereplo(Szereplo sz) {
+		szereplok.add(sz);
+	}
+	/**kulon hozzaadas a jegesmedveknek -  nyilvantartjuk, hogy mennyi van belole*/
+	public void addJegesmedve() {
+		szereplok.add(new Jegesmedve(this));
+		jegesmedveszam++;
+	}
+	/**Mezok hozzaadasa a jatekhoz
+	 * a mezok szomszedossagi viszonyat mar korabban definialtuk*/
+	public void addMezo(Mezo m) {
+		mezok.add(m);
+	}
+	
+	/**kor elejen leromboljuk az osszes olyan epuletet, ami ideiglenes
+	 * most a tesztek egyszerubb vegrehajtasa erdekeben determinisztikusan hivjuk meg
+	 */
+	public void epuletRombol() {
+		for(Mezo m : mezok) m.epuletRombol();
+	}
+	
+	/**Ez a fuggveny a jatek letrehozasaert felelos
+	 * most a tartalma lenyegeben a tesztesetekben kerul megvalositasra*/
 	public void ujJatek() {}
 	
 	/**Ha ezt a fuggvenyt meghivjuk a jatek vereseggel veget er.*/
 	public void vereseg() {
-		
+		jatekvege = true;
+		//valami kirajzolas a grafikus programban
 	}
 	
-	/**Ha ezt a fuggvenyt meghivjuk akkor a visszateresi ertekebol kiderul hogy a jatekoksok gyoztek e mar vagy sem.*/
-	public boolean gyozelem() {
-		
-		return true;
+	public void nextJatekos() {
+		aktualisJatekos++;
+		if(aktualisJatekos == szereplok.size()) aktualisJatekos = 0;
+		}
+	/**a fo ciklus, de a tesztek kedveert a determinisztikus leptetest a jatekosCounter segitsegevel tesszuk meg*/
+	public void kor() {
+		epuletRombol();
+		for(aktualisJatekos = 0; aktualisJatekos < szereplok.size(); aktualisJatekos++) {
+			szereplok.get(aktualisJatekos).kor();
+			if(jatekvege) break;
+		}
+		hovihar();
 	}
-	/**Jatek elinditasaert felelos fuggveny.*/
-	public void startJatek(int Jatekosszam) {}
+	
+	/**Ha ezt a fuggvenyt meghivjuk akkor a visszateresi ertekebol kiderul hogy a jatekoksok gyoztek-e mar vagy sem.*/
+	public boolean gyozelem() {	
+		if(osszeszedett_alkatreszek == 3)
+			return true;
+		else return false;
+	}
+	/**Jatek elinditasaert felelos fuggveny. A teszteknel nem hasznaljuk, hogy a determinisztikus leptetes egyszeruen megvalosithato legyen*/
+	public void startJatek(int jatekosszam) {
+		while(!jatekvege) {
+			kor();
+		}
+	}
 	/**Ez a fuggveny hovihart hoz letre a palya egy reszen.*/
-	public void hovihar() {}
+	public void hovihar() {
+		Random rand = new Random();
+		for(Mezo m : mezok) {
+			int temp = rand.nextInt(6);
+			if(temp == 0) m.hovihar();
+		}
+		
+	}
 	/**Ezzel a fuggvennyel tudjuk jelezni hogy felvettunk egy ujabb alkatreszt.*/
 	public void raketaOsszeszed() {
-
+		osszeszedett_alkatreszek++;
 	}
-//uj
-	public int jatekosszam() {return szereplok.size();}
+
 	public void addSzereplo(Szereplo szereplo) {
 		// TODO Auto-generated method stub
 	}
@@ -46,4 +114,7 @@ public class Jatek {
 		// TODO Auto-generated method stub
 		
 	}
+	/**ezzel a fuggvennyel tudjuk lekerdezni, hogy hany jatekos van*/
+	public int jatekosszam() {return szereplok.size()-jegesmedveszam;}
+  
 }

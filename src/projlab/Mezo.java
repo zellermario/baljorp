@@ -22,7 +22,7 @@ public abstract class Mezo {
 	/**A mezon levo jatekosok.*/
 	protected List<Szereplo> jatekosok = new ArrayList<Szereplo>();
 	
-  //todo: itt konstruktorban jöjjön létre az üresépület, vagy a tagváltozónál?
+  //todo valasz: szerintem edesmindegy
 	public Mezo(int _id, Jatek j) {
 		id = _id;
 		epitmeny = new Uresepulet(this);
@@ -30,7 +30,7 @@ public abstract class Mezo {
 		//Random rand = new Random();
 		//horeteg = rand.nextInt(3) + 1;
 	}
-	
+	/**visszaadja a szomszedossagot tarolo strukturat*/
 	public Map<Integer, Mezo> getSzomszedos_mezok() {
 		return szomszedos_mezok;
 	}
@@ -66,11 +66,11 @@ public abstract class Mezo {
 	}
 	/**A mezo teherbiro kepessegevel ter vissza.*/
 	abstract int megvizsgal();
-	
+	/**ellenorizzuk, hogy minden jatekos egy mezon all-e - ez a gyozelmi feltetelek egyike*/
 	public void ellenoriz() {
 		if(jatekosok.size() == jatek.jatekosszam()) jatek.gyozelem();
 	}
-	/**Ezzel a fuggvennyel tudunk iglut epiteni a mezore.*/
+	/**Ezzel a fuggvennyel tudunk kulonbozo epitmenyeket epiteni a mezore.*/
 	public void epit(Epitmeny e) {
 		epitmeny = e;
 	}
@@ -79,51 +79,48 @@ public abstract class Mezo {
 		for(Szereplo i : jatekosok)
 			i.hovihar();
 	}
-
+	/**beallitja a mezo szomszedossagi kapcsolatat*/
 	public void setSzomszed(int irany, Mezo szomszed) {
 		szomszedos_mezok.put(irany, szomszed);
 	}
-	
+	/**visszaadja a mezo adott iranyban levo szomszedjat*/
 	public Mezo getSzomszed(int irany) {
 		return szomszedos_mezok.get(irany);
 	}
 	
-	
+	/**a medvetamadast kezelo fuggveny, megnezi, az epuletek milyen hatassal vannak a medvere*/
 	public void medvetamad() {
 		epitmeny.medve();
 	}
-	
+	/**ha az epulet nem vedi meg a jatekosokat, meghivodik ez a fuggveny es megoli oket*/
 	void medvemegol() {
 		for(Szereplo i : jatekosok)
 			i.halal();
 	}
-	
+	/**az ideiglenes epitmenyt lerombolja a mezon*/
 	void epuletRombol() {
 		epitmeny.rombol();
-		epit(new Uresepulet(this));
 	}
-	
+	/**olyan fuggveny, ami mindenkeppen atmozgatja a szereplot - csak a lukban kell*/
 	public void atleptet(Szereplo sz, Mezo cel) {}
 
+	/**visszaadja, hogy milyen targy van belefagyva a jegbe*/
 	public Targy getTargy() {
 		return belefagyott_targy;
 	}
-	
+	/**beallitja a jegbefagyott targyat*/
 	public void setTargy(Targy t) {
 		this.belefagyott_targy = t;
 	}
-	
+	/**beallitja a horeteget a mezon*/
 	public void setHoreteg(int i) {
 		horeteg = i;
 	}
-//uj
+	/**visszaadja a mezon allo jatekosok szamat*/
 	public int rajta_levo_jatekosok() {return jatekosok.size();}
 	
-	public void halal() {
-		for(Szereplo i : jatekosok)
-			i.halal();
-	}
 	
+	/**a kotellel valo menekitest valositja meg ez a fuggveny*/
 	public void kiment_mindenkit(Mezo cel) {
 		for(Szereplo sz : jatekosok) {
 			atleptet(sz,cel);

@@ -3,7 +3,7 @@ package projlab;
 public class Targy {
 	/**A targy azonositoja.*/
 	private int id;
-	
+	/**beallitjuk a megfelelo id-t a leszarmazottaktol fuggoen*/
 	public Targy(int _id) {
 		id = _id;
 	}

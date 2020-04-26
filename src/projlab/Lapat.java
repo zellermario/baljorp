@@ -1,9 +1,9 @@
 package projlab;
 
 public class Lapat extends Targy {
-	
-	public Lapat(int _id) {
-		super(_id);
+	/**a konstruktor beallitja a megfelelo id-t az osben*/
+	public Lapat() {
+		super(3);
 	}
 	
 	/**Ez a fuggveny a lapat hasznalatat valositja meg. */
