@@ -8,6 +8,7 @@ public class Eszkimo extends Szereplo{
 	/**Ez a fuggveny valositja meg az eszkimo kepesseget*/
 	public void kepessegHasznal(Mezo cel) {
 		cel.epit(new Iglu(this.getKurrensMezo()));
+		munkamennyiseg--;
 	}
 }
 

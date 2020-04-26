@@ -7,7 +7,9 @@ public class Jegesmedve extends Szereplo {
 		halott = false;
 	}
 	
-	public void kor() {}
+	public void kor() {
+		if(getKurrensMezo().megvizsgal() == 0) halal();
+	}
 	
 	public void halal() {
 		halott = true;

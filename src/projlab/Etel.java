@@ -2,8 +2,8 @@ package projlab;
 
 public class Etel extends Targy{
 	
-	public Etel(int _id){
-		super(_id);
+	public Etel(){
+		super(1);
 	}
 	
 	/**Ez a fuggveny az etel felszedesevel jaro valtozasokat valositja meg.*/

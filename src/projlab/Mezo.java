@@ -22,7 +22,7 @@ public abstract class Mezo {
 	/**A mezon levo jatekosok.*/
 	protected List<Szereplo> jatekosok = new ArrayList<Szereplo>();
 	
-  //todo: itt konstruktorban jöjjön létre az üresépület, vagy a tagváltozónál?
+  //todo valasz: szerintem edesmindegy
 	public Mezo(int _id, Jatek j) {
 		epitmeny = new Uresepulet(this);
 		jatek = j;
