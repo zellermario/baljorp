@@ -7,8 +7,7 @@ import java.util.Random;
 public class Jatek {
 	/**Eddig hany alkatreszt gyujottunk ossze a gyozedelmet jeleto alkatreszekbol.*/
 	private int osszeszedett_alkatreszek = 0;
-	/**A jatekosok szama*/
-	private int jatekosszam = 0;
+
 	/**Amelyik jatekos eppen tevekenykedhet.*/
 	private int aktualisJatekos = 0;
 	
@@ -20,6 +19,15 @@ public class Jatek {
 	
 	/**A palyan levo mezok tombje.*/
 	private List<Mezo> mezok = new ArrayList<Mezo>();
+	
+	private int jatekosCounter = 0;
+	
+	public void addToCounter(int i) {
+		jatekosCounter = (i+jatekosCounter) % (4*szereplok.size());
+		aktualisJatekos = jatekosCounter / 4;
+		szereplok.get(aktualisJatekos).kor();
+	}
+	public int getAktualis() {return aktualisJatekos;}
 	
 	public Jatek() {}
 	
@@ -62,7 +70,7 @@ public class Jatek {
 		hovihar();
 	}
 	
-	/**Ha ezt a fuggvenyt meghivjuk akkor a visszateresi ertekebol kiderul hogy a jatekoksok gyoztek e mar vagy sem.*/
+	/**Ha ezt a fuggvenyt meghivjuk akkor a visszateresi ertekebol kiderul hogy a jatekoksok gyoztek-e mar vagy sem.*/
 	public boolean gyozelem() {	
 		if(osszeszedett_alkatreszek == 3)
 			return true;
