@@ -1,8 +1,6 @@
 package projlab;
 
 import java.io.FileNotFoundException;
-import java.net.URI;
-import java.nio.file.Paths;
 import java.util.function.Consumer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -201,7 +199,7 @@ public class TextInterface {
 				System.out.println("Helytelen fajlnev vagy nem nyithato meg."); return;
 			}
 			while(scanner.hasNextLine()) {
-				executeCommand(scanner.nextLine());
+				executeCommand(scanner.nextLine().strip());
 			}
 			scanner.close();
 		});
@@ -228,8 +226,12 @@ public class TextInterface {
 					+ "> getStatus\n"
 					+ "> help\n");
 		});
+		
+		// whitespace = NOOP
+		patterns.put(Pattern.compile("^\\s*$"), args -> {});
+		
 	}
-
+	
 	/**
 	 * Ertelmez egy szovegesen megadott parancsot, es amennyiben
 	 * a parancs ervenyes, vegrehajtja a jatekon a megadott parancsot.
