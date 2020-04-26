@@ -9,6 +9,7 @@ public class Sarkkutato extends Szereplo{
 	/**Ez a fuggveny a sarkkutato kepesseget valositja meg.*/ 
 	public void kepessegHasznal(Mezo cel) {
 		int teher = cel.megvizsgal();
+		munkamennyiseg--;
 	}
 }
 

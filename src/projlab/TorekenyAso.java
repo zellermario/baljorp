@@ -3,8 +3,7 @@ package projlab;
 public class TorekenyAso extends Lapat {
 	private int tartossag;
 	
-	public TorekenyAso(int _id) {
-		super(_id);
+	public TorekenyAso() {
 		tartossag = 3;
 	}
 	

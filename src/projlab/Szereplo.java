@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Szereplo {
 	/**A jatekos hatra levo munkamennyisege.*/
-	private int munkamennyiseg;
+	protected int munkamennyiseg;
 	
 	private int maxmunka;
 	
@@ -20,7 +20,7 @@ public class Szereplo {
 	/**A jatek aminek a jatekos a resze.*/
 	private Jatek jatek;
 	
-	public Szereplo(int maxm,  int maxh, Jatek j) {
+	public Szereplo(int maxm, int maxh, Jatek j) {
 		jatek = j;
 		maxmunka = maxm;
 		munkamennyiseg = maxm;
@@ -30,8 +30,10 @@ public class Szereplo {
 	
 	/**A jatekos lepeseit megvalosito fuggveny.*/
 	public void lepes(int irany) {
+		if(munkamennyiseg == 0) return;
 		Mezo cel = kurrensmezo.getSzomszed(irany);
 		kurrensmezo.jatekosKuldes(this, cel);
+		munkamennyiseg--;
 	}
 	/**Ez a fuggveny a hovihar jatekosra gyakorolt hatasast valositja meg.*/
 	public void hovihar() {
@@ -48,6 +50,7 @@ public class Szereplo {
 	
 	/**Egy felvett targy hasznalatat valositja meg.*/
 	public void targyHasznalat(int id) {
+		if(munkamennyiseg == 0) return;
 		for(Targy t : sajat_targyak) {
 			if(t.getId() == id) t.hasznal(this);
 		}
@@ -56,11 +59,13 @@ public class Szereplo {
 	
 	/**Ezzel a fuggvennyel tudunk targyakat kiasni a mezokbol.*/
 	public void targyKiasas() {
+		if(munkamennyiseg == 0) return;
 		kurrensmezo.targyAtad(this);
 		munkamennyiseg--;
 	}
 	/**Ez a fuggveny valositja meg a horeteg eltavolitasat az adott mezorol.*/
 	public void hoTakaritas(int i) {
+		if(munkamennyiseg == 0) return;
 		kurrensmezo.hoTakarit(i);
 		munkamennyiseg--;
 	}
@@ -71,10 +76,11 @@ public class Szereplo {
   	/**Ez a fuggveny valositja meg a korvaltast.*/
 	public void kor() {
 		if(kurrensmezo.megvizsgal() == 0) halal();
+		
 	}
     
 	public void passz() {
-		munkamennyiseg = 0;
+		munkamennyiseg = maxmunka;
 	}
 	
 	public void setMezo(Mezo m) {
