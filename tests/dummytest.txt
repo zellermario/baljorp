@@ -1,0 +1,5 @@
+create SJ sj1 4
+create SJ sj2 4
+addNeighbor sj1 1 sj2
+create Eszkimo e sj1
+move e 1

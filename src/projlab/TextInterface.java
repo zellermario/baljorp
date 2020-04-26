@@ -1,6 +1,8 @@
 package projlab;
 
 import java.io.FileNotFoundException;
+import java.net.URI;
+import java.nio.file.Paths;
 import java.util.function.Consumer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -184,7 +186,7 @@ public class TextInterface {
 		
 		// runscript <filename>
 		patterns.put(Pattern.compile("runscript ([\\w,\\s-\\.]+)"), args -> {
-			File file = new File(args[0]);
+			File file = new File(System.getProperty("user.dir") + "\\tests\\" + args[0] + ".txt");
 			Scanner scanner;
 			try {
 				scanner = new Scanner(file);
