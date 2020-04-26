@@ -172,6 +172,13 @@ public class TextInterface {
 			szereplo.hoTakaritas(1);
 		});
 		
+		// pass <player>
+		patterns.put(Pattern.compile("pass"), args -> {
+			Szereplo szereplo = (Szereplo)entities.get(args[0]);
+			if (szereplo == null) { System.out.println("Nincs ilyen nevu szereplo."); return; }
+			szereplo.passz();
+		});
+		
 		// snowstorm <field>
 		patterns.put(Pattern.compile("snowstorm ([a-zA-z]+[a-zA-z_0-9]*)"), args -> {
 			Mezo mezo = (Mezo)entities.get(args[0]);
@@ -215,6 +222,7 @@ public class TextInterface {
 					+ "> move <player:string> <dir:int>\n"
 					+ "> digobject <player:string>\n"
 					+ "> cleansnow <player:string>\n"
+					+ "> pass <player:string>\n"
 					+ "> snowstorm <field:string>\n"
 					+ "> runscript <filename:string>\n"
 					+ "> getStatus\n"
