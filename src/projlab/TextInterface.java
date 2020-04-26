@@ -1,13 +1,17 @@
 package projlab;
 
+import java.io.FileNotFoundException;
 import java.util.function.Consumer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.Map.Entry;
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.TreeMap;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.io.File;
-import java.io.FileNotFoundException;
 
 /** Szoveges interfesz a jatekhoz.
  *  Egy Jatek objektum manipulaciojat teszi lehetove
@@ -17,7 +21,10 @@ import java.io.FileNotFoundException;
 public class TextInterface {
 	
 	private Map<Pattern, Consumer<String[]>> patterns = new HashMap<Pattern, Consumer<String[]>>();
-	private Map<String, Object> entities = new HashMap<String, Object>();
+	private Map<String, Object> entities = new TreeMap<String, Object>();
+	private List<Epitmeny> buildings = new ArrayList<Epitmeny>();
+	private List<Szereplo> actors = new ArrayList<Szereplo>();
+	private List<Mezo> fields = new ArrayList<Mezo>();
 	private Jatek game;
 	
 	/** A TextInterface osztaly konstruktora.
@@ -25,24 +32,31 @@ public class TextInterface {
 	 *  interfeszhez csatolando.
 	 * */
 	public TextInterface(Jatek jatek) {
+		
 		this.game = jatek;
 		
 		// create SJ <name> <snowlayers>
 		patterns.put(Pattern.compile("create SJ ([a-zA-z]+[a-zA-z_0-9]*) ([0-9]+)"), args -> {
 			int snowlayers = Integer.parseInt(args[1]);
-			entities.put(args[0], new Stabil_Jegtabla(1, game)); // TODO: Mi legyen akkor az ID-kkel?
+			Mezo mezo = new Stabil_Jegtabla(game, snowlayers);
+			entities.put(args[0], mezo);
+			fields.add(mezo);
 		});
 		
 		// create ISJ <name> <snowlayers> <capacity>
 		patterns.put(Pattern.compile("create ISJ ([a-zA-z]+[a-zA-z_0-9]*) ([0-9]+) ([0-9]+)"), args -> {
 			int snowlayers = Integer.parseInt(args[1]);
 			int capacity = Integer.parseInt(args[2]);
-			entities.put(args[0], new Instabil_Jegtabla(2, game)); // TODO: kell teherbírást meg hóréteget tudni megadni itt.
+			Mezo mezo = new Instabil_Jegtabla(game, snowlayers, capacity);
+			entities.put(args[0], mezo);
+			fields.add(mezo);
 		});
 
 		// create L <name>
 		patterns.put(Pattern.compile("create L ([a-zA-z]+[a-zA-z_0-9]*)"), args -> {
-			entities.put(args[0], new Luk(3, game));
+			Mezo mezo = new Luk(game);
+			entities.put(args[0], mezo);
+			fields.add(mezo);
 		});
 		
 		// addNeighbor <field1> <dir> <field2>
@@ -60,25 +74,25 @@ public class TextInterface {
 			Mezo mezo = (Mezo)entities.get(args[2]);
 			if (mezo == null) { System.out.println("Nincs ilyen nevu mezo."); return; }
 			Szereplo szereplo = null;
-			if (args[0].equals("Eszkimo")) szereplo = new Eszkimo(game); 
-			else if (args[0].equals("Sarkkutato")) szereplo = new Sarkkutato(game);
-			else if (args[0].equals("Jegesmedve")) szereplo = new Jegesmedve(game);
+			if (args[0].equals("Eszkimo")) szereplo = new Eszkimo(game, mezo); 
+			else if (args[0].equals("Sarkkutato")) szereplo = new Sarkkutato(game, mezo);
+			else if (args[0].equals("Jegesmedve")) szereplo = new Jegesmedve(game, mezo);
 			entities.put(args[1], szereplo);
 			if (args[0].equals("Jegesmedve")) game.addJegesmedve((Jegesmedve)szereplo);
 			else game.addSzereplo(szereplo);
-			mezo.jatekosFogadas(szereplo);
+			actors.add(szereplo);
 		});
 		
 		// create <epitmeny> <name> <field>
-		patterns.put(Pattern.compile("create (Iglu|Uresepulet|FelepitettSator) ([a-zA-z]+[a-zA-z_0-9]*) ([a-zA-z]+[a-zA-z_0-9]*)"), 
+		patterns.put(Pattern.compile("create (Iglu|FelepitettSator) ([a-zA-z]+[a-zA-z_0-9]*) ([a-zA-z]+[a-zA-z_0-9]*)"), 
 		args -> {
 			Mezo mezo = (Mezo)entities.get(args[2]);
 			if (mezo == null) { System.out.println("Nincs ilyen nevu mezo."); return; }
 			Epitmeny epitmeny = null;
 			if (args[0].equals("Iglu")) epitmeny = new Iglu(mezo);
-			else if (args[0].equals("Uresepulet")) epitmeny = new Uresepulet(mezo);
 			else if (args[0].equals("FelepitettSator")) epitmeny = new FelepitettSator(mezo);
 			entities.put(args[1], epitmeny);
+			buildings.add(epitmeny);
 			mezo.epit(epitmeny);
 		});
 		
@@ -185,11 +199,12 @@ public class TextInterface {
 		
 		// help
 		patterns.put(Pattern.compile("help"), args -> {
-			System.out.print("Hasznalhato parancsok:\n"
+			System.out.print("Az objektumok nevei kis- es nagybetuket es a _ karaktert tartalmazhatjak. Az elso karakter nem lehet szam.\n"
+					+ "Hasznalhato parancsok:\n"
 					+ "> create SJ <name:string> <snowlayers:int>\n"
 					+ "> create ISJ <name:string> <snowlayers:int> <capacity:int>\n"
 					+ "> create {Eszkimo|Sarkkutato|Jegesmedve} <name:string> <field:string>\n"
-					+ "> create {Iglu|Uresepulet|FelepitettSator} <name:string> <field:string>\n"
+					+ "> create {Iglu|FelepitettSator} <name:string> <field:string>\n"
 					+ "> create {Buvarruha|Kotel|Etel|Lapat|TorekenyAso|Sator|RaketaAlkatresz} {player <name:string>|field <name:string>}\n"
 					+ "> useskill <player:string> <field:string>\n"
 					+ "> useobject <object:string> <player:string> [dir:int]\n"
@@ -198,7 +213,8 @@ public class TextInterface {
 					+ "> cleansnow <player:string>\n"
 					+ "> snowstorm <field:string>\n"
 					+ "> runscript <filename:string>\n"
-					+ "> getStatus\n");
+					+ "> getStatus\n"
+					+ "> help\n");
 		});
 	}
 
@@ -227,7 +243,65 @@ public class TextInterface {
 	 * A jatek aktualis allapotat irja ki a standard kimenetre.
 	 */
 	public void printGameStatus() {
-		System.out.println("The game is running.");
+		System.out.println("Fields:");
+		for (Entry<String, Object> entry : entities.entrySet()) {
+			Object maybeMezo = entry.getValue();
+			if (fields.contains(maybeMezo)) {
+				Mezo mezo = (Mezo)maybeMezo;
+				String nev = entry.getKey();
+				int horeteg = mezo.getHoreteg();
+				switch (mezo.getId()) {
+				case 1:
+					System.out.print("SJ " + nev + " (" + horeteg + ") - object: "); 
+					break;
+				case 2:
+					System.out.print("ISJ " + nev + " (" + horeteg + ") - object: ");
+					break;
+				case 3:
+					System.out.print("L " + nev + " (" + horeteg + ") - object: ");
+					break;
+				}
+				if (horeteg > 0)
+					System.out.print("?\n");
+				else if (mezo.getTargy() != null)
+					entities.forEach((name, obj) -> System.out.print(obj.equals(mezo) ? name : ""));
+				else System.out.print("x\n");
+				System.out.print("\tneighbours: [");
+				int i = 0;
+				for (Entry<Integer, Mezo> neighbor : mezo.getSzomszedos_mezok().entrySet()) { // TODO: szomszedos_mezok legyen TreeMap
+					System.out.print("(" + neighbor.getKey() + ",");
+					entities.forEach((name, obj) -> System.out.print(obj.equals(neighbor.getValue()) ? name + ")" : ""));
+					i++;
+					if (i != mezo.getSzomszedos_mezok().size()) System.out.print(", ");
+				}
+				System.out.print("]\n");
+			}
+		}
+		System.out.println("\nBuildings:");
+		for (Entry<String, Object> entry : entities.entrySet()) {
+			Object maybeEpitmeny = entry.getValue();
+			if (buildings.contains(maybeEpitmeny)) {
+				Epitmeny epitmeny = (Epitmeny)maybeEpitmeny;
+				System.out.print(epitmeny.toString() + " " +  entry.getKey() + " on ");
+				entities.forEach((name, obj) -> System.out.print(obj.equals(epitmeny.getMezo()) ? name + "\n" : ""));
+			}
+		}
+		System.out.println("\nActors:");
+		for (Entry<String, Object> entry : entities.entrySet()) {
+			Object maybeSzereplo = entry.getValue();
+			if (actors.contains(maybeSzereplo)) {
+				Szereplo szereplo = (Szereplo)maybeSzereplo;
+				System.out.print("> " + szereplo.toString() + " " + entry.getKey() + " (heat: " + szereplo.getTestho() + ") on ");
+				entities.forEach((name, obj) -> System.out.print(obj.equals(szereplo.getKurrensMezo()) ? name + "\n" : ""));
+				System.out.print("  Inventory: [");
+				int i = 0;
+				for (Targy targy : szereplo.getTargyak()) {
+					entities.forEach((name, obj) -> System.out.print(obj.equals(targy) ? name : ""));
+					i++;
+					if (i != szereplo.getTargyak().size()) System.out.print(", ");
+				}
+				System.out.print("]\n");
+			}
+		}
 	}
-	
 }
