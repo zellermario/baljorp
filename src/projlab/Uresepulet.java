@@ -6,4 +6,8 @@ public class Uresepulet extends Epitmeny{
 		super(m);
 	}
 	
+	public String toString() {
+		return "Uresepulet";
+	}
+	
 }

@@ -12,4 +12,8 @@ public class FelepitettSator extends Epitmeny {
 	public void rombol() {
 		getMezo().epit(new Uresepulet(getMezo()));
 	}
+	
+	public String toString() {
+		return "FelepitettSator";
+	}
 }

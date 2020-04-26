@@ -3,8 +3,8 @@ package projlab;
 public class Jegesmedve extends Szereplo {
 	/**Ezzel a valtozoval tartjuk szamon, hogy a jegesmedvet kell-e mozgatni*/
 	private boolean halott; 
-	public Jegesmedve(Jatek j) {
-		super(4, 4, j);
+	public Jegesmedve(Jatek j, Mezo kezdomezo) {
+		super(1, 1, j, kezdomezo);
 		halott = false;
 	}
 	/**ez a fuggveny felelos a jegesmedve mozgatasaert, de a randomsaga miatt a tesztekben nem szerepel*/
@@ -26,4 +26,8 @@ public class Jegesmedve extends Szereplo {
 	}
 	/**ures fuggveny, hisz a medvere nem hat a hovihar*/
 	public void hovihar() {}
+	
+	public String toString() {
+		return "Jegesmedve";
+	}
 }

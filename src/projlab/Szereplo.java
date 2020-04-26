@@ -3,7 +3,7 @@ package projlab;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Szereplo {
+public abstract class Szereplo {
 	/**A jatekos hatra levo munkamennyisege.*/
 	protected int munkamennyiseg;
 	/**statikus valtozo, ami alapjan a jatekosok sorszam attributumat beallitjuk*/
@@ -24,12 +24,11 @@ public class Szereplo {
 	/**A jatek aminek a jatekos a resze.*/
 	protected Jatek jatek;
 	
-	
-	/**a konstruktorban beallitjuk az attributumokat*/
-	public Szereplo(int maxm, int maxh, Jatek j) {
+	public Szereplo(int maxm,  int maxh, Jatek j, Mezo kezdomezo) {
 		jatek = j;
 		maxmunka = maxm;
 		munkamennyiseg = maxm;
+		kurrensmezo = kezdomezo;
 		maxtestho = maxh;
 		testho = maxh;
 		sorszam = hanyadik;
@@ -112,4 +111,14 @@ public class Szereplo {
 	public void targyTorol(Targy t) {
 		sajat_targyak.remove(t);
 	}
+	public abstract String toString();
+
+	public int getTestho() {
+		return testho;
+	}
+	
+	public List<Targy> getTargyak() {
+		return sajat_targyak;
+	}
+	
 }

@@ -6,10 +6,11 @@ public class Instabil_Jegtabla extends Mezo {
 	/**A teherbirast megado mennyiseg*/
 	private int teherbiras = 2;
 	
-	public Instabil_Jegtabla(int _id, Jatek j) {
-		super(_id, j);
-		Random rand = new Random();
-		teherbiras = rand.nextInt(j.jatekosszam()) + 1;
+	public Instabil_Jegtabla(Jatek j, int horeteg, int teherbiras) {
+		super(2, j);
+		//Random rand = new Random();
+		this.teherbiras = teherbiras;
+		this.horeteg = horeteg;
 	}
 	
 	/**Ez a fuggveny az adott jegtabla atfodulasat valositja meg.*/ 

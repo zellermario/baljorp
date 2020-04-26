@@ -2,8 +2,8 @@ package projlab;
 
 public class Sarkkutato extends Szereplo{
 	
-	public Sarkkutato(Jatek j) {
-		super(4, 4, j);
+	public Sarkkutato(Jatek j, Mezo kezdomezo) {
+		super(4, 4, j, kezdomezo);
 	}
 	
 	/**Ez a fuggveny a sarkkutato kepesseget valositja meg.*/ 
@@ -12,6 +12,10 @@ public class Sarkkutato extends Szereplo{
 		int teher = cel.megvizsgal();
 		munkamennyiseg--;
 		jatek.addToCounter(1);
+	}
+	
+	public String toString() {
+		return "Sarkkutato";
 	}
 }
 

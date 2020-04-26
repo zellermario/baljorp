@@ -9,5 +9,9 @@ public class Iglu extends Epitmeny{
 	public void hatas() {}
 	/**Ez a fuggveny teszi semmisse a medve hatasat, ha a mezon iglu van*/
 	public void medve() {}
+	
+	public String toString() {
+		return "Iglu";
+	}
 
 }

@@ -106,6 +106,15 @@ public class Jatek {
 	public void raketaOsszeszed() {
 		osszeszedett_alkatreszek++;
 	}
+
+	public void addSzereplo(Szereplo szereplo) {
+		// TODO Auto-generated method stub
+	}
+	public void addJegesmedve(Jegesmedve maci) {
+		// TODO Auto-generated method stub
+		
+	}
 	/**ezzel a fuggvennyel tudjuk lekerdezni, hogy hany jatekos van*/
 	public int jatekosszam() {return szereplok.size()-jegesmedveszam;}
+  
 }

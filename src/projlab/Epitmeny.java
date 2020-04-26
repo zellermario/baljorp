@@ -1,6 +1,6 @@
 package projlab;
 
-public class Epitmeny {
+public abstract class Epitmeny {
 	/**Melyik mezon van az epitmeny*/
 	protected Mezo mezo;
 	public Epitmeny(Mezo m) {
@@ -21,5 +21,6 @@ public class Epitmeny {
 	public Mezo getMezo() {
 		return mezo;
 	}
+	public abstract String toString();
 	
 }
