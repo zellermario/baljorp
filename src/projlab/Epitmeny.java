@@ -11,7 +11,7 @@ public class Epitmeny {
 	{
 		mezo.tovabbad();
 	}
-	
+	/**a medve hatasat ervenyesito fuggveny*/
 	public void medve() {
 		mezo.medvemegol();
 	}

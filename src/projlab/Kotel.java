@@ -3,7 +3,7 @@ package projlab;
 import java.util.Map;
 
 public class Kotel extends Targy {
-
+	/**a konstruktor beallitja a megfelelo id-t az osben*/
 	public Kotel() {
 		super(2);
 	}
