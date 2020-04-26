@@ -203,6 +203,8 @@ public class TextInterface {
 					+ "Hasznalhato parancsok:\n"
 					+ "> create SJ <name:string> <snowlayers:int>\n"
 					+ "> create ISJ <name:string> <snowlayers:int> <capacity:int>\n"
+					+ "> create L <name:string>\n"
+					+ "> addNeighbor <field1:string> <dir:int> <field2:string>\n"
 					+ "> create {Eszkimo|Sarkkutato|Jegesmedve} <name:string> <field:string>\n"
 					+ "> create {Iglu|FelepitettSator} <name:string> <field:string>\n"
 					+ "> create {Buvarruha|Kotel|Etel|Lapat|TorekenyAso|Sator|RaketaAlkatresz} {player <name:string>|field <name:string>}\n"
