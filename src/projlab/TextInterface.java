@@ -214,7 +214,7 @@ public class TextInterface {
 					+ "> addNeighbor <field1:string> <dir:int> <field2:string>\n"
 					+ "> create {Eszkimo|Sarkkutato|Jegesmedve} <name:string> <field:string>\n"
 					+ "> create {Iglu|FelepitettSator} <name:string> <field:string>\n"
-					+ "> create {Buvarruha|Kotel|Etel|Lapat|TorekenyAso|Sator|RaketaAlkatresz} {player <name:string>|field <name:string>}\n"
+					+ "> create {Buvarruha|Kotel|Etel|Lapat|TorekenyAso|Sator|RaketaAlkatresz} <name:string> {player <name:string>|field <name:string>}\n"
 					+ "> useskill <player:string> <field:string>\n"
 					+ "> useobject <object:string> <player:string> [dir:int]\n"
 					+ "> move <player:string> <dir:int>\n"
