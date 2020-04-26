@@ -12,9 +12,10 @@ public class Luk extends Mezo{
 	/**Ez a fuggveny felelos az Iglu epitesert, de itt nem csinal semmit mert lukban nem lehet epiteni.*/
 	public void epit() {}
 	
-	/**Ezzel a fuggvennyel lehet egy jatekost masik mezore kuldeni.*/
+	/**Ezzel a fuggvennyel lehetne egy jatekost masik mezore kuldeni, hanem lukban allnank.*/
 	public void jatekosKuldes(Szereplo sz, Mezo cel) {}
 	
+	/**Ezzel a fuggvennyel mindenkeppen atleptetjuk az adott jatekost, fuggetlenul attol, hogy lukban allunk*/
 	public void atleptet(Szereplo sz, Mezo cel) {
 		cel.jatekosFogadas(sz);
 	}

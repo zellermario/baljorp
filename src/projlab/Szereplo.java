@@ -6,12 +6,13 @@ import java.util.List;
 public class Szereplo {
 	/**A jatekos hatra levo munkamennyisege.*/
 	protected int munkamennyiseg;
-	
-	static int hanyadik = 0;
-	int sorszam;
-	
+	/**statikus valtozo, ami alapjan a jatekosok sorszam attributumat beallitjuk*/
+	private static int hanyadik = 0;
+	/**azt tarolja el, hogy a jatekos hanyadikkent lephet*/
+	protected int sorszam;
+	/**nyilvantartja, hogy hany munkat vegezhet koronkent a jatekos, ezt reseteli*/
 	private int maxmunka;
-	
+	/**nyilvantartja, hogy maximum mennyi testhoje lehet egy jatekosnak - nem mehet evessel sem e fole*/
 	private int maxtestho;
 	
 	/**A jatekos testhoje.*/
@@ -23,6 +24,8 @@ public class Szereplo {
 	/**A jatek aminek a jatekos a resze.*/
 	protected Jatek jatek;
 	
+	
+	/**a konstruktorban beallitjuk az attributumokat*/
 	public Szereplo(int maxm, int maxh, Jatek j) {
 		jatek = j;
 		maxmunka = maxm;
@@ -33,7 +36,7 @@ public class Szereplo {
 		hanyadik++;
 	}
 	
-	/**A jatekos lepeseit megvalosito fuggveny.*/
+	/**A jatekos lepeseit megvalosito fuggveny, az ellenorzes a teszteket elosegitendo*/
 	public void lepes(int irany) {
 		if(sorszam != jatek.getAktualis() || munkamennyiseg == 0) return;
 		Mezo cel = kurrensmezo.getSzomszed(irany);
@@ -87,25 +90,25 @@ public class Szereplo {
 		if(kurrensmezo.megvizsgal() == 0) halal();
 		
 	}
-    
+    /**ezzel a fuggvennyel jelzi a jatekos a kore veget*/
 	public void passz() {
 		jatek.addToCounter(munkamennyiseg);
 		munkamennyiseg = maxmunka;
 		
 	}
-	
+	/**beallitjuk a kurrensmezot*/
 	public void setMezo(Mezo m) {
 		kurrensmezo = m;
 	}
-  
+	/**lekerdezzuk a kurrensmezot*/
 	public Mezo getKurrensMezo() {
 		return kurrensmezo;
 	}
-	
+	/**hozzaadunk egy targyat az inventoryhoz*/
 	public void AddTargy(Targy t) {
 		sajat_targyak.add(t);
 	}
- //Uj resz
+	/**ezzel a fuggvennyel tudunk torolni egy targyat az inventorybol, ha elhasznaltuk azt*/
 	public void targyTorol(Targy t) {
 		sajat_targyak.remove(t);
 	}
