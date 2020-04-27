@@ -1,0 +1,10 @@
+Fields:
+SJ m (0) - object: x
+	neighbours: []
+
+Buildings:
+FelepitettSator s on m
+
+Actors:
+> Eszkimo e (heat: 5) on m
+  Inventory: []
