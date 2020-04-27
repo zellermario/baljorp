@@ -8,8 +8,13 @@ public class Buvarruha extends Targy {
 	
 	/**Ez a fuggveny a Buvarruha hasznalatat valositja meg. */
 	public void hasznal(Szereplo sz, int irany) {
-		Mezo konkurens = sz.getKurrensMezo();
-		konkurens.atleptet(sz, sz.getKurrensMezo().getSzomszed(irany));
+		Mezo kurrens = sz.getKurrensMezo();
+		if(kurrens.megvizsgal() == 0) {
+			Luk l = (Luk)kurrens;
+			l.atleptet(sz, sz.getKurrensMezo().getSzomszed(irany));
+			l.jatekosok.remove(sz);
+		}
+		
 		
 	}
 }

@@ -107,7 +107,7 @@ public abstract class Mezo {
 		epitmeny.rombol();
 	}
 	/**olyan fuggveny, ami mindenkeppen atmozgatja a szereplot - csak a lukban kell*/
-	public void atleptet(Szereplo sz, Mezo cel) {}
+	/*public void atleptet(Szereplo sz, Mezo cel) {}*/
 
 	/**visszaadja, hogy milyen targy van belefagyva a jegbe*/
 	public Targy getTargy() {
@@ -126,12 +126,12 @@ public abstract class Mezo {
 	
 	
 	/**a kotellel valo menekitest valositja meg ez a fuggveny*/
-	public void kiment_mindenkit(Mezo cel) {
+	/*public void kiment_mindenkit(Mezo cel) {
 		for(Szereplo sz : jatekosok) {
 			atleptet(sz,cel);
 			jatekosok.remove(sz);
 		}
-	}
+	}*/
 
 	public int getId() {
 		return id;
