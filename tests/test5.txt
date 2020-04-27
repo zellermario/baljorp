@@ -1,4 +1,3 @@
 create L m 0
-
 create Eszkimo e m
 pass e

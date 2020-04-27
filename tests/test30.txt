@@ -65,7 +65,6 @@ addNeighbor m13 1 m11
 addNeighbor m13 2 m12
 addNeighbor m13 3 m9
 addNeighbor m13 4 m10
-
 create RaketaAlkatresz r3 field m1
 create Jegesmedve m m2
 create RaketaAlkatresz r2 field m5
@@ -74,7 +73,6 @@ create RaketaAlkatresz r1 field m8
 create TorekenyAso a field m9
 create Sarkkutato k1 m11
 create Sarkkuato k2 m13
-
 move k2 3
 pass k2
 move k1 2
