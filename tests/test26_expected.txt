@@ -9,4 +9,5 @@ Buildings:
 Actors:
 > Eszkimo eszkimo (heat: 0) on sj2
   Inventory: []
-> Medve m on sj2
+> Jegesmedve m (heat: 1) on sj1
+  Inventory: []

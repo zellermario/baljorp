@@ -27,6 +27,10 @@ public class Jatek {
 	/**a koroket vezerlo fuggveny, a munkamennyisegek alapjan tudjuk ezt szamon tartani, ebben segit a passz fuggvenye a Szereplonek*/
 	public void addToCounter(int i) {
 		jatekosCounter = (i+jatekosCounter) % (4*szereplok.size());
+		if(jatekosCounter == szereplok.size() * 4) { 
+			epuletRombol();
+			jatekosCounter = 0;
+		}
 		aktualisJatekos = jatekosCounter / 4;
 		if(jatekosCounter % 4 == 0)
 			szereplok.get(aktualisJatekos).kor();

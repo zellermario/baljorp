@@ -46,6 +46,7 @@ public class TextInterface {
 		patterns.put(Pattern.compile("^create SJ ([a-zA-z]+[a-zA-z_0-9]*) ([0-9]+)$"), args -> {
 			int snowlayers = Integer.parseInt(args[1]);
 			Mezo mezo = new Stabil_Jegtabla(game, snowlayers);
+			game.addMezo(mezo);
 			entities.put(args[0], mezo);
 			fields.add(mezo);
 		});
@@ -55,6 +56,7 @@ public class TextInterface {
 			int snowlayers = Integer.parseInt(args[1]);
 			int capacity = Integer.parseInt(args[2]);
 			Mezo mezo = new Instabil_Jegtabla(game, snowlayers, capacity);
+			game.addMezo(mezo);
 			entities.put(args[0], mezo);
 			fields.add(mezo);
 		});
@@ -63,6 +65,7 @@ public class TextInterface {
 		patterns.put(Pattern.compile("^create L ([a-zA-z]+[a-zA-z_0-9]*) ([0-9]+)$"), args -> {
 			int snowlayers = Integer.parseInt(args[1]);
 			Mezo mezo = new Luk(game, snowlayers);
+			game.addMezo(mezo);
 			entities.put(args[0], mezo);
 			fields.add(mezo);
 		});
