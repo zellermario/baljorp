@@ -13,7 +13,8 @@ public class Kotel extends Targy {
 		 Map<Integer, Mezo> szomszedok =  sz.getKurrensMezo().getSzomszedos_mezok();
 		for( Map.Entry<Integer, Mezo> entry : szomszedok.entrySet()) {
 			if(entry.getValue().megvizsgal() == 0) {
-				entry.getValue().kiment_mindenkit(sz.getKurrensMezo());
+				Luk l = (Luk)entry.getValue();
+				l.kiment_mindenkit(sz.getKurrensMezo());
 			}
 		}
 	}	
