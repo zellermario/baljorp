@@ -3,7 +3,7 @@ create SJ vegzes 0
 addNeighbor kezdes 1 vegzes
 addNeighbor vegzes 2 kezdes
 
-create Eszkimo e vegzes
+create Eszkimo eszkimo vegzes
 create FelepitettSator fs vegzes
 create Jegesmedve m kezdes
 

@@ -1,9 +1,9 @@
 create SJ mezo 7
 
-create Eszkimo e mezo
-create TorekenyAso ta player e
+create Eszkimo eszkimo mezo
+create TorekenyAso ta player eszkimo
 
-useobject ta e
-useobject ta e
-useobject ta e
-pass e
+useobject ta eszkimo
+useobject ta eszkimo
+useobject ta eszkimo
+pass eszkimo

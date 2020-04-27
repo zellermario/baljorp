@@ -3,6 +3,7 @@ SJ m (1) - object: ?
 	neighbours: []
 
 Buildings:
+FelepitettSator on m
 
 Actors:
 > Eszkimo eszkimo (heat: 5) on m

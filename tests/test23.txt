@@ -1,7 +1,9 @@
-create SJ mezo 3
+create SJ mezo 0
 
 create TorekenyAso ta field mezo
 create Eszkimo e mezo
 
 digobject e
+snowstorm mezo
+snowstorm mezo
 useobject ta e

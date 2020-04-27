@@ -1,7 +1,7 @@
 create SJ m 0
 
-create Eszkimo e m
-create Sator tent player e
-useobject tent e
+create Eszkimo eszkimo m
+create Sator tent player eszkimo
+useobject tent eszkimo
 
 snowstorm m

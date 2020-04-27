@@ -1,5 +1,5 @@
 Fields:
-SJ mezo (1) - objects: ?
+SJ mezo (1) - object: ?
 	neighbours: []
 
 Buildings:

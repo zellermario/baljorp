@@ -3,9 +3,9 @@ create SJ vegzes 0
 addNeighbor kezdes 1 vegzes
 addNeighbor vegzes 2 kezdes
 
-create Eszkimo e vegzes
+create Eszkimo eszkimo vegzes
 create Iglu i vegzes
-create jegesmedve m kezdes
+create Jegesmedve m kezdes
 
 move m 1
 pass m
