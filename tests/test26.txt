@@ -1,0 +1,10 @@
+create SJ sj1 0
+create SJ sj2 0
+addNeighbor sj1 1 sj2
+addNeighbor sj2 2 sj1
+
+create eszkimo e sj2
+create jegesmedve m sj1
+
+move m 1
+pass m

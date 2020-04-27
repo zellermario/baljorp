@@ -1,0 +1,10 @@
+create SJ kezdes 0
+create ISJ vegzes 0 2
+addNeighbor kezdes 1 vegzes
+addNeighbor vegzes 2 kezdes
+
+create Eszkimo e vegzes
+create jegesmedve m kezdes
+
+move m 1
+pass m

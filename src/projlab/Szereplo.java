@@ -121,4 +121,8 @@ public abstract class Szereplo {
 		return sajat_targyak;
 	}
 	
+	public void setKurrensMezo(Mezo m) {
+		kurrensmezo = m;
+	}
+	
 }

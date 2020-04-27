@@ -1,0 +1,11 @@
+create SJ m1 0
+create L m2 0
+addNeighbor m1 1 m2
+addNeighbor m2 2 m1
+
+create Eszkimo e1 m1
+create Eszkimo e2 m2
+create Kotel k player e1
+
+useobject k e1 1
+pass e1

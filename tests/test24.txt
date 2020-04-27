@@ -1,0 +1,9 @@
+create SJ mezo 7
+
+create Eszkimo e mezo
+create TorekenyAso ta player e
+
+useobject ta e
+useobject ta e
+useobject ta e
+pass e

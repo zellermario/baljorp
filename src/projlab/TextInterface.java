@@ -2,10 +2,7 @@ package projlab;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.PrintStream;
-import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -19,8 +16,6 @@ import java.util.TreeMap;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -65,8 +60,9 @@ public class TextInterface {
 		});
 
 		// create L <name>
-		patterns.put(Pattern.compile("^create L ([a-zA-z]+[a-zA-z_0-9]*)$"), args -> {
-			Mezo mezo = new Luk(game);
+		patterns.put(Pattern.compile("^create L ([a-zA-z]+[a-zA-z_0-9]*) ([0-9]+)$"), args -> {
+			int snowlayers = Integer.parseInt(args[1]);
+			Mezo mezo = new Luk(game, snowlayers);
 			entities.put(args[0], mezo);
 			fields.add(mezo);
 		});
@@ -110,8 +106,7 @@ public class TextInterface {
 		
 		// create <targy> <object_name> player <player_name>
 		// create <targy> <object_name> field <field_name>
-		patterns.put(Pattern.compile("^create (Buvarruha|Kotel|Etel|Lapat|TorekenyAso|Sator|RaketaAlkatresz) ([a-zA-z]+[a-zA-z_0-9]*)"
-								      + " (?:(player) ([a-zA-z]+[a-zA-z_0-9]*)|(field) ([a-zA-z]+[a-zA-z_0-9]*))$"), 
+		patterns.put(Pattern.compile("^create (Buvarruha|Kotel|Etel|Lapat|TorekenyAso|Sator|RaketaAlkatresz) ([a-zA-z]+[a-zA-z_0-9]*) (player|field) ([a-zA-z]+[a-zA-z_0-9]*)$"), 
 		args -> {
 			Targy targy = null;
 			switch (args[0]) {
@@ -183,7 +178,7 @@ public class TextInterface {
 		});
 		
 		// pass <player>
-		patterns.put(Pattern.compile("^pass$"), args -> {
+		patterns.put(Pattern.compile("^pass ([a-zA-z]+[a-zA-z_0-9]*)$"), args -> {
 			Szereplo szereplo = (Szereplo)entities.get(args[0]);
 			if (szereplo == null) { System.out.println("Nincs ilyen nevu szereplo."); return; }
 			szereplo.passz();
@@ -251,7 +246,7 @@ public class TextInterface {
 					+ "Hasznalhato parancsok:\n"
 					+ "> create SJ <name:string> <snowlayers:int>\n"
 					+ "> create ISJ <name:string> <snowlayers:int> <capacity:int>\n"
-					+ "> create L <name:string>\n"
+					+ "> create L <name:string> <snowlayers:int>\n"
 					+ "> addNeighbor <field1:string> <dir:int> <field2:string>\n"
 					+ "> create {Eszkimo|Sarkkutato|Jegesmedve} <name:string> <field:string>\n"
 					+ "> create {Iglu|FelepitettSator} <name:string> <field:string>\n"
@@ -263,7 +258,8 @@ public class TextInterface {
 					+ "> cleansnow <player:string>\n"
 					+ "> pass <player:string>\n"
 					+ "> snowstorm <field:string>\n"
-					+ "> runscript <scriptname:string>\n"
+					+ "> runscript <scriptname:string>"
+					+ "> runalltests\n"
 					+ "> getStatus\n"
 					+ "> help\n");
 		});
@@ -311,7 +307,8 @@ public class TextInterface {
 					System.out.print("SJ " + nev + " (" + horeteg + ") - object: "); 
 					break;
 				case 2:
-					System.out.print("ISJ " + nev + " (" + horeteg + ") - object: ");
+					int kapacitas = ((Instabil_Jegtabla)mezo).getTeherbiras();
+					System.out.print("ISJ " + nev + " (" + horeteg + ","+ kapacitas + ") - object: ");
 					break;
 				case 3:
 					System.out.print("L " + nev + " (" + horeteg + ") - object: ");
