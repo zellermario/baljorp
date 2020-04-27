@@ -137,6 +137,8 @@ public abstract class Mezo {
 	public int getHoreteg() {
 		return horeteg;
 	}
-	
+	public Epitmeny getEpitmeny() {
+		return epitmeny;
+	}
   
 }
