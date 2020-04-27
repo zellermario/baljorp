@@ -38,6 +38,7 @@ public abstract class Mezo {
 	/**Ez a fuggveny a parameterkent adott jatekost a mezore helyezi.*/
 	public void jatekosFogadas(Szereplo sz) {
 		jatekosok.add(sz);
+		sz.setKurrensMezo(this);
 		ellenoriz();
 	}
 	/**Ez a fuggveny a parameterkent adott jatekost, a parameterkent adott mezore kuldi.*/
@@ -135,5 +136,6 @@ public abstract class Mezo {
 	public int getHoreteg() {
 		return horeteg;
 	}
+	
   
 }
