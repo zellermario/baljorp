@@ -240,7 +240,7 @@ public class TextInterface {
 			try {
 				configScanner = new Scanner(config);
 			} catch (FileNotFoundException e) {
-				System.out.println("Helytelen fajlnev vagy nem nyithato meg."); return;
+				System.out.println("./tests/tests.config nem nyithato meg."); return;
 			}
 			while(configScanner.hasNextLine()) {
 				startNewGame();
@@ -258,6 +258,7 @@ public class TextInterface {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
+				startNewGame();
 			}
 			configScanner.close();
 			startNewGame();
