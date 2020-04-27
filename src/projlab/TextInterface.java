@@ -171,7 +171,7 @@ public class TextInterface {
 		});
 		
 		// cleansnow <player>
-		patterns.put(Pattern.compile("^digobject ([a-zA-z]+[a-zA-z_0-9]*)$"), args -> {
+		patterns.put(Pattern.compile("^cleansnow ([a-zA-z]+[a-zA-z_0-9]*)$"), args -> {
 			Szereplo szereplo = (Szereplo)entities.get(args[0]);
 			if (szereplo == null) { System.out.println("Nincs ilyen nevu szereplo."); return; }
 			szereplo.hoTakaritas(1);
