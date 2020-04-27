@@ -1,5 +1,5 @@
 package projlab;
-
+/**A lapat viselkedeset megvalosito osztaly*/
 public class Lapat extends Targy {
 	/**a konstruktor beallitja a megfelelo id-t az osben*/
 	public Lapat() {

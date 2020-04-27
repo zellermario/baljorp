@@ -1,5 +1,5 @@
 package projlab;
-
+/**A buvarruha mukodeseert felelos osztaly*/
 public class Buvarruha extends Targy {
 	/**a konstruktor beallitja a megfelelo id-t az osben*/
 	public Buvarruha() {

@@ -2,7 +2,7 @@ package projlab;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**A szereplok alapveto viselkedeset megvalosito osztaly*/
 public abstract class Szereplo {
 	/**A jatekos hatra levo munkamennyisege.*/
 	protected int munkamennyiseg;
@@ -119,16 +119,18 @@ public abstract class Szereplo {
 	public void targyTorol(Targy t) {
 		sajat_targyak.remove(t);
 	}
+	/**A leszarmazottak miatt*/
 	public abstract String toString();
-
+	
+	/**egyszeru getter*/
 	public int getTestho() {
 		return testho;
 	}
-	
+	/**egyszeru getter*/
 	public List<Targy> getTargyak() {
 		return sajat_targyak;
 	}
-	
+	/**egyszeru setter*/
 	public void setKurrensMezo(Mezo m) {
 		kurrensmezo = m;
 	}

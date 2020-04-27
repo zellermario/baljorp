@@ -1,5 +1,5 @@
 package projlab;
-
+/**Az epitmenyek kozos ososztalya*/
 public abstract class Epitmeny {
 	/**Melyik mezon van az epitmeny*/
 	protected Mezo mezo;
@@ -15,12 +15,13 @@ public abstract class Epitmeny {
 	public void medve() {
 		mezo.medvemegol();
 	}
-	
+	/**A rombolasert felelos fuggveny - az ideiglenes epitmenyekben felul van definialva*/
 	public void rombol() {}
-	
+	/**mezo attributum getterje*/
 	public Mezo getMezo() {
 		return mezo;
 	}
+	/**A teszteket segitendo fuggveny*/
 	public abstract String toString();
 	
 }

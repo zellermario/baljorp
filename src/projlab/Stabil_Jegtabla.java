@@ -1,5 +1,5 @@
 package projlab;
-
+/**A stabl jegtablak mukodeset megvalosito osztaly*/
 public class Stabil_Jegtabla extends Mezo {
 	
 	public Stabil_Jegtabla(Jatek j, int horeteg) {

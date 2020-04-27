@@ -1,5 +1,5 @@
 package projlab;
-
+/**A torekeny aso viselkedeset megvalosito osztaly*/
 public class TorekenyAso extends Lapat {
 	/**nyilvantartjuk, hanyszor hasznalhato meg a targy*/
 	private int tartossag; 

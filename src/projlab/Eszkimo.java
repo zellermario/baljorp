@@ -1,7 +1,7 @@
 package projlab;
-
+/**Az eszkimok viselkedeset megvalosito osztaly*/
 public class Eszkimo extends Szereplo{
-	
+	/**Konstruktorban beallitjuk a megfelelo kezdoertekeket*/
 	public Eszkimo(Jatek j, Mezo kezdomezo) {
 		super(4, 5, j, kezdomezo);
 	}
@@ -12,6 +12,7 @@ public class Eszkimo extends Szereplo{
 		munkamennyiseg--;
 		jatek.addToCounter(1);
 	}
+	/**Tesztelest segito fuggveny*/
 	public String toString() {
 		return "Eszkimo";
 	}

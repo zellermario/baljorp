@@ -1,5 +1,5 @@
 package projlab;
-
+/**A jegesmedve viselkedeset megvalosito osztaly*/
 public class Jegesmedve extends Szereplo {
 	/**Ezzel a valtozoval tartjuk szamon, hogy a jegesmedvet kell-e mozgatni*/
 	private boolean halott; 
@@ -29,9 +29,12 @@ public class Jegesmedve extends Szereplo {
 	/**ures fuggveny, hisz a medvere nem hat a hovihar*/
 	public void hovihar() {}
 	
+	/**Tesztelest segito fuggveny*/
 	public String toString() {
 		return "Jegesmedve";
 	}
+	
+	/**A leptetest vegzo fuggveny*/
 	public void lepes(int irany) {
 		if(sorszam != jatek.getAktualis()) return;
 		Mezo cel = kurrensmezo.getSzomszed(irany);

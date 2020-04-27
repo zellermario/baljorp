@@ -3,7 +3,7 @@ package projlab;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
+/**A jatek lebonyolitasaert felelos osztaly*/
 public class Jatek {
 	/**Eddig hany alkatreszt gyujottunk ossze a gyozedelmet jeleto alkatreszekbol.*/
 	private int osszeszedett_alkatreszek = 0;
@@ -77,11 +77,12 @@ public class Jatek {
 		jatekvege = true;
 		//valami kirajzolas a grafikus programban
 	}
-	
+	/**jatekosok kozotti valtas, a teszteles soran ezt a passzolassal valositjuk meg*/
 	public void nextJatekos() {
 		aktualisJatekos++;
 		if(aktualisJatekos == szereplok.size()) aktualisJatekos = 0;
 		}
+	
 	/**a fo ciklus, de a tesztek kedveert a determinisztikus leptetest a jatekosCounter segitsegevel tesszuk meg*/
 	public void kor() {
 		epuletRombol();

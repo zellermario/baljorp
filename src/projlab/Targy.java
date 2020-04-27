@@ -1,5 +1,5 @@
 package projlab;
-
+/**A targyakat osszefogo ososztaly*/
 public class Targy {
 	/**A targy azonositoja.*/
 	private int id;
@@ -11,6 +11,6 @@ public class Targy {
 	public void hasznal(Szereplo sz) {}
 	/**Ez a fuggveny a targy felvetelenek hatasast valositja meg.*/
 	public void osszeszed(Szereplo sz) {}
-	
+	/**az id gettere*/
 	public int getId() {return id;}
 }

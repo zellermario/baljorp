@@ -1,5 +1,5 @@
 package projlab;
-
+/**a sarkkutato viselkedeset megvalosito osztaly*/
 public class Sarkkutato extends Szereplo{
 	
 	public Sarkkutato(Jatek j, Mezo kezdomezo) {
@@ -14,7 +14,7 @@ public class Sarkkutato extends Szereplo{
 		munkamennyiseg--;
 		jatek.addToCounter(1);
 	}
-	
+	/**a tesztelest segito fuggveny*/
 	public String toString() {
 		return "Sarkkutato";
 	}

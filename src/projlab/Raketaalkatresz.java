@@ -1,5 +1,5 @@
 package projlab;
-
+/**A raketaalkatreszek viselkedeset megvalosito osztaly*/
 public class Raketaalkatresz extends Targy {
 	/**Jatek amihez az alkatresz tartozik.*/
 	private Jatek jatek;

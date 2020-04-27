@@ -1,7 +1,7 @@
 package projlab;
 import java.util.Random;
 import java.util.Scanner;
-
+/**Az instabil jegtablak viselkedeset megvalosito osztaly*/
 public class Instabil_Jegtabla extends Mezo {
 	/**A teherbirast megado mennyiseg*/
 	private int teherbiras = 2;

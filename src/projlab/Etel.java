@@ -1,5 +1,5 @@
 package projlab;
-
+/**Az etel mukodeseert felelos osztaly*/
 public class Etel extends Targy{
 	/**a konstruktor beallitja a megfelelo id-t az osben*/
 	public Etel(){

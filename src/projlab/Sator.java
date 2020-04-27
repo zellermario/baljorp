@@ -1,5 +1,5 @@
 package projlab;
-
+/**A sator viselkedeset megvalosito osztaly*/
 public class Sator extends Targy{
 	/**a konstruktor beallitja a megfelelo id-t az osben*/
 	public Sator() {

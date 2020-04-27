@@ -1,7 +1,7 @@
 package projlab;
 
 import java.util.Map;
-
+/**A kotel viselkedeset megvalosito osztaly*/
 public class Kotel extends Targy {
 	/**a konstruktor beallitja a megfelelo id-t az osben*/
 	public Kotel() {

@@ -34,7 +34,7 @@ public abstract class Mezo {
 	public Map<Integer, Mezo> getSzomszedos_mezok() {
 		return szomszedos_mezok;
 	}
-
+	/**ezzel a fuggvennyel adhatunk "kivulrol" hozza jatekost a mezohoz*/
 	public void addJatekos(Szereplo sz) {
 		jatekosok.add(sz);
 	}
@@ -125,21 +125,16 @@ public abstract class Mezo {
 	public int rajta_levo_jatekosok() {return jatekosok.size();}
 	
 	
-	/**a kotellel valo menekitest valositja meg ez a fuggveny*/
-	/*public void kiment_mindenkit(Mezo cel) {
-		for(Szereplo sz : jatekosok) {
-			atleptet(sz,cel);
-			jatekosok.remove(sz);
-		}
-	}*/
-
+	/**egyszeru getter*/
 	public int getId() {
 		return id;
 	}
-
+	/**egyszeru getter*/
 	public int getHoreteg() {
 		return horeteg;
 	}
+	
+	/**egyszeru getter*/
 	public Epitmeny getEpitmeny() {
 		return epitmeny;
 	}

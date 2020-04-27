@@ -1,5 +1,5 @@
 package projlab;
-
+/**Ideiglenes epuletet (Satort) megvalosito osztaly*/
 public class FelepitettSator extends Epitmeny {
 	/**Melyik mezon van az epitmeny*/
 	public FelepitettSator(Mezo m) {
@@ -12,7 +12,7 @@ public class FelepitettSator extends Epitmeny {
 	public void rombol() {
 		getMezo().epit(new Uresepulet(getMezo()));
 	}
-	
+	/**Tesztelest segito fuggveny*/
 	public String toString() {
 		return "FelepitettSator";
 	}
