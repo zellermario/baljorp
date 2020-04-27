@@ -5,7 +5,7 @@ SJ vegzes (0) - object: x
 	neighbours: [(kezdes, 2)]
 
 Buildings:
-iglu i on vegzes
+iglu on vegzes
 
 Actors:
 > Eszkimo eszkimo (heat: 5) on vegzes
