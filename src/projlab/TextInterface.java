@@ -106,8 +106,7 @@ public class TextInterface {
 		
 		// create <targy> <object_name> player <player_name>
 		// create <targy> <object_name> field <field_name>
-		patterns.put(Pattern.compile("^create (Buvarruha|Kotel|Etel|Lapat|TorekenyAso|Sator|RaketaAlkatresz) ([a-zA-z]+[a-zA-z_0-9]*)"
-								      + " (?:(player) ([a-zA-z]+[a-zA-z_0-9]*)|(field) ([a-zA-z]+[a-zA-z_0-9]*))$"), 
+		patterns.put(Pattern.compile("^create (Buvarruha|Kotel|Etel|Lapat|TorekenyAso|Sator|RaketaAlkatresz) ([a-zA-z]+[a-zA-z_0-9]*) (player|field) ([a-zA-z]+[a-zA-z_0-9]*)$"), 
 		args -> {
 			Targy targy = null;
 			switch (args[0]) {
