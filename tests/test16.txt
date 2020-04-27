@@ -3,4 +3,3 @@ create SJ m 1
 create Eszkimo e m
 
 cleansnow e
-pass e

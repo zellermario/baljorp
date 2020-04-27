@@ -19,5 +19,6 @@ public class Luk extends Mezo{
 	/**Ezzel a fuggvennyel mindenkeppen atleptetjuk az adott jatekost, fuggetlenul attol, hogy lukban allunk*/
 	public void atleptet(Szereplo sz, Mezo cel) {
 		cel.jatekosFogadas(sz);
+		jatekosok.remove(sz);
 	}
 }
