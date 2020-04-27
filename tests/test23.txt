@@ -5,4 +5,3 @@ create Eszkimo e mezo
 
 digobject e
 useobject ta e
-pass e

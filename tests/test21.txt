@@ -4,4 +4,3 @@ create Eszkimo e m
 create Sator s player e
 
 useobject s e
-pass e
