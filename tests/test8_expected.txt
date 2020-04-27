@@ -1,2 +1,8 @@
 Fields:
-SJ m (0) - object
+SJ m (0) - object: l	neighbours: []
+
+Buildings:
+
+Actors:
+> Eszkimo e (heat: 5) on m
+  Inventory: []
