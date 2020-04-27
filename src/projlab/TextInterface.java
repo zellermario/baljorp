@@ -337,7 +337,7 @@ public class TextInterface {
 				if (horeteg > 0)
 					System.out.print("?\n");
 				else if (mezo.getTargy() != null)
-					entities.forEach((name, obj) -> System.out.print(obj.equals(mezo) ? name : ""));
+					entities.forEach((name, obj) -> System.out.print(obj.equals(mezo.getTargy()) ? name + "\n" : ""));
 				else System.out.print("x\n");
 				System.out.print("\tneighbours: [");
 				int i = 0;
