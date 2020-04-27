@@ -1,0 +1,9 @@
+Fields:
+ISJ m (0,2) - object: x
+	neighbours: []
+
+Buildings:
+
+Actors:
+> Sarkkutato s (heat: 4) on m
+  Inventory: []

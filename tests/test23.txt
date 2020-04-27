@@ -1,7 +1,7 @@
 create SJ mezo 3
 
 create TorekenyAso ta field mezo
-create Eszkimo e field mezo
+create Eszkimo e mezo
 
 digobject e
 useobject ta e

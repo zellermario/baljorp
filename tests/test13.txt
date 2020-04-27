@@ -1,4 +1,4 @@
-create ST m 0
+create SJ m 0
 
 create Sarkkutato s m
 

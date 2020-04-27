@@ -1,6 +1,5 @@
 create SJ m 0
 
 create Eszkimo e m
-create Uresepulet u
 
 snowstorm m
