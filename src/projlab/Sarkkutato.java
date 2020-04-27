@@ -10,6 +10,7 @@ public class Sarkkutato extends Szereplo{
 	public void kepessegHasznal(Mezo cel) {
 		if(sorszam != jatek.getAktualis() || munkamennyiseg == 0) return;
 		int teher = cel.megvizsgal();
+		if (teher == -2) teher += 2;
 		munkamennyiseg--;
 		jatek.addToCounter(1);
 	}

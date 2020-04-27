@@ -29,7 +29,7 @@ SJ m9 (0) - object: a
 Buildings:
 
 Actors:
-> Eszkimo e (heat: 5) on m5
+> Eszkimo e (heat: 0) on m13
   Inventory: []
 > Sarkkutato k1 (heat: 0) on m13
   Inventory: []

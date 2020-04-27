@@ -74,6 +74,8 @@ create Sarkkutato k1 m11
 create Sarkkutato k2 m13
 create Jegesmedve m m2
 move e 4
+move e 4
+move e 3
 pass e
 move k1 2
 pass k1

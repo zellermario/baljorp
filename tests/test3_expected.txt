@@ -7,5 +7,7 @@ ISJ m2 (0,1) - object: x
 Buildings:
 
 Actors:
-> Eszkimo e (heat: 0) on m2
+> Eszkimo e1 (heat: 0) on m2
+  Inventory: []
+> Eszkimo e2 (heat: 0) on m2
   Inventory: []

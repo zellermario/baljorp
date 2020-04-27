@@ -1,30 +1,30 @@
 Fields:
 ISJ m1 (0,2) - object: r3
-	neighbours: [(1, m1), (2, m4), (3, m8)]
-SJ m2 (0) - object: x
-	neighbours: [(1, m3), (2, m5), (3, m4), (4, m1)]
-L m3 (0) - object: x
-	neighbours: [(1, m6), (2, m5), (3, m2)]
-L m4 (0) - object: x
-	neighbours: [(1, m1), (2, m2), (3, m5), (4, m9), (5, m8)]
-SJ m5 (0) - object: r2
-	neighbours: [(1, m3), (2, m6), (3, m10), (4, m9), (5, m4)]
-ISJ m6 (0,2) - object: x
-	neighbours: [(1, m7), (2, m11), (3, m10), (4, m5), (5, m3)]
-L m7 (0) - object: x
-	neighbours: [(1, m11), (2, m6)]
-SJ m8 (0) - object: r1
-	neighbours: [(1, m4), (2, m9), (3, m12), (4, m1)]
-SJ m9 (0) - object: a
-	neighbours: [(1, m5), (2, m10), (3, m13), (4, m12), (5, m8), (6, m4)]
+	neighbours: [(1,m2), (2,m4), (3,m8)]
 L m10 (0) - object: x
-	neighbours: [(1, m6), (2, m11), (3, m13), (4,  m10)]
+	neighbours: [(1,m6), (2,m11), (3,m13), (4,m9), (5,m5)]
 SJ m11 (0) - object: x
-	neighbours: [(1, m7), (2, m13), (3, m10), (4, m6)]
+	neighbours: [(1,m7), (2,m13), (3,m10), (4,m6)]
 L m12 (0) - object: x
-	neighbours: [(1, m13), (2, m8), (3, m9)]
+	neighbours: [(1,m13), (2,m8), (3,m9)]
 ISJ m13 (0,2) - object: x
-	neighbours: [(1, m11), (2, m12), (3, m9), (4, m10)]
+	neighbours: [(1,m11), (2,m12), (3,m9), (4,m10)]
+SJ m2 (0) - object: x
+	neighbours: [(1,m3), (2,m5), (3,m4), (4,m1)]
+L m3 (0) - object: x
+	neighbours: [(1,m6), (2,m5), (3,m2)]
+L m4 (0) - object: x
+	neighbours: [(1,m1), (2,m2), (3,m5), (4,m9), (5,m8)]
+SJ m5 (0) - object: r2
+	neighbours: [(1,m3), (2,m6), (3,m10), (4,m9), (5,m4), (6,m2)]
+ISJ m6 (0,2) - object: x
+	neighbours: [(1,m7), (2,m11), (3,m10), (4,m5), (5,m3)]
+L m7 (0) - object: x
+	neighbours: [(1,m11), (2,m6)]
+SJ m8 (0) - object: r1
+	neighbours: [(1,m4), (2,m9), (3,m12), (4,m1)]
+SJ m9 (0) - object: a
+	neighbours: [(1,m5), (2,m10), (3,m13), (4,m12), (5,m8), (6,m4)]
 
 Buildings:
 Iglu on m6
@@ -36,4 +36,5 @@ Actors:
   Inventory: []
 > Sarkkutato k2 (heat: 4) on m13
   Inventory: []
-> Medve m on m2
+> Jegesmedve m (heat: 1) on m2
+  Inventory: []
