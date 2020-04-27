@@ -211,6 +211,25 @@ public class TextInterface {
 			scanner.close();
 		});
 		
+		// runtest <testnumber>
+		patterns.put(Pattern.compile("^runtest ([0-9]+)$"), args -> {
+			startNewGame();
+			executeCommand("runscript test" + args[0] + ".txt");
+			ByteArrayOutputStream testOutput = new ByteArrayOutputStream();
+			PrintStream ps = new PrintStream(testOutput, true);
+			PrintStream stdout = System.out;
+			System.setOut(ps);
+			executeCommand("getStatus");
+			System.setOut(stdout);
+			Path expectedPath = Paths.get(System.getProperty("user.dir") + "\\tests\\test" + args[0] + "_expected.txt");
+			try {
+				checkTestCase("Testeset " + args[0] , Files.readAllBytes(expectedPath), testOutput.toByteArray());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			startNewGame();
+		});
+		
 		// runalltests
 		patterns.put(Pattern.compile("^runalltests$"), __ -> {
 			File config = new File("./tests/tests.config");
@@ -238,6 +257,7 @@ public class TextInterface {
 				}
 			}
 			configScanner.close();
+			startNewGame();
 		});
 		
 		// help
@@ -409,4 +429,6 @@ public class TextInterface {
 		expectedS.close();
 		actualS.close();
 	}
+	
+	
 }
