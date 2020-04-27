@@ -352,11 +352,13 @@ public class TextInterface {
 		}
 		System.out.println("\nBuildings:");
 		for (Entry<String, Object> entry : entities.entrySet()) {
-			Object maybeEpitmeny = entry.getValue();
-			if (buildings.contains(maybeEpitmeny)) {
-				Epitmeny epitmeny = (Epitmeny)maybeEpitmeny;
-				System.out.print(epitmeny.toString() + " " +  entry.getKey() + " on ");
-				entities.forEach((name, obj) -> System.out.print(obj.equals(epitmeny.getMezo()) ? name + "\n" : ""));
+			Object maybeMezo = entry.getValue();
+			if (fields.contains(maybeMezo)) {
+				Mezo mezo = (Mezo)maybeMezo;
+				String tipus = mezo.getEpitmeny().toString();
+				if (!tipus.equals("Uresepulet")) {
+					System.out.println(tipus + " on " + entry.getKey());
+				}
 			}
 		}
 		System.out.println("\nActors:");
