@@ -178,7 +178,7 @@ public class TextInterface {
 		});
 		
 		// pass <player>
-		patterns.put(Pattern.compile("^pass$"), args -> {
+		patterns.put(Pattern.compile("^pass ([a-zA-z]+[a-zA-z_0-9]*)$"), args -> {
 			Szereplo szereplo = (Szereplo)entities.get(args[0]);
 			if (szereplo == null) { System.out.println("Nincs ilyen nevu szereplo."); return; }
 			szereplo.passz();
