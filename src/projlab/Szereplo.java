@@ -16,9 +16,9 @@ public abstract class Szereplo {
 	private int maxtestho;
 	
 	/**A jatekos testhoje.*/
-	private int testho;
+	protected int testho;
 	/**A mezo amin a jatekos all.*/
-	private Mezo kurrensmezo;
+	protected Mezo kurrensmezo;
 	/**A jatekosnal levo targyak.*/
 	private List<Targy> sajat_targyak = new ArrayList<Targy>();
 	/**A jatek aminek a jatekos a resze.*/

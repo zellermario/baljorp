@@ -1,5 +1,5 @@
 Fields:
-SJ m (0) - object: et
+SJ m (0) - object: x
 	neighbours: []
 
 Buildings:

@@ -1,12 +1,13 @@
 Fields:
 SJ kezdes (0) - object: x
-	neighbours: [(vegzes, 1)]
-ISJ vegzes (0,2) - object: x
-	neighbours: [(kezdes, 2)]
+	neighbours: [(1,vegzes)]
+ISJ vegzes (0,1) - object: x
+	neighbours: [(2,kezdes)]
 
 Buildings:
 
 Actors:
-> Eszkimo eszkimo (heat: 0) on vegzes
+> Eszkimo e (heat: 0) on vegzes
   Inventory: []
-> Medve m on vegzes
+> Jegesmedve m (heat: 0) on vegzes
+  Inventory: []

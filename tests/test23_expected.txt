@@ -1,9 +1,9 @@
 Fields:
-SJ mezo (1) - object: ?
+SJ mezo (0) - object: x
 	neighbours: []
 
 Buildings:
 
 Actors:
-> Eszkimo e (heat: 5) on mezo
+> Eszkimo e (heat: 3) on mezo
   Inventory: [ta]

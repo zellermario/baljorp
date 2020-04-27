@@ -26,7 +26,7 @@ public class Jatek {
 	
 	/**a koroket vezerlo fuggveny, a munkamennyisegek alapjan tudjuk ezt szamon tartani, ebben segit a passz fuggvenye a Szereplonek*/
 	public void addToCounter(int i) {
-		jatekosCounter = (i+jatekosCounter) % (4*szereplok.size());
+		jatekosCounter += i;
 		if(jatekosCounter == szereplok.size() * 4) { 
 			epuletRombol();
 			jatekosCounter = 0;
@@ -43,11 +43,13 @@ public class Jatek {
 	/**ennek a fuggvenynek a segitsegevel adhatunk hozza ujabb jatekosokat a jatekhoz*/
 	public void addSzereplo(Szereplo sz) {
 		szereplok.add(sz);
+		sz.getKurrensMezo().addJatekos(sz);
 	}
 	/**kulon hozzaadas a jegesmedveknek -  nyilvantartjuk, hogy mennyi van belole*/
 	public void addJegesmedve(Jegesmedve j) {
 		szereplok.add(j);
 		jegesmedveszam++;
+		j.getKurrensMezo().addJatekos(j);
 	}
 	/**Mezok hozzaadasa a jatekhoz
 	 * a mezok szomszedossagi viszonyat mar korabban definialtuk*/

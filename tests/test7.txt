@@ -3,4 +3,5 @@ create Eszkimo e m
 create Etel et field m
 
 snowstorm m
+cleansnow e
 digobject e

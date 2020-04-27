@@ -6,5 +6,6 @@ addNeighbor sj2 2 sj1
 create Eszkimo eszkimo sj2
 create Jegesmedve m sj1
 
+pass eszkimo
 move m 1
 pass m

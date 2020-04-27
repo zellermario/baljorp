@@ -7,5 +7,6 @@ create Eszkimo eszkimo vegzes
 create FelepitettSator fs vegzes
 create Jegesmedve m kezdes
 
+pass eszkimo
 move m 1
 pass m

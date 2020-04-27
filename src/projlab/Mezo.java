@@ -35,6 +35,9 @@ public abstract class Mezo {
 		return szomszedos_mezok;
 	}
 
+	public void addJatekos(Szereplo sz) {
+		jatekosok.add(sz);
+	}
 	/**Ez a fuggveny a parameterkent adott jatekost a mezore helyezi.*/
 	public void jatekosFogadas(Szereplo sz) {
 		jatekosok.add(sz);
@@ -96,8 +99,8 @@ public abstract class Mezo {
 	}
 	/**ha az epulet nem vedi meg a jatekosokat, meghivodik ez a fuggveny es megoli oket*/
 	void medvemegol() {
-		for(Szereplo i : jatekosok)
-			i.halal();
+		for(int i = 0; i < jatekosok.size()-1; i++)
+			jatekosok.get(i).halal();
 	}
 	/**az ideiglenes epitmenyt lerombolja a mezon*/
 	void epuletRombol() {

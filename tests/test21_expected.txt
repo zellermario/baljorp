@@ -5,5 +5,5 @@ SJ m (0) - object: x
 Buildings:
 
 Actors:
-> Eszkimo eszkimo (heat: 5) on m
+> Eszkimo e (heat: 5) on m
   Inventory: []

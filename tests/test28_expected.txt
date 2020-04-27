@@ -10,5 +10,5 @@ FelepitettSator on vegzes
 Actors:
 > Eszkimo eszkimo (heat: 0) on vegzes
   Inventory: []
-> Jegesmedve m (heat: 1) on kezdes
+> Jegesmedve m (heat: 1) on vegzes
   Inventory: []

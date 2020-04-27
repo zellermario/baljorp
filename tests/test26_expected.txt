@@ -1,13 +1,13 @@
 Fields:
 SJ sj1 (0) - object: x
-	neighbours: [(1, sj2)]
+	neighbours: [(1,sj2)]
 SJ sj2 (0) - object: x
-	neighbours: [(2, sj1)]
+	neighbours: [(2,sj1)]
 
 Buildings:
 
 Actors:
 > Eszkimo eszkimo (heat: 0) on sj2
   Inventory: []
-> Jegesmedve m (heat: 1) on sj1
+> Jegesmedve m (heat: 1) on sj2
   Inventory: []
