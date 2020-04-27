@@ -77,5 +77,3 @@ move e 4
 pass e
 move k1 2
 pass k1
-pass k2
-pass m
