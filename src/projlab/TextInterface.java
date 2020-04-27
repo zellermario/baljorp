@@ -60,8 +60,9 @@ public class TextInterface {
 		});
 
 		// create L <name>
-		patterns.put(Pattern.compile("^create L ([a-zA-z]+[a-zA-z_0-9]*)$"), args -> {
-			Mezo mezo = new Luk(game);
+		patterns.put(Pattern.compile("^create L ([a-zA-z]+[a-zA-z_0-9]*) ([0-9]+)$"), args -> {
+			int snowlayers = Integer.parseInt(args[1]);
+			Mezo mezo = new Luk(game, snowlayers);
 			entities.put(args[0], mezo);
 			fields.add(mezo);
 		});
@@ -306,7 +307,8 @@ public class TextInterface {
 					System.out.print("SJ " + nev + " (" + horeteg + ") - object: "); 
 					break;
 				case 2:
-					System.out.print("ISJ " + nev + " (" + horeteg + ") - object: ");
+					int kapacitas = ((Instabil_Jegtabla)mezo).getTeherbiras();
+					System.out.print("ISJ " + nev + " (" + horeteg + ","+ kapacitas + ") - object: ");
 					break;
 				case 3:
 					System.out.print("L " + nev + " (" + horeteg + ") - object: ");
