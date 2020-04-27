@@ -5,4 +5,3 @@ create Sator s field m
 
 digobject e
 useobject s e
-pass e
