@@ -25,7 +25,7 @@ public class Instabil_Jegtabla extends Mezo {
 	/**Ez a fuggveny a parameterkent atadott jatekost a jegtablara helyezi.*/
 	public void jatekosFogadas(Szereplo sz) {
 		super.jatekosFogadas(sz);
-		if(!(teherbiras >= rajta_levo_jatekosok())) atfordul();
+		if(teherbiras < rajta_levo_jatekosok()) atfordul();
 	}
 	/** A jegtabla teherbirasat adja vissza */
 	public int getTeherbiras() { return teherbiras; }
