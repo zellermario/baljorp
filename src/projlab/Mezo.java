@@ -77,8 +77,9 @@ public abstract class Mezo {
 	}
 	/**Ez a fuggveny hivja meg a mezon allo jatekosok megfelelo metodusait, ha elkapja oket a hovihar.*/
 	public void tovabbad() {
-		for(Szereplo i : jatekosok)
-			i.hovihar();
+		for(int i = 0; i < jatekosok.size(); i++) {
+			jatekosok.get(i).hovihar();
+		}
 	}
 	/**beallitja a mezo szomszedossagi kapcsolatat*/
 	public void setSzomszed(int irany, Mezo szomszed) {
