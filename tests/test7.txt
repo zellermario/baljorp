@@ -1,7 +1,8 @@
 create SJ m 0
 
 create Eszkimo e m
-create Etel field m
+create Etel e field m
 
+snowstorm m
 digobject e
 pass e

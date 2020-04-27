@@ -3,8 +3,8 @@ create SJ m2 0
 addNeighbor m1 1 m2
 addNeighbor m2 2 m1
 
-create Eszkimo e
+create Eszkimo e m1
 create Buvarruha b player e
 
-move e 1
+useobject b e 1
 pass e

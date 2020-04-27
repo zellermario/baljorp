@@ -6,4 +6,4 @@ Buildings:
 
 Actors:
 > Eszkimo e (heat: 5) on m
-  Inventory: [l]
+  Inventory: [r]
