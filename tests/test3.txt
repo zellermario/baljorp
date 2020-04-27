@@ -1,5 +1,5 @@
 create SJ m1 0
-create ISJ m2 0 2
+create ISJ m2 0 1
 addNeighbor m1 1 m2
 addNeighbor m2 2 m1
 create Eszkimo e m1
