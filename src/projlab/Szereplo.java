@@ -24,6 +24,7 @@ public abstract class Szereplo {
 	/**A jatek aminek a jatekos a resze.*/
 	protected Jatek jatek;
 	
+	/** A Szereplo osztaly konstruktora */
 	public Szereplo(int maxm,  int maxh, Jatek j, Mezo kezdomezo) {
 		jatek = j;
 		maxmunka = maxm;
@@ -33,6 +34,12 @@ public abstract class Szereplo {
 		testho = maxh;
 		sorszam = hanyadik;
 		hanyadik++;
+	}
+	
+	/** Kinullazza a jatekosokat szamlalo countert, ha uj 
+	 *  jatekot szeretnenk kezdeni uresen. */
+	public static void resetCounter() {
+		hanyadik = 0;
 	}
 	
 	/**A jatekos lepeseit megvalosito fuggveny, az ellenorzes a teszteket elosegitendo*/

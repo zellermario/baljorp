@@ -29,7 +29,6 @@ public class TextInterface {
 	
 	private Map<Pattern, Consumer<String[]>> patterns = new HashMap<Pattern, Consumer<String[]>>();
 	private Map<String, Object> entities = new TreeMap<String, Object>();
-	private List<Epitmeny> buildings = new ArrayList<Epitmeny>();
 	private List<Szereplo> actors = new ArrayList<Szereplo>();
 	private List<Mezo> fields = new ArrayList<Mezo>();
 	private Jatek game;
@@ -103,7 +102,6 @@ public class TextInterface {
 			if (args[0].equals("Iglu")) epitmeny = new Iglu(mezo);
 			else if (args[0].equals("FelepitettSator")) epitmeny = new FelepitettSator(mezo);
 			entities.put(args[1], epitmeny);
-			buildings.add(epitmeny);
 			mezo.epit(epitmeny);
 		});
 		
@@ -258,7 +256,6 @@ public class TextInterface {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-				startNewGame();
 			}
 			configScanner.close();
 			startNewGame();
@@ -388,11 +385,10 @@ public class TextInterface {
 	 * in a blank environment.
 	 */
 	public void startNewGame() {
-		this.game = new Jatek();
-		entities.clear();
-		buildings.clear();
-		fields.clear();
-		actors.clear();
+		entities = new TreeMap<String, Object>();
+		actors = new ArrayList<Szereplo>();
+		fields = new ArrayList<Mezo>();
+		game = new Jatek();
 	}
 	
 	/**

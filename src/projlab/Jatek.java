@@ -23,6 +23,10 @@ public class Jatek {
 	/**jatekosok altal hasznalt munka alapjan szamlal, a segitsegevel hatarozzuk meg, hogy ki kovetkezik*/
 	private int jatekosCounter = 0;
 	
+	/** A Jatek osztaly konstruktora */
+	public Jatek() {
+		Szereplo.resetCounter();
+	}
 	
 	/**a koroket vezerlo fuggveny, a munkamennyisegek alapjan tudjuk ezt szamon tartani, ebben segit a passz fuggvenye a Szereplonek*/
 	public void addToCounter(int i) {
