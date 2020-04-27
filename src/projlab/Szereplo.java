@@ -82,6 +82,7 @@ public abstract class Szereplo {
 	}
   /**Ezzel a fuggvennyel tudjuk jelzi a jateknak ha a jatekos meghal.*/
   public void halal() {
+	  	testho = 0;
 		jatek.vereseg();
 	}
   	/**Ez a fuggveny valositja meg a korvaltast.*/

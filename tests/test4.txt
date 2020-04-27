@@ -7,4 +7,3 @@ addNeighbor m2 2 m1
 create Eszkimo e m1
 
 move e 1
-pass e
