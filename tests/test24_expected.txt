@@ -4,8 +4,6 @@ SJ mezo (1) - objects: ?
 
 Buildings:
 
-Snowstorms:[]
-
 Actors:
 > Eszkimo eszkimo (heat: 5) on mezo
   Inventory: []

@@ -5,5 +5,5 @@ L m (0) - object: x
 Buildings:
 
 Actors:
-> Eszkimo e (heat: 5) on m
+> Eszkimo e (heat: 0) on m
   Inventory: []

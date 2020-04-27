@@ -3,7 +3,7 @@ SJ m (1) - object: ?
 	neighbours: []
 
 Buildings:
-Iglu i on m
+Iglu on m
 
 Actors:
 > Eszkimo e (heat: 5) on m

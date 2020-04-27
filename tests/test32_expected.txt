@@ -27,7 +27,7 @@ ISJ m13 (0,2) - object: x
 	neighbours: [(1, m11), (2, m12), (3, m9), (4, m10)]
 
 Buildings:
-Iglu i on m6
+Iglu on m6
 
 Actors:
 > Eszkimo e (heat: 5) on m6
