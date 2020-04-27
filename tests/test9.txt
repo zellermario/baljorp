@@ -7,5 +7,5 @@ create Eszkimo e1 m1
 create Eszkimo e2 m2
 create Kotel k player e1
 
-useobject k e1 1
+useobject k e1
 pass e1

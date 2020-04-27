@@ -28,7 +28,8 @@ public class Jatek {
 	public void addToCounter(int i) {
 		jatekosCounter = (i+jatekosCounter) % (4*szereplok.size());
 		aktualisJatekos = jatekosCounter / 4;
-		szereplok.get(aktualisJatekos).kor();
+		if(jatekosCounter % 4 == 0)
+			szereplok.get(aktualisJatekos).kor();
 	}
 	
 	/**visszaadja az epp soron kovetkezo jatekos sorszamat*/

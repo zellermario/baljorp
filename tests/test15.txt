@@ -6,4 +6,3 @@ addNeighbor m2 2 m1
 create Sarkkutato s m1
 
 useskill s m2
-pass s

@@ -1,7 +1,7 @@
 create SJ m 2
 
 create Eszkimo e m
-create Lapat l filed m
+create Lapat l player e
 
 digobject e
 useobject l e

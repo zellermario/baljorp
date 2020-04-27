@@ -1,7 +1,6 @@
 create SJ m 0
 
 create Eszkimo e m
-create RaketaAlkatresz r filed m
+create RaketaAlkatresz r field m
 
 digobject e
-pass e
