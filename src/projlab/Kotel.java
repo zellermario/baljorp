@@ -17,5 +17,13 @@ public class Kotel extends Targy {
 				l.kiment_mindenkit(sz.getKurrensMezo());
 			}
 		}
-	}	
+	}
+	
+	public void rajzolTargy(Felulet f, Mezo m){
+		f.rajzolKotel(m);
+	}
+	
+	public void rajzolTargyInv(Felulet f, Szereplo sz, int hanyadik){
+		f.rajzolKotelInv(sz, hanyadik);
+	}
 }

@@ -16,4 +16,8 @@ public class FelepitettSator extends Epitmeny {
 	public String toString() {
 		return "FelepitettSator";
 	}
+	
+	public void rajzolEpitmeny(Felulet f, Mezo m){
+		f.rajzolFelepitettSator(m);
+	}
 }

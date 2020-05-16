@@ -18,6 +18,14 @@ public class Sarkkutato extends Szereplo{
 	public String toString() {
 		return "Sarkkutato";
 	}
+	
+	public void rajzolSzereplo(Felulet f){
+		f.rajzolSarkkutato(kurrensmezo);
+		int i = 1;
+		for(Targy t : sajat_targyak) {
+			t.rajzolTargyInv(f, this, i++);
+		}
+	}
 }
 
 	

@@ -13,5 +13,9 @@ public class Iglu extends Epitmeny{
 	public String toString() {
 		return "Iglu";
 	}
+	
+	public void rajzolEpitmeny(Felulet f, Mezo m){
+		f.rajzolIglu(m);
+	}
 
 }

@@ -20,7 +20,7 @@ public abstract class Szereplo {
 	/**A mezo amin a jatekos all.*/
 	protected Mezo kurrensmezo;
 	/**A jatekosnal levo targyak.*/
-	private List<Targy> sajat_targyak = new ArrayList<Targy>();
+	protected List<Targy> sajat_targyak = new ArrayList<Targy>();
 	/**A jatek aminek a jatekos a resze.*/
 	protected Jatek jatek;
 	
@@ -135,4 +135,7 @@ public abstract class Szereplo {
 		kurrensmezo = m;
 	}
 	
+	public void rajzolSzereplo(Felulet f){
+		
+	}
 }

@@ -41,4 +41,8 @@ public class Jegesmedve extends Szereplo {
 		kurrensmezo.jatekosKuldes(this, cel);
 		tamad();
 	}
+	
+	public void rajzolSzereplo(Felulet f){
+		f.rajzolJegesmedve(kurrensmezo);
+	}
 }

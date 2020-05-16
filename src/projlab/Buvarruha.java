@@ -14,7 +14,13 @@ public class Buvarruha extends Targy {
 			l.atleptet(sz, sz.getKurrensMezo().getSzomszed(irany));
 			l.jatekosok.remove(sz);
 		}
-		
-		
+	}
+	
+	public void rajzolTargy(Felulet f, Mezo m){
+		f.rajzolBuvarruha(m);
+	}
+	
+	public void rajzolTargyInv(Felulet f, Szereplo sz, int hanyadik){
+		f.rajzolBuvarruhaInv(sz, hanyadik);
 	}
 }

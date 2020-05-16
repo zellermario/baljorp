@@ -13,4 +13,12 @@ public class Targy {
 	public void osszeszed(Szereplo sz) {}
 	/**az id gettere*/
 	public int getId() {return id;}
+	
+	public void rajzolTargy(Felulet f, Mezo m){
+		
+	}
+	
+	public void rajzolTargyInv(Felulet f, Szereplo sz, int hanyadik){
+		
+	}
 }

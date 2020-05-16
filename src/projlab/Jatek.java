@@ -23,6 +23,10 @@ public class Jatek {
 	/**jatekosok altal hasznalt munka alapjan szamlal, a segitsegevel hatarozzuk meg, hogy ki kovetkezik*/
 	private int jatekosCounter = 0;
 	
+	private Mezo kivalasztott_mezo;
+	
+	private Felulet felulet;
+	
 	/** A Jatek osztaly konstruktora */
 	public Jatek() {
 		Szereplo.resetCounter();
@@ -122,4 +126,19 @@ public class Jatek {
 	/**ezzel a fuggvennyel tudjuk lekerdezni, hogy hany jatekos van*/
 	public int jatekosszam() {return szereplok.size()-jegesmedveszam;}
   
+	public List<Szereplo> getSzereplok() {
+		return szereplok;
+	}
+
+	public List<Mezo> getMezok() {
+		return mezok;
+	}
+
+	public void kepfrissites() {
+		felulet.frissites();
+	}
+	
+	public void feluletInit() {
+		
+	}
 }

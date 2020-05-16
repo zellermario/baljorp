@@ -16,5 +16,13 @@ public class Eszkimo extends Szereplo{
 	public String toString() {
 		return "Eszkimo";
 	}
+	
+	public void rajzolSzereplo(Felulet f){
+		f.rajzolEszkimo(kurrensmezo);
+		int i = 1;
+		for(Targy t : sajat_targyak) {
+			t.rajzolTargyInv(f, this, i++);
+		}
+	}
 }
 

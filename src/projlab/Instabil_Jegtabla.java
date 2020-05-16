@@ -33,4 +33,10 @@ public class Instabil_Jegtabla extends Mezo {
 	}
 	/** A jegtabla teherbirasat adja vissza */
 	public int getTeherbiras() { return teherbiras; }
+
+	public void rajzolMezo(Felulet f) {
+		f.rajzolInstabilJegtabla(x, y);
+		epitmeny.rajzolEpitmeny(f, this);
+		belefagyott_targy.rajzolTargy(f, this);
+	}
 }

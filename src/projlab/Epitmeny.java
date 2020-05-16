@@ -24,4 +24,7 @@ public abstract class Epitmeny {
 	/**A teszteket segitendo fuggveny*/
 	public abstract String toString();
 	
+	public void rajzolEpitmeny(Felulet f, Mezo m){
+		
+	}
 }

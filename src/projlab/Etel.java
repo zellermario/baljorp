@@ -11,4 +11,13 @@ public class Etel extends Targy{
 		sz.eves();
 		sz.targyTorol(this);
 	}
+	
+	public void rajzolTargy(Felulet f, Mezo m){
+		f.rajzolEtel(m);
+	}
+	
+	public void rajzolTargyInv(Felulet f, Szereplo sz, int hanyadik){
+	
+	}	
+	
 }

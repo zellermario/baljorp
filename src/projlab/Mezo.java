@@ -16,11 +16,13 @@ public abstract class Mezo {
 	/**A jatek aminek a resz a mezo.*/
 	private Jatek jatek;
 	/**A mezoben levo targy.*/
-	private Targy belefagyott_targy;
+	protected Targy belefagyott_targy;
 	/**A mezon levo epulet.*/
-	private Epitmeny epitmeny;
+	protected Epitmeny epitmeny;
 	/**A mezon levo jatekosok.*/
 	protected List<Szereplo> jatekosok = new ArrayList<Szereplo>();
+	
+	protected int x, y;
 	
   //todo valasz: szerintem edesmindegy
 	public Mezo(int _id, Jatek j) {
@@ -137,6 +139,10 @@ public abstract class Mezo {
 	/**egyszeru getter*/
 	public Epitmeny getEpitmeny() {
 		return epitmeny;
+	}
+	
+	public void rajzolMezo(Felulet f) {
+		
 	}
   
 }

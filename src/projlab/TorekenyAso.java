@@ -15,4 +15,12 @@ public class TorekenyAso extends Lapat {
 			sz.targyTorol(this);
 		}
 	}
+	
+	public void rajzolTargy(Felulet f, Mezo m){
+		f.rajzolTorekenyAso(m);
+	}
+	
+	public void rajzolTargyInv(Felulet f, Szereplo sz, int hanyadik){
+		f.rajzolTorekenyAsoInv(sz, hanyadik);
+	}
 }

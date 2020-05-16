@@ -27,4 +27,8 @@ public class Luk extends Mezo{
 		}
 		jatekosok.clear();
 	}
+	
+	public void rajzolMezo(Felulet f) {
+		f.rajzolLuk(x, y);
+	}
 }
