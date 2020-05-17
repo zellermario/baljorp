@@ -1,10 +1,13 @@
 package projlab;
 
 import java.awt.CardLayout;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Felulet {
+import javax.swing.*;
+
+
+public class Felulet implements ActionListener{
 	private Jatek jatek;
 	private JFrame frame;
 	private JPanel jatekpanel;
@@ -12,6 +15,10 @@ public class Felulet {
 	private JPanel eredmeny;
 	private CardLayout cardlayout;
 	private JPanel controlpanel;
+	private JButton startGomb;
+	private JComboBox dropdown;
+	private Object menuPoints[];
+	
 	
 	public Felulet(Jatek j) {
 		jatek = j;
@@ -24,10 +31,25 @@ public class Felulet {
 		controlpanel = new JPanel();
 		cardlayout = new CardLayout();
 		controlpanel.setLayout(cardlayout);
+		menuPoints = new Object[3];
+		
+		menuPoints[0] = "Mindenbõl egy";
+		menuPoints[1] = "Mindenbõl kettõ";
+		menuPoints[2] = "Mindenbõl három";
+		
 		
 		jatekpanel = new JPanel();
 		menu = new JPanel();
 		eredmeny = new JPanel();
+		
+		startGomb = new JButton();
+		startGomb.setText("Start!");
+		dropdown = new JComboBox(menuPoints);
+		startGomb.addActionListener(this);
+		menu.add(startGomb);
+		menu.add(dropdown);
+		
+		
 		
 		controlpanel.add(jatekpanel,"jatekpanel");
 		controlpanel.add(menu, "menu");
@@ -143,6 +165,20 @@ public class Felulet {
 	}
 	
 	public void Vereség() {
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		cardlayout.show(controlpanel, "jatekpanel");
+		Main.jatekIF.executeCommand("runscript map.txt");
+		int index = dropdown.getSelectedIndex();
+		if(index == 0) Main.jatekIF.executeCommand("runscript 2jatekos.txt");
+		if(index == 1) Main.jatekIF.executeCommand("runscript 4jatekos.txt");
+		if(index == 2) Main.jatekIF.executeCommand("runscript 6jatekos.txt"); 
+		//this.frissites(); ->ez itt hogy kellene?
+		Main.jatekIF.executeCommand("getStatus");
+		
 		
 	}
 }
