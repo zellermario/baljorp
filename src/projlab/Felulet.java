@@ -1,10 +1,43 @@
 package projlab;
 
+import java.awt.CardLayout;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
 public class Felulet {
 	private Jatek jatek;
+	private JFrame frame;
+	private JPanel jatekpanel;
+	private JPanel menu;
+	private JPanel eredmeny;
+	private CardLayout cardlayout;
+	private JPanel controlpanel;
 	
 	public Felulet(Jatek j) {
 		jatek = j;
+		frame = new JFrame();
+		frame.setTitle("Jegmezo");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setResizable(false);
+		frame.setSize(800, 500);
+		
+		controlpanel = new JPanel();
+		cardlayout = new CardLayout();
+		controlpanel.setLayout(cardlayout);
+		
+		jatekpanel = new JPanel();
+		menu = new JPanel();
+		eredmeny = new JPanel();
+		
+		controlpanel.add(jatekpanel,"jatekpanel");
+		controlpanel.add(menu, "menu");
+		controlpanel.add(eredmeny,"eredmeny");
+		
+		controlpanel.setFocusable(true);
+		
+		frame.setContentPane(controlpanel);
+		cardlayout.show(controlpanel, "menu");
+		frame.setVisible(true);
 	}
 	
 	public void frissites() {

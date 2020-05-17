@@ -30,6 +30,7 @@ public class Jatek {
 	/** A Jatek osztaly konstruktora */
 	public Jatek() {
 		Szereplo.resetCounter();
+		felulet = new Felulet(this);
 	}
 	
 	/**a koroket vezerlo fuggveny, a munkamennyisegek alapjan tudjuk ezt szamon tartani, ebben segit a passz fuggvenye a Szereplonek*/
