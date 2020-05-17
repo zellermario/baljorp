@@ -37,6 +37,7 @@ public class Instabil_Jegtabla extends Mezo {
 	public void rajzolMezo(Felulet f) {
 		f.rajzolInstabilJegtabla(x, y);
 		epitmeny.rajzolEpitmeny(f, this);
-		belefagyott_targy.rajzolTargy(f, this);
+		if(belefagyott_targy!= null)
+			belefagyott_targy.rajzolTargy(f, this);
 	}
 }

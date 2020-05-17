@@ -176,7 +176,7 @@ public class Felulet implements ActionListener{
 		if(index == 0) Main.jatekIF.executeCommand("runscript 2jatekos.txt");
 		if(index == 1) Main.jatekIF.executeCommand("runscript 4jatekos.txt");
 		if(index == 2) Main.jatekIF.executeCommand("runscript 6jatekos.txt"); 
-		//this.frissites(); ->ez itt hogy kellene?
+		this.frissites(); //->ez itt hogy kellene?
 		Main.jatekIF.executeCommand("getStatus");
 		
 		
