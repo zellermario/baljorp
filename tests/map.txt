@@ -1,0 +1,303 @@
+create SJ m1 1
+create SJ m2 0
+create ISJ m3 2 2
+create SJ m4 3
+create SJ m5 1
+create SJ m6 0
+create L m7 2
+create SJ m8 0
+create SJ m9 1
+create L m10 3
+create SJ m11 2
+create ISJ m12 0 1
+create SJ m13 0
+create ISJ m14 1 3
+create SJ m15 0
+create SJ m16 2
+create ISJ m17 3 2
+create ISJ m18 1 1
+create SJ m19 2
+create SJ m20 0
+create L m21 1
+create SJ m22 2
+create SJ m23 3
+create ISJ m24 1 2
+create SJ m25 0
+create ISJ m26 2 2
+create SJ m27 2
+create SJ m28 1
+create SJ m29 3
+create SJ m30 2
+create ISJ m31 2 3
+create L m32 2
+create SJ m33 3
+create SJ m34 1
+create SJ m35 0
+create L m36 1
+create SJ m37 2
+create ISJ m38 3 2
+create SJ m39 2
+create SJ m40 2
+create L m41 1
+create ISJ m42 1 2
+create SJ m43 3
+create ISJ m44 2 1
+create SJ m45 3
+create SJ m46 1
+create SJ m47 1
+create ISJ m48 0 1
+create ISJ m49 2 1
+create SJ m50 3
+create SJ m51 3
+create SJ m52 1
+create ISJ m53 2 1
+create L m54 3
+create SJ m55 2
+create ISJ m56 1 1
+create SJ m57 3
+create SJ m58 2
+create L m59 1
+create ISJ m60 2 2
+create SJ m61 3
+create ISJ m62 2 2
+create SJ m63 0
+create SJ m64 1
+addNeighbor m1 2 m2
+addNeighbor m1 3 m9
+addNeighbor m2 2 m3
+addNeighbor m2 3 m10
+addNeighbor m2 4 m1
+addNeighbor m3 2 m4
+addNeighbor m3 3 m11
+addNeighbor m3 4 m2
+addNeighbor m4 2 m5
+addNeighbor m4 3 m12
+addNeighbor m4 4 m3
+addNeighbor m5 2 m6
+addNeighbor m5 3 m13
+addNeighbor m5 4 m4
+addNeighbor m6 2 m7
+addNeighbor m6 3 m14
+addNeighbor m6 4 m5
+addNeighbor m7 2 m8
+addNeighbor m7 3 m15
+addNeighbor m7 4 m6
+addNeighbor m8 3 m16
+addNeighbor m8 4 m7
+addNeighbor m9 1 m1
+addNeighbor m9 2 m10
+addNeighbor m9 4 m17
+addNeighbor m10 1 m2
+addNeighbor m10 2 m11
+addNeighbor m10 3 m18
+addNeighbor m10 4 m9
+addNeighbor m11 1 m3
+addNeighbor m11 2 m12
+addNeighbor m11 3 m19
+addNeighbor m11 4 m10
+addNeighbor m12 1 m4
+addNeighbor m12 2 m13
+addNeighbor m12 3 m20
+addNeighbor m12 4 m11
+addNeighbor m13 1 m5
+addNeighbor m13 2 m14
+addNeighbor m13 3 m21
+addNeighbor m13 4 m12
+addNeighbor m14 1 m6
+addNeighbor m14 2 m15
+addNeighbor m14 3 m22
+addNeighbor m14 4 m13
+addNeighbor m15 1 m7
+addNeighbor m15 2 m16
+addNeighbor m15 3 m23
+addNeighbor m15 4 m14
+addNeighbor m16 1 m8
+addNeighbor m16 3 m24
+addNeighbor m16 4 m15
+addNeighbor m17 1 m9
+addNeighbor m17 2 m18
+addNeighbor m17 4 m25
+addNeighbor m18 1 m10
+addNeighbor m18 2 m19
+addNeighbor m18 3 m26
+addNeighbor m18 4 m17
+addNeighbor m19 1 m11
+addNeighbor m19 2 m20
+addNeighbor m19 3 m27
+addNeighbor m19 4 m18
+addNeighbor m20 1 m12
+addNeighbor m20 2 m21
+addNeighbor m20 3 m28
+addNeighbor m20 4 m19
+addNeighbor m21 1 m13
+addNeighbor m21 2 m22
+addNeighbor m21 3 m29
+addNeighbor m21 4 m20
+addNeighbor m22 1 m14
+addNeighbor m22 2 m23
+addNeighbor m22 3 m30
+addNeighbor m22 4 m21
+addNeighbor m23 1 m15
+addNeighbor m23 2 m24
+addNeighbor m23 3 m31
+addNeighbor m23 4 m22
+addNeighbor m24 1 m18
+addNeighbor m24 3 m32
+addNeighbor m24 4 m23
+addNeighbor m25 1 m17
+addNeighbor m26 1 m18
+addNeighbor m27 1 m19
+addNeighbor m28 1 m20
+addNeighbor m29 1 m21
+addNeighbor m30 1 m22
+addNeighbor m31 1 m23
+addNeighbor m32 1 m24
+addNeighbor m25 2 m26
+addNeighbor m26 2 m27
+addNeighbor m27 2 m28
+addNeighbor m28 2 m29
+addNeighbor m29 2 m30
+addNeighbor m30 2 m31
+addNeighbor m31 2 m32
+addNeighbor m25 3 m33
+addNeighbor m26 3 m34
+addNeighbor m27 3 m35
+addNeighbor m28 3 m36
+addNeighbor m29 3 m37
+addNeighbor m30 3 m38
+addNeighbor m31 3 m39
+addNeighbor m32 3 m40
+addNeighbor m26 4 m25
+addNeighbor m27 4 m26
+addNeighbor m28 4 m27
+addNeighbor m29 4 m28
+addNeighbor m30 4 m29
+addNeighbor m31 4 m30
+addNeighbor m32 4 m31
+addNeighbor m33 1 m25
+addNeighbor m34 1 m26
+addNeighbor m35 1 m27
+addNeighbor m36 1 m28
+addNeighbor m37 1 m29
+addNeighbor m38 1 m30
+addNeighbor m39 1 m31
+addNeighbor m40 1 m32
+addNeighbor m33 2 m34
+addNeighbor m34 2 m35
+addNeighbor m35 2 m36
+addNeighbor m36 2 m37
+addNeighbor m37 2 m38
+addNeighbor m38 2 m39
+addNeighbor m39 2 m40
+addNeighbor m33 3 m41
+addNeighbor m34 3 m42
+addNeighbor m35 3 m43
+addNeighbor m36 3 m44
+addNeighbor m37 3 m45
+addNeighbor m38 3 m46
+addNeighbor m39 3 m47
+addNeighbor m40 3 m48
+addNeighbor m34 4 m33
+addNeighbor m35 4 m34
+addNeighbor m36 4 m35
+addNeighbor m37 4 m36
+addNeighbor m38 4 m37
+addNeighbor m39 4 m38
+addNeighbor m40 4 m39
+addNeighbor m41 1 m33
+addNeighbor m42 1 m34
+addNeighbor m43 1 m35
+addNeighbor m44 1 m36
+addNeighbor m45 1 m37
+addNeighbor m46 1 m38
+addNeighbor m47 1 m39
+addNeighbor m48 1 m40
+addNeighbor m41 2 m42
+addNeighbor m42 2 m43
+addNeighbor m43 2 m44
+addNeighbor m44 2 m45
+addNeighbor m45 2 m46
+addNeighbor m46 2 m47
+addNeighbor m47 2 m48
+addNeighbor m41 3 m49
+addNeighbor m42 3 m50
+addNeighbor m43 3 m51
+addNeighbor m44 3 m52
+addNeighbor m45 3 m53
+addNeighbor m46 3 m54
+addNeighbor m47 3 m55
+addNeighbor m48 3 m56
+addNeighbor m42 4 m41
+addNeighbor m43 4 m42
+addNeighbor m44 4 m43
+addNeighbor m45 4 m44
+addNeighbor m46 4 m45
+addNeighbor m47 4 m46
+addNeighbor m48 4 m47
+addNeighbor m49 1 m41
+addNeighbor m50 1 m42
+addNeighbor m51 1 m43
+addNeighbor m52 1 m44
+addNeighbor m53 1 m45
+addNeighbor m54 1 m46
+addNeighbor m55 1 m47
+addNeighbor m56 1 m48
+addNeighbor m49 2 m50
+addNeighbor m50 2 m51
+addNeighbor m51 2 m52
+addNeighbor m52 2 m53
+addNeighbor m53 2 m54
+addNeighbor m54 2 m55
+addNeighbor m55 2 m56
+addNeighbor m49 3 m57
+addNeighbor m50 3 m58
+addNeighbor m51 3 m59
+addNeighbor m52 3 m60
+addNeighbor m53 3 m61
+addNeighbor m54 3 m62
+addNeighbor m55 3 m63
+addNeighbor m56 3 m64
+addNeighbor m50 4 m49
+addNeighbor m51 4 m50
+addNeighbor m52 4 m51
+addNeighbor m53 4 m52
+addNeighbor m54 4 m53
+addNeighbor m55 4 m54
+addNeighbor m56 4 m55
+addNeighbor m57 1 m49
+addNeighbor m58 1 m50
+addNeighbor m59 1 m51
+addNeighbor m60 1 m52
+addNeighbor m61 1 m53
+addNeighbor m62 1 m54
+addNeighbor m63 1 m55
+addNeighbor m64 1 m56
+addNeighbor m57 2 m58
+addNeighbor m58 2 m59
+addNeighbor m59 2 m60
+addNeighbor m60 2 m61
+addNeighbor m61 2 m62
+addNeighbor m62 2 m63
+addNeighbor m63 2 m64
+addNeighbor m58 4 m57
+addNeighbor m59 4 m58
+addNeighbor m60 4 m59
+addNeighbor m61 4 m60
+addNeighbor m62 4 m61
+addNeighbor m63 4 m62
+addNeighbor m64 4 m63
+create RaketaAlkatresz r1 field m19
+create RaketaAlkatresz r2 field m61
+create RaketaAlkatresz r3 field m40
+create Buvarruha b1 field m9
+create Buvarruha b2 field m52
+create Kotel k1 field m33
+create Kotel k2 field m28
+create Etel e1 field m56
+create Etel e2 field m38
+create Sator s1 field m6
+create Sator s2 field m49
+create Lapat l1 field m22
+create Lapat l2 field m43
+create TorekenyAso ta1 field m3
+create TorekenyAso ta2 field m17

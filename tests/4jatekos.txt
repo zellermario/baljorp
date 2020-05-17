@@ -1,0 +1,6 @@
+create Eszkimo es1 m1
+create Sarkkutato sa1 m57
+create Eszkimo es2 m64
+create Sarkkutato sa2 m8
+create Jegesmedve jm1 m35
+create Jegesmedve jm2 m30
