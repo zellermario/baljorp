@@ -9,6 +9,7 @@ public class MezoButton extends JButton implements ActionListener{
 	Mezo mezo;
 	public MezoButton(Mezo m) {
 		mezo = m;
+		this.addActionListener(this);
 		}
 	@Override
 	public void actionPerformed(ActionEvent e) {
