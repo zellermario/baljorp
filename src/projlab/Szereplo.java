@@ -160,6 +160,9 @@ public abstract class Szereplo implements KeyListener{
 	        hoTakaritas(1);
 	        jatek.kepfrissites();
 	    }
+	    else if(key == KeyEvent.VK_P) {
+	    	passz();
+	    }
 	   
 	}
 

@@ -195,7 +195,7 @@ public class Felulet implements ActionListener{
 	}
 	
 	public void rajzolLuk(int x, int y) {
-		mezoGombok[x][y].setText(String.valueOf(mezoGombok[x][y].mezo.getHoreteg() + mezoGombok[x][y].mezo.rajzalevok));
+		mezoGombok[x][y].setText(mezoGombok[x][y].mezo.rajzalevok);
 	}
 	
 	public void rajzolHovihar(Mezo m) {
