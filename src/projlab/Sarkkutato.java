@@ -22,6 +22,7 @@ public class Sarkkutato extends Szereplo{
 	public void rajzolSzereplo(Felulet f){
 		f.rajzolSarkkutato(kurrensmezo);
 		f.rajzolSarkkutato(sorszam, testho);
+		if(sorszam != jatek.getAktualis()) return;
 		int i = 1;
 		for(Targy t : sajat_targyak) {
 			t.rajzolTargyInv(f, this, i++);
