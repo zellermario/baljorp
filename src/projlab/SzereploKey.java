@@ -22,7 +22,7 @@ public class SzereploKey implements KeyListener{
 	        jatek.getSzereplok().get(jatek.getAktualis()).hoTakaritas(1);
 	    }
 	    else if(key == KeyEvent.VK_P) {
-	    	jatek.getSzereplok().get(jatek.getAktualis()).passz();
+	    	//jatek.getSzereplok().get(jatek.getAktualis()).passz();
 	    }
 	    else if(key == KeyEvent.VK_L) {
 	    	jatek.lep_mezo();

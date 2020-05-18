@@ -97,6 +97,8 @@ public class Felulet implements ActionListener{
 		btakarit = new JButton("Hó eltakarítása");
 		bpass = new JButton("Kör befejezése");
 		blep = new JButton("Lépés a kijelölt mezõre");
+		
+		
 		lehetoseg.add(blep); lehetoseg.add(btakarit); lehetoseg.add(bas); lehetoseg.add(bpass);
 		
 		
@@ -129,7 +131,7 @@ public class Felulet implements ActionListener{
 		controlpanel.add(menu, "menu");
 		controlpanel.add(eredmeny,"eredmeny");
 		controlpanel.setFocusable(true);
-		controlpanel.addKeyListener(keys);
+		//controlpanel.addKeyListener(keys);
 		
 		frame.setContentPane(controlpanel);
 		cardlayout.show(controlpanel, "menu");
@@ -138,7 +140,7 @@ public class Felulet implements ActionListener{
 	}
 	
 	public void frissites() {
-		controlpanel.requestFocusInWindow();
+		//controlpanel.requestFocusInWindow();
 		szereplo.removeAll();
 		for(Szereplo sz : jatek.getSzereplok()) {
 			sz.rajzolSzereplo(this);
@@ -355,6 +357,11 @@ public class Felulet implements ActionListener{
 		if(index == 1) Main.jatekIF.executeCommand("runscript 4jatekos.txt");
 		if(index == 2) Main.jatekIF.executeCommand("runscript 6jatekos.txt"); 
 		mezo_load();
+		blep.addActionListener(mezoGombok[0][0]);
+		btakarit.addActionListener(mezoGombok[0][0]);
+		bas.addActionListener(mezoGombok[0][0]);
+		bpass .addActionListener(mezoGombok[0][0]);
+		
 		this.frissites();
 		
 		Main.jatekIF.executeCommand("getStatus");
