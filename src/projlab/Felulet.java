@@ -80,6 +80,9 @@ public class Felulet implements ActionListener{
 		
 		lehetoseg = new JPanel();
 		lehetoseg.setPreferredSize(new Dimension(170, 400));
+		String sl = "Gombok:\n\nA-hótakarítás\nP-passz\n";
+		JTextArea tipp = new JTextArea(sl);
+		lehetoseg.add(tipp);
 		aktiv.add(lehetoseg, BorderLayout.NORTH);
 		szereplo = new JPanel();
 		szereplo.setPreferredSize(new Dimension(170, 200));
@@ -135,6 +138,7 @@ public class Felulet implements ActionListener{
 			szereplo.add(l);
 		}
 	}
+	
 	public void rajzolEszkimo(Mezo m) {
 		m.rajzalevok += " E";
 	}
