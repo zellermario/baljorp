@@ -143,4 +143,8 @@ public class Jatek {
 	public void feluletInit() {
 		
 	}
+	
+	public void kivalasztott_mezo(Mezo cel) {
+		szereplok.get(aktualisJatekos).getKurrensMezo().jatekosKuldes(szereplok.get(aktualisJatekos), cel);
+	}
 }

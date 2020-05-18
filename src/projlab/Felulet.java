@@ -88,12 +88,12 @@ public class Felulet implements ActionListener{
 	}
 	
 	public void frissites() {
-		for(Mezo m : jatek.getMezok()) {
-			m.rajzolMezo(this);
-		}
-		
 		for(Szereplo sz : jatek.getSzereplok()) {
 			sz.rajzolSzereplo(this);
+		}
+		for(Mezo m : jatek.getMezok()) {
+			m.rajzolMezo(this);
+			m.rajzalevok = "";
 		}
 	}
 	
@@ -110,15 +110,15 @@ public class Felulet implements ActionListener{
 		}
 	}
 	public void rajzolEszkimo(Mezo m) {
-		
+		m.rajzalevok += " E";
 	}
 	
 	public void rajzolSarkkutato(Mezo m) {
-		
+		m.rajzalevok += " S";
 	}
 	
 	public void rajzolJegesmedve(Mezo m) {
-		
+		m.rajzalevok += " J";
 	}
 	
 	public void rajzolIglu(Mezo m) {
@@ -182,7 +182,7 @@ public class Felulet implements ActionListener{
 	}
 	
 	public void rajzolStabilJegtabla(int x, int y) {
-		mezoGombok[x][y].setText(String.valueOf(mezoGombok[x][y].mezo.getHoreteg()));
+		mezoGombok[x][y].setText(String.valueOf(mezoGombok[x][y].mezo.getHoreteg()+ mezoGombok[x][y].mezo.rajzalevok));
 	}
 	
 	/**
@@ -190,11 +190,11 @@ public class Felulet implements ActionListener{
 	 * @param y
 	 */
 	public void rajzolInstabilJegtabla(int x, int y) {
-		mezoGombok[x][y].setText(String.valueOf(mezoGombok[x][y].mezo.getHoreteg()));
+		mezoGombok[x][y].setText(String.valueOf(mezoGombok[x][y].mezo.getHoreteg() + mezoGombok[x][y].mezo.rajzalevok));
 	}
 	
 	public void rajzolLuk(int x, int y) {
-		mezoGombok[x][y].setText(String.valueOf(mezoGombok[x][y].mezo.getHoreteg()));
+		mezoGombok[x][y].setText(String.valueOf(mezoGombok[x][y].mezo.getHoreteg() + mezoGombok[x][y].mezo.rajzalevok));
 	}
 	
 	public void rajzolHovihar(Mezo m) {

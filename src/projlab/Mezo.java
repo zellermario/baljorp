@@ -22,11 +22,14 @@ public abstract class Mezo {
 	/**A mezon levo jatekosok.*/
 	protected List<Szereplo> jatekosok = new ArrayList<Szereplo>();
 	
+	public String rajzalevok = "";
+	
 	protected int x, y;
 	
 	public void setCoord(int _x, int _y) {
 		x = _x;
 		y = _y;
+		id = _x * 8 + _y;
 	}
   //todo valasz: szerintem edesmindegy
 	public Mezo(int _id, Jatek j) {
@@ -55,8 +58,13 @@ public abstract class Mezo {
 	}
 	/**Ez a fuggveny a parameterkent adott jatekost, a parameterkent adott mezore kuldi.*/
 	public void jatekosKuldes(Szereplo sz, Mezo cel) {
-		 cel.jatekosFogadas(sz);
-		 jatekosok.remove(sz);
+		for( Map.Entry<Integer, Mezo> entry : szomszedos_mezok.entrySet()) {
+			if(entry.getValue().getId() == cel.getId()) {
+				cel.jatekosFogadas(sz);
+				jatekosok.remove(sz);
+				return;
+			}
+		} 
 	}
 	
 	/**Ez a fuggveny a parameterkent atadott mennyisegu reteg havat takarit el a mezorol.*/

@@ -13,7 +13,7 @@ public class MezoButton extends JButton implements ActionListener{
 		}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		mezo.hoTakarit(1);
+		mezo.getJatek().kivalasztott_mezo(mezo);
 		mezo.getJatek().kepfrissites();
 	}
 }
