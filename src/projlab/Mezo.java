@@ -24,6 +24,10 @@ public abstract class Mezo {
 	
 	protected int x, y;
 	
+	public void setCoord(int _x, int _y) {
+		x = _x;
+		y = _y;
+	}
   //todo valasz: szerintem edesmindegy
 	public Mezo(int _id, Jatek j) {
 		id = _id;

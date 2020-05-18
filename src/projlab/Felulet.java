@@ -94,6 +94,7 @@ public class Felulet implements ActionListener{
 				mezoGombok[i][j].setText(String.valueOf(jatek.getMezok().get(i*8+j).getHoreteg()));
 				jatekpanel.add(mezoGombok[i][j]);
 				mezoGombok[i][j].setPreferredSize(new Dimension(100,100));
+				mezoGombok[i][j].mezo.setCoord(i, j);
 			}
 		}
 	}
@@ -170,15 +171,19 @@ public class Felulet implements ActionListener{
 	}
 	
 	public void rajzolStabilJegtabla(int x, int y) {
-		
+		mezoGombok[x][y].setText(String.valueOf(mezoGombok[x][y].mezo.getHoreteg()));
 	}
 	
+	/**
+	 * @param x
+	 * @param y
+	 */
 	public void rajzolInstabilJegtabla(int x, int y) {
-		
+		mezoGombok[x][y].setText(String.valueOf(mezoGombok[x][y].mezo.getHoreteg()));
 	}
 	
 	public void rajzolLuk(int x, int y) {
-		
+		mezoGombok[x][y].setText(String.valueOf(mezoGombok[x][y].mezo.getHoreteg()));
 	}
 	
 	public void rajzolHovihar(Mezo m) {
@@ -201,8 +206,9 @@ public class Felulet implements ActionListener{
 		if(index == 0) Main.jatekIF.executeCommand("runscript 2jatekos.txt");
 		if(index == 1) Main.jatekIF.executeCommand("runscript 4jatekos.txt");
 		if(index == 2) Main.jatekIF.executeCommand("runscript 6jatekos.txt"); 
-		this.frissites(); //->ez itt hogy kellene?
 		mezo_load();
+		this.frissites(); //->ez itt hogy kellene?
+		
 		Main.jatekIF.executeCommand("getStatus");
 		
 		
