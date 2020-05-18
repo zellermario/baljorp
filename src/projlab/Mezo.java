@@ -14,7 +14,7 @@ public abstract class Mezo {
 	/**Szomszedos mezok.*/
 	private Map<Integer, Mezo> szomszedos_mezok = new TreeMap<Integer, Mezo>();
 	/**A jatek aminek a resz a mezo.*/
-	private Jatek jatek;
+	protected Jatek jatek;
 	/**A mezoben levo targy.*/
 	protected Targy belefagyott_targy;
 	/**A mezon levo epulet.*/
@@ -54,6 +54,8 @@ public abstract class Mezo {
 	public void jatekosFogadas(Szereplo sz) {
 		jatekosok.add(sz);
 		sz.setKurrensMezo(this);
+		sz.munkamennyiseg = sz.munkamennyiseg - 1;
+		jatek.addToCounter(1);
 		ellenoriz();
 	}
 	/**Ez a fuggveny a parameterkent adott jatekost, a parameterkent adott mezore kuldi.*/

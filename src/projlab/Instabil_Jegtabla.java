@@ -30,6 +30,8 @@ public class Instabil_Jegtabla extends Mezo {
 		sz.setKurrensMezo(this);
 		if(!(teherbiras >= rajta_levo_jatekosok())) atfordul();
 		ellenoriz();
+		sz.munkamennyiseg = sz.munkamennyiseg - 1;
+		jatek.addToCounter(1);
 	}
 	/** A jegtabla teherbirasat adja vissza */
 	public int getTeherbiras() { return teherbiras; }

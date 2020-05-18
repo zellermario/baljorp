@@ -79,8 +79,9 @@ public class Felulet implements ActionListener{
 		controlpanel.add(jatekpanel,"jatekpanel");
 		controlpanel.add(menu, "menu");
 		controlpanel.add(eredmeny,"eredmeny");
-		
 		controlpanel.setFocusable(true);
+		
+		
 		
 		frame.setContentPane(controlpanel);
 		cardlayout.show(controlpanel, "menu");
@@ -218,6 +219,9 @@ public class Felulet implements ActionListener{
 		if(index == 1) Main.jatekIF.executeCommand("runscript 4jatekos.txt");
 		if(index == 2) Main.jatekIF.executeCommand("runscript 6jatekos.txt"); 
 		mezo_load();
+		for(Szereplo sz : jatek.getSzereplok()) {
+			controlpanel.addKeyListener(sz);
+		}
 		this.frissites();
 		
 		Main.jatekIF.executeCommand("getStatus");

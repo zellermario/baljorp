@@ -1,9 +1,11 @@
 package projlab;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
 /**A szereplok alapveto viselkedeset megvalosito osztaly*/
-public abstract class Szereplo {
+public abstract class Szereplo implements KeyListener{
 	/**A jatekos hatra levo munkamennyisege.*/
 	protected int munkamennyiseg;
 	/**statikus valtozo, ami alapjan a jatekosok sorszam attributumat beallitjuk*/
@@ -136,6 +138,34 @@ public abstract class Szereplo {
 	}
 	
 	public void rajzolSzereplo(Felulet f){
+		
+	}
+	
+
+	public void setTestho(int testho) {
+		this.testho = testho;
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		int key = e.getKeyCode();
+
+	    if (key == KeyEvent.VK_A) {
+	        hoTakaritas(1);
+	        jatek.kepfrissites();
+	    }
+	   
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
 		
 	}
 }
