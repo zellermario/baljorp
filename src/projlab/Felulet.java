@@ -25,7 +25,9 @@ public class Felulet implements ActionListener{
 	private Object menuPoints[];
 	private Mezo mezok[][];
 	private MezoButton mezoGombok[][];
-	private JPanel terkep,  jatekosok;
+	private JPanel terkep;
+	private JPanel aktiv;
+	private JPanel lehetoseg, szereplo, inventory;
 	
 	
 	public Felulet(Jatek j) {
@@ -68,19 +70,28 @@ public class Felulet implements ActionListener{
 				mezoGombok[i][l] = b;
 			}
 		}*/
-		terkep = new JPanel(); jatekosok = new JPanel();
+		terkep = new JPanel(); aktiv = new JPanel();
 		
 		terkep.setPreferredSize(new Dimension(1100-200,900));
 		jatekpanel.add(terkep, BorderLayout.WEST);
 		
-		jatekosok.setPreferredSize(new Dimension(170, 900)); 
-		jatekpanel.add(jatekosok, BorderLayout.EAST);
+		aktiv.setPreferredSize(new Dimension(170, 900)); 
+		jatekpanel.add(aktiv, BorderLayout.EAST);
+		
+		lehetoseg = new JPanel();
+		lehetoseg.setPreferredSize(new Dimension(170, 400));
+		aktiv.add(lehetoseg, BorderLayout.NORTH);
+		szereplo = new JPanel();
+		szereplo.setPreferredSize(new Dimension(170, 200));
+		aktiv.add(szereplo, BorderLayout.CENTER);
+		inventory = new JPanel();
+		inventory.setPreferredSize(new Dimension(170, 200));
+		aktiv.add(inventory, BorderLayout.SOUTH);
 		
 		controlpanel.add(jatekpanel,"jatekpanel");
 		controlpanel.add(menu, "menu");
 		controlpanel.add(eredmeny,"eredmeny");
 		controlpanel.setFocusable(true);
-		
 		
 		
 		frame.setContentPane(controlpanel);
@@ -96,6 +107,7 @@ public class Felulet implements ActionListener{
 			m.rajzolMezo(this);
 			m.rajzalevok = "";
 		}
+		szereplo_load();
 	}
 	
 	public void mezo_load() {
@@ -108,6 +120,19 @@ public class Felulet implements ActionListener{
 				mezoGombok[i][j].mezo.setCoord(i, j);
 				
 			}
+		}
+	}
+	public void szereplo_load() {
+		szereplo.removeAll();
+		List<Szereplo> sz = jatek.getSzereplok();
+		for(int i = 0; i <sz.size(); i++) {
+			String s ="";
+			s = s + "p" +i +": ";
+			s += sz.get(i).toString();
+			s += " - " + sz.get(i).testho;
+			JLabel l = new JLabel(s);
+			if (i == jatek.getAktualis()) l.setForeground(Color.RED);
+			szereplo.add(l);
 		}
 	}
 	public void rajzolEszkimo(Mezo m) {
