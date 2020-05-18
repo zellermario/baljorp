@@ -90,7 +90,7 @@ public class Felulet implements ActionListener{
 		
 		lehetoseg = new JPanel(); lehetoseg.setBackground(jatekpanel.getBackground());
 		lehetoseg.setPreferredSize(new Dimension(170, 400));
-		String sl = "Gombok:\n\nA-hótakarítás\nP-passz\nSzámok-eszköztár\n";
+		String sl = "Gombok:\n\nA-hótakarítás\nP-passz\nSzámok-eszköztár\nL-lépés\nD-tárgykiásás";
 		JTextArea tipp = new JTextArea(sl); tipp.setBackground(jatekpanel.getBackground());
 		lehetoseg.add(tipp);
 		aktiv.add(lehetoseg, BorderLayout.NORTH);
