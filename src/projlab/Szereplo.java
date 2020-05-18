@@ -63,7 +63,7 @@ public abstract class Szereplo{
 	}
 	
 	/**A kulonbozo szereplok kepessegeit valositja meg-*/
-	public void kepessegHasznal(Mezo cel) {}
+	public void kepessegHasznal() {}
 	
 	/**Egy felvett targy hasznalatat valositja meg.*/
 	public void targyHasznalat(int id) {

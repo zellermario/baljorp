@@ -7,10 +7,11 @@ public class Sarkkutato extends Szereplo{
 	}
 	
 	/**Ez a fuggveny a sarkkutato kepesseget valositja meg.*/ 
-	public void kepessegHasznal(Mezo cel) {
+	public void kepessegHasznal() {
+		Mezo cel = jatek.getKivalasztott_mezo();
 		if(sorszam != jatek.getAktualis() || munkamennyiseg == 0) return;
 		int teher = cel.megvizsgal();
-		if (teher == -2) teher += 2;
+		cel.rajtalevok += " " + teher;
 		munkamennyiseg--;
 		jatek.addToCounter(1);
 	}

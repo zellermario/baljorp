@@ -16,21 +16,36 @@ public class MezoButton extends JButton implements ActionListener{
 		JButton src = (JButton)e.getSource();
 		if(src.getText().equals("Lépés a kijelölt mezõre")) {
 			mezo.getJatek().lep_mezo();
-			System.out.println("gfhd");
 		}
 		else if(src.getText().equals("Hó eltakarítása")) {
 			mezo.getJatek().getSzereplok().get(mezo.getJatek().getAktualis()).hoTakaritas(1);
 		}
 		else if(src.getText().equals("Kör befejezése")) {
 			mezo.getJatek().getSzereplok().get(mezo.getJatek().getAktualis()).passz();
-			System.out.println("gfhd");
 		}
 		else if(src.getText().equals("Jégtáblából kiás")) {
 			mezo.getJatek().getSzereplok().get(mezo.getJatek().getAktualis()).targyKiasas();
-			System.out.println("gfhd");
 		}
-		else if(src.getText().equals("Lépés a kijelölt mezõre")) {
-	
+		else if(src.getText().equals("Képesség")) {
+			mezo.getJatek().getSzereplok().get(mezo.getJatek().getAktualis()).kepessegHasznal();
+		}
+		else if(src.getText().equals("Kör befejezése")) {
+			mezo.getJatek().getSzereplok().get(mezo.getJatek().getAktualis()).passz();
+		}
+		else if(src.getText().equals("Kör befejezése")) {
+			mezo.getJatek().getSzereplok().get(mezo.getJatek().getAktualis()).passz();
+		}
+		else if(src.getText().equals("Tárgy1")) {
+			mezo.getJatek().targy_hasznal(1);
+		}
+		else if(src.getText().equals("Tárgy2")) {
+			mezo.getJatek().targy_hasznal(2);
+		}
+		else if(src.getText().equals("Tárgy3")) {
+			mezo.getJatek().targy_hasznal(3);
+		}
+		else if(src.getText().equals("Tárgy4")) {
+			mezo.getJatek().targy_hasznal(4);
 		}
 		else {
 			mezo.getJatek().kivalasztott(mezo);

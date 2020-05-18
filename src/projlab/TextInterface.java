@@ -130,7 +130,7 @@ public class TextInterface {
 			Szereplo szereplo = (Szereplo)entities.get(args[0]);
 			Mezo mezo = (Mezo)entities.get(args[1]);
 			if (szereplo == null || mezo == null) { System.out.println("Nincs ilyen nevu mezo vagy szereplo."); return; }
-			szereplo.kepessegHasznal(mezo);
+			szereplo.kepessegHasznal();
 		});
 		
 		// useobject <object> <player> [dir]

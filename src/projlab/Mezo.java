@@ -22,7 +22,7 @@ public abstract class Mezo {
 	/**A mezon levo jatekosok.*/
 	protected List<Szereplo> jatekosok = new ArrayList<Szereplo>();
 	
-	public String rajzalevok = "";
+	public String rajtalevok = "";
 	
 	protected int x, y;
 	

@@ -12,9 +12,9 @@ public class Stabil_Jegtabla extends Mezo {
 	}
 	
 	public void rajzolMezo(Felulet f) {
-		f.rajzolStabilJegtabla(x, y);
 		epitmeny.rajzolEpitmeny(f, this);
 		if(belefagyott_targy!=null)
 			belefagyott_targy.rajzolTargy(f, this);
+		f.rajzolStabilJegtabla(x, y);
 	}
 }

@@ -6,9 +6,9 @@ public class Eszkimo extends Szereplo{
 		super(4, 5, j, kezdomezo);
 	}
 	/**Ez a fuggveny valositja meg az eszkimo kepesseget*/
-	public void kepessegHasznal(Mezo cel) {
+	public void kepessegHasznal() {
 		if(sorszam != jatek.getAktualis() || munkamennyiseg == 0) return;
-		cel.epit(new Iglu(this.getKurrensMezo()));
+		kurrensmezo.epit(new Iglu(this.getKurrensMezo()));
 		munkamennyiseg--;
 		jatek.addToCounter(1);
 	}
