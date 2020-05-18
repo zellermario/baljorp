@@ -13,7 +13,7 @@ public abstract class Szereplo{
 	/**azt tarolja el, hogy a jatekos hanyadikkent lephet*/
 	protected int sorszam;
 	/**nyilvantartja, hogy hany munkat vegezhet koronkent a jatekos, ezt reseteli*/
-	private int maxmunka;
+	protected int maxmunka;
 	/**nyilvantartja, hogy maximum mennyi testhoje lehet egy jatekosnak - nem mehet evessel sem e fole*/
 	private int maxtestho;
 	
@@ -50,6 +50,7 @@ public abstract class Szereplo{
 		Mezo cel = kurrensmezo.getSzomszed(irany);
 		kurrensmezo.jatekosKuldes(this, cel);
 		munkamennyiseg--;
+		if(munkamennyiseg == 0) munkamennyiseg = maxmunka;
 		jatek.addToCounter(1);
 	}
 	/**Ez a fuggveny a hovihar jatekosra gyakorolt hatasast valositja meg.*/
@@ -72,6 +73,7 @@ public abstract class Szereplo{
 			if(t.getId() == id) t.hasznal(this);
 		}
 		munkamennyiseg--;
+		if(munkamennyiseg == 0) munkamennyiseg = maxmunka;
 		jatek.addToCounter(1);
 	}
 	
@@ -80,6 +82,7 @@ public abstract class Szereplo{
 		if(sorszam != jatek.getAktualis() || munkamennyiseg == 0) return;
 		kurrensmezo.targyAtad(this);
 		munkamennyiseg--;
+		if(munkamennyiseg == 0) munkamennyiseg = maxmunka;
 		jatek.addToCounter(1);
 	}
 	/**Ez a fuggveny valositja meg a horeteg eltavolitasat az adott mezorol.*/
@@ -87,6 +90,7 @@ public abstract class Szereplo{
 		if(sorszam != jatek.getAktualis() || munkamennyiseg == 0) return;
 		kurrensmezo.hoTakarit(i);
 		munkamennyiseg--;
+		if(munkamennyiseg == 0) munkamennyiseg = maxmunka;
 		jatek.addToCounter(1);
 	}
   /**Ezzel a fuggvennyel tudjuk jelzi a jateknak ha a jatekos meghal.*/

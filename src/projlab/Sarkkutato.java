@@ -13,6 +13,7 @@ public class Sarkkutato extends Szereplo{
 		int teher = cel.megvizsgal();
 		cel.rajtalevok += " " + teher;
 		munkamennyiseg--;
+		if(munkamennyiseg == 0) munkamennyiseg = maxmunka;
 		jatek.addToCounter(1);
 	}
 	/**a tesztelest segito fuggveny*/

@@ -40,6 +40,7 @@ public class Jatek {
 		if(jatekosCounter == szereplok.size() * 4) { 
 			epuletRombol();
 			jatekosCounter = 0;
+			hovihar();
 		}
 		aktualisJatekos = jatekosCounter / 4;
 		if(jatekosCounter % 4 == 0) {
@@ -89,8 +90,11 @@ public class Jatek {
 	/**jatekosok kozotti valtas, a teszteles soran ezt a passzolassal valositjuk meg*/
 	public void nextJatekos() {
 		aktualisJatekos++;
-		if(aktualisJatekos == szereplok.size()) aktualisJatekos = 0;
+		if(aktualisJatekos == szereplok.size()) {
+			aktualisJatekos = 0;
+			hovihar();
 		}
+	}
 	
 	/**a fo ciklus, de a tesztek kedveert a determinisztikus leptetest a jatekosCounter segitsegevel tesszuk meg*/
 	public void kor() {

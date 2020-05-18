@@ -10,6 +10,7 @@ public class Eszkimo extends Szereplo{
 		if(sorszam != jatek.getAktualis() || munkamennyiseg == 0) return;
 		kurrensmezo.epit(new Iglu(this.getKurrensMezo()));
 		munkamennyiseg--;
+		if(munkamennyiseg == 0) munkamennyiseg = maxmunka;
 		jatek.addToCounter(1);
 	}
 	/**Tesztelest segito fuggveny*/

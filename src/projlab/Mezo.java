@@ -61,6 +61,7 @@ public abstract class Mezo {
 	}
 	/**Ez a fuggveny a parameterkent adott jatekost, a parameterkent adott mezore kuldi.*/
 	public void jatekosKuldes(Szereplo sz, Mezo cel) {
+		if(cel == null) return;
 		for( Map.Entry<Integer, Mezo> entry : szomszedos_mezok.entrySet()) {
 			if(entry.getValue().getId() == cel.getId()) {
 				cel.jatekosFogadas(sz);
