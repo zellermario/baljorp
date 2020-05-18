@@ -42,8 +42,10 @@ public class Jatek {
 			jatekosCounter = 0;
 		}
 		aktualisJatekos = jatekosCounter / 4;
-		if(jatekosCounter % 4 == 0)
+		if(jatekosCounter % 4 == 0) {
 			szereplok.get(aktualisJatekos).kor();
+			kepfrissites();
+		}	
 	}
 	
 	/**visszaadja az epp soron kovetkezo jatekos sorszamat*/

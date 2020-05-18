@@ -5,7 +5,7 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
 /**A szereplok alapveto viselkedeset megvalosito osztaly*/
-public abstract class Szereplo implements KeyListener{
+public abstract class Szereplo{
 	/**A jatekos hatra levo munkamennyisege.*/
 	protected int munkamennyiseg;
 	/**statikus valtozo, ami alapjan a jatekosok sorszam attributumat beallitjuk*/
@@ -103,7 +103,6 @@ public abstract class Szereplo implements KeyListener{
 	public void passz() {
 		jatek.addToCounter(munkamennyiseg);
 		munkamennyiseg = maxmunka;
-		
 	}
 	/**beallitjuk a kurrensmezot*/
 	public void setMezo(Mezo m) {
@@ -146,29 +145,4 @@ public abstract class Szereplo implements KeyListener{
 		this.testho = testho;
 	}
 
-	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyPressed(KeyEvent e) {
-		int key = e.getKeyCode();
-
-	    if (key == KeyEvent.VK_A) {
-	        hoTakaritas(1);
-	        jatek.kepfrissites();
-	    }
-	    else if(key == KeyEvent.VK_P) {
-	    	passz();
-	    }
-	   
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
 }
