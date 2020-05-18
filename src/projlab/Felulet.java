@@ -315,6 +315,11 @@ public class Felulet implements ActionListener{
 		
 	}
 
+
+	public JPanel getControlpanel() {
+		return controlpanel;
+	}
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		cardlayout.show(controlpanel, "jatekpanel");

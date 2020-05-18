@@ -149,4 +149,10 @@ public class Jatek {
 	public void kivalasztott_mezo(Mezo cel) {
 		szereplok.get(aktualisJatekos).getKurrensMezo().jatekosKuldes(szereplok.get(aktualisJatekos), cel);
 	}
+
+	public Felulet getFelulet() {
+		return felulet;
+	}
+	
+	
 }
