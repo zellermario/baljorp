@@ -29,6 +29,7 @@ public class Felulet implements ActionListener{
 	private JPanel aktiv;
 	private JPanel lehetoseg, szereplo, inventory;
 	private SzereploKey keys;
+	private JPanel i1, i2, i3, i4, i5;
 	
 	
 	public Felulet(Jatek j) {
@@ -43,14 +44,13 @@ public class Felulet implements ActionListener{
 		controlpanel = new JPanel();;
 		cardlayout = new CardLayout();
 		controlpanel.setLayout(cardlayout);
+		
 		menuPoints = new Object[3];
 		mezoGombok = new MezoButton[8][8];
 		mezok = new Mezo[8][8];
-		
 		menuPoints[0] = "Mindenbõl egy";
 		menuPoints[1] = "Mindenbõl kettõ";
 		menuPoints[2] = "Mindenbõl három";
-		
 		
 		jatekpanel = new JPanel();
 		menu = new JPanel();
@@ -64,14 +64,6 @@ public class Felulet implements ActionListener{
 		menu.add(dropdown);
 		
 		Dimension d = new Dimension(100,100);
-/*(int i = 0; i < 8; i++){
-			for(int l = 0; l < 8; l++) {
-				MezoButton b = new MezoButton();
-				b.setPreferredSize(d);
-				jatekpanel.add(b);
-				mezoGombok[i][l] = b;
-			}
-		}*/
 		terkep = new JPanel(); aktiv = new JPanel();
 		
 		terkep.setPreferredSize(new Dimension(1100-200,900));
@@ -87,11 +79,26 @@ public class Felulet implements ActionListener{
 		lehetoseg.add(tipp);
 		aktiv.add(lehetoseg, BorderLayout.NORTH);
 		szereplo = new JPanel();
-		szereplo.setPreferredSize(new Dimension(170, 200));
+		szereplo.setPreferredSize(new Dimension(150, 200));
 		aktiv.add(szereplo, BorderLayout.CENTER);
 		inventory = new JPanel();
-		inventory.setPreferredSize(new Dimension(170, 200));
+		inventory.setPreferredSize(new Dimension(200, 200));
 		aktiv.add(inventory, BorderLayout.SOUTH);
+		JLabel linv = new JLabel("Inventory:");
+		inventory.add(linv);
+		
+		i1 = new JPanel(); i2 = new JPanel(); i3 = new JPanel();
+		i4 = new JPanel(); i5 = new JPanel();
+		Dimension inv = new Dimension (65,65);
+		i1.setPreferredSize(inv); i2.setPreferredSize(inv);
+		i3.setPreferredSize(inv); i4.setPreferredSize(inv);
+		i5.setPreferredSize(inv);
+		i1.setBackground(Color.LIGHT_GRAY); i2.setBackground(Color.LIGHT_GRAY);
+		i3.setBackground(Color.LIGHT_GRAY); i4.setBackground(Color.LIGHT_GRAY);
+		i5.setBackground(Color.LIGHT_GRAY); 
+		inventory.add(i1); inventory.add(i2);
+		inventory.add(i3); inventory.add(i4);
+		inventory.add(i5);
 		
 		controlpanel.add(jatekpanel,"jatekpanel");
 		controlpanel.add(menu, "menu");
@@ -102,9 +109,11 @@ public class Felulet implements ActionListener{
 		frame.setContentPane(controlpanel);
 		cardlayout.show(controlpanel, "menu");
 		frame.setVisible(true);
+		
 	}
 	
 	public void frissites() {
+		szereplo.removeAll();
 		for(Szereplo sz : jatek.getSzereplok()) {
 			sz.rajzolSzereplo(this);
 		}
@@ -112,7 +121,6 @@ public class Felulet implements ActionListener{
 			m.rajzolMezo(this);
 			m.rajzalevok = "";
 		}
-		szereplo_load();
 	}
 	
 	public void mezo_load() {
@@ -127,107 +135,173 @@ public class Felulet implements ActionListener{
 			}
 		}
 	}
-	public void szereplo_load() {
-		szereplo.removeAll();
-		List<Szereplo> sz = jatek.getSzereplok();
-		for(int i = 0; i <sz.size(); i++) {
-			String s ="";
-			s = s + "p" +i +": ";
-			s += sz.get(i).toString();
-			s += " - " + sz.get(i).testho;
-			JLabel l = new JLabel(s);
-			if (i == jatek.getAktualis()) l.setForeground(Color.RED);
-			szereplo.add(l);
+
+	public void rajzolEszkimo(Mezo m) { m.rajzalevok += " E"; }
+	public void rajzolEszkimo(int hely,int heat) {
+		String s = "p"+hely +" Eszkimo - " + heat;
+		JLabel l = new JLabel(s);
+		if (hely == jatek.getAktualis()) l.setForeground(Color.RED);
+		szereplo.add(l);
+	}
+	
+	public void rajzolSarkkutato(Mezo m) { m.rajzalevok += " S"; }
+	public void rajzolSarkkutato(int hely,int heat) {
+		String s = "p"+hely +" Sarkkutato - " + heat;
+		JLabel l = new JLabel(s);
+		if (hely == jatek.getAktualis()) l.setForeground(Color.RED);
+		szereplo.add(l);
+	}
+	
+	public void rajzolJegesmedve(Mezo m) { m.rajzalevok += " J"; }
+	
+	public void rajzolIglu(Mezo m) { }
+	
+	public void rajzolFelepitettSator(Mezo m) { }
+	
+	public void rajzolLapat(Mezo m) { }
+	public void rajzolLapatInv(Szereplo sz, int hanyadik) {
+		JLabel temp = new JLabel("Lapát");
+		switch (hanyadik) {
+		case 0:
+			i1.add(temp);
+			break;
+		case 1:
+			i2.add(temp);
+			break;
+		case 2:
+			i3.add(temp);
+			break;
+		case 3:
+			i4.add(temp);
+			break;
+		case 4:
+			i5.add(temp);
+			break;
 		}
 	}
 	
-	public void rajzolEszkimo(Mezo m) {
-		m.rajzalevok += " E";
-	}
-	
-	public void rajzolSarkkutato(Mezo m) {
-		m.rajzalevok += " S";
-	}
-	
-	public void rajzolJegesmedve(Mezo m) {
-		m.rajzalevok += " J";
-	}
-	
-	public void rajzolIglu(Mezo m) {
-		
-	}
-	
-	public void rajzolFelepitettSator(Mezo m) {
-		
-	}
-	
-	public void rajzolLapat(Mezo m) {
-		
-	}
-	
-	public void rajzolLapatInv(Szereplo sz, int hanyadik) {
-		
-	}
-	
-	public void rajzolKotel(Mezo m) {
-		
-	}
-	
+	public void rajzolKotel(Mezo m) { }
 	public void rajzolKotelInv(Szereplo sz, int hanyadik) {
-		
+		JLabel temp = new JLabel("Kotel");
+		switch (hanyadik) {
+		case 0:
+			i1.add(temp);
+			break;
+		case 1:
+			i2.add(temp);
+			break;
+		case 2:
+			i3.add(temp);
+			break;
+		case 3:
+			i4.add(temp);
+			break;
+		case 4:
+			i5.add(temp);
+			break;
+		}
 	}
 	
-	public void rajzolTorekenyAso(Mezo m) {
-		
-	}
-	
+	public void rajzolTorekenyAso(Mezo m) {	}
 	public void rajzolTorekenyAsoInv(Szereplo sz, int hanyadik) {
-		
+		JLabel temp = new JLabel("Törékeny Ásó");
+		switch (hanyadik) {
+		case 0:
+			i1.add(temp);
+			break;
+		case 1:
+			i2.add(temp);
+			break;
+		case 2:
+			i3.add(temp);
+			break;
+		case 3:
+			i4.add(temp);
+			break;
+		case 4:
+			i5.add(temp);
+			break;
+		}		
 	}
 
-	public void rajzolEtel(Mezo m) {
-		
-	}
+	public void rajzolEtel(Mezo m) { }
 	
-	public void rajzolBuvarruha(Mezo m) {
-		
-	}
-	
+	public void rajzolBuvarruha(Mezo m) { }
 	public void rajzolBuvarruhaInv(Szereplo sz, int hanyadik) {
-		
+		JLabel temp = new JLabel("Buvárruha");
+		switch (hanyadik) {
+		case 0:
+			i1.add(temp);
+			break;
+		case 1:
+			i2.add(temp);
+			break;
+		case 2:
+			i3.add(temp);
+			break;
+		case 3:
+			i4.add(temp);
+			break;
+		case 4:
+			i5.add(temp);
+			break;
+		}
 	}
 	
-	public void rajzolRaketaalkatresz(Mezo m) {
-		
-	}
-	
+	public void rajzolRaketaalkatresz(Mezo m) {	}
 	public void rajzolRaketaalkatreszInv(Szereplo sz, int hanyadik) {
-		
+		JLabel temp = new JLabel("Rakétaalkatrész");
+		switch (hanyadik) {
+		case 0:
+			i1.add(temp);
+			break;
+		case 1:
+			i2.add(temp);
+			break;
+		case 2:
+			i3.add(temp);
+			break;
+		case 3:
+			i4.add(temp);
+			break;
+		case 4:
+			i5.add(temp);
+			break;
+		}
 	}
 	
-	public void rajzolSator(Mezo m) {
-		
-	}
+	public void rajzolSator(Mezo m) { }
 	
 	public void rajzolSatorInv(Szereplo sz, int hanyadik) {
-		
+		JLabel temp = new JLabel("Sátor");
+		switch (hanyadik) {
+		case 0:
+			i1.add(temp);
+			break;
+		case 1:
+			i2.add(temp);
+			break;
+		case 2:
+			i3.add(temp);
+			break;
+		case 3:
+			i4.add(temp);
+			break;
+		case 4:
+			i5.add(temp);
+			break;
+		}
 	}
 	
-	public void rajzolStabilJegtabla(int x, int y) {
-		mezoGombok[x][y].setText(String.valueOf(mezoGombok[x][y].mezo.getHoreteg()+ mezoGombok[x][y].mezo.rajzalevok));
-	}
+	public void rajzolStabilJegtabla(int x, int y) {mezoGombok[x][y].setText(String.valueOf(mezoGombok[x][y].mezo.getHoreteg()+ mezoGombok[x][y].mezo.rajzalevok));}
 	
 	/**
 	 * @param x
 	 * @param y
 	 */
-	public void rajzolInstabilJegtabla(int x, int y) {
-		mezoGombok[x][y].setText(String.valueOf(mezoGombok[x][y].mezo.getHoreteg() + mezoGombok[x][y].mezo.rajzalevok));
-	}
+	public void rajzolInstabilJegtabla(int x, int y) { mezoGombok[x][y].setText(String.valueOf(mezoGombok[x][y].mezo.getHoreteg() + mezoGombok[x][y].mezo.rajzalevok));}
 	
-	public void rajzolLuk(int x, int y) {
-		mezoGombok[x][y].setText(mezoGombok[x][y].mezo.rajzalevok);
-	}
+	public void rajzolLuk(int x, int y) {mezoGombok[x][y].setText(mezoGombok[x][y].mezo.rajzalevok);}
 	
 	public void rajzolHovihar(Mezo m) {
 		

@@ -136,9 +136,7 @@ public abstract class Szereplo{
 		kurrensmezo = m;
 	}
 	
-	public void rajzolSzereplo(Felulet f){
-		
-	}
+	public void rajzolSzereplo(Felulet f){	}
 	
 
 	public void setTestho(int testho) {

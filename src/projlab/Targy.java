@@ -18,7 +18,5 @@ public class Targy {
 		
 	}
 	
-	public void rajzolTargyInv(Felulet f, Szereplo sz, int hanyadik){
-		
-	}
+	public void rajzolTargyInv(Felulet f, Szereplo sz, int hanyadik){}
 }
