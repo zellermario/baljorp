@@ -23,7 +23,7 @@ public class Jatek {
 	/**jatekosok altal hasznalt munka alapjan szamlal, a segitsegevel hatarozzuk meg, hogy ki kovetkezik*/
 	private int jatekosCounter = 0;
 	
-	private Mezo kivalasztott_mezo;
+	private Mezo kivalasztott_mezo = null;
 	
 	private Felulet felulet;
 	
@@ -147,13 +147,25 @@ public class Jatek {
 		
 	}
 	
-	public void kivalasztott_mezo(Mezo cel) {
-		szereplok.get(aktualisJatekos).getKurrensMezo().jatekosKuldes(szereplok.get(aktualisJatekos), cel);
+	public void kivalasztott(Mezo cel) {
+		kivalasztott_mezo = cel;
+	}
+	
+	public void lep_mezo() {
+		szereplok.get(aktualisJatekos).getKurrensMezo().jatekosKuldes(szereplok.get(aktualisJatekos), kivalasztott_mezo);
 	}
 
 	public Felulet getFelulet() {
 		return felulet;
 	}
 	
-	
+	public Mezo getKivalasztott_mezo() {
+		return kivalasztott_mezo;
+	}
+
+	public void targy_hasznal(int indx) {
+		if(indx <= szereplok.get(aktualisJatekos).getTargyak().size()) {
+			szereplok.get(aktualisJatekos).getTargyak().get(indx - 1).hasznal(szereplok.get(aktualisJatekos));
+		}
+	}
 }

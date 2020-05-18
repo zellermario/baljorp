@@ -129,6 +129,7 @@ public class Felulet implements ActionListener{
 	}
 	
 	public void frissites() {
+		controlpanel.requestFocusInWindow();
 		szereplo.removeAll();
 		for(Szereplo sz : jatek.getSzereplok()) {
 			sz.rajzolSzereplo(this);

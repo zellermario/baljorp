@@ -20,13 +20,36 @@ public class SzereploKey implements KeyListener{
 
 	    if (key == KeyEvent.VK_A) {
 	        jatek.getSzereplok().get(jatek.getAktualis()).hoTakaritas(1);
-	        jatek.kepfrissites();
 	    }
 	    else if(key == KeyEvent.VK_P) {
 	    	jatek.getSzereplok().get(jatek.getAktualis()).passz();
-	    	jatek.kepfrissites();
 	    }
-	   
+	    else if(key == KeyEvent.VK_L) {
+	    	jatek.lep_mezo();
+	    }
+	    else if(key == KeyEvent.VK_D) {
+	    	jatek.getSzereplok().get(jatek.getAktualis()).targyKiasas();
+	    }
+	    else if(key == KeyEvent.VK_1) {
+	    	jatek.targy_hasznal(1);
+	    }
+	    else if(key == KeyEvent.VK_2) {
+	    	jatek.targy_hasznal(2);
+	    }
+	    else if(key == KeyEvent.VK_3) {
+	    	jatek.targy_hasznal(3);
+	    }
+	    else if(key == KeyEvent.VK_4) {
+	    	jatek.targy_hasznal(4);
+	    }
+	    else if(key == KeyEvent.VK_5) {
+	    	jatek.targy_hasznal(5);
+	    }
+	    else if(key == KeyEvent.VK_6) {
+	    	jatek.targy_hasznal(6);
+	    }
+	    jatek.getFelulet().getControlpanel().requestFocusInWindow();
+	    jatek.kepfrissites();
 	}
 
 	@Override
