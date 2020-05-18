@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -41,7 +42,7 @@ public class Felulet implements ActionListener{
 		frame.setResizable(false);
 		frame.setSize(1100, 900);
 		
-		controlpanel = new JPanel();;
+		controlpanel = new JPanel();
 		cardlayout = new CardLayout();
 		controlpanel.setLayout(cardlayout);
 		
@@ -52,19 +53,34 @@ public class Felulet implements ActionListener{
 		menuPoints[1] = "Mindenbõl kettõ";
 		menuPoints[2] = "Mindenbõl három";
 		
-		jatekpanel = new JPanel();
-		menu = new JPanel();
+		menu = new JPanel(); menu.setBackground(new Color(204, 255, 229));
+		jatekpanel = new JPanel(); jatekpanel.setBackground(new Color(204,229,255));
 		eredmeny = new JPanel();
 		
+		JLabel cim = new JLabel("Jégmezõ",SwingConstants.CENTER); cim.setFont(new Font("Serif", Font.BOLD, 60));
+		cim.setBackground(menu.getBackground());
+		JTextArea leiras = new JTextArea ("Gyüjtsétek össze a jelzõrakéta részeit a társaiddal, hogy megmeneküljetek a jeges mezõrõl. Vigyázz, ha bárki is meghal, vesztetek.");
+		leiras.setBackground(menu.getBackground()); 
+		JPanel helykitolto = new JPanel();
+		helykitolto.setBackground(menu.getBackground());
+		helykitolto.setPreferredSize(new Dimension(500,900));
+		JPanel kival = new JPanel();
+		kival.setBackground(menu.getBackground());
 		startGomb = new JButton();
 		startGomb.setText("Start!");
-		dropdown = new JComboBox(menuPoints);
+		dropdown = new JComboBox(menuPoints); dropdown.setMaximumSize(new Dimension(200,200));
 		startGomb.addActionListener(this);
-		menu.add(startGomb);
-		menu.add(dropdown);
+		menu.setLayout(new BoxLayout(menu, BoxLayout.PAGE_AXIS));
+		menu.add(cim);
+		menu.add(leiras);
+		kival.add(dropdown);
+		kival.add(startGomb);
+		menu.add(kival);
+		menu.add(helykitolto);
 		
 		Dimension d = new Dimension(100,100);
-		terkep = new JPanel(); aktiv = new JPanel();
+		terkep = new JPanel(); terkep.setBackground(jatekpanel.getBackground());
+		aktiv = new JPanel();aktiv.setBackground(jatekpanel.getBackground());
 		
 		terkep.setPreferredSize(new Dimension(1100-200,900));
 		jatekpanel.add(terkep, BorderLayout.WEST);
@@ -72,16 +88,16 @@ public class Felulet implements ActionListener{
 		aktiv.setPreferredSize(new Dimension(170, 900)); 
 		jatekpanel.add(aktiv, BorderLayout.EAST);
 		
-		lehetoseg = new JPanel();
+		lehetoseg = new JPanel(); lehetoseg.setBackground(jatekpanel.getBackground());
 		lehetoseg.setPreferredSize(new Dimension(170, 400));
-		String sl = "Gombok:\n\nA-hótakarítás\nP-passz\n";
-		JTextArea tipp = new JTextArea(sl);
+		String sl = "Gombok:\n\nA-hótakarítás\nP-passz\nSzámok-eszköztár\n";
+		JTextArea tipp = new JTextArea(sl); tipp.setBackground(jatekpanel.getBackground());
 		lehetoseg.add(tipp);
 		aktiv.add(lehetoseg, BorderLayout.NORTH);
-		szereplo = new JPanel();
+		szereplo = new JPanel(); szereplo.setBackground(jatekpanel.getBackground());
 		szereplo.setPreferredSize(new Dimension(150, 200));
 		aktiv.add(szereplo, BorderLayout.CENTER);
-		inventory = new JPanel();
+		inventory = new JPanel(); inventory.setBackground(jatekpanel.getBackground());
 		inventory.setPreferredSize(new Dimension(200, 200));
 		aktiv.add(inventory, BorderLayout.SOUTH);
 		JLabel linv = new JLabel("Inventory:");
@@ -140,7 +156,7 @@ public class Felulet implements ActionListener{
 	public void rajzolEszkimo(int hely,int heat) {
 		String s = "p"+hely +" Eszkimo - " + heat;
 		JLabel l = new JLabel(s);
-		if (hely == jatek.getAktualis()) l.setForeground(Color.RED);
+		if (hely == jatek.getAktualis()) l.setForeground(Color.blue);
 		szereplo.add(l);
 	}
 	
@@ -148,7 +164,7 @@ public class Felulet implements ActionListener{
 	public void rajzolSarkkutato(int hely,int heat) {
 		String s = "p"+hely +" Sarkkutato - " + heat;
 		JLabel l = new JLabel(s);
-		if (hely == jatek.getAktualis()) l.setForeground(Color.RED);
+		if (hely == jatek.getAktualis()) l.setForeground(Color.blue);
 		szereplo.add(l);
 	}
 	

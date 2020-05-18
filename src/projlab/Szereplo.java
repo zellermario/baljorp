@@ -103,6 +103,7 @@ public abstract class Szereplo{
 	public void passz() {
 		jatek.addToCounter(munkamennyiseg);
 		munkamennyiseg = maxmunka;
+		
 	}
 	/**beallitjuk a kurrensmezot*/
 	public void setMezo(Mezo m) {

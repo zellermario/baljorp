@@ -46,6 +46,7 @@ public class Jatek {
 			szereplok.get(aktualisJatekos).kor();
 			kepfrissites();
 		}	
+		
 	}
 	
 	/**visszaadja az epp soron kovetkezo jatekos sorszamat*/

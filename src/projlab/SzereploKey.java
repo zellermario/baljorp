@@ -24,6 +24,7 @@ public class SzereploKey implements KeyListener{
 	    }
 	    else if(key == KeyEvent.VK_P) {
 	    	jatek.getSzereplok().get(jatek.getAktualis()).passz();
+	    	jatek.kepfrissites();
 	    }
 	   
 	}
