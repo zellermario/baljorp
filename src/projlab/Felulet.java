@@ -1,10 +1,13 @@
 package projlab;
 
 import java.awt.CardLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
+
+import java.util.List;
 
 
 public class Felulet implements ActionListener{
@@ -18,6 +21,8 @@ public class Felulet implements ActionListener{
 	private JButton startGomb;
 	private JComboBox dropdown;
 	private Object menuPoints[];
+	private Mezo mezok[][];
+	private JButton mezoGombok[][];
 	
 	
 	public Felulet(Jatek j) {
@@ -26,12 +31,14 @@ public class Felulet implements ActionListener{
 		frame.setTitle("Jegmezo");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
-		frame.setSize(800, 500);
+		frame.setSize(900, 900);
 		
 		controlpanel = new JPanel();
 		cardlayout = new CardLayout();
 		controlpanel.setLayout(cardlayout);
 		menuPoints = new Object[3];
+		mezoGombok = new JButton[8][8];
+		mezok = new Mezo[8][8];
 		
 		menuPoints[0] = "Mindenbõl egy";
 		menuPoints[1] = "Mindenbõl kettõ";
@@ -49,7 +56,15 @@ public class Felulet implements ActionListener{
 		menu.add(startGomb);
 		menu.add(dropdown);
 		
-		
+		Dimension d = new Dimension(100,100);
+		for(int i = 0; i < 8; i++){
+			for(int l = 0; l < 8; l++) {
+				JButton b = new JButton();
+				b.setPreferredSize(d);
+				jatekpanel.add(b);
+				mezoGombok[i][l] = b;
+			}
+		}
 		
 		controlpanel.add(jatekpanel,"jatekpanel");
 		controlpanel.add(menu, "menu");
@@ -72,6 +87,13 @@ public class Felulet implements ActionListener{
 		}
 	}
 	
+	public void mezo_load() {
+		for(int i = 0; i < 8; i++){
+			for(int j = 0; j < 8; j++) {
+				mezoGombok[i][j].setText(String.valueOf(jatek.getMezok().get(i*8+j).getHoreteg()));
+			}
+		}
+	}
 	public void rajzolEszkimo(Mezo m) {
 		
 	}
@@ -177,7 +199,7 @@ public class Felulet implements ActionListener{
 		if(index == 1) Main.jatekIF.executeCommand("runscript 4jatekos.txt");
 		if(index == 2) Main.jatekIF.executeCommand("runscript 6jatekos.txt"); 
 		this.frissites(); //->ez itt hogy kellene?
-		Main.jatekIF.executeCommand("getStatus");
+		mezo_load();
 		
 		
 	}

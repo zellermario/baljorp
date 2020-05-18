@@ -29,6 +29,7 @@ public class Jatek {
 	
 	/** A Jatek osztaly konstruktora */
 	public Jatek() {
+		
 		Szereplo.resetCounter();
 		felulet = new Felulet(this);
 	}
