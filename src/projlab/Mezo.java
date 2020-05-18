@@ -32,6 +32,9 @@ public abstract class Mezo {
 		//Random rand = new Random();
 		//horeteg = rand.nextInt(3) + 1;
 	}
+	public Jatek getJatek() {
+		return jatek;
+	}
 	/**visszaadja a szomszedossagot tarolo strukturat*/
 	public Map<Integer, Mezo> getSzomszedos_mezok() {
 		return szomszedos_mezok;

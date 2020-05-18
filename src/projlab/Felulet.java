@@ -22,7 +22,7 @@ public class Felulet implements ActionListener{
 	private JComboBox dropdown;
 	private Object menuPoints[];
 	private Mezo mezok[][];
-	private JButton mezoGombok[][];
+	private MezoButton mezoGombok[][];
 	
 	
 	public Felulet(Jatek j) {
@@ -37,7 +37,7 @@ public class Felulet implements ActionListener{
 		cardlayout = new CardLayout();
 		controlpanel.setLayout(cardlayout);
 		menuPoints = new Object[3];
-		mezoGombok = new JButton[8][8];
+		mezoGombok = new MezoButton[8][8];
 		mezok = new Mezo[8][8];
 		
 		menuPoints[0] = "Mindenbõl egy";
@@ -57,14 +57,14 @@ public class Felulet implements ActionListener{
 		menu.add(dropdown);
 		
 		Dimension d = new Dimension(100,100);
-		for(int i = 0; i < 8; i++){
+/*(int i = 0; i < 8; i++){
 			for(int l = 0; l < 8; l++) {
-				JButton b = new JButton();
+				MezoButton b = new MezoButton();
 				b.setPreferredSize(d);
 				jatekpanel.add(b);
 				mezoGombok[i][l] = b;
 			}
-		}
+		}*/
 		
 		controlpanel.add(jatekpanel,"jatekpanel");
 		controlpanel.add(menu, "menu");
@@ -90,7 +90,10 @@ public class Felulet implements ActionListener{
 	public void mezo_load() {
 		for(int i = 0; i < 8; i++){
 			for(int j = 0; j < 8; j++) {
+				mezoGombok[i][j] = new MezoButton(jatek.getMezok().get(i*8+j));
 				mezoGombok[i][j].setText(String.valueOf(jatek.getMezok().get(i*8+j).getHoreteg()));
+				jatekpanel.add(mezoGombok[i][j]);
+				mezoGombok[i][j].setPreferredSize(new Dimension(100,100));
 			}
 		}
 	}
@@ -200,6 +203,7 @@ public class Felulet implements ActionListener{
 		if(index == 2) Main.jatekIF.executeCommand("runscript 6jatekos.txt"); 
 		this.frissites(); //->ez itt hogy kellene?
 		mezo_load();
+		Main.jatekIF.executeCommand("getStatus");
 		
 		
 	}
