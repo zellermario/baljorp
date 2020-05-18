@@ -2,6 +2,7 @@ package projlab;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,8 +25,7 @@ public class Felulet implements ActionListener{
 	private Object menuPoints[];
 	private Mezo mezok[][];
 	private MezoButton mezoGombok[][];
-	private JPanel terkeppanel;
-	private JPanel jatekosok;
+	private JPanel terkep,  jatekosok;
 	
 	
 	public Felulet(Jatek j) {
@@ -36,10 +36,7 @@ public class Felulet implements ActionListener{
 		frame.setResizable(false);
 		frame.setSize(1100, 900);
 		
-		controlpanel = new JPanel();
-		jatekosok = new JPanel();
-		jatekosok.setPreferredSize(new Dimension(200, 900));
-		terkeppanel = new JPanel();
+		controlpanel = new JPanel();;
 		cardlayout = new CardLayout();
 		controlpanel.setLayout(cardlayout);
 		menuPoints = new Object[3];
@@ -71,8 +68,14 @@ public class Felulet implements ActionListener{
 				mezoGombok[i][l] = b;
 			}
 		}*/
-		jatekpanel.add(terkeppanel, BorderLayout.CENTER);
+		terkep = new JPanel(); jatekosok = new JPanel();
+		
+		terkep.setPreferredSize(new Dimension(1100-200,900));
+		jatekpanel.add(terkep, BorderLayout.WEST);
+		
+		jatekosok.setPreferredSize(new Dimension(170, 900)); 
 		jatekpanel.add(jatekosok, BorderLayout.EAST);
+		
 		controlpanel.add(jatekpanel,"jatekpanel");
 		controlpanel.add(menu, "menu");
 		controlpanel.add(eredmeny,"eredmeny");
@@ -99,7 +102,7 @@ public class Felulet implements ActionListener{
 			for(int j = 0; j < 8; j++) {
 				mezoGombok[i][j] = new MezoButton(jatek.getMezok().get(i*8+j));
 				mezoGombok[i][j].setText(String.valueOf(jatek.getMezok().get(i*8+j).getHoreteg()));
-				terkeppanel.add(mezoGombok[i][j]);
+				terkep.add(mezoGombok[i][j]);
 				mezoGombok[i][j].setPreferredSize(new Dimension(100,100));
 				mezoGombok[i][j].mezo.setCoord(i, j);
 				
