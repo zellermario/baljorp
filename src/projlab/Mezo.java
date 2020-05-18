@@ -57,6 +57,7 @@ public abstract class Mezo {
 		sz.munkamennyiseg = sz.munkamennyiseg - 1;
 		jatek.addToCounter(1);
 		ellenoriz();
+		jatek.kepfrissites();
 	}
 	/**Ez a fuggveny a parameterkent adott jatekost, a parameterkent adott mezore kuldi.*/
 	public void jatekosKuldes(Szereplo sz, Mezo cel) {
@@ -76,8 +77,8 @@ public abstract class Mezo {
 	}
 	/**Ez a fuggveny a parameterkent atadott jatekosnak adja a mezoben levo targyat.*/
 	public void targyAtad(Szereplo sz) {
-		if(horeteg == 0) {
-			sz.AddTargy(belefagyott_targy);;
+		if(horeteg == 0 && belefagyott_targy != null) {
+			sz.AddTargy(belefagyott_targy);
 			belefagyott_targy.osszeszed(sz);
 			belefagyott_targy = null;
 		}
@@ -160,6 +161,10 @@ public abstract class Mezo {
 	
 	public void rajzolMezo(Felulet f) {
 		
+	}
+	
+	public void jatekostorol(Szereplo sz) {
+		jatekosok.remove(sz);
 	}
   
 }

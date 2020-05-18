@@ -146,7 +146,7 @@ public class TextInterface {
 				targy.hasznal(szereplo);
 				return;
 			}
-			if (targy.getId() == 0) ((Buvarruha)targy).hasznal(szereplo, irany);
+			if (targy.getId() == 0) ((Buvarruha)targy).hasznal(szereplo);
 		});
 		
 		// move <player> <dir>

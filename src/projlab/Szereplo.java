@@ -138,6 +138,10 @@ public abstract class Szereplo{
 	
 	public void rajzolSzereplo(Felulet f){	}
 	
+	
+	public Jatek getJatek() {
+		return jatek;
+	}
 
 	public void setTestho(int testho) {
 		this.testho = testho;
