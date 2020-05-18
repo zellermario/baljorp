@@ -31,6 +31,7 @@ public class Felulet implements ActionListener{
 	private JPanel lehetoseg, szereplo, inventory;
 	private SzereploKey keys;
 	private JPanel i1, i2, i3, i4, i5;
+	private JButton bas, btakarit, bpass, blep;
 	
 	
 	public Felulet(Jatek j) {
@@ -78,25 +79,33 @@ public class Felulet implements ActionListener{
 		menu.add(kival);
 		menu.add(helykitolto);
 		
+		
+		
 		Dimension d = new Dimension(100,100);
 		terkep = new JPanel(); terkep.setBackground(jatekpanel.getBackground());
 		aktiv = new JPanel();aktiv.setBackground(jatekpanel.getBackground());
 		
 		terkep.setPreferredSize(new Dimension(1100-200,900));
 		jatekpanel.add(terkep, BorderLayout.WEST);
-		
 		aktiv.setPreferredSize(new Dimension(170, 900)); 
 		jatekpanel.add(aktiv, BorderLayout.EAST);
 		
+		
 		lehetoseg = new JPanel(); lehetoseg.setBackground(jatekpanel.getBackground());
 		lehetoseg.setPreferredSize(new Dimension(170, 400));
-		String sl = "Gombok:\n\nA-hótakarítás\nP-passz\nSzámok-eszköztár\nL-lépés\nD-tárgykiásás";
-		JTextArea tipp = new JTextArea(sl); tipp.setBackground(jatekpanel.getBackground());
-		lehetoseg.add(tipp);
+		bas = new JButton("Jégtáblából kiás");
+		btakarit = new JButton("Hó eltakarítása");
+		bpass = new JButton("Kör befejezése");
+		blep = new JButton("Lépés a kijelölt mezõre");
+		lehetoseg.add(blep); lehetoseg.add(btakarit); lehetoseg.add(bas); lehetoseg.add(bpass);
+		
+		
 		aktiv.add(lehetoseg, BorderLayout.NORTH);
+		
 		szereplo = new JPanel(); szereplo.setBackground(jatekpanel.getBackground());
 		szereplo.setPreferredSize(new Dimension(150, 200));
 		aktiv.add(szereplo, BorderLayout.CENTER);
+		
 		inventory = new JPanel(); inventory.setBackground(jatekpanel.getBackground());
 		inventory.setPreferredSize(new Dimension(200, 200));
 		aktiv.add(inventory, BorderLayout.SOUTH);
