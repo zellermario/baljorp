@@ -223,7 +223,7 @@ public class Felulet implements ActionListener{
 
 	public void rajzolEszkimo(Mezo m) { m.rajtalevok += " E"; }
 	public void rajzolEszkimo(int hely,int heat, int munka) {
-		String s = "p"+hely +" Eszkimo - " + heat+ " " + munka;;
+		String s = "p"+hely +" Eszkimo - " + heat+ " hõ, " + munka+" munka";
 		JLabel l = new JLabel(s);
 		if (hely == jatek.getAktualis()) l.setForeground(Color.blue);
 		sz_hozzaad.add(l);
@@ -231,7 +231,7 @@ public class Felulet implements ActionListener{
 	
 	public void rajzolSarkkutato(Mezo m) { m.rajtalevok += " S"; }
 	public void rajzolSarkkutato(int hely,int heat, int munka) {
-		String s = "p"+hely +" Sarkkutato - " + heat + " " + munka;
+		String s = "p"+hely +" Sarkkutato - " + heat + " hõ, " + munka + " munka";
 		JLabel l = new JLabel(s);
 		if (hely == jatek.getAktualis()) l.setForeground(Color.blue);
 		sz_hozzaad.add(l);
