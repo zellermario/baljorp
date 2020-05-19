@@ -23,21 +23,30 @@ public class Instabil_Jegtabla extends Mezo {
 		if (teherbiras - rajta_levo_jatekosok() == 0) return -2;
 		return teherbiras - rajta_levo_jatekosok();
 	}
+	public int szereploVizsgal() {
+		vizsgalt = true;
+		vizsgalt_ertek = teherbiras - rajta_levo_jatekosok();
+		if (teherbiras - rajta_levo_jatekosok() == 0) return -2;
+		return teherbiras - rajta_levo_jatekosok();
+	}
 	/**Ez a fuggveny a parameterkent atadott jatekost a jegtablara helyezi.*/
 	public void jatekosFogadas(Szereplo sz) {
-		//super.jatekosFogadas(sz);
+		vizsgalt = false;
 		jatekosok.add(sz);
 		sz.setKurrensMezo(this);
 		if(!(teherbiras >= rajta_levo_jatekosok())) atfordul();
 		ellenoriz();
+		sz.munkamennyiseg = sz.munkamennyiseg - 1;
+		if(sz.munkamennyiseg == 0) sz.munkamennyiseg = sz.maxmunka;
+		jatek.addToCounter(1);
 	}
 	/** A jegtabla teherbirasat adja vissza */
 	public int getTeherbiras() { return teherbiras; }
 
 	public void rajzolMezo(Felulet f) {
-		f.rajzolInstabilJegtabla(x, y);
 		epitmeny.rajzolEpitmeny(f, this);
 		if(belefagyott_targy!= null)
 			belefagyott_targy.rajzolTargy(f, this);
+		f.rajzolInstabilJegtabla(x, y);
 	}
 }

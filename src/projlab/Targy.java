@@ -17,13 +17,7 @@ public class Targy {
 	public void rajzolTargy(Felulet f, Mezo m){
 		
 	}
-<<<<<<< Updated upstream
-	
-	public void rajzolTargyInv(Felulet f, Szereplo sz, int hanyadik){
-		
-	}
-=======
+
 	/**A targy megfelelo kirajzolasaert felelos egy adott jatekos tarolojaba*/
 	public void rajzolTargyInv(Felulet f, Szereplo sz, int hanyadik){}
->>>>>>> Stashed changes
 }

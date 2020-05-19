@@ -23,7 +23,7 @@ public class Jatek {
 	/**jatekosok altal hasznalt munka alapjan szamlal, a segitsegevel hatarozzuk meg, hogy ki kovetkezik*/
 	private int jatekosCounter = 0;
 	
-	private Mezo kivalasztott_mezo;
+	private Mezo kivalasztott_mezo = null;
 	
 	private Felulet felulet;
 	
@@ -39,11 +39,15 @@ public class Jatek {
 		jatekosCounter += i;
 		if(jatekosCounter == szereplok.size() * 4) { 
 			epuletRombol();
+			
 			jatekosCounter = 0;
+			hovihar();
 		}
 		aktualisJatekos = jatekosCounter / 4;
-		if(jatekosCounter % 4 == 0)
+		if(jatekosCounter % 4 == 0) {
 			szereplok.get(aktualisJatekos).kor();
+			kepfrissites();
+		}
 	}
 	
 	/**visszaadja az epp soron kovetkezo jatekos sorszamat*/
@@ -86,8 +90,11 @@ public class Jatek {
 	/**jatekosok kozotti valtas, a teszteles soran ezt a passzolassal valositjuk meg*/
 	public void nextJatekos() {
 		aktualisJatekos++;
-		if(aktualisJatekos == szereplok.size()) aktualisJatekos = 0;
+		if(aktualisJatekos == szereplok.size()) {
+			aktualisJatekos = 0;
+			hovihar();
 		}
+	}
 	
 	/**a fo ciklus, de a tesztek kedveert a determinisztikus leptetest a jatekosCounter segitsegevel tesszuk meg*/
 	public void kor() {
@@ -143,8 +150,7 @@ public class Jatek {
 	public void feluletInit() {
 		
 	}
-<<<<<<< Updated upstream
-=======
+
 	/**Beallitja a kivalasztott mezo-t*/
 	public void kivalasztott(Mezo cel) {
 		kivalasztott_mezo = cel;
@@ -161,11 +167,12 @@ public class Jatek {
 	public Mezo getKivalasztott_mezo() {
 		return kivalasztott_mezo;
 	}
+
 	/**A megadott sorszamu targyat hazsnalja a jatekos tarolojabol*/
 	public void targy_hasznal(int indx) {
 		if(indx <= szereplok.get(aktualisJatekos).getTargyak().size()) {
 			szereplok.get(aktualisJatekos).getTargyak().get(indx - 1).hasznal(szereplok.get(aktualisJatekos));
 		}
 	}
->>>>>>> Stashed changes
+
 }

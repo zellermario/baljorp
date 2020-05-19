@@ -1,9 +1,11 @@
 package projlab;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
 /**A szereplok alapveto viselkedeset megvalosito osztaly*/
-public abstract class Szereplo {
+public abstract class Szereplo{
 	/**A jatekos hatra levo munkamennyisege.*/
 	protected int munkamennyiseg;
 	/**statikus valtozo, ami alapjan a jatekosok sorszam attributumat beallitjuk*/
@@ -11,7 +13,7 @@ public abstract class Szereplo {
 	/**azt tarolja el, hogy a jatekos hanyadikkent lephet*/
 	protected int sorszam;
 	/**nyilvantartja, hogy hany munkat vegezhet koronkent a jatekos, ezt reseteli*/
-	private int maxmunka;
+	protected int maxmunka;
 	/**nyilvantartja, hogy maximum mennyi testhoje lehet egy jatekosnak - nem mehet evessel sem e fole*/
 	private int maxtestho;
 	
@@ -48,20 +50,24 @@ public abstract class Szereplo {
 		Mezo cel = kurrensmezo.getSzomszed(irany);
 		kurrensmezo.jatekosKuldes(this, cel);
 		munkamennyiseg--;
+		if(munkamennyiseg == 0) munkamennyiseg = maxmunka;
 		jatek.addToCounter(1);
+		jatek.kepfrissites();
 	}
 	/**Ez a fuggveny a hovihar jatekosra gyakorolt hatasast valositja meg.*/
 	public void hovihar() {
 		testho--;
 		if(testho == 0) halal();
+		jatek.kepfrissites();
 	}
 	/**Ez a fuggveny az etel elfogyasztasanak hatasast valositja meg.*/
 	public void eves() {
 		if(testho < maxtestho) testho++;
+		jatek.kepfrissites();
 	}
 	
 	/**A kulonbozo szereplok kepessegeit valositja meg-*/
-	public void kepessegHasznal(Mezo cel) {}
+	public void kepessegHasznal() {}
 	
 	/**Egy felvett targy hasznalatat valositja meg.*/
 	public void targyHasznalat(int id) {
@@ -70,7 +76,9 @@ public abstract class Szereplo {
 			if(t.getId() == id) t.hasznal(this);
 		}
 		munkamennyiseg--;
+		if(munkamennyiseg == 0) munkamennyiseg = maxmunka;
 		jatek.addToCounter(1);
+		jatek.kepfrissites();
 	}
 	
 	/**Ezzel a fuggvennyel tudunk targyakat kiasni a mezokbol.*/
@@ -78,14 +86,18 @@ public abstract class Szereplo {
 		if(sorszam != jatek.getAktualis() || munkamennyiseg == 0) return;
 		kurrensmezo.targyAtad(this);
 		munkamennyiseg--;
+		if(munkamennyiseg == 0) munkamennyiseg = maxmunka;
 		jatek.addToCounter(1);
+		jatek.kepfrissites();
 	}
 	/**Ez a fuggveny valositja meg a horeteg eltavolitasat az adott mezorol.*/
 	public void hoTakaritas(int i) {
 		if(sorszam != jatek.getAktualis() || munkamennyiseg == 0) return;
 		kurrensmezo.hoTakarit(i);
 		munkamennyiseg--;
+		if(munkamennyiseg == 0) munkamennyiseg = maxmunka;
 		jatek.addToCounter(1);
+		jatek.kepfrissites();
 	}
   /**Ezzel a fuggvennyel tudjuk jelzi a jateknak ha a jatekos meghal.*/
   public void halal() {
@@ -101,6 +113,7 @@ public abstract class Szereplo {
 	public void passz() {
 		jatek.addToCounter(munkamennyiseg);
 		munkamennyiseg = maxmunka;
+		jatek.kepfrissites();
 		
 	}
 	/**beallitjuk a kurrensmezot*/
@@ -134,11 +147,7 @@ public abstract class Szereplo {
 	public void setKurrensMezo(Mezo m) {
 		kurrensmezo = m;
 	}
-<<<<<<< Updated upstream
-	
-	public void rajzolSzereplo(Felulet f){
-		
-=======
+
 	/**A jatekosok megfelelo kirajzolasaert felelos*/
 	public void rajzolSzereplo(Felulet f){	}
 	
@@ -149,6 +158,10 @@ public abstract class Szereplo {
 	/**Belallitja a teshot a megadott ertekre*/
 	public void setTestho(int testho) {
 		this.testho = testho;
->>>>>>> Stashed changes
 	}
+
+	public void setTestho(int testho) {
+		this.testho = testho;
+	}
+
 }

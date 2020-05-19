@@ -4,23 +4,70 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-/** A mezoket reprezent�l� gombok oszt�lya ami kezeli a gomblenyom�sokat*/
+/** A mezoket reprezentáló gombok osztálya ami kezeli a gomblenyomásokat*/
 public class MezoButton extends JButton implements ActionListener{
-	/**Melyik mez�t reprezent�lja a k�peny�n.*/
+	/**Melyik mezőt reprezentálja a képenyőn.*/
 	Mezo mezo;
 	public MezoButton(Mezo m) {
 		mezo = m;
+		this.addActionListener(this);
 		}
-<<<<<<< Updated upstream
-=======
+
 	Mezo getMezo() {
 		return mezo;
 	}
-	/**A j�tkban l�v� gombok ActonListenerje*/
->>>>>>> Stashed changes
+	/**A játkban lévő gombok ActonListenerje*/
+	Mezo getMezo() {
+		return mezo;
+  }
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		mezo.hoTakarit(1);
+		JButton src = (JButton)e.getSource();
+		if(src.getText().equals("Lépés a kijelölt mezőre")) {
+			mezo.getJatek().lep_mezo();
+		}
+		else if(src.getText().equals("Hó eltakarítása")) {
+			mezo.getJatek().getSzereplok().get(mezo.getJatek().getAktualis()).hoTakaritas(1);
+			mezo.getJatek().kepfrissites();
+		}
+		else if(src.getText().equals("Kör befejezése")) {
+			mezo.getJatek().getSzereplok().get(mezo.getJatek().getAktualis()).passz();
+		}
+		else if(src.getText().equals("Jégtáblából kiás")) {
+			mezo.getJatek().getSzereplok().get(mezo.getJatek().getAktualis()).targyKiasas();
+		}
+		else if(src.getText().equals("Képesség")) {
+			mezo.getJatek().getSzereplok().get(mezo.getJatek().getAktualis()).kepessegHasznal();
+		}
+		else if(src.getText().equals("Kör befejezése")) {
+			mezo.getJatek().getSzereplok().get(mezo.getJatek().getAktualis()).passz();
+		}
+		else if(src.getText().equals("Kör befejezése")) {
+			mezo.getJatek().getSzereplok().get(mezo.getJatek().getAktualis()).passz();
+		}
+		else if(src.getText().equals("Tárgy1")) {
+			mezo.getJatek().targy_hasznal(1);
+		}
+		else if(src.getText().equals("Tárgy2")) {
+			mezo.getJatek().targy_hasznal(2);
+		}
+		else if(src.getText().equals("Tárgy3")) {
+			mezo.getJatek().targy_hasznal(3);
+		}
+		else if(src.getText().equals("Tárgy4")) {
+			mezo.getJatek().targy_hasznal(4);
+		}
+		else if(src.getText().equals("Tárgy5")) {
+			mezo.getJatek().targy_hasznal(5);
+		}
+		else if(src.getText().equals("Tárgy6")) {
+			mezo.getJatek().targy_hasznal(6);
+		}
+		else {
+			mezo.getJatek().kivalasztott(mezo);
+		}
 		mezo.getJatek().kepfrissites();
+		//mezo.getJatek().getFelulet().getControlpanel().requestFocusInWindow();
+		
 	}
 }

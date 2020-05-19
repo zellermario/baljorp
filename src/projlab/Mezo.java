@@ -14,19 +14,22 @@ public abstract class Mezo {
 	/**Szomszedos mezok.*/
 	private Map<Integer, Mezo> szomszedos_mezok = new TreeMap<Integer, Mezo>();
 	/**A jatek aminek a resz a mezo.*/
-	private Jatek jatek;
+	protected Jatek jatek;
 	/**A mezoben levo targy.*/
 	protected Targy belefagyott_targy;
 	/**A mezon levo epulet.*/
 	protected Epitmeny epitmeny;
 	/**A mezon levo jatekosok.*/
 	protected List<Szereplo> jatekosok = new ArrayList<Szereplo>();
-	
+	protected boolean vizsgalt = false;
+	public String rajtalevok = "";
+	protected int vizsgalt_ertek = -3;
 	protected int x, y;
 	
 	public void setCoord(int _x, int _y) {
 		x = _x;
 		y = _y;
+		id = _x * 8 + _y;
 	}
   //todo valasz: szerintem edesmindegy
 	public Mezo(int _id, Jatek j) {
@@ -51,12 +54,23 @@ public abstract class Mezo {
 	public void jatekosFogadas(Szereplo sz) {
 		jatekosok.add(sz);
 		sz.setKurrensMezo(this);
+		sz.munkamennyiseg = sz.munkamennyiseg - 1;
+		jatek.addToCounter(1);
+		if(sz.munkamennyiseg == 0) sz.munkamennyiseg = sz.maxmunka;
 		ellenoriz();
+		jatek.kepfrissites();
 	}
 	/**Ez a fuggveny a parameterkent adott jatekost, a parameterkent adott mezore kuldi.*/
 	public void jatekosKuldes(Szereplo sz, Mezo cel) {
-		 cel.jatekosFogadas(sz);
-		 jatekosok.remove(sz);
+		if(cel == null) return;
+		for( Map.Entry<Integer, Mezo> entry : szomszedos_mezok.entrySet()) {
+			if(entry.getValue().getId() == cel.getId()) {
+				cel.jatekosFogadas(sz);
+				jatekosok.remove(sz);
+				if(this.megvizsgal() < -1 ) vizsgalt = false;
+				return;
+			}
+		} 
 	}
 	
 	/**Ez a fuggveny a parameterkent atadott mennyisegu reteg havat takarit el a mezorol.*/
@@ -66,10 +80,11 @@ public abstract class Mezo {
 	}
 	/**Ez a fuggveny a parameterkent atadott jatekosnak adja a mezoben levo targyat.*/
 	public void targyAtad(Szereplo sz) {
-		if(horeteg == 0) {
-			sz.AddTargy(belefagyott_targy);;
+		if(horeteg == 0 && belefagyott_targy != null) {
+			sz.AddTargy(belefagyott_targy);
 			belefagyott_targy.osszeszed(sz);
 			belefagyott_targy = null;
+			jatek.kepfrissites();
 		}
 	}
 	/**Ez a fuggveny a hovihar hatasat valositja meg a mezon.*/
@@ -147,22 +162,25 @@ public abstract class Mezo {
 	public Epitmeny getEpitmeny() {
 		return epitmeny;
 	}
+
 	/**A mezo megfelelo kirajzolassaert felelos*/
 	public void rajzolMezo(Felulet f) {
 		
 	}
-<<<<<<< Updated upstream
-=======
+
 	/**Torli a megadott jatekost a listabol.*/
 	public void jatekostorol(Szereplo sz) {
 		jatekosok.remove(sz);
 	}
+
+	abstract int szereploVizsgal();
+	
+
 	public boolean getVizsgalt() {
 		return vizsgalt;
 	}
 	public int getVizsgalatEredmenye() {
 		return vizsgalt_ertek;
 	}
->>>>>>> Stashed changes
   
 }
