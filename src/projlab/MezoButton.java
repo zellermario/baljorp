@@ -48,6 +48,12 @@ public class MezoButton extends JButton implements ActionListener{
 		else if(src.getText().equals("Tárgy4")) {
 			mezo.getJatek().targy_hasznal(4);
 		}
+		else if(src.getText().equals("Tárgy5")) {
+			mezo.getJatek().targy_hasznal(5);
+		}
+		else if(src.getText().equals("Tárgy6")) {
+			mezo.getJatek().targy_hasznal(6);
+		}
 		else {
 			mezo.getJatek().kivalasztott(mezo);
 		}

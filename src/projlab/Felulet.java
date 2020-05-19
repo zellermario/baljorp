@@ -18,37 +18,38 @@ public class Felulet implements ActionListener{
 	private JFrame frame;//
 	private JPanel controlpanel; private CardLayout cardlayout;
 	
-		private JPanel menu;
-			private JButton startGomb;//
-			private JComboBox dropdown;
-			private Object menuPoints[];
+	private JPanel menu;
+	private JButton startGomb;//
+	private JComboBox dropdown;
+	private Object menuPoints[];
 	
 	private JPanel jatekpanel;
 		
-		private JPanel terkep;//
+	private JPanel terkep;//
 			//mi a különbség? kell mind a kettõ?
-			private Mezo mezok[][];//
-			private MezoButton mezoGombok[][];//
+	private Mezo mezok[][];//
+	private MezoButton mezoGombok[][];//
 		
-		private JPanel aktiv;
+	private JPanel aktiv;
 			
-			private JPanel gombok; 
-				private JButton bas;//
-				private JButton btakarit;//
-				private JButton bpass;//
-				private JButton blep;//
-				private JButton kepesseg;//
-				private JButton targy1, targy2;//
-				private JButton targy3,targy4;//
+	private JPanel gombok; 
+	private JButton bas;//
+	private JButton btakarit;//
+	private JButton bpass;//
+	private JButton blep;//
+	private JButton kepesseg;//
+	private JButton targy1, targy2;//
+	private JButton targy3,targy4;//
+	private JButton targy5,targy6;
 			
-			private JPanel mezo_tul;
-				private JPanel m_hozzaad;
-			
-			private JPanel szereplo;
-				private JPanel sz_hozzaad;
+	private JPanel mezo_tul;
+	private JPanel m_hozzaad;
+		
+	private JPanel szereplo;
+	private JPanel sz_hozzaad;
 				
-			private JPanel inventory;
-				private JPanel i_hozzaad;
+	private JPanel inventory;
+	private JPanel i_hozzaad;
 	
 	private JPanel eredmeny;
 	
@@ -124,9 +125,18 @@ public class Felulet implements ActionListener{
 		kepesseg = new JButton("Képesség");
 		targy1 = new JButton("Tárgy1"); targy2 = new JButton("Tárgy2");
 		targy3 = new JButton("Tárgy3"); targy4 = new JButton("Tárgy4");
-		gombok.add(blep); gombok.add(btakarit); gombok.add(bas); gombok.add(bpass);
+		targy5 = new JButton("Tárgy5"); targy6 = new JButton("Tárgy6");
+		gombok.add(blep);
+		gombok.add(btakarit);
+		gombok.add(bas);
+		gombok.add(bpass);
 		gombok.add(kepesseg);
-		gombok.add(targy1); gombok.add(targy2); gombok.add(targy3); gombok.add(targy4);
+		gombok.add(targy1); 
+		gombok.add(targy2); 
+		gombok.add(targy3); 
+		gombok.add(targy4);
+		gombok.add(targy5); 
+		gombok.add(targy6);
 		aktiv.add(gombok);
 		
 		mezo_tul = new JPanel();
@@ -314,6 +324,8 @@ public class Felulet implements ActionListener{
 		targy2.addActionListener(mezoGombok[0][0]);
 		targy3.addActionListener(mezoGombok[0][0]);
 		targy4.addActionListener(mezoGombok[0][0]);
+		targy5.addActionListener(mezoGombok[0][0]);
+		targy6.addActionListener(mezoGombok[0][0]);
 		this.frissites();
 		
 		Main.jatekIF.executeCommand("getStatus");
