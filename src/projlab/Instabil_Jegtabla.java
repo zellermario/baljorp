@@ -20,15 +20,18 @@ public class Instabil_Jegtabla extends Mezo {
 	}
 	/**Ez a fuggveny visszaadja hogy az adott jegtablan hany jatekos fer el.*/
 	public int megvizsgal() {
+		if (teherbiras - rajta_levo_jatekosok() == 0) return -2;
+		return teherbiras - rajta_levo_jatekosok();
+	}
+	public int szereploVizsgal() {
 		vizsgalt = true;
 		vizsgalt_ertek = teherbiras - rajta_levo_jatekosok();
 		if (teherbiras - rajta_levo_jatekosok() == 0) return -2;
 		return teherbiras - rajta_levo_jatekosok();
-		
 	}
 	/**Ez a fuggveny a parameterkent atadott jatekost a jegtablara helyezi.*/
 	public void jatekosFogadas(Szereplo sz) {
-		//super.jatekosFogadas(sz);
+		vizsgalt = false;
 		jatekosok.add(sz);
 		sz.setKurrensMezo(this);
 		if(!(teherbiras >= rajta_levo_jatekosok())) atfordul();

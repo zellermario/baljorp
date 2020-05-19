@@ -9,6 +9,9 @@ public class Luk extends Mezo{
 	
 	/**Ennek a fuggvenynek a visszateresi ertekebol tudhatjuk meg hogy ez luk.*/
 	public int megvizsgal() { 
+		return 0;}
+	
+	public int szereploVizsgal() {
 		vizsgalt = true;
 		vizsgalt_ertek = 0;
 		return 0;}

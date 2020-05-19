@@ -67,6 +67,7 @@ public abstract class Mezo {
 			if(entry.getValue().getId() == cel.getId()) {
 				cel.jatekosFogadas(sz);
 				jatekosok.remove(sz);
+				if(this.megvizsgal() < -1 ) vizsgalt = false;
 				return;
 			}
 		} 
@@ -161,7 +162,6 @@ public abstract class Mezo {
 	public Epitmeny getEpitmeny() {
 		return epitmeny;
 	}
-	
 	public void rajzolMezo(Felulet f) {
 		
 	}
@@ -169,6 +169,8 @@ public abstract class Mezo {
 	public void jatekostorol(Szereplo sz) {
 		jatekosok.remove(sz);
 	}
+	abstract int szereploVizsgal();
+	
 	public boolean getVizsgalt() {
 		return vizsgalt;
 	}

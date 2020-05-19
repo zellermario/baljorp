@@ -320,6 +320,7 @@ public class Felulet implements ActionListener{
 		mezoGombok[x][y].setBackground(Color.BLUE);
 		mezoGombok[x][y].setText("?" + mezoGombok[x][y].mezo.rajtalevok);
 		}
+	if(mezoGombok[x][y].getMezo().getVizsgalt()) mezoGombok[x][y].setBackground(Color.GREEN);
 	}
 	
 	/**
@@ -340,6 +341,7 @@ public class Felulet implements ActionListener{
 			mezoGombok[x][y].setBackground(Color.BLUE);
 			mezoGombok[x][y].setText("?" + mezoGombok[x][y].mezo.rajtalevok);
 			}
+		if(mezoGombok[x][y].getMezo().getVizsgalt()) mezoGombok[x][y].setBackground(Color.GREEN);
 		}	
 	
 	
@@ -352,6 +354,7 @@ public class Felulet implements ActionListener{
 		else {
 			mezoGombok[x][y].setBackground(Color.BLUE);
 			mezoGombok[x][y].setText("?" + mezoGombok[x][y].mezo.rajtalevok);
+			if(mezoGombok[x][y].getMezo().getVizsgalt()) mezoGombok[x][y].setBackground(Color.GREEN);
 		}
 		}
 		
@@ -395,7 +398,6 @@ public class Felulet implements ActionListener{
 		targy6.addActionListener(mezoGombok[0][0]);
 		this.frissites();
 		
-		Main.jatekIF.executeCommand("getStatus");
 		
 		
 	}

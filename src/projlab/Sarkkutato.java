@@ -15,8 +15,13 @@ public class Sarkkutato extends Szereplo{
 		if(sorszam != jatek.getAktualis() || munkamennyiseg == 0) return;
 		for( Map.Entry<Integer, Mezo> entry : kurrensmezo.getSzomszedos_mezok().entrySet()) {
 			if(entry.getValue().getId() == cel.getId()) {
-				int teher = cel.megvizsgal();
-				cel.rajtalevok += " " + teher;
+				int teher = cel.szereploVizsgal();
+				if(teher == -1)
+					cel.rajtalevok += "ST";
+				else if(teher == 0)
+					cel.rajtalevok += "LUK";
+				else
+					cel.rajtalevok += " "+ teher;
 				munkamennyiseg--;
 				if(munkamennyiseg == 0) munkamennyiseg = maxmunka;
 				jatek.addToCounter(1);
