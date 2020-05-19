@@ -44,6 +44,7 @@ public class Felulet implements ActionListener{
 			
 	private JPanel mezo_tul;
 	private JPanel m_hozzaad;
+	private String s_bef;
 		
 	private JPanel szereplo;
 	private JPanel sz_hozzaad;
@@ -189,15 +190,17 @@ public class Felulet implements ActionListener{
 			m.rajtalevok = "";
 		}
 		m_hozzaad.removeAll();
-		Mezo temp = jatek.getSzereplok().get(jatek.getAktualis()).kurrensmezo;
-		int ho = temp.getHoreteg();
-		JLabel havazott = new JLabel("Hóréteg: "+ho);
-		if (ho != 0) return;
-		Targy t = temp.belefagyott_targy;
-		String s_bef = "Belefagyott tárgy: ";
-		if (t != null) s_bef += t.toString(); else s_bef += "-";
-		JLabel befagyott = new JLabel(s_bef);
-		m_hozzaad.add(havazott);
+		Mezo m = jatek.getSzereplok().get(jatek.getAktualis()).kurrensmezo;
+		int ho = m.getHoreteg();
+		JLabel havazott = new JLabel("Hóréteg: "+ho); m_hozzaad.add(havazott);
+		Targy t = m.belefagyott_targy;
+		s_bef = "Belefagyott tárgy: ";
+		if(ho == 0) {
+			if (t == null)  s_bef += "-  ";
+			else t.rajzolTargy(this, m);
+		}
+		else s_bef += "?  ";
+		JLabel befagyott = new JLabel(s_bef); 
 		m_hozzaad.add(befagyott);
 	}
 	
@@ -244,6 +247,7 @@ public class Felulet implements ActionListener{
 		if(m.getHoreteg() == 0) {
 			m.rajtalevok += " LAP.";
 			}
+		s_bef+= "Lapát";
 		}
 	public void rajzolLapatInv(Szereplo sz, int hanyadik) {
 		JLabel temp = new JLabel("t" + hanyadik+" - Lapát");
@@ -252,8 +256,9 @@ public class Felulet implements ActionListener{
 	
 	public void rajzolKotel(Mezo m) {
 		if(m.getHoreteg() == 0)
-			
-			m.rajtalevok += " KÖT.";}
+			m.rajtalevok += " KÖT.";
+		s_bef += "Kötél";
+	}
 	public void rajzolKotelInv(Szereplo sz, int hanyadik) {
 		JLabel temp = new JLabel("t" + hanyadik+" - Kötél");
 		i_hozzaad.add(temp);
@@ -262,7 +267,8 @@ public class Felulet implements ActionListener{
 	
 	public void rajzolTorekenyAso(Mezo m) {
 		if(m.getHoreteg() == 0)
-		m.rajtalevok += " T.Á.";
+			m.rajtalevok += " T.Á.";
+		s_bef += "Törékeny ásó";
 		}
 	public void rajzolTorekenyAsoInv(Szereplo sz, int hanyadik) {
 		JLabel temp = new JLabel("t" + hanyadik+" - Törékeny Ásó");
@@ -271,11 +277,15 @@ public class Felulet implements ActionListener{
 
 	public void rajzolEtel(Mezo m) { 
 		if(m.getHoreteg() == 0)
-			m.rajtalevok += " ÉT.";}
+			m.rajtalevok += " ÉT.";
+		s_bef += "Étel";
+	}
 	
 	public void rajzolBuvarruha(Mezo m) { 
 		if(m.getHoreteg() == 0)
-			m.rajtalevok += " B.R.";}
+			m.rajtalevok += " B.R.";
+		s_bef += "Búvárruha";
+	}
 	public void rajzolBuvarruhaInv(Szereplo sz, int hanyadik) {
 		JLabel temp = new JLabel("t" + hanyadik+" - Buvárruha");
 		i_hozzaad.add(temp);
@@ -283,7 +293,9 @@ public class Felulet implements ActionListener{
 	
 	public void rajzolRaketaalkatresz(Mezo m) {
 		if(m.getHoreteg() == 0)
-		m.rajtalevok += " RAK.";}
+			m.rajtalevok += " RAK.";
+		s_bef += "Rakétaalkatrész";
+	}
 	public void rajzolRaketaalkatreszInv(Szereplo sz, int hanyadik) {
 		JLabel temp = new JLabel("t" + hanyadik+" - Rakétaalkatrész");
 		i_hozzaad.add(temp);
@@ -291,7 +303,9 @@ public class Felulet implements ActionListener{
 	
 	public void rajzolSator(Mezo m) {
 		if(m.getHoreteg() == 0)
-			m.rajtalevok += " SÁT.";}
+			m.rajtalevok += " SÁT.";
+		s_bef += "Sátor";
+		}
 	public void rajzolSatorInv(Szereplo sz, int hanyadik) {
 		JLabel temp = new JLabel("t" + hanyadik+" - Sátor");
 		i_hozzaad.add(temp);
