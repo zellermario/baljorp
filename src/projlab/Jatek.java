@@ -85,8 +85,7 @@ public class Jatek {
 	/**Ha ezt a fuggvenyt meghivjuk a jatek vereseggel veget er.*/
 	public void vereseg() {
 		jatekvege = true;
-		felulet.getCardLayout().show(felulet.getControlPanel(), "veresegpanel");
-		//valami kirajzolas a grafikus programban
+		felulet.Vereseg();
 	}
 	/**jatekosok kozotti valtas, a teszteles soran ezt a passzolassal valositjuk meg*/
 	public void nextJatekos() {
@@ -111,7 +110,7 @@ public class Jatek {
 	public boolean gyozelem() {	
 		if(osszeszedett_alkatreszek == 3)
 		{
-			felulet.getCardLayout().show(felulet.getControlPanel(), "gyozelempanel");
+			felulet.Gyozelem();
 			return true;
 		}
 		else return false;

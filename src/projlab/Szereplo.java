@@ -160,8 +160,4 @@ public abstract class Szereplo{
 		this.testho = testho;
 	}
 
-	public void setTestho(int testho) {
-		this.testho = testho;
-	}
-
 }

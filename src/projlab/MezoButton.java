@@ -13,9 +13,6 @@ public class MezoButton extends JButton implements ActionListener{
 		this.addActionListener(this);
 		}
 
-	Mezo getMezo() {
-		return mezo;
-	}
 	/**A játkban lévő gombok ActonListenerje*/
 	Mezo getMezo() {
 		return mezo;
