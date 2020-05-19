@@ -62,7 +62,7 @@ public class Felulet implements ActionListener{
 		frame.setTitle("Jegmezo");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
-		frame.setSize(1100, 900);
+		frame.setSize(1100, 800);
 		
 		controlpanel = new JPanel();
 		cardlayout = new CardLayout();
@@ -86,7 +86,7 @@ public class Felulet implements ActionListener{
 		leiras.setBackground(menu.getBackground()); 
 		JPanel helykitolto = new JPanel();
 		helykitolto.setBackground(menu.getBackground());
-		helykitolto.setPreferredSize(new Dimension(500,900));
+		helykitolto.setPreferredSize(new Dimension(500,800));
 		JPanel kival = new JPanel();
 		kival.setBackground(menu.getBackground());
 		startGomb = new JButton();
@@ -109,9 +109,9 @@ public class Felulet implements ActionListener{
 		aktiv = new JPanel();
 		aktiv.setBackground(jatekpanel.getBackground());
 		
-		terkep.setPreferredSize(new Dimension(1100-200,900));
+		terkep.setPreferredSize(new Dimension(1100-300,800));
 		jatekpanel.add(terkep, BorderLayout.WEST);
-		aktiv.setPreferredSize(new Dimension(170, 900)); 
+		aktiv.setPreferredSize(new Dimension(270, 800)); 
 		jatekpanel.add(aktiv, BorderLayout.EAST);
 		aktiv.setLayout(new BoxLayout(aktiv, BoxLayout.PAGE_AXIS));
 		
@@ -197,7 +197,7 @@ public class Felulet implements ActionListener{
 				mezoGombok[i][j] = new MezoButton(jatek.getMezok().get(i*8+j));
 				mezoGombok[i][j].setText(String.valueOf(jatek.getMezok().get(i*8+j).getHoreteg()));
 				terkep.add(mezoGombok[i][j]);
-				mezoGombok[i][j].setPreferredSize(new Dimension(100,100));
+				mezoGombok[i][j].setPreferredSize(new Dimension(90,90));
 				mezoGombok[i][j].mezo.setCoord(i, j);
 				
 			}
@@ -233,20 +233,20 @@ public class Felulet implements ActionListener{
 	public void rajzolLapat(Mezo m) { }
 	public void rajzolLapatInv(Szereplo sz, int hanyadik) {
 		JLabel temp = new JLabel("t" + hanyadik+" - Lapát");
-		temp.add(i_hozzaad);
+		i_hozzaad.add(temp);
 	}
 	
 	public void rajzolKotel(Mezo m) { }
 	public void rajzolKotelInv(Szereplo sz, int hanyadik) {
 		JLabel temp = new JLabel("t" + hanyadik+" - Kötél");
-		temp.add(i_hozzaad);
+		i_hozzaad.add(temp);
 		
 	}
 	
 	public void rajzolTorekenyAso(Mezo m) {	}
 	public void rajzolTorekenyAsoInv(Szereplo sz, int hanyadik) {
 		JLabel temp = new JLabel("t" + hanyadik+" - Törékeny Ásó");
-		temp.add(i_hozzaad);		
+		i_hozzaad.add(temp);		
 	}
 
 	public void rajzolEtel(Mezo m) { }
@@ -254,19 +254,19 @@ public class Felulet implements ActionListener{
 	public void rajzolBuvarruha(Mezo m) { }
 	public void rajzolBuvarruhaInv(Szereplo sz, int hanyadik) {
 		JLabel temp = new JLabel("t" + hanyadik+" - Buvárruha");
-		temp.add(i_hozzaad);
+		i_hozzaad.add(temp);
 	}
 	
 	public void rajzolRaketaalkatresz(Mezo m) {	}
 	public void rajzolRaketaalkatreszInv(Szereplo sz, int hanyadik) {
 		JLabel temp = new JLabel("t" + hanyadik+" - Rakétaalkatrész");
-		temp.add(i_hozzaad);
+		i_hozzaad.add(temp);
 	}
 	
 	public void rajzolSator(Mezo m) { }
 	public void rajzolSatorInv(Szereplo sz, int hanyadik) {
 		JLabel temp = new JLabel("t" + hanyadik+" - Sátor");
-		temp.add(i_hozzaad);
+		i_hozzaad.add(temp);
 	}
 	
 	public void rajzolStabilJegtabla(int x, int y) {mezoGombok[x][y].setText(mezoGombok[x][y].mezo.rajtalevok);}

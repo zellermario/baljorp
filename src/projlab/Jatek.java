@@ -39,6 +39,7 @@ public class Jatek {
 		jatekosCounter += i;
 		if(jatekosCounter == szereplok.size() * 4) { 
 			epuletRombol();
+			
 			jatekosCounter = 0;
 			hovihar();
 		}
