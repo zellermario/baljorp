@@ -48,7 +48,7 @@ public class SzereploKey implements KeyListener{
 	    else if(key == KeyEvent.VK_6) {
 	    	jatek.targy_hasznal(6);
 	    }
-	    jatek.getFelulet().getControlpanel().requestFocusInWindow();
+	    jatek.getFelulet().getControlPanel().requestFocusInWindow();
 	    jatek.kepfrissites();
 	}
 
