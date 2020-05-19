@@ -31,6 +31,7 @@ public class Instabil_Jegtabla extends Mezo {
 		if(!(teherbiras >= rajta_levo_jatekosok())) atfordul();
 		ellenoriz();
 		sz.munkamennyiseg = sz.munkamennyiseg - 1;
+		if(sz.munkamennyiseg == 0) sz.munkamennyiseg = sz.maxmunka;
 		jatek.addToCounter(1);
 	}
 	/** A jegtabla teherbirasat adja vissza */
