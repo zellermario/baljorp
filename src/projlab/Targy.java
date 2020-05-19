@@ -13,12 +13,17 @@ public class Targy {
 	public void osszeszed(Szereplo sz) {}
 	/**az id gettere*/
 	public int getId() {return id;}
-	
+	/**A targy megfelelo kirajzolasaert felelos egy adott mezore*/
 	public void rajzolTargy(Felulet f, Mezo m){
 		
 	}
+<<<<<<< Updated upstream
 	
 	public void rajzolTargyInv(Felulet f, Szereplo sz, int hanyadik){
 		
 	}
+=======
+	/**A targy megfelelo kirajzolasaert felelos egy adott jatekos tarolojaba*/
+	public void rajzolTargyInv(Felulet f, Szereplo sz, int hanyadik){}
+>>>>>>> Stashed changes
 }

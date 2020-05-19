@@ -147,9 +147,22 @@ public abstract class Mezo {
 	public Epitmeny getEpitmeny() {
 		return epitmeny;
 	}
-	
+	/**A mezo megfelelo kirajzolassaert felelos*/
 	public void rajzolMezo(Felulet f) {
 		
 	}
+<<<<<<< Updated upstream
+=======
+	/**Torli a megadott jatekost a listabol.*/
+	public void jatekostorol(Szereplo sz) {
+		jatekosok.remove(sz);
+	}
+	public boolean getVizsgalt() {
+		return vizsgalt;
+	}
+	public int getVizsgalatEredmenye() {
+		return vizsgalt_ertek;
+	}
+>>>>>>> Stashed changes
   
 }

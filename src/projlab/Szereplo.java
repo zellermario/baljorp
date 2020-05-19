@@ -134,8 +134,21 @@ public abstract class Szereplo {
 	public void setKurrensMezo(Mezo m) {
 		kurrensmezo = m;
 	}
+<<<<<<< Updated upstream
 	
 	public void rajzolSzereplo(Felulet f){
 		
+=======
+	/**A jatekosok megfelelo kirajzolasaert felelos*/
+	public void rajzolSzereplo(Felulet f){	}
+	
+	
+	public Jatek getJatek() {
+		return jatek;
+	}
+	/**Belallitja a teshot a megadott ertekre*/
+	public void setTestho(int testho) {
+		this.testho = testho;
+>>>>>>> Stashed changes
 	}
 }
