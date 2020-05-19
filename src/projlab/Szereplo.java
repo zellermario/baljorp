@@ -52,15 +52,18 @@ public abstract class Szereplo{
 		munkamennyiseg--;
 		if(munkamennyiseg == 0) munkamennyiseg = maxmunka;
 		jatek.addToCounter(1);
+		jatek.kepfrissites();
 	}
 	/**Ez a fuggveny a hovihar jatekosra gyakorolt hatasast valositja meg.*/
 	public void hovihar() {
 		testho--;
 		if(testho == 0) halal();
+		jatek.kepfrissites();
 	}
 	/**Ez a fuggveny az etel elfogyasztasanak hatasast valositja meg.*/
 	public void eves() {
 		if(testho < maxtestho) testho++;
+		jatek.kepfrissites();
 	}
 	
 	/**A kulonbozo szereplok kepessegeit valositja meg-*/
@@ -75,6 +78,7 @@ public abstract class Szereplo{
 		munkamennyiseg--;
 		if(munkamennyiseg == 0) munkamennyiseg = maxmunka;
 		jatek.addToCounter(1);
+		jatek.kepfrissites();
 	}
 	
 	/**Ezzel a fuggvennyel tudunk targyakat kiasni a mezokbol.*/
@@ -84,6 +88,7 @@ public abstract class Szereplo{
 		munkamennyiseg--;
 		if(munkamennyiseg == 0) munkamennyiseg = maxmunka;
 		jatek.addToCounter(1);
+		jatek.kepfrissites();
 	}
 	/**Ez a fuggveny valositja meg a horeteg eltavolitasat az adott mezorol.*/
 	public void hoTakaritas(int i) {
@@ -92,6 +97,7 @@ public abstract class Szereplo{
 		munkamennyiseg--;
 		if(munkamennyiseg == 0) munkamennyiseg = maxmunka;
 		jatek.addToCounter(1);
+		jatek.kepfrissites();
 	}
   /**Ezzel a fuggvennyel tudjuk jelzi a jateknak ha a jatekos meghal.*/
   public void halal() {
@@ -107,6 +113,7 @@ public abstract class Szereplo{
 	public void passz() {
 		jatek.addToCounter(munkamennyiseg);
 		munkamennyiseg = maxmunka;
+		jatek.kepfrissites();
 		
 	}
 	/**beallitjuk a kurrensmezot*/

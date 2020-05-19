@@ -14,6 +14,7 @@ public class Sarkkutato extends Szereplo{
 		cel.rajtalevok += " " + teher;
 		munkamennyiseg--;
 		if(munkamennyiseg == 0) munkamennyiseg = maxmunka;
+		jatek.kepfrissites();
 		jatek.addToCounter(1);
 	}
 	/**a tesztelest segito fuggveny*/
@@ -23,12 +24,13 @@ public class Sarkkutato extends Szereplo{
 	
 	public void rajzolSzereplo(Felulet f){
 		f.rajzolSarkkutato(kurrensmezo);
-		f.rajzolSarkkutato(sorszam, testho);
+		f.rajzolSarkkutato(sorszam, testho, munkamennyiseg);
 		if(sorszam != jatek.getAktualis()) return;
 		int i = 1;
 		for(Targy t : sajat_targyak) {
 			t.rajzolTargyInv(f, this, i++);
 		}
+	
 	}
 }
 

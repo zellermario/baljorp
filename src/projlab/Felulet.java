@@ -205,16 +205,16 @@ public class Felulet implements ActionListener{
 	}
 
 	public void rajzolEszkimo(Mezo m) { m.rajtalevok += " E"; }
-	public void rajzolEszkimo(int hely,int heat) {
-		String s = "p"+hely +" Eszkimo - " + heat;
+	public void rajzolEszkimo(int hely,int heat, int munka) {
+		String s = "p"+hely +" Eszkimo - " + heat+ " " + munka;;
 		JLabel l = new JLabel(s);
 		if (hely == jatek.getAktualis()) l.setForeground(Color.blue);
 		sz_hozzaad.add(l);
 	}
 	
 	public void rajzolSarkkutato(Mezo m) { m.rajtalevok += " S"; }
-	public void rajzolSarkkutato(int hely,int heat) {
-		String s = "p"+hely +" Sarkkutato - " + heat;
+	public void rajzolSarkkutato(int hely,int heat, int munka) {
+		String s = "p"+hely +" Sarkkutato - " + heat + " " + munka;
 		JLabel l = new JLabel(s);
 		if (hely == jatek.getAktualis()) l.setForeground(Color.blue);
 		sz_hozzaad.add(l);

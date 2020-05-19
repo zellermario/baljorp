@@ -56,6 +56,7 @@ public abstract class Mezo {
 		sz.setKurrensMezo(this);
 		sz.munkamennyiseg = sz.munkamennyiseg - 1;
 		jatek.addToCounter(1);
+		if(sz.munkamennyiseg == 0) sz.munkamennyiseg = sz.maxmunka;
 		ellenoriz();
 		jatek.kepfrissites();
 	}

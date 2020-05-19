@@ -19,6 +19,7 @@ public class MezoButton extends JButton implements ActionListener{
 		}
 		else if(src.getText().equals("Hó eltakarítása")) {
 			mezo.getJatek().getSzereplok().get(mezo.getJatek().getAktualis()).hoTakaritas(1);
+			mezo.getJatek().kepfrissites();
 		}
 		else if(src.getText().equals("Kör befejezése")) {
 			mezo.getJatek().getSzereplok().get(mezo.getJatek().getAktualis()).passz();
