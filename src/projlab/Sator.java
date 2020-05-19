@@ -10,4 +10,12 @@ public class Sator extends Targy{
 		sz.getKurrensMezo().epit(new FelepitettSator(sz.getKurrensMezo()));
 		sz.targyTorol(this);
 	}
+	
+	public void rajzolTargy(Felulet f, Mezo m){
+		f.rajzolSator(m);
+	}
+	
+	public void rajzolTargyInv(Felulet f, Szereplo sz, int hanyadik){
+		f.rajzolSatorInv(sz, hanyadik);
+	}
 }

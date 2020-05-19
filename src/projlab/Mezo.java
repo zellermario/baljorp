@@ -21,9 +21,9 @@ public abstract class Mezo {
 	protected Epitmeny epitmeny;
 	/**A mezon levo jatekosok.*/
 	protected List<Szereplo> jatekosok = new ArrayList<Szereplo>();
-	
+	protected boolean vizsgalt = false;
 	public String rajtalevok = "";
-	
+	protected int vizsgalt_ertek = -3;
 	protected int x, y;
 	
 	public void setCoord(int _x, int _y) {
@@ -83,6 +83,7 @@ public abstract class Mezo {
 			sz.AddTargy(belefagyott_targy);
 			belefagyott_targy.osszeszed(sz);
 			belefagyott_targy = null;
+			jatek.kepfrissites();
 		}
 	}
 	/**Ez a fuggveny a hovihar hatasat valositja meg a mezon.*/
@@ -167,6 +168,12 @@ public abstract class Mezo {
 	
 	public void jatekostorol(Szereplo sz) {
 		jatekosok.remove(sz);
+	}
+	public boolean getVizsgalt() {
+		return vizsgalt;
+	}
+	public int getVizsgalatEredmenye() {
+		return vizsgalt_ertek;
 	}
   
 }

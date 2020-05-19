@@ -8,6 +8,8 @@ public class Stabil_Jegtabla extends Mezo {
 	}
 	/**Negativ ertekkel ter vissza innen lehet tudni hogy ez a jegtabla stabil.*/
 	public int megvizsgal() {
+		vizsgalt = true;
+		vizsgalt_ertek = -1;
 		return -1;
 	}
 	

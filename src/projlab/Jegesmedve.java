@@ -49,7 +49,8 @@ public class Jegesmedve extends Szereplo {
 	}
 	
 	public void rajzolSzereplo(Felulet f){
-		f.rajzolJegesmedve(kurrensmezo);
+		if(!halott)
+			f.rajzolJegesmedve(kurrensmezo);
 		//jatek.kepfrissites();
 	}
 }

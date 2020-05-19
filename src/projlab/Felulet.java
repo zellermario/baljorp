@@ -205,7 +205,6 @@ public class Felulet implements ActionListener{
 		for(int i = 0; i < 8; i++){
 			for(int j = 0; j < 8; j++) {
 				mezoGombok[i][j] = new MezoButton(jatek.getMezok().get(i*8+j));
-				mezoGombok[i][j].setText(String.valueOf(jatek.getMezok().get(i*8+j).getHoreteg()));
 				terkep.add(mezoGombok[i][j]);
 				mezoGombok[i][j].setPreferredSize(new Dimension(90,90));
 				mezoGombok[i][j].mezo.setCoord(i, j);
@@ -230,64 +229,118 @@ public class Felulet implements ActionListener{
 		sz_hozzaad.add(l);
 	}
 	
-	public void rajzolJegesmedve(Mezo m) { m.rajtalevok += " J"; }
+	public void rajzolJegesmedve(Mezo m) { 
+		m.rajtalevok += " J"; }
 	
 	public void rajzolIglu(Mezo m) {
-		m.rajtalevok += " Ig";
+		m.rajtalevok += " IG";
 	}
 	
 	public void rajzolFelepitettSator(Mezo m) {
-		m.rajtalevok += " Fel";
+		m.rajtalevok += " /\\";
 	}
 	
-	public void rajzolLapat(Mezo m) { }
+	public void rajzolLapat(Mezo m) {
+		if(m.getHoreteg() == 0) {
+			m.rajtalevok += " LAP.";
+			}
+		}
 	public void rajzolLapatInv(Szereplo sz, int hanyadik) {
 		JLabel temp = new JLabel("t" + hanyadik+" - Lapát");
 		i_hozzaad.add(temp);
 	}
 	
-	public void rajzolKotel(Mezo m) { }
+	public void rajzolKotel(Mezo m) {
+		if(m.getHoreteg() == 0)
+			
+			m.rajtalevok += " KÖT.";}
 	public void rajzolKotelInv(Szereplo sz, int hanyadik) {
 		JLabel temp = new JLabel("t" + hanyadik+" - Kötél");
 		i_hozzaad.add(temp);
 		
 	}
 	
-	public void rajzolTorekenyAso(Mezo m) {	}
+	public void rajzolTorekenyAso(Mezo m) {
+		if(m.getHoreteg() == 0)
+		m.rajtalevok += " T.Á.";
+		}
 	public void rajzolTorekenyAsoInv(Szereplo sz, int hanyadik) {
 		JLabel temp = new JLabel("t" + hanyadik+" - Törékeny Ásó");
 		i_hozzaad.add(temp);		
 	}
 
-	public void rajzolEtel(Mezo m) { }
+	public void rajzolEtel(Mezo m) { 
+		if(m.getHoreteg() == 0)
+			m.rajtalevok += " ÉT.";}
 	
-	public void rajzolBuvarruha(Mezo m) { }
+	public void rajzolBuvarruha(Mezo m) { 
+		if(m.getHoreteg() == 0)
+			m.rajtalevok += " B.R.";}
 	public void rajzolBuvarruhaInv(Szereplo sz, int hanyadik) {
 		JLabel temp = new JLabel("t" + hanyadik+" - Buvárruha");
 		i_hozzaad.add(temp);
 	}
 	
-	public void rajzolRaketaalkatresz(Mezo m) {	}
+	public void rajzolRaketaalkatresz(Mezo m) {
+		if(m.getHoreteg() == 0)
+		m.rajtalevok += " RAK.";}
 	public void rajzolRaketaalkatreszInv(Szereplo sz, int hanyadik) {
 		JLabel temp = new JLabel("t" + hanyadik+" - Rakétaalkatrész");
 		i_hozzaad.add(temp);
 	}
 	
-	public void rajzolSator(Mezo m) { }
+	public void rajzolSator(Mezo m) {
+		if(m.getHoreteg() == 0)
+			m.rajtalevok += " SÁT.";}
 	public void rajzolSatorInv(Szereplo sz, int hanyadik) {
 		JLabel temp = new JLabel("t" + hanyadik+" - Sátor");
 		i_hozzaad.add(temp);
 	}
 	
-	public void rajzolStabilJegtabla(int x, int y) {mezoGombok[x][y].setText(mezoGombok[x][y].mezo.rajtalevok);}
+	public void rajzolStabilJegtabla(int x, int y) {
+	if(mezoGombok[x][y].getMezo().horeteg == 0) {
+		mezoGombok[x][y].setBackground(Color.WHITE);
+		mezoGombok[x][y].setText("0" + mezoGombok[x][y].mezo.rajtalevok);
+	}
+	else {
+		mezoGombok[x][y].setBackground(Color.BLUE);
+		mezoGombok[x][y].setText("?" + mezoGombok[x][y].mezo.rajtalevok);
+		}
+	}
 	
 	/**
 	 * @param x
 	 * @param y
 	 */
-	public void rajzolInstabilJegtabla(int x, int y) { mezoGombok[x][y].setText(mezoGombok[x][y].mezo.rajtalevok);}
+	public void rajzolInstabilJegtabla(int x, int y) { 
+		/*if(mezoGombok[x][y].getMezo().horeteg == 0)
+			mezoGombok[x][y].setText("" + mezoGombok[x][y].mezo.rajtalevok);
+		else mezoGombok[x][y].setText("?" + mezoGombok[x][y].mezo.rajtalevok);
+		}
+		//mezoGombok[x][y].setText(mezoGombok[x][y].mezo.rajtalevok);*/
+		if(mezoGombok[x][y].getMezo().horeteg == 0) {
+			mezoGombok[x][y].setBackground(Color.WHITE);
+			mezoGombok[x][y].setText("0" + mezoGombok[x][y].mezo.rajtalevok);
+		}
+		else {
+			mezoGombok[x][y].setBackground(Color.BLUE);
+			mezoGombok[x][y].setText("?" + mezoGombok[x][y].mezo.rajtalevok);
+			}
+		}	
 	
-	public void rajzolLuk(int x, int y) {mezoGombok[x][y].setText("Luk" + mezoGombok[x][y].mezo.rajtalevok);}
+	
+	public void rajzolLuk(int x, int y) {
+		if(mezoGombok[x][y].getMezo().horeteg == 0)
+		{
+			mezoGombok[x][y].setBackground(Color.RED);
+			mezoGombok[x][y].setText("Luk" + mezoGombok[x][y].mezo.rajtalevok);
+		}
+		else {
+			mezoGombok[x][y].setBackground(Color.BLUE);
+			mezoGombok[x][y].setText("?" + mezoGombok[x][y].mezo.rajtalevok);
+		}
+		}
+		
 	
 	public void rajzolHovihar(Mezo m) {
 		

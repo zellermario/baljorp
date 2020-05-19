@@ -11,6 +11,9 @@ public class MezoButton extends JButton implements ActionListener{
 		mezo = m;
 		this.addActionListener(this);
 		}
+	Mezo getMezo() {
+		return mezo;
+	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JButton src = (JButton)e.getSource();
