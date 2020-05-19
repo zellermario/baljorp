@@ -46,8 +46,7 @@ public class Jatek {
 		if(jatekosCounter % 4 == 0) {
 			szereplok.get(aktualisJatekos).kor();
 			kepfrissites();
-		}	
-		
+		}
 	}
 	
 	/**visszaadja az epp soron kovetkezo jatekos sorszamat*/

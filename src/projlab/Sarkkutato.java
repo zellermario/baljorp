@@ -1,4 +1,7 @@
 package projlab;
+
+import java.util.Map;
+
 /**a sarkkutato viselkedeset megvalosito osztaly*/
 public class Sarkkutato extends Szereplo{
 	
@@ -10,12 +13,17 @@ public class Sarkkutato extends Szereplo{
 	public void kepessegHasznal() {
 		Mezo cel = jatek.getKivalasztott_mezo();
 		if(sorszam != jatek.getAktualis() || munkamennyiseg == 0) return;
-		int teher = cel.megvizsgal();
-		cel.rajtalevok += " " + teher;
-		munkamennyiseg--;
-		if(munkamennyiseg == 0) munkamennyiseg = maxmunka;
-		jatek.kepfrissites();
-		jatek.addToCounter(1);
+		for( Map.Entry<Integer, Mezo> entry : kurrensmezo.getSzomszedos_mezok().entrySet()) {
+			if(entry.getValue().getId() == cel.getId()) {
+				int teher = cel.megvizsgal();
+				cel.rajtalevok += " " + teher;
+				munkamennyiseg--;
+				if(munkamennyiseg == 0) munkamennyiseg = maxmunka;
+				jatek.addToCounter(1);
+				return;
+			}
+		}
+
 	}
 	/**a tesztelest segito fuggveny*/
 	public String toString() {
