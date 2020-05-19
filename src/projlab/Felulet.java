@@ -142,15 +142,18 @@ public class Felulet implements ActionListener{
 		
 		mezo_tul = new JPanel();
 		mezo_tul.setBackground(jatekpanel.getBackground());
-		mezo_tul.setPreferredSize(new Dimension(170, 120));
 		mezo_tul.setLayout(new BoxLayout(mezo_tul, BoxLayout.PAGE_AXIS));
+		mezo_tul.setPreferredSize(new Dimension(170, 120));
 		JLabel mezo_cim = new JLabel("Aktív mezõ:"); mezo_tul.add(mezo_cim);
-		m_hozzaad = new JPanel(); m_hozzaad.setBackground(jatekpanel.getBackground());
+		m_hozzaad = new JPanel();
+		m_hozzaad.setBackground(jatekpanel.getBackground());
+		m_hozzaad.setLayout(new BoxLayout(m_hozzaad, BoxLayout.PAGE_AXIS));
 		mezo_tul.add(m_hozzaad);
 		aktiv.add(mezo_tul);
 		
 		szereplo = new JPanel();
 		szereplo.setBackground(jatekpanel.getBackground());
+		szereplo.setLayout(new BoxLayout(szereplo, BoxLayout.PAGE_AXIS));
 		szereplo.setPreferredSize(new Dimension(170, 100));
 		JLabel lszer = new JLabel("Játékosok:"); szereplo.add(lszer);
 		sz_hozzaad = new JPanel();
@@ -161,12 +164,14 @@ public class Felulet implements ActionListener{
 		
 		inventory = new JPanel();
 		inventory.setBackground(jatekpanel.getBackground());
+		inventory.setLayout(new BoxLayout(inventory, BoxLayout.PAGE_AXIS));
 		inventory.setPreferredSize(new Dimension(170, 200));
-		aktiv.add(inventory);
-		JLabel linv = new JLabel("Inventory:");
-		inventory.add(linv);
+		JLabel linv = new JLabel("Inventory:");	inventory.add(linv);
 		i_hozzaad = new JPanel();
+		i_hozzaad.setBackground(jatekpanel.getBackground());
+		i_hozzaad.setLayout(new BoxLayout(i_hozzaad, BoxLayout.PAGE_AXIS));
 		inventory.add(i_hozzaad);
+		aktiv.add(inventory);
 		
 		controlpanel.add(jatekpanel,"jatekpanel");
 		controlpanel.add(menu, "menu");
