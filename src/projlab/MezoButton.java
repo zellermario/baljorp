@@ -20,51 +20,41 @@ public class MezoButton extends JButton implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JButton src = (JButton)e.getSource();
-		if(src.getText().equals("L√©p√©s a kijel√∂lt mez≈ëre")) {
+		if(src.getText().equals("LÈpÈs a kijelˆlt mezıre")) {
 			mezo.getJatek().lep_mezo();
 		}
-		else if(src.getText().equals("H√≥ eltakar√≠t√°sa")) {
+		else if(src.getText().equals("HÛ eltakarÌt·sa")) {
 			mezo.getJatek().getSzereplok().get(mezo.getJatek().getAktualis()).hoTakaritas(1);
 			mezo.getJatek().kepfrissites();
 		}
-		else if(src.getText().equals("K√∂r befejez√©se")) {
+		else if(src.getText().equals("Kˆr befejezÈse")) {
 			mezo.getJatek().getSzereplok().get(mezo.getJatek().getAktualis()).passz();
 		}
-		else if(src.getText().equals("J√©gt√°bl√°b√≥l ki√°s")) {
+		else if(src.getText().equals("JÈgt·bl·bÛl ki·s")) {
 			mezo.getJatek().getSzereplok().get(mezo.getJatek().getAktualis()).targyKiasas();
 		}
-		else if(src.getText().equals("K√©pess√©g")) {
-			mezo.getJatek().getSzereplok().get(mezo.getJatek().getAktualis()).kepessegHasznal();
-		}
-		else if(src.getText().equals("K√∂r befejez√©se")) {
-			mezo.getJatek().getSzereplok().get(mezo.getJatek().getAktualis()).passz();
-		}
-		else if(src.getText().equals("K√∂r befejez√©se")) {
-			mezo.getJatek().getSzereplok().get(mezo.getJatek().getAktualis()).passz();
-		}
-		else if(src.getText().equals("T√°rgy1")) {
+		else if(src.getText().equals("T·rgy1")) {
 			mezo.getJatek().targy_hasznal(1);
 		}
-		else if(src.getText().equals("T√°rgy2")) {
+		else if(src.getText().equals("T·rgy2")) {
 			mezo.getJatek().targy_hasznal(2);
 		}
-		else if(src.getText().equals("T√°rgy3")) {
+		else if(src.getText().equals("T·rgy3")) {
 			mezo.getJatek().targy_hasznal(3);
 		}
-		else if(src.getText().equals("T√°rgy4")) {
+		else if(src.getText().equals("T·rgy4")) {
 			mezo.getJatek().targy_hasznal(4);
 		}
-		else if(src.getText().equals("T√°rgy5")) {
+		else if(src.getText().equals("T·rgy5")) {
 			mezo.getJatek().targy_hasznal(5);
 		}
-		else if(src.getText().equals("T√°rgy6")) {
+		else if(src.getText().equals("T·rgy6")) {
 			mezo.getJatek().targy_hasznal(6);
 		}
 		else {
 			mezo.getJatek().kivalasztott(mezo);
 		}
 		mezo.getJatek().kepfrissites();
-		//mezo.getJatek().getFelulet().getControlpanel().requestFocusInWindow();
 		
 	}
 }

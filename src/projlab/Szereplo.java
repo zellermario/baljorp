@@ -151,7 +151,7 @@ public abstract class Szereplo{
 	/**A jatekosok megfelelo kirajzolasaert felelos*/
 	public void rajzolSzereplo(Felulet f){	}
 	
-	
+	/**játék gettere*/
 	public Jatek getJatek() {
 		return jatek;
 	}

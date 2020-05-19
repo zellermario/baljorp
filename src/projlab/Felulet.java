@@ -15,11 +15,11 @@ import java.util.List;
 
 public class Felulet implements ActionListener{
 
-	/**Az aktuĂˇlis jĂˇtĂ©k.*/
+	/**Az aktuális játék.*/
 	private Jatek jatek;
-	/**Frame ami tartalmazza a jatekhoz szĂĽksĂ©ges paneleket.*/
+	/**Frame ami tartalmazza a jatekhoz szűkséges paneleket.*/
 	private JFrame frame;
-	/**FĹ‘ panel ami tartalmazza a tĂ¶bbi panelt Ă­gy tudunk vĂˇltani kĂ¶zĂ¶ttĂĽk.*/
+	/**Fő panel ami tartalmazza a többi panelt így tudunk váltani közöttűk.*/
 	private JPanel controlpanel; private CardLayout cardlayout;
 	/**Menu panelje*/
 	private JPanel menu;
@@ -38,7 +38,7 @@ public class Felulet implements ActionListener{
 	private MezoButton mezoGombok[][];//
 	/**Eppen aktiv panel*/
 	private JPanel aktiv;
-	/**Gombokat tratalmazĂł panel*/
+	/**Gombokat tratalmazó panel*/
 	private JPanel gombok; 
 	/**Targy asas gomb*/
 	private JButton bas;
@@ -85,9 +85,9 @@ public class Felulet implements ActionListener{
 		menuPoints = new Object[3];
 		mezoGombok = new MezoButton[8][8];
 		mezok = new Mezo[8][8];
-		menuPoints[0] = "MindenbĹ‘l egy";
-		menuPoints[1] = "MindenbĹ‘l kettĹ‘";
-		menuPoints[2] = "MindenbĹ‘l hĂˇrom";
+		menuPoints[0] = "Mindenből egy";
+		menuPoints[1] = "Mindenből kettő";
+		menuPoints[2] = "Mindenből három";
 		
 		menu = new JPanel(); menu.setBackground(new Color(204, 255, 229));
 		jatekpanel = new JPanel(); jatekpanel.setBackground(new Color(204,229,255));
@@ -97,10 +97,10 @@ public class Felulet implements ActionListener{
 		gyozelem.setBackground(Color.GREEN);
 		
 		//menu
-		JLabel cim = new JLabel("JĂ©gmezĹ‘",SwingConstants.CENTER); cim.setFont(new Font("Serif", Font.BOLD, 60));
+		JLabel cim = new JLabel("Jégmező",SwingConstants.CENTER); cim.setFont(new Font("Serif", Font.BOLD, 60));
 		cim.setBackground(menu.getBackground());
 
-		JLabel leiras = new JLabel("GyĂĽjtsĂ©tek Ă¶ssze a jelzĹ‘rakĂ©ta rĂ©szeit a tĂˇrsaiddal, hogy megmenekĂĽljetek a jeges mezĹ‘rĹ‘l. VigyĂˇzz, ha bĂˇrki is meghal, vesztetek.", SwingConstants.CENTER);
+		JLabel leiras = new JLabel("Gyűjtsétek össze a jelzőrakéta részeit a társaiddal, hogy megmenekűljetek a jeges mezőről. Vigyázz, ha bárki is meghal, vesztetek.", SwingConstants.CENTER);
 
 		leiras.setBackground(menu.getBackground()); 
 		JPanel helykitolto = new JPanel();
@@ -120,9 +120,9 @@ public class Felulet implements ActionListener{
 		menu.add(kival);
 		menu.add(helykitolto);
 		
-		Dimension d = new Dimension(100,100); //ez mi a fene? kell mĂ©g?
+		Dimension d = new Dimension(100,100); //ez mi a fene? kell még?
 		
-		//jatĂ©kfelĂĽlet
+		//jatékfelűlet
 		terkep = new JPanel();
 		terkep.setBackground(jatekpanel.getBackground());
 		aktiv = new JPanel();
@@ -136,14 +136,14 @@ public class Felulet implements ActionListener{
 		
 		gombok = new JPanel(); gombok.setBackground(jatekpanel.getBackground());
 		gombok.setPreferredSize(new Dimension(170, 200));
-		bas = new JButton("JĂ©gtĂˇblĂˇbĂłl kiĂˇs");
-		btakarit = new JButton("HĂł eltakarĂ­tĂˇsa");
-		bpass = new JButton("KĂ¶r befejezĂ©se");
-		blep = new JButton("LĂ©pĂ©s a kijelĂ¶lt mezĹ‘re");
-		kepesseg = new JButton("KĂ©pessĂ©g");
-		targy1 = new JButton("TĂˇrgy1"); targy2 = new JButton("TĂˇrgy2");
-		targy3 = new JButton("TĂˇrgy3"); targy4 = new JButton("TĂˇrgy4");
-		targy5 = new JButton("TĂˇrgy5"); targy6 = new JButton("TĂˇrgy6");
+		bas = new JButton("Jégtáblából kiás");
+		btakarit = new JButton("Hó eltakarítása");
+		bpass = new JButton("Kör befejezése");
+		blep = new JButton("Lépés a kijelölt mezőre");
+		kepesseg = new JButton("Képesség");
+		targy1 = new JButton("Tárgy1"); targy2 = new JButton("Tárgy2");
+		targy3 = new JButton("Tárgy3"); targy4 = new JButton("Tárgy4");
+		targy5 = new JButton("Tárgy5"); targy6 = new JButton("Tárgy6");
 		gombok.add(blep);
 		gombok.add(btakarit);
 		gombok.add(bas);
@@ -161,7 +161,7 @@ public class Felulet implements ActionListener{
 		mezo_tul.setBackground(jatekpanel.getBackground());
 		mezo_tul.setLayout(new BoxLayout(mezo_tul, BoxLayout.PAGE_AXIS));
 		mezo_tul.setPreferredSize(new Dimension(170, 120));
-		JLabel mezo_cim = new JLabel("AktĂ­v mezĹ‘:"); mezo_tul.add(mezo_cim);
+		JLabel mezo_cim = new JLabel("Aktív mező:"); mezo_tul.add(mezo_cim);
 		m_hozzaad = new JPanel();
 		m_hozzaad.setBackground(jatekpanel.getBackground());
 		m_hozzaad.setLayout(new BoxLayout(m_hozzaad, BoxLayout.PAGE_AXIS));
@@ -172,7 +172,7 @@ public class Felulet implements ActionListener{
 		szereplo.setBackground(jatekpanel.getBackground());
 		szereplo.setLayout(new BoxLayout(szereplo, BoxLayout.PAGE_AXIS));
 		szereplo.setPreferredSize(new Dimension(170, 100));
-		JLabel lszer = new JLabel("JĂˇtĂ©kosok:"); szereplo.add(lszer);
+		JLabel lszer = new JLabel("Játékosok:"); szereplo.add(lszer);
 		sz_hozzaad = new JPanel();
 		sz_hozzaad.setBackground(jatekpanel.getBackground());
 		sz_hozzaad.setLayout(new BoxLayout(sz_hozzaad, BoxLayout.PAGE_AXIS));
@@ -190,10 +190,10 @@ public class Felulet implements ActionListener{
 		inventory.add(i_hozzaad);
     aktiv.add(inventory);
 
-		JLabel ver = new JLabel("Meghalt egy jĂˇtĂ©kos, vesztettĂ©l!", SwingConstants.CENTER);
+		JLabel ver = new JLabel("Meghalt egy játékos, vesztettél!", SwingConstants.CENTER);
 		ver.setFont(new Font("Serif", Font.BOLD, 60));
 		vereseg.add(ver);
-		JLabel gyoz = new JLabel("GratulĂˇlunk, nyertĂ©l!", SwingConstants.CENTER);
+		JLabel gyoz = new JLabel("Gratulálunk, nyertél!", SwingConstants.CENTER);
 		gyoz.setFont(new Font("Serif", Font.BOLD, 60));
 		gyozelem.add(gyoz);
 		
@@ -220,9 +220,9 @@ public class Felulet implements ActionListener{
 		m_hozzaad.removeAll();
 		Mezo m = jatek.getSzereplok().get(jatek.getAktualis()).kurrensmezo;
 		int ho = m.getHoreteg();
-		JLabel havazott = new JLabel("HĂłrĂ©teg: "+ho); m_hozzaad.add(havazott);
+		JLabel havazott = new JLabel("Hóréteg: "+ho); m_hozzaad.add(havazott);
 		Targy t = m.belefagyott_targy;
-		s_bef = "Belefagyott tĂˇrgy: ";
+		s_bef = "Belefagyott tárgy: ";
 		if(ho == 0) {
 			if (t == null)  s_bef += "-  ";
 			else t.rajzolTargy(this, m);
@@ -256,7 +256,7 @@ public class Felulet implements ActionListener{
 	public void rajzolEszkimo(Mezo m) { m.rajtalevok += " E"; }
 	/**Ez a fuggveny egy eszkimo kirajzolasaert felelos az oldalso panelra*/
 	public void rajzolEszkimo(int hely,int heat, int munka) {
-		String s = "p"+hely +" Eszkimo - " + heat+ " hĹ‘, " + munka+" munka";
+		String s = "p"+hely +" Eszkimo - " + heat+ " hő, " + munka+" munka";
 		JLabel l = new JLabel(s);
 		if (hely == jatek.getAktualis()) l.setForeground(Color.blue);
 		sz_hozzaad.add(l);
@@ -265,7 +265,7 @@ public class Felulet implements ActionListener{
 	public void rajzolSarkkutato(Mezo m) { m.rajtalevok += " S"; }
 	/**Ez a fuggveny egy sarkkutato kirajzolasaert felelos az oldalso panelra*/
 	public void rajzolSarkkutato(int hely,int heat, int munka) {
-		String s = "p"+hely +" Sarkkutato - " + heat + " hĹ‘, " + munka + " munka"; 
+		String s = "p"+hely +" Sarkkutato - " + heat + " hő, " + munka + " munka"; 
 		JLabel l = new JLabel(s);
 		if (hely == jatek.getAktualis()) l.setForeground(Color.blue);
 		sz_hozzaad.add(l);
@@ -286,7 +286,7 @@ public class Felulet implements ActionListener{
 		if(m.getHoreteg() == 0) {
 			m.rajtalevok += " LAP.";
 			}
-		s_bef+= "LapĂˇt";
+		s_bef+= "Lapát";
 		}
 
 	/**Ez a fuggveny egy lapat kirajzolasaert felelos a tarhelyre*/
@@ -298,67 +298,67 @@ public class Felulet implements ActionListener{
 	public void rajzolKotel(Mezo m) {
 		if(m.getHoreteg() == 0)
 			m.rajtalevok += " KÖT.";
-		s_bef += "KĂ¶tĂ©l";
+		s_bef += "Kötél";
 	}
 
 	/**Ez a fuggveny egy kotel kirajzolasaert felelos a tarhelyre*/
 	public void rajzolKotelInv(Szereplo sz, int hanyadik) {
-		JLabel temp = new JLabel("t" + hanyadik+" - KĂ¶tĂ©l");
+		JLabel temp = new JLabel("t" + hanyadik+" - Kötél");
 		i_hozzaad.add(temp);
 		
 	}
 	/**Ez a fuggveny egy torekeny aso kirajzolasaert felelos a megfelelo mezore*/
 	public void rajzolTorekenyAso(Mezo m) {
 		if(m.getHoreteg() == 0)
-			m.rajtalevok += " T.Ă�.";
-		s_bef += "TĂ¶rĂ©keny ĂˇsĂł";
+			m.rajtalevok += " T.Á.";
+		s_bef += "Törékeny ásó";
 		}
 
 	/**Ez a fuggveny egy torekeny aso kirajzolasaert felelos a tarhelyre*/
 	public void rajzolTorekenyAsoInv(Szereplo sz, int hanyadik) {
-		JLabel temp = new JLabel("t" + hanyadik+" - TĂ¶rĂ©keny Ă�sĂł");
+		JLabel temp = new JLabel("t" + hanyadik+" - Törékeny Ásó");
 		i_hozzaad.add(temp);		
 	}
 
 	/**Ez a fuggveny egy etel kirajzolasaert felelos a megfelelo mezore*/
 	public void rajzolEtel(Mezo m) { 
 		if(m.getHoreteg() == 0)
-			m.rajtalevok += " Ă‰T.";
-		s_bef += "Ă‰tel";
+			m.rajtalevok += " ÉT.";
+		s_bef += "Étel";
 	}
 	/**Ez a fuggveny egy buvarruha kirajzolasaert felelos a megfelelo mezore*/
 	public void rajzolBuvarruha(Mezo m) { 
 		if(m.getHoreteg() == 0)
 			m.rajtalevok += " B.R.";
-		s_bef += "BĂşvĂˇrruha";
+		s_bef += "Búvárruha";
 	}
 	/**Ez a fuggveny egy buvarruha kirajzolasaert felelos a tarhelyre*/
 	public void rajzolBuvarruhaInv(Szereplo sz, int hanyadik) {
-		JLabel temp = new JLabel("t" + hanyadik+" - BuvĂˇrruha");
+		JLabel temp = new JLabel("t" + hanyadik+" - Búvárruha");
 		i_hozzaad.add(temp);
 	}
 	/**Ez a fuggveny egy raketaalkatresz kirajzolasaert felelos a megfelelo mezore*/
 	public void rajzolRaketaalkatresz(Mezo m) {
 		if(m.getHoreteg() == 0)
 			m.rajtalevok += " RAK.";
-		s_bef += "RakĂ©taalkatrĂ©sz";
+		s_bef += "Rakétaalkatrész";
 	}
 
 	/**Ez a fuggveny egy raketaalkatresz kirajzolasaert felelos a tarhelyre*/
 	public void rajzolRaketaalkatreszInv(Szereplo sz, int hanyadik) {
-		JLabel temp = new JLabel("t" + hanyadik+" - RakĂ©taalkatrĂ©sz");
+		JLabel temp = new JLabel("t" + hanyadik+" - Rakétaalkatrész");
 		i_hozzaad.add(temp);
 	}
 	/**Ez a fuggveny egy sator kirajzolasaert felelos a megfelelo mezore*/
 	public void rajzolSator(Mezo m) {
 		if(m.getHoreteg() == 0)
 			m.rajtalevok += " SĂ�T.";
-		s_bef += "SĂˇtor";
+		s_bef += "Sátor";
 		}
 
 	/**Ez a fuggveny egy sator kirajzolasaert felelos a tarhelyre*/
 	public void rajzolSatorInv(Szereplo sz, int hanyadik) {
-		JLabel temp = new JLabel("t" + hanyadik+" - SĂˇtor");
+		JLabel temp = new JLabel("t" + hanyadik+" - Sátor");
 		i_hozzaad.add(temp);
 	}
 	/**Ez a fuggveny egy stabil jegtable kirajzolasaert felelos a megfelelo helyre*/
