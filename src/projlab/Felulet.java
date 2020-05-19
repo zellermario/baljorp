@@ -52,7 +52,8 @@ public class Felulet implements ActionListener{
 	private JPanel inventory;
 	private JPanel i_hozzaad;
 	
-	private JPanel eredmeny;
+	private JPanel vereseg;
+	private JPanel gyozelem;
 	
 	private SzereploKey keys;
 	
@@ -79,12 +80,15 @@ public class Felulet implements ActionListener{
 		
 		menu = new JPanel(); menu.setBackground(new Color(204, 255, 229));
 		jatekpanel = new JPanel(); jatekpanel.setBackground(new Color(204,229,255));
-		eredmeny = new JPanel();
+		vereseg = new JPanel();
+		vereseg.setBackground(Color.RED);
+		gyozelem = new JPanel();
+		gyozelem.setBackground(Color.GREEN);
 		
 		//menu
 		JLabel cim = new JLabel("Jégmezõ",SwingConstants.CENTER); cim.setFont(new Font("Serif", Font.BOLD, 60));
 		cim.setBackground(menu.getBackground());
-		JTextArea leiras = new JTextArea ("Gyüjtsétek össze a jelzõrakéta részeit a társaiddal, hogy megmeneküljetek a jeges mezõrõl. Vigyázz, ha bárki is meghal, vesztetek.");
+		JLabel leiras = new JLabel("Gyüjtsétek össze a jelzõrakéta részeit a társaiddal, hogy megmeneküljetek a jeges mezõrõl. Vigyázz, ha bárki is meghal, vesztetek.", SwingConstants.CENTER);
 		leiras.setBackground(menu.getBackground()); 
 		JPanel helykitolto = new JPanel();
 		helykitolto.setBackground(menu.getBackground());
@@ -167,10 +171,18 @@ public class Felulet implements ActionListener{
 		inventory.add(linv);
 		i_hozzaad = new JPanel();
 		inventory.add(i_hozzaad);
+		JLabel ver = new JLabel("Meghalt egy játékos, vesztettél!", SwingConstants.CENTER);
+		ver.setFont(new Font("Serif", Font.BOLD, 60));
+		vereseg.add(ver);
+		JLabel gyoz = new JLabel("Gratulálunk, nyertél!", SwingConstants.CENTER);
+		gyoz.setFont(new Font("Serif", Font.BOLD, 60));
+		gyozelem.add(gyoz);
+		
 		
 		controlpanel.add(jatekpanel,"jatekpanel");
 		controlpanel.add(menu, "menu");
-		controlpanel.add(eredmeny,"eredmeny");
+		controlpanel.add(vereseg,"veresegpanel");
+		controlpanel.add(gyozelem, "gyozelempanel");
 		controlpanel.setFocusable(true);
 		//controlpanel.addKeyListener(keys);
 		
@@ -214,6 +226,12 @@ public class Felulet implements ActionListener{
 				
 			}
 		}
+	}
+	public JPanel getControlPanel() {
+		return controlpanel;
+	}
+	public CardLayout getCardLayout() {
+		return cardlayout;
 	}
 
 	public void rajzolEszkimo(Mezo m) { m.rajtalevok += " E"; }
@@ -328,11 +346,7 @@ public class Felulet implements ActionListener{
 	 * @param y
 	 */
 	public void rajzolInstabilJegtabla(int x, int y) { 
-		/*if(mezoGombok[x][y].getMezo().horeteg == 0)
-			mezoGombok[x][y].setText("" + mezoGombok[x][y].mezo.rajtalevok);
-		else mezoGombok[x][y].setText("?" + mezoGombok[x][y].mezo.rajtalevok);
-		}
-		//mezoGombok[x][y].setText(mezoGombok[x][y].mezo.rajtalevok);*/
+		
 		if(mezoGombok[x][y].getMezo().horeteg == 0) {
 			mezoGombok[x][y].setBackground(Color.WHITE);
 			mezoGombok[x][y].setText("0" + mezoGombok[x][y].mezo.rajtalevok);
@@ -372,9 +386,7 @@ public class Felulet implements ActionListener{
 	}
 
 
-	public JPanel getControlpanel() {
-		return controlpanel;
-	}
+	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {

@@ -85,6 +85,7 @@ public class Jatek {
 	/**Ha ezt a fuggvenyt meghivjuk a jatek vereseggel veget er.*/
 	public void vereseg() {
 		jatekvege = true;
+		felulet.getCardLayout().show(felulet.getControlPanel(), "veresegpanel");
 		//valami kirajzolas a grafikus programban
 	}
 	/**jatekosok kozotti valtas, a teszteles soran ezt a passzolassal valositjuk meg*/
@@ -109,7 +110,10 @@ public class Jatek {
 	/**Ha ezt a fuggvenyt meghivjuk akkor a visszateresi ertekebol kiderul hogy a jatekoksok gyoztek-e mar vagy sem.*/
 	public boolean gyozelem() {	
 		if(osszeszedett_alkatreszek == 3)
+		{
+			felulet.getCardLayout().show(felulet.getControlPanel(), "gyozelempanel");
 			return true;
+		}
 		else return false;
 	}
 	/**Jatek elinditasaert felelos fuggveny. A teszteknel nem hasznaljuk, hogy a determinisztikus leptetes egyszeruen megvalosithato legyen*/
