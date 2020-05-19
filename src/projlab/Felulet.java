@@ -54,17 +54,17 @@ public class Felulet implements ActionListener{
 	private JButton targy1, targy2;
 	private JButton targy3,targy4;
 	private JButton targy5,targy6;
-	
+	/**az aktív mezőről, amit tudni lehet ide kerül*/
 	private JPanel mezo_tul;
 	private JPanel m_hozzaad;
 	private String s_bef;
-		
+	/**a szereplők adatai*/
 	private JPanel szereplo;
 	private JPanel sz_hozzaad;
-				
+	/**az éppen soron lévő játékos inventoy-a*/
 	private JPanel inventory;
 	private JPanel i_hozzaad;
-
+	/**végeredménypanelek*/
 	private JPanel vereseg;
 	private JPanel gyozelem;
 
