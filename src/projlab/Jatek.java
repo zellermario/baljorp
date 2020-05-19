@@ -142,7 +142,7 @@ public class Jatek {
 	public List<Mezo> getMezok() {
 		return mezok;
 	}
-
+	/**Kep frissitesert felelos fuggveny ezen keresztul tudnak szolni a komponenesek a szukseg van a frissitesre*/
 	public void kepfrissites() {
 		felulet.frissites();
 	}
@@ -150,11 +150,12 @@ public class Jatek {
 	public void feluletInit() {
 		
 	}
-	
+
+	/**Beallitja a kivalasztott mezo-t*/
 	public void kivalasztott(Mezo cel) {
 		kivalasztott_mezo = cel;
 	}
-	
+	/**A kivalasztott mezore lepteti az aktualis jatekost*/
 	public void lep_mezo() {
 		szereplok.get(aktualisJatekos).getKurrensMezo().jatekosKuldes(szereplok.get(aktualisJatekos), kivalasztott_mezo);
 	}
@@ -167,9 +168,11 @@ public class Jatek {
 		return kivalasztott_mezo;
 	}
 
+	/**A megadott sorszamu targyat hazsnalja a jatekos tarolojabol*/
 	public void targy_hasznal(int indx) {
 		if(indx <= szereplok.get(aktualisJatekos).getTargyak().size()) {
 			szereplok.get(aktualisJatekos).getTargyak().get(indx - 1).hasznal(szereplok.get(aktualisJatekos));
 		}
 	}
+
 }
