@@ -31,13 +31,11 @@ public abstract class Mezo {
 		y = _y;
 		id = _x * 8 + _y;
 	}
-  //todo valasz: szerintem edesmindegy
+ 
 	public Mezo(int _id, Jatek j) {
 		id = _id;
 		epitmeny = new Uresepulet(this);
 		jatek = j;
-		//Random rand = new Random();
-		//horeteg = rand.nextInt(3) + 1;
 	}
 	public Jatek getJatek() {
 		return jatek;
@@ -92,7 +90,7 @@ public abstract class Mezo {
 		horeteg++;
 		epitmeny.hatas();
 	}
-	/**A mezo teherbiro kepessegevel ter vissza.*/
+	/**A mezo teherbiro kepessegevel ter vissza - ezt hasznalja a jatek az ellenorzesre*/
 	abstract int megvizsgal();
 	/**ellenorizzuk, hogy minden jatekos egy mezon all-e - ez a gyozelmi feltetelek egyike*/
 	public void ellenoriz() {
@@ -130,8 +128,6 @@ public abstract class Mezo {
 	void epuletRombol() {
 		epitmeny.rombol();
 	}
-	/**olyan fuggveny, ami mindenkeppen atmozgatja a szereplot - csak a lukban kell*/
-	/*public void atleptet(Szereplo sz, Mezo cel) {}*/
 
 	/**visszaadja, hogy milyen targy van belefagyva a jegbe*/
 	public Targy getTargy() {
@@ -172,7 +168,7 @@ public abstract class Mezo {
 	public void jatekostorol(Szereplo sz) {
 		jatekosok.remove(sz);
 	}
-
+	/**Ez a fuggveny az, amit a sarkkutato is hasznal, allitgatja a mezo.vizsgalt valtozot is*/
 	abstract int szereploVizsgal();
 	
 

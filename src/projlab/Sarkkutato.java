@@ -9,7 +9,7 @@ public class Sarkkutato extends Szereplo{
 		super(4, 4, j, kezdomezo);
 	}
 	
-	/**Ez a fuggveny a sarkkutato kepesseget valositja meg.*/ 
+	/**Ez a fuggveny a sarkkutato kepesseget valositja meg*/ 
 	public void kepessegHasznal() {
 		
 		Mezo cel = jatek.getKivalasztott_mezo();

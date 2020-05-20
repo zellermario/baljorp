@@ -10,7 +10,7 @@ public class Eszkimo extends Szereplo{
 		if(sorszam != jatek.getAktualis() || munkamennyiseg == 0) return;
 		kurrensmezo.epit(new Iglu(this.getKurrensMezo()));
 		munkamennyiseg--;
-		if(munkamennyiseg == 0) munkamennyiseg = maxmunka;
+		if(munkamennyiseg == 0) munkamennyiseg = maxmunka; /**Ha elfogy a munka, visszaallitjuk, hisz ekkor a kovetkezo jatekos jon*/
 		jatek.addToCounter(1);
 		jatek.kivalasztott(null);
 		jatek.kepfrissites();
@@ -19,7 +19,7 @@ public class Eszkimo extends Szereplo{
 	public String toString() {
 		return "Eszkimo";
 	}
-	
+	/**Megfelelo kirajzolas, meghivja azon targyak kirajzolasat is, amik nala vannak*/
 	public void rajzolSzereplo(Felulet f){
 		f.rajzolEszkimo(kurrensmezo);
 		f.rajzolEszkimo(sorszam, testho, munkamennyiseg);

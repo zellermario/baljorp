@@ -45,7 +45,7 @@ public class Luk extends Mezo{
 		}
 		jatekosok.clear();
 	}
-	
+	/**Megfelelo kirajzolas*/
 	public void rajzolMezo(Felulet f) {
 		f.rajzolLuk(x, y);
 	}

@@ -10,11 +10,11 @@ public class Lapat extends Targy {
 	public void hasznal(Szereplo sz) {
 		sz.hoTakaritas(2);
 	}
-	
+	/**Megfelelo kirajzolas*/
 	public void rajzolTargy(Felulet f, Mezo m){
 		f.rajzolLapat(m);
 	}
-	
+	/**Megfelelo kirajzolas*/
 	public void rajzolTargyInv(Felulet f, Szereplo sz, int hanyadik){
 		f.rajzolLapatInv(sz, hanyadik);
 	}

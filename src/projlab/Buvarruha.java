@@ -11,6 +11,7 @@ public class Buvarruha extends Targy {
 	
 	/**Ez a fuggveny a Buvarruha hasznalatat valositja meg. */
 	public void hasznal(Szereplo sz) {
+		if(sz.getJatek().getKivalasztott_mezo() == null) return; /**Ellenorizzuk, hogy lephetunk-e a kivalasztott mezore*/
 		Mezo kurrens = sz.getKurrensMezo();
 		for(Map.Entry<Integer, Mezo> entry : kurrens.getSzomszedos_mezok().entrySet()) {
 			if(entry.getValue().getId() == sz.getJatek().getKivalasztott_mezo().getId()) {
@@ -20,11 +21,11 @@ public class Buvarruha extends Targy {
 			}
 		} 
 	}
-	
+	//*Megfelelo kirajzolas*/
 	public void rajzolTargy(Felulet f, Mezo m){
 		f.rajzolBuvarruha(m);
 	}
-	
+	/**Megfelelo kirajzolas*/
 	public void rajzolTargyInv(Felulet f, Szereplo sz, int hanyadik){
 		f.rajzolBuvarruhaInv(sz, hanyadik);
 	}

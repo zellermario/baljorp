@@ -15,11 +15,11 @@ public class TorekenyAso extends Lapat {
 			sz.targyTorol(this);
 		}
 	}
-	/**a jégtáblába fagyott tárgy kirajzolása - virtuális*/
+	/**Megfelelo kirajzolas*/
 	public void rajzolTargy(Felulet f, Mezo m){
 		f.rajzolTorekenyAso(m);
 	}
-	
+	/**Megfelelo kirajzolas*/
 	public void rajzolTargyInv(Felulet f, Szereplo sz, int hanyadik){
 		f.rajzolTorekenyAsoInv(sz, hanyadik);
 	}

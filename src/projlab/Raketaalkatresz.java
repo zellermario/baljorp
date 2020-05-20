@@ -12,11 +12,11 @@ public class Raketaalkatresz extends Targy {
 	public void osszeszed(Szereplo sz) {
 		jatek.raketaOsszeszed();
 	}
-	
+	/**Megfelelo kirajzolas*/
 	public void rajzolTargy(Felulet f, Mezo m){
 		f.rajzolRaketaalkatresz(m);
 	}
-	
+	/**Megfelelo kirajzolas*/
 	public void rajzolTargyInv(Felulet f, Szereplo sz, int hanyadik){
 		f.rajzolRaketaalkatreszInv(sz, hanyadik);
 	}

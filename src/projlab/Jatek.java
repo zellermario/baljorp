@@ -78,9 +78,6 @@ public class Jatek {
 		for(Mezo m : mezok) m.epuletRombol();
 	}
 	
-	/**Ez a fuggveny a jatek letrehozasaert felelos
-	 * most a tartalma lenyegeben a tesztesetekben kerul megvalositasra*/
-	public void ujJatek() {}
 	
 	/**Ha ezt a fuggvenyt meghivjuk a jatek vereseggel veget er.*/
 	public void vereseg() {
@@ -172,7 +169,7 @@ public class Jatek {
 		return kivalasztott_mezo;
 	}
 
-	/**A megadott sorszamu targyat hazsnalja a jatekos tarolojabol*/
+	/**A megadott sorszamu targyat hasznalja a jatekos tarolojabol*/
 	public void targy_hasznal(int indx) {
 		if(indx <= szereplok.get(aktualisJatekos).getTargyak().size()) {
 			szereplok.get(aktualisJatekos).getTargyak().get(indx - 1).hasznal(szereplok.get(aktualisJatekos));

@@ -11,7 +11,7 @@ public class Jegesmedve extends Szereplo {
         testho = 1;
         halott = false;
     }
-    /*ez a fuggveny felelos a jegesmedve mozgatasaert, de a randomsaga miatt a tesztekben nem szerepel*/
+    /*ez a fuggveny felelos a jegesmedve automatikus mozgatasaert*/
     public void kor() {
         if(!halott) {
             if(getKurrensMezo().megvizsgal() == 0) halal();
@@ -46,10 +46,9 @@ public class Jegesmedve extends Szereplo {
 		kurrensmezo.jatekosKuldes(this, cel);
 		tamad();
 	}
-	
+	/**Megfelelo kirajzolas*/
 	public void rajzolSzereplo(Felulet f){
 		if(!halott)
 			f.rajzolJegesmedve(kurrensmezo);
-		//jatek.kepfrissites();
 	}
 }

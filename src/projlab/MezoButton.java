@@ -5,20 +5,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-/** A mezoket reprezentáló gombok osztálya ami kezeli a gomblenyomásokat*/
+/**A jatekban talalhato, mezoket reprezentalo gombok es azok listenerje*/
 public class MezoButton extends JButton implements ActionListener{
-	/**Melyik mezőt reprezentálja a képenyőn.*/
+	/**Melyik mezo reprezentalja a kepernyon.*/
 	Mezo mezo;
 	public MezoButton(Mezo m) {
 		mezo = m;
 		this.addActionListener(this);
 		}
 
-	/**A játkban lévő gombok ActonListenerje*/
+	
 	Mezo getMezo() {
 		return mezo;
   }
-	@Override
+	/**Esemenykezelo fuggveny, elsuti a megfelelot gombnyomaskor*/
 	public void actionPerformed(ActionEvent e) {
 		JButton src = (JButton)e.getSource();
 		if(src.getText().equals("L�p�s a kijel�lt mez�re")) {

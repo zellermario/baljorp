@@ -15,7 +15,7 @@ public class Stabil_Jegtabla extends Mezo {
 		vizsgalt_ertek = -1;
 		return -1;
 	}
-	
+	/**Megfelelo kirajzolas, beleertve az epitmenyeket es belefagyott targyakat*/
 	public void rajzolMezo(Felulet f) {
 		epitmeny.rajzolEpitmeny(f, this);
 		if(belefagyott_targy!=null)

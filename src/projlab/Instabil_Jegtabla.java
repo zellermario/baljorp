@@ -42,7 +42,7 @@ public class Instabil_Jegtabla extends Mezo {
 	}
 	/** A jegtabla teherbirasat adja vissza */
 	public int getTeherbiras() { return teherbiras; }
-
+	/**Megfelelo kirajzolas, belefagyott targgyal es epitmennyel egyutt*/
 	public void rajzolMezo(Felulet f) {
 		epitmeny.rajzolEpitmeny(f, this);
 		if(belefagyott_targy!= null)

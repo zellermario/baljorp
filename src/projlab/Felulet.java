@@ -38,7 +38,7 @@ public class Felulet implements ActionListener{
 	/**A palyan levo mezok*/
 	private Mezo mezok[][];
 	/**A mezoket reprezentalo gombok*/
-	private MezoButton mezoGombok[][];//
+	private MezoButton mezoGombok[][];
 	/**Eppen aktiv panel*/
 	private JPanel aktiv;
 	/**Gombokat tratalmazó panel*/
@@ -72,7 +72,7 @@ public class Felulet implements ActionListener{
 	private JPanel gyozelem;
 
 		
-	/**Felulet konstruktora*/
+	/**Felulet konstruktora, felepiti a jatek kinezetet*/
 	public Felulet(Jatek j) {
 		jatek = j;
 		frame = new JFrame();
@@ -233,8 +233,8 @@ public class Felulet implements ActionListener{
 		}
 		m_hozzaad.removeAll();
 		Mezo m = jatek.getSzereplok().get(jatek.getAktualis()).kurrensmezo;
-		int ho = m.getHoreteg();
-		for(int x = 0; x < 8; x++) {
+		
+		for(int x = 0; x < 8; x++) { /**A kijelolt es kurrens mezo kirajzolasa megfeleloen*/
 			for(int y = 0; y < 8; y++) {
 				if (mezoGombok[x][y].getMezo() == m) {
 					mezoGombok[x][y].setBorder(BorderFactory.createLineBorder(Color.BLACK, 5));
@@ -244,12 +244,13 @@ public class Felulet implements ActionListener{
 
 			}
 		}
+		/**Jobb oldali panelbe statusszal kapcsolatos rajzolas*/
+		int ho = m.getHoreteg();
 		JLabel havazott = new JLabel("Hóréteg: "+ho); m_hozzaad.add(havazott);
 		Targy t = m.belefagyott_targy;
 		s_bef = "Belefagyott tárgy: ";
 		if(ho == 0) {
 			if (t == null)  s_bef += "-  ";
-			//else t.rajzolTargy(this, m);
 		}
 		else s_bef += "?  ";
 		JLabel befagyott = new JLabel(s_bef); 
@@ -267,7 +268,7 @@ public class Felulet implements ActionListener{
 			}
 		}
 	}
-
+	
 	public JPanel getControlPanel() {
 		return controlpanel;
 	}
@@ -385,7 +386,7 @@ public class Felulet implements ActionListener{
 		JLabel temp = new JLabel("t" + hanyadik+" - Sátor");
 		i_hozzaad.add(temp);
 	}
-	/**Ez a fuggveny egy stabil jegtable kirajzolasaert felelos a megfelelo helyre*/
+	/**Ez a fuggveny egy stabil jegtable kirajzolasaert felelos a megfelelo helyre es megfelelo szinnel*/
 	public void rajzolStabilJegtabla(int x, int y) {
 	if(mezoGombok[x][y].getMezo().horeteg == 0) {
 		mezoGombok[x][y].setBackground(Color.WHITE);
@@ -398,7 +399,7 @@ public class Felulet implements ActionListener{
 	if(mezoGombok[x][y].getMezo().getVizsgalt()) mezoGombok[x][y].setBackground(Color.GREEN);
 	}
 
-	/**Ez a fuggveny egy instabil jegtable kirajzolasaert felelos a megfelelo helyre*/
+	/**Ez a fuggveny egy instabil jegtable kirajzolasaert felelos a megfelelo helyre es megfelelo szinnel*/
 	public void rajzolInstabilJegtabla(int x, int y) { 
 		
 		if(mezoGombok[x][y].getMezo().horeteg == 0) {
@@ -412,14 +413,14 @@ public class Felulet implements ActionListener{
 			}
 		}	
 	
-	/**Ez a fuggveny egy luk kirajzolasaert felelos a megfelelo helyre*/
+	/**Ez a fuggveny egy luk kirajzolasaert felelos a megfelelo helyre es megfelelo szinnel*/
 	public void rajzolLuk(int x, int y) {
 		if(mezoGombok[x][y].getMezo().horeteg == 0)
 		{
-			mezoGombok[x][y].setBackground(Color.RED);
+			mezoGombok[x][y].setBackground(Color.RED); 
 			mezoGombok[x][y].setText("Luk" + mezoGombok[x][y].mezo.rajtalevok);
 		}
-		else {
+		else { 
 			mezoGombok[x][y].setBackground(Color.CYAN);
 			mezoGombok[x][y].setText(String.valueOf(mezoGombok[x][y].getMezo().horeteg) + mezoGombok[x][y].mezo.rajtalevok);
 			if(mezoGombok[x][y].getMezo().getVizsgalt()) mezoGombok[x][y].setBackground(Color.GREEN);
@@ -432,14 +433,14 @@ public class Felulet implements ActionListener{
 	}
 	/**Ez a fuggveny a gyozelem panel megjeleniteseert felelos.*/
 	public void Gyozelem() {
-		cardlayout.show(controlpanel, "gyozlempanel");
+		cardlayout.show(controlpanel, "gyozelempanel");
 	}
 	/**Ez a fuggveny a vereseg panel megjeleniteseert felelos.*/
 	public void Vereseg() {
 		cardlayout.show(controlpanel, "veresegpanel");
 	}
 
-	/**A menuben levo gombok ActionListenerje*/
+	/**A Start ActionListenerje, felepiti a jatekteret a mellekelt szkript alapjan*/
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		cardlayout.show(controlpanel, "jatekpanel");

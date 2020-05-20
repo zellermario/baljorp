@@ -13,7 +13,7 @@ public class Iglu extends Epitmeny{
 	public String toString() {
 		return "Iglu";
 	}
-	
+	/**Megfelelo kirajzolas*/
 	public void rajzolEpitmeny(Felulet f, Mezo m){
 		f.rajzolIglu(m);
 	}

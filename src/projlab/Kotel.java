@@ -18,11 +18,11 @@ public class Kotel extends Targy {
 			}
 		}
 	}
-	
+	/**Megfelelo kirajzolas*/
 	public void rajzolTargy(Felulet f, Mezo m){
 		f.rajzolKotel(m);
 	}
-	
+	/**Megfelelo kirajzolas*/
 	public void rajzolTargyInv(Felulet f, Szereplo sz, int hanyadik){
 		f.rajzolKotelInv(sz, hanyadik);
 	}
