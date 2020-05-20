@@ -17,7 +17,6 @@ public class Jegesmedve extends Szereplo {
             if(getKurrensMezo().megvizsgal() == 0) halal();
             Random rand = new Random();
             int irany = rand.nextInt(4)+1;
-            System.out.println(irany);
             lepes(irany);
             tamad();
         }

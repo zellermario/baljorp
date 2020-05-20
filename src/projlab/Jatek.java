@@ -161,6 +161,7 @@ public class Jatek {
 	/**A kivalasztott mezore lepteti az aktualis jatekost*/
 	public void lep_mezo() {
 		szereplok.get(aktualisJatekos).getKurrensMezo().jatekosKuldes(szereplok.get(aktualisJatekos), kivalasztott_mezo);
+		kivalasztott_mezo = null;
 	}
 
 	public Felulet getFelulet() {
@@ -176,6 +177,7 @@ public class Jatek {
 		if(indx <= szereplok.get(aktualisJatekos).getTargyak().size()) {
 			szereplok.get(aktualisJatekos).getTargyak().get(indx - 1).hasznal(szereplok.get(aktualisJatekos));
 		}
+		kivalasztott_mezo = null;
 	}
 
 }

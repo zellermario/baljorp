@@ -1,5 +1,6 @@
 package projlab;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -29,6 +30,9 @@ public class MezoButton extends JButton implements ActionListener{
 		}
 		else if(src.getText().equals("Kör befejezése")) {
 			mezo.getJatek().getSzereplok().get(mezo.getJatek().getAktualis()).passz();
+		}
+		else if(src.getText().equals("Képesség")) {
+			mezo.getJatek().getSzereplok().get(mezo.getJatek().getAktualis()).kepessegHasznal();
 		}
 		else if(src.getText().equals("Jégtáblából kiás")) {
 			mezo.getJatek().getSzereplok().get(mezo.getJatek().getAktualis()).targyKiasas();

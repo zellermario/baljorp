@@ -12,6 +12,7 @@ public class Eszkimo extends Szereplo{
 		munkamennyiseg--;
 		if(munkamennyiseg == 0) munkamennyiseg = maxmunka;
 		jatek.addToCounter(1);
+		jatek.kivalasztott(null);
 		jatek.kepfrissites();
 	}
 	/**Tesztelest segito fuggveny*/

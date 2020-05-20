@@ -67,7 +67,7 @@ public abstract class Mezo {
 			if(entry.getValue().getId() == cel.getId()) {
 				cel.jatekosFogadas(sz);
 				jatekosok.remove(sz);
-				if(this.megvizsgal() < -1 ) vizsgalt = false;
+				if(this.megvizsgal() < -1 || this.megvizsgal() == -2) vizsgalt = false;
 				return;
 			}
 		} 
